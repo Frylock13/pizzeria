@@ -8,6 +8,5 @@ require 'capistrano/sidekiq'
 require 'capistrano/unicorn_nginx'
 require 'capistrano/sitemap_generator'
 require 'capistrano/figaro_yml'
-require 'whenever/capistrano'
 
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
