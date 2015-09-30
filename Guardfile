@@ -13,6 +13,9 @@ guard :livereload do
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(sass))).*}) do |m|
     "/assets/#{m[3].sub!('.sass', '.css')}"
   end
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(coffee))).*}) do |m|
+    "/assets/#{m[3].sub!('.coffee', '.js')}"
+  end
 end
 
 guard :rspec, cmd: 'spring rspec --color --format progress --fail-fast',
