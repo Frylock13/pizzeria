@@ -19,24 +19,32 @@ section.products id='pizza'
           .panel-body
             .pizza-title «Деревенская»
             .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
+            .pizza-edit-ingredients
+              a href='javascript:;' Подобрать ингредиенты
           .panel-footer
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-pizza.pizza-domashyaya
           .panel-body
             .pizza-title «Домашняя»
-            .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
+            .pizza-ingredients сливочный соус, копченая курица, сыр, томаты, кунжут, картофель фри
+            .pizza-edit-ingredients
+              a href='javascript:;' Подобрать ингредиенты
           .panel-footer
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-pizza.pizza-kurica
           .panel-body
             .pizza-title «Куриная»
-            .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
+            .pizza-ingredients сливочный соус, копченая курица, сладкий перец, томаты, зелень, сыр, грибы, чеснок
+            .pizza-edit-ingredients
+              a href='javascript:;' Подобрать ингредиенты
           .panel-footer
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-pizza.pizza-objora
           .panel-body
             .pizza-title «Обжора»
-            .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
+            .pizza-ingredients сыр, ветчина, курица, сливочный соус, томаты, зелень
+            .pizza-edit-ingredients
+              a href='javascript:;' Подобрать ингредиенты
           .panel-footer
 section.products id='sauces'
   .container
@@ -83,3 +91,27 @@ section.products id='snacks'
           .panel-body
             .pizza-title «Деревенская»
           .panel-footer
+section.footer
+  .container
+    .row
+      .col-xs-4
+        .section-title Ваша пицца
+      .col-xs-3
+        .section-title Меню
+        ul
+          li = link_to 'Пицца', 'javascript:;'
+          li = link_to 'Соусы', 'javascript:;'
+          li = link_to 'Гарниры', 'javascript:;'
+          li = link_to 'Напитки', 'javascript:;'
+          li = link_to 'Пиво', 'javascript:;'
+          li = link_to 'Закуски', 'javascript:;'
+      .col-xs-3
+        .section-title Информация
+        ul
+          li = link_to 'Оплата и доставка', 'javascript:;'
+          li = link_to 'О нас', 'javascript:;'
+          li = link_to 'Правила на сайте', 'javascript:;'
+      .col-xs-2
+        .section-title Контакты
+        ul
+          li = link_to 'hello@vpzven.ru', 'javascript:;'

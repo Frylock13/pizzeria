@@ -1,6 +1,21 @@
 @import 'bootstrap/_mixins-plus'
 
 section
+  &.footer
+    background-color: #f7f7f7
+    border-top: 1px solid #e5e5e5
+    height: 200px
+    padding: 20px 0 50px
+    .section-title
+      font-size: 16px
+      font-weight: bold
+      line-height: 20px
+      margin-bottom: 10px
+    ul
+      list-style-type: none
+      padding: 0
+      li
+        line-height: 20px
   &.page
     padding: 20px 0 50px
   &.products
@@ -19,7 +34,13 @@ section
           .pizza-title
             font-style: 16px
             font-weight: bold
+            line-height: 20px
           .pizza-ingredients
+            height: 60px
+            line-height: 20px
+            overflow: hidden
+          .pizza-edit-ingredients
+            line-height: 20px
         &.pizza-derevenskaya
           .panel-body
             +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg')
