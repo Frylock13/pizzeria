@@ -318,6 +318,7 @@ GEM
       rails-assets-angular (~> 1.0)
     rails-assets-breakpoint-sass (2.6.1)
       rails-assets-sassy-maps (< 1.0.0)
+    rails-assets-cferdinandi--smooth-scroll (7.0.2)
     rails-assets-ink (1.0.5)
     rails-assets-lodash (3.10.1)
     rails-assets-ng-ckeditor (0.2.1)
@@ -486,6 +487,7 @@ DEPENDENCIES
   rails-assets-angular-ui-router!
   rails-assets-angular-xeditable!
   rails-assets-breakpoint-sass!
+  rails-assets-cferdinandi--smooth-scroll!
   rails-assets-ink!
   rails-assets-lodash!
   rails-assets-ng-ckeditor!

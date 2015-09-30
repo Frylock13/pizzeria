@@ -1,2 +1,28 @@
-.container
-  ' Products
+= render '/shared/header', active: :products
+section.pills
+  .container
+    ul.nav.nav-pills id='navProducts'
+      li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
+      li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
+      li = link_to 'Гарниры', '#sidedish', 'data-scroll' => ''
+      li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
+      li = link_to 'Пиво', '#beer', 'data-scroll' => ''
+      li = link_to 'Закуски', '#snacks', 'data-scroll' => ''
+section.products id='pizza'
+  .container
+    .section-title Пицца
+section.products id='sauces'
+  .container
+    .section-title Соусы
+section.products id='sidedish'
+  .container
+    .section-title Гарниры
+section.products id='drinks'
+  .container
+    .section-title Напитки
+section.products id='beer'
+  .container
+    .section-title Пиво
+section.products id='snacks'
+  .container
+    .section-title Закуски

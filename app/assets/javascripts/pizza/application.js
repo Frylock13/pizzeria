@@ -1,3 +1,4 @@
 //= require jquery
 //= require jquery_ujs
-// require_tree ./components
+//= require bootstrap/scrollspy
+//= require_tree ./components

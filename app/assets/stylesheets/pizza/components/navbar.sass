@@ -1,0 +1,16 @@
+@import 'variables'
+@import 'bootstrap/mixins/_nav-vertical-align'
+
+.navbar-toggle
+  +navbar-vertical-align(40px)
+  cursor: pointer
+  line-height: 20px
+  margin-right: 0
+  width: 40px
+  .fa
+    color: #777
+
+.navbar-default
+  .navbar-toggle
+    border-color: transparent
+    border-radius: 0

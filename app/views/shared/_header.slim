@@ -1,0 +1,12 @@
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    button.navbar-toggle.visible-xs.visible-sm.visible-md.visible-lg data-target='.navmenu' data-toggle='offcanvas' type='button' data-canvas='#body' data-disable-scrolling='false'
+      span.fa.fa-opencart
+    button.navbar-toggle.visible-xs.visible-sm.visible-md.visible-lg data-target='.navmenu' data-toggle='offcanvas' type='button' data-canvas='#body' data-disable-scrolling='false'
+      span.fa.fa-user
+    = link_to root_path, class: 'navbar-brand' do
+      | Ваша пицца
+    .navbar-header
+      ul.nav.navbar-nav
+        = tab_link 'Меню', root_path, active: :products == active
+        = tab_link 'Оплата и доставка', pages_path, active: :page == active

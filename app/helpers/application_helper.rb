@@ -18,4 +18,12 @@ module ApplicationHelper
   def keywords_tag
     content_tag :meta, nil, name: 'keywords', content: content_for(:keywords) if content_for?(:keywords)
   end
+
+  def tab_link(text, path, active:)
+    content_tag :li, class: "#{'active' if active }" do
+      link_to path do
+        concat content_tag :span, text
+      end
+    end
+  end
 end

@@ -69,6 +69,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
   gem 'rails-assets-angular-xeditable'
   gem 'rails-assets-breakpoint-sass'
+  gem 'rails-assets-cferdinandi--smooth-scroll'
   gem 'rails-assets-ink'
   gem 'rails-assets-lodash'
   gem 'rails-assets-ng-ckeditor'
