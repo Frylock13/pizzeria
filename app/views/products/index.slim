@@ -1,13 +1,15 @@
 = render '/shared/header', active: :products
 section.pills
-  .container
-    ul.nav.nav-pills id='navProducts'
-      li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
-      li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
-      li = link_to 'Гарниры', '#sidedish', 'data-scroll' => ''
-      li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
-      li = link_to 'Пиво', '#beer', 'data-scroll' => ''
-      li = link_to 'Закуски', '#snacks', 'data-scroll' => ''
+  .affix-panel-dummy.dummy-sync-height
+    .affix-panel data-offset-top=40 id='navProducts'
+      .container
+        ul.nav.nav-pills
+          li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
+          li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
+          li = link_to 'Гарниры', '#sidedish', 'data-scroll' => ''
+          li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
+          li = link_to 'Пиво', '#beer', 'data-scroll' => ''
+          li = link_to 'Закуски', '#snacks', 'data-scroll' => ''
 section.products id='pizza'
   .container
     .section-title Пицца
