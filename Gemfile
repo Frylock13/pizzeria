@@ -71,8 +71,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-breakpoint-sass'
   gem 'rails-assets-ink'
   gem 'rails-assets-lodash'
-  gem 'rails-assets-modernizr'
   gem 'rails-assets-ng-ckeditor'
   gem 'rails-assets-normalize-css'
-  gem 'rails-assets-webfontloader'
 end
