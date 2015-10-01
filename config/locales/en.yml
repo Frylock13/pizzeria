@@ -1,2 +1,8 @@
 en:
-  hello: "Hello world"
+  enums:
+    user:
+      role:
+        user: User
+        admin: Admin
+  sessions:
+    not_authenticated: You need sign in

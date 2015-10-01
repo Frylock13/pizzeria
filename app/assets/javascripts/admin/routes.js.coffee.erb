@@ -1,0 +1,15 @@
+### @ngInject ###
+Routes = ($stateProvider, $urlRouterProvider) ->
+  $urlRouterProvider.otherwise '/dashboard'
+  $stateProvider
+   .state('dashboard',
+          url: '/dashboard'
+          controller: 'DashboardController as vm'
+          templateUrl: "<%= asset_url('admin/templates/dashboard.html') %>"
+  )
+  return
+
+angular
+  .module('admin')
+  .config(Routes)
+

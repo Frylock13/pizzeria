@@ -1,0 +1,51 @@
+@import 'breakpoint-sass'
+@import 'addons/border-radius'
+
+table.success
+  td
+    background: #2e9959
+    border-color: darken(#2e9959, 5%)
+  &:hover
+    td
+      background: darken(#2e9959, 5%) !important
+body, .body
+  background-color: #f7f7f7
+.container
+  margin-bottom: 12px
+  &.header
+    +border-top-radius(8px)
+    background: #85BB9B
+    color: #fff
+    min-height: 112px
+    margin-bottom: 0
+    margin-top: 72px
+    a.title
+      color: #ffffff
+      display: block
+      font-size: 32px
+      font-weight: bold
+      line-height: 36px
+      margin: 36px 10px 12px
+      &:hover, &:focus
+        color: #f7f7f7 !important
+      &:visited
+        color: #ffffff !important
+    .subtitle
+      color: #ffffff
+      display: block
+      font-style: italic
+      margin: 0 10px 24px
+    +breakpoint(max-width 600px)
+      margin-top: 24px !important
+  &.mail
+    background: #ffffff
+    border-top: 4px solid #2e9959
+    .title
+      font-size: 20px
+      font-weight: bold
+      line-height: 24px
+      margin: 12px 0
+  &.footer
+    p
+      font-size: 12px
+      font-style: italic

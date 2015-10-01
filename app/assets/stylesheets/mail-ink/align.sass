@@ -1,0 +1,34 @@
+.text-right
+  text-align: right
+.wrapper
+  &.text-left
+    text-align: left
+    .columns,
+    .columns tr,
+    .columns tr td
+      text-align: left
+  &.text-right
+    text-align: right
+    .columns,
+    .columns tr,
+    .columns tr td
+      text-align: right
+    img
+      float: right
+  &.text-center-for-small
+    @media only screen and (max-width: 600px)
+      text-align: center !important
+      .columns,
+      .columns tr,
+      .columns tr td
+        text-align: center !important
+      img
+        float: none !important
+        margin: 0 auto !important
+.sub-columns
+  &.text-left
+    text-align: left
+  &.text-right
+    text-align: right
+    img
+      float: right

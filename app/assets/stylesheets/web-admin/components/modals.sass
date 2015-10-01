@@ -1,0 +1,13 @@
+@import 'variables'
+@import 'breakpoint-sass'
+
+.modal-dialog
+  margin: 10% 10px
+  +breakpoint($screen-sm-min)
+    margin: 10% auto
+
+.admin-modal
+  .modal-dialog
+    .modal-body
+      min-height: 500px
+      min-height: 70vh

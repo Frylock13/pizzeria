@@ -1,0 +1,10 @@
+doctype html
+html ng-app='admin'
+  head
+    title ng-bind='$title || "Нужен заголовок"'
+    meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0'
+    = stylesheet_link_tag 'web-admin/application', media: 'all'
+    = csrf_meta_tags
+  body
+    = yield
+    = javascript_include_tag 'admin/application'

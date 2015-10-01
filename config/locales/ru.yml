@@ -1,0 +1,8 @@
+ru:
+  enums:
+    user:
+      role:
+        user: Пользователь
+        admin: Администратор
+  sessions:
+    not_authenticated: Необходимо войти в систему

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       auto_login(user, should_remember=true)
-      render json: user
+      render json: { status: 'success' }
     else
       if user.errors.any?
         render json: { status: 'error', errors: user.errors }

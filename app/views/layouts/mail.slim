@@ -1,0 +1,37 @@
+doctype Strict
+html xmlns='http://www.w3.org/1999/xhtml'
+  head
+    meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+    meta content='width=device-width' name='viewport'
+    - if Rails.env.production?
+      = stylesheet_link_tag 'mail-pizza/application'
+    - else
+      link rel='stylesheet' href='mail-pizza/application'
+  body
+    - if content_for?(:title)
+      span style='display: none !important;' = yield(:title)
+    table.body
+      tbody
+        tr
+          td.text-center align='center' valign='top'
+            center
+              table.container.mail
+                tbody
+                  tr
+                    td
+                      = yield
+              table.container.footer
+                tbody
+                  tr
+                    td
+                      table.row
+                        tbody
+                          tr
+                            td.wrapper.last
+                              table.twelve.columns
+                                tbody
+                                  tr
+                                    td.text-pad
+                                      p.last
+                                        ' По всем вопросам:
+                                        a href='mailto:help@living-sites.ru' help@living-sites.ru

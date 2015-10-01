@@ -6,3 +6,4 @@
 //= require bootstrap/tooltip
 //= require bootstrap/transition
 //= require_tree ./components
+//= require app/module
