@@ -4,10 +4,7 @@
 @import 'css3/transition'
 
 .affix-panel
-  +transition(background-color 0.25s, border-color 0.25s)
-  background-color: transparent
-  border-bottom: 1px solid transparent
+  background-color: #fff
+  border-bottom: 1px solid $navbar-default-border
   &.affix
-    background-color: $navbar-default-bg
-    border-color: $navbar-default-border
     top: $navbar-height

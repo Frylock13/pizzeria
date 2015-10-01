@@ -1,5 +1,10 @@
 @import 'variables'
+@import 'mixins'
 
 body
+  +scrollbar
   padding-top: $navbar-height
   position: relative
+
+*:focus
+  outline: 0 !important

@@ -6,10 +6,7 @@ section.pills
         ul.nav.nav-pills
           li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
           li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
-          li = link_to 'Гарниры', '#sidedish', 'data-scroll' => ''
           li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
-          li = link_to 'Пиво', '#beer', 'data-scroll' => ''
-          li = link_to 'Закуски', '#snacks', 'data-scroll' => ''
 section.products id='pizza'
   .container
     .section-title Пицца
@@ -20,7 +17,7 @@ section.products id='pizza'
             .product-title «Деревенская»
             .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
             .pizza-edit-ingredients
-              a href='javascript:;' Подобрать ингредиенты
+              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
           .panel-footer
             .product-select
               = select_tag :term, options_for_select([['22см', 1], ['33см', 2], ['38см', 3]]), class: 'form-control'
@@ -37,24 +34,51 @@ section.products id='pizza'
             .product-title «Домашняя»
             .pizza-ingredients сливочный соус, копченая курица, сыр, томаты, кунжут, картофель фри
             .pizza-edit-ingredients
-              a href='javascript:;' Подобрать ингредиенты
+              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
           .panel-footer
+            .product-select
+              = select_tag :term, options_for_select([['22см', 1], ['33см', 2], ['38см', 3]]), class: 'form-control'
+            .product-price 440&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-kurica
           .panel-body
             .product-title «Куриная»
             .pizza-ingredients сливочный соус, копченая курица, сладкий перец, томаты, зелень, сыр, грибы, чеснок
             .pizza-edit-ingredients
-              a href='javascript:;' Подобрать ингредиенты
+              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
           .panel-footer
+            .product-select
+              = select_tag :term, options_for_select([['22см', 1], ['33см', 2], ['38см', 3]]), class: 'form-control'
+            .product-price 240&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-objora
           .panel-body
             .product-title «Обжора»
             .pizza-ingredients сыр, ветчина, курица, сливочный соус, томаты, зелень
             .pizza-edit-ingredients
-              a href='javascript:;' Подобрать ингредиенты
+              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
           .panel-footer
+            .product-select
+              = select_tag :term, options_for_select([['22см', 1], ['33см', 2], ['38см', 3]]), class: 'form-control'
+            .product-price 380&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
 section.products id='sauces'
   .container
     .section-title Соусы
@@ -73,15 +97,6 @@ section.products id='sauces'
               span.product-amount 1
               .btn.btn-default
                 span.fa.fa-plus
-section.products id='sidedish'
-  .container
-    .section-title Гарниры
-    .row
-      .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default
-          .panel-body
-            .product-title «Деревенская»
-          .panel-footer
 section.products id='drinks'
   .container
     .section-title Напитки
@@ -101,24 +116,6 @@ section.products id='drinks'
               span.product-amount 1
               .btn.btn-default
                 span.fa.fa-plus
-section.products id='beer'
-  .container
-    .section-title Пиво
-    .row
-      .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default
-          .panel-body
-            .product-title «Деревенская»
-          .panel-footer
-section.products id='snacks'
-  .container
-    .section-title Закуски
-    .row
-      .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default
-          .panel-body
-            .product-title «Деревенская»
-          .panel-footer
 section.footer
   .container
     .row
@@ -129,10 +126,7 @@ section.footer
         ul
           li = link_to 'Пицца', 'javascript:;'
           li = link_to 'Соусы', 'javascript:;'
-          li = link_to 'Гарниры', 'javascript:;'
           li = link_to 'Напитки', 'javascript:;'
-          li = link_to 'Пиво', 'javascript:;'
-          li = link_to 'Закуски', 'javascript:;'
       .col-xs-3
         .section-title Информация
         ul
@@ -143,3 +137,128 @@ section.footer
         .section-title Контакты
         ul
           li = link_to 'hello@vpzven.ru', 'javascript:;'
+.modal.fade id='productModal'
+  .modal-dialog.modal-lg.modal-product
+    .modal-content
+      .modal-body
+        button.close type='button' data-dismiss='modal' &times;
+        .row
+          .col-sm-4.col-md-6.modal-col
+            = image_tag 'pizza/derevenskaya@2x.jpg'
+          .col-sm-8.col-md-6.modal-col.col-info
+            .product-title
+              | Пицца «Деревенская»
+              small особая
+            .product-ingredients
+              ul.nav.nav-pills
+                li.active = link_to 'Все ингредиенты', 'javascript:;'
+                li = link_to 'В пицце', 'javascript:;'
+                li = link_to 'Обязательные', 'javascript:;'
+              ul.list-group
+                li.list-group-item
+                  .list-group-item-heading соусы
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 40 р.
+                  | сливочный соус
+                li.list-group-item
+                  .list-group-item-heading сыры
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 70 р.
+                  | сыр
+                li.list-group-item
+                  .list-group-item-heading мясное
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 50 р.
+                  | ветчина
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 50 р.
+                  | салями
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 50 р.
+                  | сосиски
+                li.list-group-item
+                  .list-group-item-heading овощи
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 40 р.
+                  | грибы
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 50 р.
+                  | картофель фри
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 20 р.
+                  | маслины
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 40 р.
+                  | помидор
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 50 р.
+                  | соленый огурец
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .product-price 20 р.
+                  | чеснок
