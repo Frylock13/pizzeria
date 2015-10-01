@@ -15,33 +15,42 @@ section.products id='pizza'
     .section-title Пицца
     .row
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-pizza.pizza-derevenskaya
+        .panel.panel-default.panel-product.pizza-derevenskaya
           .panel-body
-            .pizza-title «Деревенская»
+            .product-title «Деревенская»
             .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
             .pizza-edit-ingredients
               a href='javascript:;' Подобрать ингредиенты
           .panel-footer
+            .product-select
+              = select_tag :term, options_for_select([['22см', 1], ['33см', 2], ['38см', 3]]), class: 'form-control'
+            .product-price 340&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-pizza.pizza-domashyaya
+        .panel.panel-default.panel-product.pizza-domashyaya
           .panel-body
-            .pizza-title «Домашняя»
+            .product-title «Домашняя»
             .pizza-ingredients сливочный соус, копченая курица, сыр, томаты, кунжут, картофель фри
             .pizza-edit-ingredients
               a href='javascript:;' Подобрать ингредиенты
           .panel-footer
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-pizza.pizza-kurica
+        .panel.panel-default.panel-product.pizza-kurica
           .panel-body
-            .pizza-title «Куриная»
+            .product-title «Куриная»
             .pizza-ingredients сливочный соус, копченая курица, сладкий перец, томаты, зелень, сыр, грибы, чеснок
             .pizza-edit-ingredients
               a href='javascript:;' Подобрать ингредиенты
           .panel-footer
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-pizza.pizza-objora
+        .panel.panel-default.panel-product.pizza-objora
           .panel-body
-            .pizza-title «Обжора»
+            .product-title «Обжора»
             .pizza-ingredients сыр, ветчина, курица, сливочный соус, томаты, зелень
             .pizza-edit-ingredients
               a href='javascript:;' Подобрать ингредиенты
@@ -51,10 +60,19 @@ section.products id='sauces'
     .section-title Соусы
     .row
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default
-          .panel-body
-            .pizza-title «Деревенская»
+        .panel.panel-default.panel-product
+          .panel-body style='background-image: url("http://pizzapirat.ru/sites/default/files/ee0bd882-b5d9-4493-9507-0c22606a2ecb.jpg"); background-size: 350px;'
+            .product-title «Сырный»
+            .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
+            .pizza-edit-ingredients
           .panel-footer
+            .product-price 40&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
 section.products id='sidedish'
   .container
     .section-title Гарниры
@@ -62,17 +80,27 @@ section.products id='sidedish'
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default
           .panel-body
-            .pizza-title «Деревенская»
+            .product-title «Деревенская»
           .panel-footer
 section.products id='drinks'
   .container
     .section-title Напитки
     .row
       .col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default
-          .panel-body
-            .pizza-title «Деревенская»
+        .panel.panel-default.panel-product
+          .panel-body style='background-image: url("http://genmutant.com/attachments/1353644361_soki-jpg.380/"); background-size: 350px;'
+            .product-title Сок в ассортименте
           .panel-footer
+            .product-select
+              = select_tag :term, options_for_select([['0.2л', 1], ['0.5л', 2], ['1л', 3]]), class: 'form-control'
+              = select_tag :term, options_for_select([['Апельсиновый', 1], ['Яблочный', 2], ['Томатный', 3]]), class: 'form-control'
+            .product-price 340&nbsp;р.
+            .product-controls
+              .btn.btn-default
+                span.fa.fa-minus
+              span.product-amount 1
+              .btn.btn-default
+                span.fa.fa-plus
 section.products id='beer'
   .container
     .section-title Пиво
@@ -80,7 +108,7 @@ section.products id='beer'
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default
           .panel-body
-            .pizza-title «Деревенская»
+            .product-title «Деревенская»
           .panel-footer
 section.products id='snacks'
   .container
@@ -89,7 +117,7 @@ section.products id='snacks'
       .col-xs-6.col-md-4.col-lg-3
         .panel.panel-default
           .panel-body
-            .pizza-title «Деревенская»
+            .product-title «Деревенская»
           .panel-footer
 section.footer
   .container

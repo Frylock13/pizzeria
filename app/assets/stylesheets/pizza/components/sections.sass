@@ -1,3 +1,4 @@
+@import 'variables'
 @import 'bootstrap/_mixins-plus'
 
 section
@@ -27,20 +28,41 @@ section
     .panel
       .panel-footer
         // height: 100px
-      &.panel-pizza
+      &.panel-product
         .panel-body
           background-position: 100% 0
           padding-top: 180px
-          .pizza-title
-            font-style: 16px
+          .product-title
+            font-size: 16px
             font-weight: bold
             line-height: 20px
+            margin-bottom: 5px
+            text-shadow: 0 0 4px #fff
           .pizza-ingredients
             height: 60px
             line-height: 20px
+            margin-bottom: 5px
             overflow: hidden
           .pizza-edit-ingredients
             line-height: 20px
+        .panel-footer
+          .product-controls
+            text-align: right
+            .product-amount
+              margin: 0 10px
+          .product-price
+            float: left
+            font-size: 26px
+            font-weight: bold
+            line-height: 33px
+          .product-select
+            margin: 0 0 10px
+            .form-control
+              display: inline-block
+              margin-right: 7px
+              width: auto
+              &:last-of-type
+                margin: 0
         &.pizza-derevenskaya
           .panel-body
             +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg')
