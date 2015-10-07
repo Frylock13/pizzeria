@@ -16,10 +16,11 @@ $screen-sm: 0
 
 $border-radius-base: 1px
 $border-radius-large: 2px
-$input-border-radius: 1px
-$panel-border-radius: 1px
 $btn-border-radius-large: $border-radius-large
+$input-border-radius: 1px
 $nav-pills-border-radius: $line-height-computed/2
+$navbar-border-radius: 0
+$panel-border-radius: 1px
 
 $body-bg: #E5E5E5
 $text-color: #3D3C37
@@ -36,25 +37,23 @@ $state-success-text: $brand-success
 $btn-default-bg: #fcfcfd
 $btn-default-border: #d2dae1
 $btn-default-color: $text-color
+$btn-primary-bg: #FCD251
+$btn-primary-border: $btn-primary-bg
+$btn-primary-color: $link-color
+$hr-border: #c7c7c7
 $tooltip-opacity: 1
 $nav-pills-active-link-hover-bg: #E5E5E5
 $nav-pills-active-link-hover-color: $link-color
-$navmenu-default-bg: $body-bg
-$navmenu-default-color: $text-color
-$navmenu-default-link-color: $link-color
-$navmenu-default-link-hover-bg: $navmenu-default-bg
-$navmenu-default-link-hover-color: $link-hover-color
-$navmenu-default-link-active-bg: $navmenu-default-bg
-$navmenu-default-link-active-color: $navmenu-default-link-hover-color
-$navmenu-default-link-disabled-color: darken($navmenu-default-bg, 20%)
-$navmenu-inverse-bg: $text-color
-$navmenu-inverse-color: #f5f5f5
-$navmenu-inverse-link-color: #f5f5f5
-$navmenu-inverse-link-hover-bg: $navmenu-inverse-bg
-$navmenu-inverse-link-hover-color: lighten($body-bg, 5%)
-$navmenu-inverse-link-active-bg: $navmenu-inverse-bg
-$navmenu-inverse-link-active-color: $navmenu-inverse-link-hover-color
-$navmenu-inverse-link-disabled-color: lighten($navmenu-inverse-bg, 20%)
+$navbar-default-link-hover-bg: rgba(#000, 0.05)
+$navbar-default-link-active-bg: rgba(#000, 0.05)
+$navbar-inverse-bg: $text-color
+$navbar-inverse-color: #f5f5f5
+$navbar-inverse-link-color: #f5f5f5
+$navbar-inverse-link-hover-bg: rgba(#fff, 0.05)
+$navbar-inverse-link-hover-color: $navbar-inverse-link-color
+$navbar-inverse-link-active-bg: $navbar-inverse-link-hover-bg
+$navbar-inverse-link-active-color: $navbar-inverse-link-hover-color
+$navbar-inverse-link-disabled-color: lighten($navbar-inverse-bg, 20%)
 
 @import 'bootstrap-sprockets'
 @import 'bootstrap/_variables'

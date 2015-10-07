@@ -46,9 +46,10 @@
           li
             = link_to root_path(anchor: 'next') do
               .nav-item-title
-                .text-right
+                .pull-right
                   small Итого:
                   span 1650 р.
+                small.text-muted мин. заказ от 500 р.
       li = link_to new_order_path do
         span.fa.fa-circle-o.fa-lg
         span Шаг 2. Оформите доставку

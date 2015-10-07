@@ -1,8 +1,19 @@
 - title 'Закажите пиццу в 3 шага'
-section.heading id='top'
-  .container-fluid
-    h1.section-title Составьте заказ
-.navbar.navbar-default.hidden-print id='menu'
+section.banners id='top'
+  .slick-slider.slick-main
+    .item = link_to '#pizza1', 'data-scroll' => '' do
+      .container-fluid
+        = image_tag 'banner.png', class: 'img-responsive'
+    .item = link_to '#pizza1', 'data-scroll' => '' do
+      .container-fluid
+        = image_tag 'banner.png', class: 'img-responsive'
+    .item = link_to '#pizza1', 'data-scroll' => '' do
+      .container-fluid
+        = image_tag 'banner.png', class: 'img-responsive'
+/ section.heading id='top'
+/   .container-fluid
+/     h1.section-title Составьте заказ
+.navbar.navbar-inverse.hidden-print id='menu'
   .container-fluid
     .navbar-header
       = link_to 'Меню:', root_path(anchor: 'menu'), class: 'navbar-brand'

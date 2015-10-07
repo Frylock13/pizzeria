@@ -8,5 +8,6 @@
 #= require bootstrap/transition
 #= require jasny-bootstrap
 #= require selectize/standalone/selectize
+#= require jquery.slick
 #= require_tree ./components
 #= require app/module

@@ -19,6 +19,7 @@ a
   display: none
 
 html, body
+  min-width: 690px
   height: 100%
 
 body
@@ -47,17 +48,9 @@ body
 .navmenu-fixed-left, .navmenu-fixed-right, .navbar-offcanvas
   z-index: 0
 .navmenu, .navbar-offcanvas
-  width: $navmenu-width
-.navmenu-inverse,
-.navbar-inverse .navbar-offcanvas
-  +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
-  background-color: $navmenu-inverse-bg
-  border-color: $navmenu-inverse-bg
-  border: none
-  color: $navmenu-inverse-color
   overflow: hidden
+  width: $navmenu-width
   .navmenu-brand
-    // background-color: $navbar-default-bg
     font-size: 0
     line-height: $navbar-height
     margin: 0
@@ -69,7 +62,6 @@ body
     height: 20px
   .navmenu-scroll-area
     +calc(height, '100% - 70px')
-    +scrollbar(#f5f5f5)
     overflow: overlay
   .navmenu-bottom-area
     bottom: 0
@@ -82,19 +74,12 @@ body
       .open > a
         .fa-chevron-down:before
           content: "\f077"
-        &, &:hover, &:focus
-          background-color: rgba(#fff, 0.08)
-          color: $navmenu-inverse-link-color
       li > a
-        color: $navmenu-inverse-link-color
         .nav-item-title
           font-size: 15px
           font-weight: bold
         .nav-item-subtitle
           font-size: 14px
-        &:hover, &:focus
-          color: $navmenu-inverse-link-hover-color
-          background-color: rgba(#fff, 0.05)
         >
           .fa
             margin-right: 5px
@@ -122,35 +107,90 @@ body
         line-height: 20px
         padding: 15px 15px
         text-transform: uppercase
-      .active > a
-        &, &:hover, &:focus
-          color: $navmenu-inverse-link-active-color
-          background-color: rgba(#fff, 0.05)
-      .disabled > a
-        &, &:hover, &:focus
-          color: $navmenu-inverse-link-disabled-color
     &.dropdown-menu
-      background-color: rgba(#000, 0.1)
-      border-top: 1px solid darken($navmenu-inverse-bg, 2%)
-      border-bottom: 1px solid darken($navmenu-inverse-bg, 3%)
       >
         li > a
-          color: $navmenu-inverse-link-color
           padding: 10px 15px
           white-space: initial
+          span + small,
+          small + span
+            margin-left: 7px
           small
             font-weight: normal
-            margin: 0 0 0 7px
-          .pull-right, .text-right
-            small
-              font-weight: normal
-              margin: 0 7px 0 0
           .nav-item-title
             margin: 0 0 0 24px
           .nav-item-subtitle
             margin: 0 0 0 24px
+.navmenu-default, .navbar-default .navbar-offcanvas
+  background-color: $navbar-default-bg
+  border-color: $navbar-default-border
+  color: $navbar-default-color
+  .navmenu-scroll-area
+    +scrollbar($navbar-default-color)
+  .navmenu-nav
+    >
+      li > a
+        color: $navbar-default-link-color
+        &:hover, &:focus
+          background-color: $navbar-default-link-hover-bg
+          color: $navbar-default-link-hover-color
+      .active > a
+        &, &:hover, &:focus
+          background-color: $navbar-default-link-active-bg
+          color: $navbar-default-link-active-color
+      .disabled > a
+        &, &:hover, &:focus
+          background-color: $navbar-default-link-disabled-bg
+          color: $navbar-default-link-disabled-color
+      .open > a
+        &, &:hover, &:focus
+          background-color: $navbar-default-link-active-bg
+          color: $navbar-default-link-active-color
+    &.dropdown-menu
+      background-color: rgba(#000, 0.04)
+      border-top: 1px solid darken($navbar-default-bg, 15%)
+      border-bottom: 1px solid darken($navbar-default-bg, 18%)
+      >
+        li > a
+          color: $navbar-default-link-color
           &:hover, &:focus
-            color: $navmenu-inverse-link-hover-color
+            color: $navbar-default-link-hover-color
+.navmenu-inverse, .navbar-inverse .navbar-offcanvas
+  +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
+  background-color: $navbar-inverse-bg
+  border-color: $navbar-inverse-bg
+  border: none
+  color: $navbar-inverse-color
+  .navmenu-scroll-area
+    +scrollbar($navbar-inverse-color)
+  .navmenu-nav
+    >
+      li > a
+        color: $navbar-inverse-link-color
+        &:hover, &:focus
+          background-color: $navbar-inverse-link-hover-bg
+          color: $navbar-inverse-link-hover-color
+      .active > a
+        &, &:hover, &:focus
+          background-color: $navbar-inverse-link-active-bg
+          color: $navbar-inverse-link-active-color
+      .disabled > a
+        &, &:hover, &:focus
+          background-color: $navbar-inverse-link-disabled-bg
+          color: $navbar-inverse-link-disabled-color
+      .open > a
+        &, &:hover, &:focus
+          background-color: $navbar-inverse-link-active-bg
+          color: $navbar-inverse-link-active-color
+    &.dropdown-menu
+      background-color: rgba(#000, 0.1)
+      border-top: 1px solid darken($navbar-inverse-bg, 2%)
+      border-bottom: 1px solid darken($navbar-inverse-bg, 3%)
+      >
+        li > a
+          color: $navbar-inverse-link-color
+          &:hover, &:focus
+            color: $navbar-inverse-link-hover-color
 
 .body
   +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)

@@ -6,5 +6,7 @@
 *= require normalize-css
 *= require selectize
 *= require selectize/selectize.bootstrap3
+*= require slick
+*= require slick-theme
 *= require_tree ./components
 */
