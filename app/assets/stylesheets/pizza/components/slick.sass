@@ -1,0 +1,21 @@
+@import 'variables'
+@import 'breakpoint-sass'
+
+.slick-slider
+  margin: 0
+  .item
+    .container-fluid
+      padding: 0
+      +breakpoint($screen-md-min)
+        padding: 0 50px
+    a
+      &:hover
+        &:before
+          background-color: rgba(#000, 0.03)
+          content: ''
+          height: 100%
+          left: 0
+          position: absolute
+          top: 0
+          width: 100%
+          z-index: 1
