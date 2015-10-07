@@ -6,8 +6,12 @@ html ng-app='app'
     title = content_for?(:title) ? yield(:title) : 'Страница без заголовка - VPZven'
     = description_tag
     = keywords_tag
+    = render 'shared/favicons'
     = stylesheet_link_tag 'pizza/application', media: 'all'
     = include_gon
   body
-    = yield
+    = render 'shared/sidebar'
+    .body id='body'
+      = render 'shared/header'
+      = yield
     = javascript_include_tag 'pizza/application'

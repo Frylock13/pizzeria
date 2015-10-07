@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def index
   end
 
+  def show
+    @page = params[:id]
+  end
+
   def admin
   end
 end

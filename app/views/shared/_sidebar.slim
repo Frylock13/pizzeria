@@ -1,0 +1,103 @@
+.navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
+  = link_to root_path(anchor: 'top'), class: 'navmenu-brand visible-md visible-lg' do
+    .logo
+  .navmenu-scroll-area
+    ul.nav.navmenu-nav
+      li.navmenu-title Закажите пиццу в 3 шага
+      li.dropdown.open
+        = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
+          span.fa.fa-check-circle-o.fa-lg.text-success
+          span Шаг 1. Составьте заказ
+          span.fa.fa-chevron-down
+        ul.dropdown-menu.navmenu-nav
+          li
+            = link_to root_path(anchor: 'pizza1') do
+              .nav-item-title Пицца «Деревенская»
+              .nav-item-subtitle
+                .pull-right
+                  small 2 шт
+                  span 680 р.
+                span 22см
+                small 340 р.
+              .nav-item-subtitle
+                .pull-right
+                  small 1 шт
+                  span 420 р.
+                span 33см
+                small 420 р.
+          li
+            = link_to root_path(anchor: 'pizza3') do
+              .nav-item-title Пицца «Куриная»
+              .nav-item-subtitle
+                .pull-right
+                  small 1 шт
+                  span 350 р.
+                span 22см
+                small 350 р.
+          li
+            = link_to root_path(anchor: 'product23') do
+              .nav-item-title Сок апельсиновый
+              .nav-item-subtitle
+                .pull-right
+                  small 4 шт
+                  span 200 р.
+                span 0.2л
+                small 50 р.
+          li
+            = link_to root_path(anchor: 'next') do
+              .nav-item-title
+                .text-right
+                  small Итого:
+                  span 1650 р.
+      li = link_to new_order_path do
+        span.fa.fa-circle-o.fa-lg
+        span Шаг 2. Оформите доставку
+      li.disabled = link_to root_path do
+        span.fa.fa-clock-o.fa-lg
+        span Шаг 3. Примите заказ
+    ul.navmenu-divider
+    ul.nav.navmenu-nav
+      li.dropdown.dropdown-collapse
+        a.dropdown-toggle href='javascript:;'
+          span.fa.fa-user.fa-lg
+          span Личный кабинет
+          span.fa.fa-chevron-down
+        ul.dropdown-menu.navmenu-nav
+          li
+            a href='javascript:;'
+              .nav-item-title Александр Новиков
+              .nav-item-subtitle
+                .pull-right
+                  span 1050
+                span Бонусных баллов
+              .nav-item-subtitle
+                .pull-right
+                  span 4
+                span Особых пицц в меню
+          / li
+          /   a href='javascript:;'
+          /     .nav-item-title Вход / Регистрация
+          /     .nav-item-subtitle
+          /       span Получите доступ к бонусным баллам и особой пицце в меню
+    ul.nav.navmenu-nav
+      li.dropdown.dropdown-collapse
+        a.dropdown-toggle href='javascript:;'
+          span.fa.fa-info-circle.fa-lg
+          span Информация
+          span.fa.fa-chevron-down
+        ul.dropdown-menu.navmenu-nav
+          = main_menu_link page_path('delivery'),
+                           'page_delivery', 'fa-road', 'Оплата и доставка'
+          = main_menu_link page_path('bonus'),
+                           'page_bonus', 'fa-ticket', 'Бонусные баллы'
+    ul.nav.navmenu-nav
+      li.dropdown.dropdown-collapse
+        a.dropdown-toggle href='javascript:;'
+          span.fa.fa-life-ring.fa-lg
+          span Связь с нами
+          span.fa.fa-chevron-down
+        ul.dropdown-menu.navmenu-nav
+          = main_menu_link '+7 (495) 123-45-67',
+                           'phone', 'fa-phone', '+7 (495) 123-45-67'
+          = main_menu_link 'mailto:help@vpzven.ru',
+                           'email', 'fa-envelope', 'help@vpzven.ru'

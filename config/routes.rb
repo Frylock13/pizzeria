@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :new, :create]
-  resources :pages, only: [:index]
+  resources :pages, only: [:index, :show]
   resources :password_resets, only: [:create, :edit, :update]
   resources :user_sessions, only: [:create, :destroy]
   resources :users, only: [:create, :update]

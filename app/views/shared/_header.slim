@@ -1,12 +1,7 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    button.navbar-toggle.visible-xs.visible-sm.visible-md.visible-lg data-target='.navmenu' data-toggle='offcanvas' type='button' data-canvas='#body' data-disable-scrolling='false' title='В корзине пусто'
-      span.fa.fa-opencart
-    button.navbar-toggle.visible-xs.visible-sm.visible-md.visible-lg data-target='.navmenu' data-toggle='offcanvas' type='button' data-canvas='#body' data-disable-scrolling='false' title='Зарегистрируйтесь'
-      span.fa.fa-user
-    = link_to root_path, class: 'navbar-brand' do
-      | Ваша пицца
-    .navbar-header
-      ul.nav.navbar-nav
-        = tab_link 'Меню', root_path, active: :products == active
-        = tab_link 'Оплата и доставка', pages_path, active: :page == active
+.navbar.navbar-default.navbar-fixed-top.hidden-md.hidden-lg.hidden-print
+  button.navbar-toggle.visible-xs.visible-sm data-target='.navmenu' data-toggle='offcanvas' type='button' data-canvas='#body' data-disable-scrolling='true'
+    span.icon-bar
+    span.icon-bar
+    span.icon-bar
+  = link_to root_path, class: 'navbar-brand' do
+    .logo

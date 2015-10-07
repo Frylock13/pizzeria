@@ -1,5 +1,17 @@
 @import 'variables'
 @import 'bootstrap/_mixins-plus'
+@import 'settings/prefixer'
+@import 'addons/prefixer'
+@import 'css3/animation'
+@import 'css3/keyframes'
+
++keyframes(anchorHighlight)
+  0%
+    background-color: lighten($brand-primary, 25%)
+  25%
+    background-color: lighten($brand-primary, 25%)
+  100%
+    background-color: $panel-footer-bg
 
 section
   &.footer
@@ -16,6 +28,27 @@ section
       padding: 0
       li
         line-height: 20px
+  &.heading
+    background-color: #fff
+    border-bottom: 1px solid #e0e1e1
+    color: #222
+    padding: 15px 0 14px
+    .section-title
+      display: inline-block
+      font-size: 30px
+      font-weight: bold
+      line-height: 30px
+      margin: 5px 7px 5px 0
+      .breadcrumb
+        background-color: transparent
+        border: none
+        border-radius: 0
+        margin: 0
+        padding: 0
+    .btn
+      line-height: $line-height-computed
+      margin: 3px 0
+      vertical-align: middle
   &.page
     padding: 20px 0 50px
   &.products
@@ -26,9 +59,10 @@ section
       line-height: 40px
       margin-bottom: 20px
     .panel
-      .panel-footer
-        // height: 100px
       &.panel-product
+        &:target
+          .panel-footer
+            +animation(anchorHighlight 2s)
         .panel-body
           background-position: 100% 0
           padding-top: 180px
@@ -46,32 +80,38 @@ section
           .pizza-edit-ingredients
             line-height: 20px
         .panel-footer
-          .product-controls
-            text-align: right
-            .product-amount
-              margin: 0 10px
-          .product-price
-            float: left
-            font-size: 26px
-            font-weight: bold
-            line-height: 33px
-          .product-select
-            margin: 0 0 10px
-            .form-control
-              display: inline-block
-              margin-right: 7px
-              width: auto
-              &:last-of-type
-                margin: 0
+          .product-item
+            line-height: 20px
+            .item-controls
+              text-align: right
+              a
+                color: lighten($link-color, 35%)
+                &:hover, &:focus
+                  color: $link-color
+              .item-amount
+                color: lighten($text-color, 35%)
+                font-weight: bold
+                margin: 0 10px
+            .item-value
+              float: left
+              margin-right: 10px
+              min-width: 30px
+            .item-price
+              float: left
+              font-size: 16px
+              font-weight: bold
+            &.item-in-cart
+              .item-amount
+                color: $text-color
         &.pizza-derevenskaya
           .panel-body
-            +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg')
+            +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg', no-repeat, 300px, 200px)
         &.pizza-domashyaya
           .panel-body
-            +retina-bg('pizza/domashyaya.jpg', 'pizza/domashyaya@2x.jpg')
+            +retina-bg('pizza/domashyaya.jpg', 'pizza/domashyaya@2x.jpg', no-repeat, 300px, 200px)
         &.pizza-kurica
           .panel-body
-            +retina-bg('pizza/kurica.jpg', 'pizza/kurica@2x.jpg')
+            +retina-bg('pizza/kurica.jpg', 'pizza/kurica@2x.jpg', no-repeat, 300px, 200px)
         &.pizza-objora
           .panel-body
-            +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg')
+            +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)

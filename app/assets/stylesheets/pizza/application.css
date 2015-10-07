@@ -1,7 +1,10 @@
 /*
 *= require angular-xeditable
 *= require font-awesome
+*= require jasny-bootstrap
 *= require ladda
 *= require normalize-css
+*= require selectize
+*= require selectize/selectize.bootstrap3
 *= require_tree ./components
 */

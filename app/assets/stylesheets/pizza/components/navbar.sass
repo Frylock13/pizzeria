@@ -2,11 +2,16 @@
 @import 'bootstrap/mixins/_nav-vertical-align'
 
 .navbar-toggle
-  +navbar-vertical-align(40px)
+  +navbar-vertical-align($navbar-height)
   cursor: pointer
+  height: $navbar-height
   line-height: 20px
   margin-right: 0
-  width: 40px
+  text-align: center
+  width: $navbar-height
+  .icon-bar
+    margin: 0 auto
+    width: 18px
   .fa
     color: #777
 
@@ -14,3 +19,15 @@
   .navbar-toggle
     border-color: transparent
     border-radius: 0
+
+.navbar-brand
+  display: inline-block
+  float: none
+  font-weight: 700
+  line-height: $navbar-height
+  padding: 0 15px
+  text-align: center
+  &:hover
+    text-decoration: none
+  img
+    vertical-align: middle

@@ -7,24 +7,54 @@ $font-size-large: 16px
 $line-height-computed: 20px
 $line-height-base: $line-height-computed / $font-size-base
 $line-height-large: $line-height-computed / $font-size-large
-
-$navbar-height: 40px
+$navbar-height: 50px
 
 $grid-gutter-width: 30px
 $grid-float-breakpoint: 0
+$navmenu-width: 300px
 $screen-sm: 0
 
+$border-radius-base: 1px
+$border-radius-large: 2px
+$input-border-radius: 1px
+$panel-border-radius: 1px
+$btn-border-radius-large: $border-radius-large
 $nav-pills-border-radius: $line-height-computed/2
 
-$link-color: #5b7081
-$link-hover-color: #239ae3
+$body-bg: #E5E5E5
+$text-color: #3D3C37
+$link-color: #383783
+$link-hover-color: darken($link-color, 14%)
 $link-hover-decoration: none
-$badge-bg: #aaa
-$tooltip-color: #f5f5f5
-$tooltip-bg: #555
+$brand-primary: #FAC217
+$brand-info: #2A27AF
+$brand-success: #BEEF16
+$brand-warning: #FAC217
+$brand-danger: #FA4E17
+$state-success-bg: $brand-success
+$state-success-text: $brand-success
+$btn-default-bg: #fcfcfd
+$btn-default-border: #d2dae1
+$btn-default-color: $text-color
 $tooltip-opacity: 1
-$nav-pills-active-link-hover-bg: #e3e6e8
+$nav-pills-active-link-hover-bg: #E5E5E5
 $nav-pills-active-link-hover-color: $link-color
+$navmenu-default-bg: $body-bg
+$navmenu-default-color: $text-color
+$navmenu-default-link-color: $link-color
+$navmenu-default-link-hover-bg: $navmenu-default-bg
+$navmenu-default-link-hover-color: $link-hover-color
+$navmenu-default-link-active-bg: $navmenu-default-bg
+$navmenu-default-link-active-color: $navmenu-default-link-hover-color
+$navmenu-default-link-disabled-color: darken($navmenu-default-bg, 20%)
+$navmenu-inverse-bg: $text-color
+$navmenu-inverse-color: #f5f5f5
+$navmenu-inverse-link-color: #f5f5f5
+$navmenu-inverse-link-hover-bg: $navmenu-inverse-bg
+$navmenu-inverse-link-hover-color: lighten($body-bg, 5%)
+$navmenu-inverse-link-active-bg: $navmenu-inverse-bg
+$navmenu-inverse-link-active-color: $navmenu-inverse-link-hover-color
+$navmenu-inverse-link-disabled-color: lighten($navmenu-inverse-bg, 20%)
 
 @import 'bootstrap-sprockets'
 @import 'bootstrap/_variables'

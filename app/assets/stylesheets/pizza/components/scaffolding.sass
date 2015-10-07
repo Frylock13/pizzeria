@@ -1,13 +1,177 @@
 @import 'variables'
+@import 'breakpoint-sass'
+@import 'css3/calc'
 @import 'mixins'
-
-body
-  +scrollbar
-  padding-top: $navbar-height
-  position: relative
+@import 'bootstrap/_mixins-plus'
+@import 'settings/prefixer'
+@import 'addons/prefixer'
+@import 'css3/transition'
 
 *:focus
   outline: 0 !important
 
+a
+  cursor: pointer
+  &:hover, &:focus
+    text-decoration: none
+
 .ng-hide
   display: none
+
+html, body
+  height: 100%
+
+body
+  +scrollbar
+  -moz-osx-font-smoothing: auto
+  -webkit-font-smoothing: subpixel-antialiased
+  font-smoothing: subpixel-antialiased
+  position: relative
+  text-rendering: optimizeLegibility
+  +breakpoint($screen-md-min)
+    padding: 0 0 0 $navmenu-width
+
+.logo
+  +retina-image('logo.png', 'logo@2x.png', 295px, 35px)
+  display: inline-block
+  vertical-align: middle
+
+.navbar-fixed-top
+  text-align: center
+  .navbar-toggle
+    left: 0
+    margin-right: 0
+    position: absolute
+    top: 0
+
+.navmenu-fixed-left, .navmenu-fixed-right, .navbar-offcanvas
+  z-index: 0
+.navmenu, .navbar-offcanvas
+  width: $navmenu-width
+.navmenu-inverse,
+.navbar-inverse .navbar-offcanvas
+  +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
+  background-color: $navmenu-inverse-bg
+  border-color: $navmenu-inverse-bg
+  border: none
+  color: $navmenu-inverse-color
+  overflow: hidden
+  .navmenu-brand
+    // background-color: $navbar-default-bg
+    font-size: 0
+    line-height: $navbar-height
+    margin: 0
+    padding: 10px 15px
+    text-align: center
+    .logo
+      width: 100%
+  .navmenu-divider
+    height: 20px
+  .navmenu-scroll-area
+    +calc(height, '100% - 70px')
+    +scrollbar(#f5f5f5)
+    overflow: overlay
+  .navmenu-bottom-area
+    bottom: 0
+    height: 80px
+    left: 0
+    position: absolute
+    width: 100%
+  .navmenu-nav
+    >
+      .open > a
+        .fa-chevron-down:before
+          content: "\f077"
+        &, &:hover, &:focus
+          background-color: rgba(#fff, 0.08)
+          color: $navmenu-inverse-link-color
+      li > a
+        color: $navmenu-inverse-link-color
+        .nav-item-title
+          font-size: 15px
+          font-weight: bold
+        .nav-item-subtitle
+          font-size: 14px
+        &:hover, &:focus
+          color: $navmenu-inverse-link-hover-color
+          background-color: rgba(#fff, 0.05)
+        >
+          .fa
+            margin-right: 5px
+            text-align: center
+            width: 19px
+            &.fa-chevron-down,
+            &.fa-chevron-up
+              float: right
+              line-height: 20px
+              width: auto
+          .badge
+            font-size: 11px
+            padding: 2px 5px 2px 4px
+            margin-top: 2px
+          .text-muted
+            margin: 0 3px
+        &.active
+          .text
+            display: none
+          .text-active
+            display: inline-block
+      .navmenu-title
+        font-size: 16px
+        font-weight: 700
+        line-height: 20px
+        padding: 15px 15px
+        text-transform: uppercase
+      .active > a
+        &, &:hover, &:focus
+          color: $navmenu-inverse-link-active-color
+          background-color: rgba(#fff, 0.05)
+      .disabled > a
+        &, &:hover, &:focus
+          color: $navmenu-inverse-link-disabled-color
+    &.dropdown-menu
+      background-color: rgba(#000, 0.1)
+      border-top: 1px solid darken($navmenu-inverse-bg, 2%)
+      border-bottom: 1px solid darken($navmenu-inverse-bg, 3%)
+      >
+        li > a
+          color: $navmenu-inverse-link-color
+          padding: 10px 15px
+          white-space: initial
+          small
+            font-weight: normal
+            margin: 0 0 0 7px
+          .pull-right, .text-right
+            small
+              font-weight: normal
+              margin: 0 7px 0 0
+          .nav-item-title
+            margin: 0 0 0 24px
+          .nav-item-subtitle
+            margin: 0 0 0 24px
+          &:hover, &:focus
+            color: $navmenu-inverse-link-hover-color
+
+.body
+  +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
+  background-color: $body-bg
+  left: 0
+  min-height: 100%
+  position: relative
+  &:before
+    content: ''
+    height: 100%
+    left: 0
+    opacity: 0
+    position: absolute
+    top: 0
+    visibility: hidden
+    width: 100%
+    z-index: 1
+  &.canvas-sliding,
+  &.canvas-slid
+    &:before
+      opacity: 1
+      visibility: visible
+  +breakpoint(max-width $screen-sm-max)
+    padding-top: $navbar-height

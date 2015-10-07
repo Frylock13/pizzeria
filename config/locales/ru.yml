@@ -1,4 +1,10 @@
 ru:
+  activerecord:
+    attributes:
+      order:
+        phone: Телефон
+    models:
+      order: Заказ
   enums:
     user:
       role:

@@ -2,5 +2,6 @@
 
 $(document).ready ->
   smoothScroll.init
-    offset: 80
-    speed: 1500
+    speed: 500
+    # callback: (toggle, anchor) ->
+    #   $(anchor).find('.section-title').first().fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)

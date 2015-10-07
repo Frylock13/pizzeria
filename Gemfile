@@ -76,9 +76,11 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-breakpoint-sass'
   gem 'rails-assets-cferdinandi--smooth-scroll'
   gem 'rails-assets-ink'
+  gem 'rails-assets-jasny-bootstrap'
   gem 'rails-assets-ladda'
   gem 'rails-assets-lodash'
   gem 'rails-assets-ng-ckeditor'
   gem 'rails-assets-normalize-css'
   gem 'rails-assets-restangular'
+  gem 'rails-assets-selectize'
 end

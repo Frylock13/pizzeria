@@ -1,0 +1,12 @@
+#= require jquery
+#= require jquery_ujs
+#= require bootstrap/affix
+#= require bootstrap/dropdown
+#= require bootstrap/modal
+#= require bootstrap/scrollspy
+#= require bootstrap/tooltip
+#= require bootstrap/transition
+#= require jasny-bootstrap
+#= require selectize/standalone/selectize
+#= require_tree ./components
+#= require app/module
