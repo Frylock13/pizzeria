@@ -68,6 +68,30 @@ section
       font-weight: bold
       line-height: 40px
       margin-bottom: 20px
+    .product-items
+      .product-item
+        line-height: 20px
+        .item-controls
+          float: right
+          a
+            color: lighten($link-color, 35%)
+            &:hover, &:focus
+              color: $link-color
+          .item-amount
+            color: lighten($text-color, 35%)
+            font-weight: bold
+            margin: 0 10px
+        .item-value
+          float: left
+          margin-right: 10px
+          min-width: 30px
+        .item-price
+          // float: left
+          font-size: 16px
+          font-weight: bold
+        &.item-in-cart
+          .item-amount
+            color: $text-color
     .panel
       &.panel-product
         &:target
@@ -89,30 +113,6 @@ section
             overflow: hidden
           .pizza-edit-ingredients
             line-height: 20px
-        .panel-footer
-          .product-item
-            line-height: 20px
-            .item-controls
-              text-align: right
-              a
-                color: lighten($link-color, 35%)
-                &:hover, &:focus
-                  color: $link-color
-              .item-amount
-                color: lighten($text-color, 35%)
-                font-weight: bold
-                margin: 0 10px
-            .item-value
-              float: left
-              margin-right: 10px
-              min-width: 30px
-            .item-price
-              float: left
-              font-size: 16px
-              font-weight: bold
-            &.item-in-cart
-              .item-amount
-                color: $text-color
         &.pizza-derevenskaya
           .panel-body
             +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg', no-repeat, 300px, 200px)
