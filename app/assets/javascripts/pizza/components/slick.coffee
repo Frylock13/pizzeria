@@ -7,6 +7,6 @@ $(document).ready ->
     infinite: true
     pauseOnHover: false
     slidesToShow: 1
-    variableWidth: false
+    variableWidth: true
     vertical: false
     verticalSwiping: false
