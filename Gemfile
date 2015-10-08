@@ -80,6 +80,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jasny-bootstrap'
   gem 'rails-assets-ladda'
   gem 'rails-assets-lodash'
+  gem 'rails-assets-masonry'
   gem 'rails-assets-ng-ckeditor'
   gem 'rails-assets-normalize-css'
   gem 'rails-assets-restangular'

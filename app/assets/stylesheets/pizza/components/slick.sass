@@ -3,13 +3,18 @@
 
 .slick-slider
   margin: 0
+  white-space: nowrap
   .item
+    display: inline-block
     .container-fluid
       padding: 0
       +breakpoint($screen-md-min)
         padding: 0 50px
     a
       position: relative
+      img
+        +breakpoint($screen-md-min)
+          padding: 0 35px
       &:hover
         &:before
           background-color: rgba(#000, 0.03)

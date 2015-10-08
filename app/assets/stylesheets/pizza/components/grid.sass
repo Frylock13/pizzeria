@@ -7,3 +7,17 @@
   +breakpoint($screen-md-min)
     padding-left: 50px
     padding-right: 50px
+
+.container-masonry
+  margin: 0
+  padding: 0 $grid-gutter-width/2
+  .masonry-grid
+    margin: 0 #{-$grid-gutter-width/2}
+    position: relative
+    .masonry-item
+      display: inline-block
+      max-width: 380px
+      min-width: 300px
+  +breakpoint($screen-md-min)
+    padding-left: 50px
+    padding-right: 50px

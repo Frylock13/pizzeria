@@ -12,7 +12,7 @@ section.banners id='top'
 / section.heading id='top'
 /   .container-fluid
 /     h1.section-title Составьте заказ
-.navbar.navbar-inverse.hidden-print id='menu'
+.navbar.navbar-default.hidden-print id='menu'
   .container-fluid
     .navbar-header
       = link_to 'Меню:', root_path(anchor: 'menu'), class: 'navbar-brand'
@@ -22,10 +22,10 @@ section.banners id='top'
         li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
         li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
 section.products id='pizza'
-  .container-fluid
+  .container-masonry
     .section-title Пицца
-    .row
-      .col-xs-6.col-lg-4
+    .masonry-grid.row
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-derevenskaya id='pizza1'
           .panel-body
             .product-title «Деревенская»
@@ -60,7 +60,7 @@ section.products id='pizza'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-domashyaya
           .panel-body
             .product-title «Домашняя»
@@ -95,7 +95,7 @@ section.products id='pizza'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-kurica id='pizza3'
           .panel-body
             .product-title «Куриная»
@@ -130,7 +130,7 @@ section.products id='pizza'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-objora
           .panel-body
             .product-title «Обжора»
@@ -166,10 +166,10 @@ section.products id='pizza'
                 a href='javascript:;'
                   span.fa.fa-plus
 section.products id='sauces'
-  .container-fluid
+  .container-masonry
     .section-title Соусы
-    .row
-      .col-xs-6.col-lg-4
+    .masonry-grid.row
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product
           .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b012ebeab8bdf.jpg"); background-size: 350px; background-position: 35% 60%;'
             .product-title «Барбекью»
@@ -182,7 +182,7 @@ section.products id='sauces'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product
           .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b06ae7a088415.jpg"); background-size: 350px; background-position: 35% 60%;'
             .product-title «Карри»
@@ -195,7 +195,7 @@ section.products id='sauces'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product
           .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b09b8d94109a7.jpg"); background-size: 350px; background-position: 35% 60%;'
             .product-title «Кисло-сладкий»
@@ -209,10 +209,10 @@ section.products id='sauces'
                 a href='javascript:;'
                   span.fa.fa-plus
 section.products id='drinks'
-  .container-fluid
+  .container-masonry
     .section-title Напитки
-    .row
-      .col-xs-6.col-lg-4
+    .masonry-grid.row
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product id='product23'
           .panel-body style='background-image: url("http://paneladebarrorestaurant.com/wp-content/uploads/2014/03/Orange-juice.jpg"); background-size: 350px;'
             .product-title Сок апельсиновый
@@ -244,7 +244,7 @@ section.products id='drinks'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-      .col-xs-6.col-lg-4
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product id='product23'
           .panel-body style='background-image: url("http://i.huffpost.com/gen/1239551/images/o-APPLE-JUICE-ARSENIC-facebook.jpg"); background-size: 350px;'
             .product-title Сок яблочный
@@ -287,7 +287,7 @@ section.heading id='next'
       .modal-body
         button.close type='button' data-dismiss='modal' &times;
         .row
-          .col-sm-4.col-md-6.modal-col
+          .col-sm-4.col-md-6.modal-col.hidden-xs
             = image_tag 'pizza/derevenskaya@2x.jpg'
           .col-sm-8.col-md-6.modal-col.col-info
             .product-title

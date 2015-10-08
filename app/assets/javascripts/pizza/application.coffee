@@ -7,6 +7,7 @@
 #= require bootstrap/tooltip
 #= require bootstrap/transition
 #= require jasny-bootstrap
+#= require masonry/dist/masonry.pkgd.js
 #= require selectize/standalone/selectize
 #= require jquery.slick
 #= require_tree ./components
