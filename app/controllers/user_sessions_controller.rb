@@ -2,6 +2,7 @@ class UserSessionsController < ApplicationController
   before_filter :require_login, only: :destroy
 
   def new
+    @main_menu_link = :login
   end
 
   def create

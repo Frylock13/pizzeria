@@ -4,58 +4,135 @@
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       li.navmenu-title Закажите пиццу в 3 шага
-      li.dropdown.open
-        = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
+      - if @main_menu_key == :products
+        li.dropdown.open
+          = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle', 'data-scroll' => '' do
+            span.fa.fa-check-circle-o.fa-lg.text-success
+            span Шаг 1. Составьте заказ
+            span.fa.fa-chevron-down
+          ul.dropdown-menu.navmenu-nav
+            li
+              = link_to root_path(anchor: 'pizza1') do
+                .nav-item-title Пицца «Деревенская»
+                .nav-item-subtitle
+                  .pull-right
+                    small 2 шт
+                    span 680 р.
+                  span 22см
+                  small 340 р.
+                .nav-item-subtitle
+                  .pull-right
+                    small 1 шт
+                    span 420 р.
+                  span 33см
+                  small 420 р.
+            li
+              = link_to root_path(anchor: 'pizza3') do
+                .nav-item-title Пицца «Куриная»
+                .nav-item-subtitle
+                  .pull-right
+                    small 1 шт
+                    span 350 р.
+                  span 22см
+                  small 350 р.
+            li
+              = link_to root_path(anchor: 'product23') do
+                .nav-item-title Сок апельсиновый
+                .nav-item-subtitle
+                  .pull-right
+                    small 4 шт
+                    span 200 р.
+                  span 0.2л
+                  small 50 р.
+            li
+              = link_to root_path(anchor: 'menu'), 'data-scroll' => '' do
+                .nav-item-title
+                  .pull-right
+                    small Итого:
+                    span 1650 р.
+                  small.text-muted мин. заказ от 500 р.
+      - else
+        li = link_to root_path(anchor: 'menu') do
           span.fa.fa-check-circle-o.fa-lg.text-success
           span Шаг 1. Составьте заказ
           span.fa.fa-chevron-down
-        ul.dropdown-menu.navmenu-nav
-          li
-            = link_to root_path(anchor: 'pizza1') do
-              .nav-item-title Пицца «Деревенская»
-              .nav-item-subtitle
-                .pull-right
-                  small 2 шт
-                  span 680 р.
-                span 22см
-                small 340 р.
-              .nav-item-subtitle
-                .pull-right
-                  small 1 шт
-                  span 420 р.
-                span 33см
-                small 420 р.
-          li
-            = link_to root_path(anchor: 'pizza3') do
-              .nav-item-title Пицца «Куриная»
-              .nav-item-subtitle
-                .pull-right
-                  small 1 шт
-                  span 350 р.
-                span 22см
-                small 350 р.
-          li
-            = link_to root_path(anchor: 'product23') do
-              .nav-item-title Сок апельсиновый
-              .nav-item-subtitle
-                .pull-right
-                  small 4 шт
-                  span 200 р.
-                span 0.2л
-                small 50 р.
-          li
-            = link_to root_path(anchor: 'menu') do
-              .nav-item-title
-                .pull-right
-                  small Итого:
-                  span 1650 р.
-                small.text-muted мин. заказ от 500 р.
-      li = link_to new_order_path do
-        span.fa.fa-circle-o.fa-lg
-        span Шаг 2. Оформите доставку
-      li.disabled = link_to root_path do
-        span.fa.fa-clock-o.fa-lg
-        span Шаг 3. Примите заказ
+      - if @main_menu_key == :new_order
+        li.dropdown.open
+          = link_to 'javascript:;', class: 'dropdown-toggle' do
+            span.fa.fa-circle-o.fa-lg
+            span Шаг 2. Оформите доставку
+            span.fa.fa-chevron-down
+          ul.dropdown-menu.navmenu-nav
+            li
+              = link_to root_path(anchor: 'pizza1') do
+                .nav-item-title Пицца «Деревенская»
+                .nav-item-subtitle
+                  .pull-right
+                    small 2 шт
+                    span 680 р.
+                  span 22см
+                  small 340 р.
+                .nav-item-subtitle
+                  .pull-right
+                    small 1 шт
+                    span 420 р.
+                  span 33см
+                  small 420 р.
+            li
+              = link_to root_path(anchor: 'pizza3') do
+                .nav-item-title Пицца «Куриная»
+                .nav-item-subtitle
+                  .pull-right
+                    small 1 шт
+                    span 350 р.
+                  span 22см
+                  small 350 р.
+            li
+              = link_to root_path(anchor: 'product23') do
+                .nav-item-title Сок апельсиновый
+                .nav-item-subtitle
+                  .pull-right
+                    small 4 шт
+                    span 200 р.
+                  span 0.2л
+                  small 50 р.
+            li
+              = link_to root_path(anchor: 'menu') do
+                .nav-item-title
+                  .text-right
+                    small Итого:
+                    span 1650 р.
+      - else
+        li = link_to new_order_path do
+          span.fa.fa-circle-o.fa-lg
+          span Шаг 2. Оформите доставку
+          span.fa.fa-chevron-down
+      - if @main_menu_key == :orders
+        li.dropdown.open
+          = link_to 'javascript:;', class: 'dropdown-toggle' do
+            span.fa.fa-clock-o.fa-lg
+            span Шаг 3. Примите заказ
+            span.fa.fa-chevron-down
+          ul.dropdown-menu.navmenu-nav
+            li
+              = link_to orders_path(anchor: 'order1') do
+                .nav-item-title В пути
+                .nav-item-subtitle
+                  .pull-right
+                    span 1650 р.
+                  span 6 октября
+              = link_to orders_path(anchor: 'order1') do
+                .nav-item-title Забронирован
+                .nav-item-subtitle
+                  .pull-right
+                    span 8150 р.
+                  span Бронь на 14 октября
+      - else
+        li class=('disabled' unless current_user.present?) = link_to orders_path do
+          span.fa.fa-lg class=(current_user.present? ? 'fa-clock-o' : 'fa-circle-o')
+          span Шаг 3. Примите заказ
+          - if current_user.present?
+            span.fa.fa-chevron-down
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
@@ -64,22 +141,24 @@
           span Личный кабинет
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
-          li
-            a href='javascript:;'
-              .nav-item-title Александр Новиков
-              .nav-item-subtitle
-                .pull-right
-                  span 1050
-                span Бонусных баллов
-              .nav-item-subtitle
-                .pull-right
-                  span 4
-                span Особых пицц в меню
-          / li
-          /   a href='javascript:;'
-          /     .nav-item-title Вход / Регистрация
-          /     .nav-item-subtitle
-          /       span Получите доступ к бонусным баллам и особой пицце в меню
+          - if current_user.present?
+            li
+              div
+                .nav-item-title Александр Новиков
+                .nav-item-subtitle
+                  .pull-right
+                    span 1050
+                  span Бонусных баллов
+                .nav-item-subtitle
+                  .pull-right
+                    span 4
+                  span Особых пицц в меню
+          - else
+            li class=('active' if @main_menu_link == :login)
+              = link_to login_path do
+                .nav-item-title Вход / Регистрация
+                .nav-item-subtitle
+                  span Получите доступ к бонусным баллам и особой пицце в меню
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    @main_menu_key = "page_#{params[:id]}"
     @page = params[:id]
   end
 

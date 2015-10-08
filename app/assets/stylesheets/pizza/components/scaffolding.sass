@@ -71,10 +71,13 @@ body
     width: 100%
   .navmenu-nav
     >
-      .open > a
-        .fa-chevron-down:before
-          content: "\f077"
-      li > a
+      .navmenu-title
+        font-size: 16px
+        font-weight: 700
+        line-height: 20px
+        padding: 15px 15px
+        text-transform: uppercase
+      li > a, li > div
         .nav-item-title
           font-size: 15px
           font-weight: bold
@@ -101,15 +104,12 @@ body
             display: none
           .text-active
             display: inline-block
-      .navmenu-title
-        font-size: 16px
-        font-weight: 700
-        line-height: 20px
-        padding: 15px 15px
-        text-transform: uppercase
+      .open > a
+        .fa-chevron-down:before
+          content: "\f077"
     &.dropdown-menu
       >
-        li > a
+        li > a, li > div
           padding: 10px 15px
           white-space: initial
           span + small,
@@ -191,6 +191,10 @@ body
           color: $navbar-inverse-link-color
           &:hover, &:focus
             color: $navbar-inverse-link-hover-color
+        .active > a
+          &, &:hover, &:focus
+            background-color: $navbar-inverse-link-active-bg
+            color: $navbar-inverse-link-active-color
 
 .body
   +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
