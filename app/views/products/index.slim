@@ -15,12 +15,13 @@ section.banners id='top'
 .navbar.navbar-default.hidden-print id='menu'
   .container-fluid
     .navbar-header
-      = link_to 'Меню:', root_path(anchor: 'menu'), class: 'navbar-brand'
+      = link_to 'Составьте заказ:', root_path(anchor: 'menu'), class: 'navbar-brand'
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
         li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
         li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
+      = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn pull-right'
 section.products id='pizza'
   .container-masonry
     .section-title Пицца
@@ -276,11 +277,11 @@ section.products id='drinks'
                 span.item-amount 0
                 a href='javascript:;'
                   span.fa.fa-plus
-section.heading id='next'
-  .container-fluid
-    .pull-right
-      = link_to 'Оформить заказ', new_order_path, class: 'btn btn-primary btn-lg'
-    h1.section-title Заказ составлен!
+/ section.heading id='next'
+/   .container-fluid
+/     .pull-right
+/       = link_to 'Оформить заказ', new_order_path, class: 'btn btn-primary btn-lg'
+/     h1.section-title Заказ составлен!
 .modal.fade id='productModal'
   .modal-dialog.modal-lg.modal-product
     .modal-content
