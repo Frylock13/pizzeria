@@ -1,21 +1,18 @@
 - title 'Закажите пиццу в 3 шага'
-/ section.banners id='top'
-/   .slick-slider.slick-main
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-1.jpg', class: 'img-responsive'
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-2.jpg', class: 'img-responsive'
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-3.jpg', class: 'img-responsive'
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-1.jpg', class: 'img-responsive'
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-2.jpg', class: 'img-responsive'
-/     .item = link_to 'javascript:;', 'data-scroll' => '' do
-/       = image_tag 'banner-3.jpg', class: 'img-responsive'
 / section.heading id='top'
 /   .container-fluid
 /     h1.section-title Составьте заказ
+section.products id='top'
+  .container-masonry
+    .panel.panel-default.panel-slider
+      .panel-body
+        .slick-slider.slick-main
+          .item = link_to 'javascript:;', 'data-scroll' => '' do
+            = image_tag 'banner-1.jpg', class: 'img-responsive'
+          .item = link_to 'javascript:;', 'data-scroll' => '' do
+            = image_tag 'banner-2.jpg', class: 'img-responsive'
+          .item = link_to 'javascript:;', 'data-scroll' => '' do
+            = image_tag 'banner-3.jpg', class: 'img-responsive'
 .navbar.navbar-inverse.hidden-print id='menu'
   .container-fluid
     .navbar-header
@@ -28,16 +25,7 @@
       = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn pull-right'
 section.products id='pizza'
   .container-masonry
-    .panel.panel-default
-      .panel-body
-        .slick-slider.slick-main
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-1.jpg', class: 'img-responsive'
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-2.jpg', class: 'img-responsive'
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-3.jpg', class: 'img-responsive'
-    / .section-title Пицца
+    .section-title Пицца
     .masonry-grid.row
       .masonry-item.col-xs-6.col-md-4.col-lg-3
         .panel.panel-default.panel-product.pizza-derevenskaya id='pizza1'

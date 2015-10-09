@@ -1,0 +1,15 @@
+@import 'settings/prefixer'
+@import 'addons/prefixer'
+@import 'css3/transition'
+
+.panel-slider
+  .panel-body
+    padding: 0
+    .item
+      +transition(opacity 0.5s)
+      opacity: 0.2
+      &.slick-center
+        opacity: 1
+    img
+      margin: 0 auto
+      // class=" slick-slide slick-current slick-active slick-center"
