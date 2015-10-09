@@ -3,6 +3,7 @@
 @import 'settings/prefixer'
 @import 'addons/prefixer'
 @import 'css3/animation'
+@import 'css3/transition'
 @import 'css3/keyframes'
 
 +keyframes(anchorHighlight)
@@ -125,4 +126,14 @@ section
         &.pizza-objora
           .panel-body
             +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
-
+    &#banners
+      .panel-body
+        padding: 0
+        .item
+          +transition(opacity 0.5s)
+          opacity: 0.2
+          &.slick-center
+            opacity: 1
+        img
+          margin: 0 auto
+          // class=" slick-slide slick-current slick-active slick-center"

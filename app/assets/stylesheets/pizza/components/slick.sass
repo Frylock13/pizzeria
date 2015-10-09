@@ -1,5 +1,9 @@
 @import 'variables'
 @import 'breakpoint-sass'
+@import 'settings/prefixer'
+@import 'addons/prefixer'
+@import 'css3/transform'
+@import 'css3/transition'
 
 .slick-slider
   margin: 0
@@ -25,3 +29,35 @@
           top: 0
           width: 100%
           z-index: 1
+  .slick-prev, .slick-next
+    +transition(background-color 0.5s)
+    background-color: transparent
+    height: 100%
+    margin: 0
+    top: 0
+    width: 30px
+    z-index: 1
+    &:before
+      box-shadow: 0 0 3px rgba(#000, 0.2)
+      background-color: #FFF
+      border-radius: 50%
+      color: #000
+      opacity: 1
+      padding: 5px
+      font-size: 16px
+      z-index: 1
+      // +transition(left 0.5s)
+      // position: relative
+      // left: 0
+    &:hover, &:focus
+      background-color: rgba(#000, 0.025)
+  .slick-prev
+    left: -15px
+    // &:hover, &:focus
+    //   &:before
+    //     left: -10px
+  .slick-next
+    right: -15px
+    // &:hover, &:focus
+    //   &:before
+    //     left: 10px
