@@ -54,7 +54,7 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.3)
-    autoprefixer-rails (5.2.1.3)
+    autoprefixer-rails (6.0.3)
       execjs
       json
     bcrypt (3.1.10)
@@ -78,7 +78,7 @@ GEM
     capistrano-figaro-yml (1.0.2)
       capistrano (~> 3.1)
       sshkit (~> 1.2, >= 1.2.0)
-    capistrano-rails (1.1.3)
+    capistrano-rails (1.1.5)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rvm (0.1.2)
@@ -95,46 +95,22 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    celluloid (0.17.1.2)
-      bundler
+    celluloid (0.17.2)
       celluloid-essentials
       celluloid-extras
       celluloid-fsm
       celluloid-pool
       celluloid-supervision
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
       timers (>= 4.1.1)
-    celluloid-essentials (0.20.2.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-essentials (0.20.5)
       timers (>= 4.1.1)
-    celluloid-extras (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-extras (0.20.5)
       timers (>= 4.1.1)
-    celluloid-fsm (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-fsm (0.20.5)
       timers (>= 4.1.1)
-    celluloid-pool (0.20.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-pool (0.20.5)
       timers (>= 4.1.1)
-    celluloid-supervision (0.20.1.1)
-      bundler
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
+    celluloid-supervision (0.20.5)
       timers (>= 4.1.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -154,7 +130,6 @@ GEM
       addressable
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
-    dotenv (2.0.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -165,7 +140,7 @@ GEM
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
-    faraday (0.9.1)
+    faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     figaro (1.1.1)
@@ -215,7 +190,7 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery-slick-rails (1.5.8)
+    jquery-slick-rails (1.5.8.1)
       railties (>= 3.1)
     json (1.8.3)
     jwt (1.5.1)
@@ -238,7 +213,7 @@ GEM
     mandrill-api (1.0.53)
       excon (>= 0.16.0, < 1.0)
       json (>= 1.7.7, < 2.0)
-    mandrill_mailer (1.0.3)
+    mandrill_mailer (1.1.0)
       actionpack
       activesupport
       mandrill-api (~> 1.0.9)
@@ -248,16 +223,16 @@ GEM
       railties (>= 3.0.0, < 5.0.0)
     method_source (0.8.2)
     mime-types (2.6.2)
-    mini_magick (4.3.3)
+    mini_magick (4.3.6)
     mini_portile (0.6.2)
-    minitest (5.8.0)
+    minitest (5.8.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.2)
+    net-ssh (3.0.1)
     ngannotate-rails (1.0.3)
       execjs
       rails (>= 3.1)
@@ -273,10 +248,9 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    oj (2.12.14)
     orm_adapter (0.5.0)
     parallel (1.6.1)
-    parallel_tests (1.7.0)
+    parallel_tests (1.9.0)
       parallel
     pg (0.18.3)
     premailer (1.8.6)
@@ -285,7 +259,7 @@ GEM
     premailer-rails (1.8.2)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
-    pry (0.10.1)
+    pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
@@ -308,16 +282,16 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.4)
       sprockets-rails
-    rails-assets-angular (1.2.28)
-    rails-assets-angular-animate (1.2.28)
-      rails-assets-angular (= 1.2.28)
+    rails-assets-angular (1.2.29)
+    rails-assets-angular-animate (1.2.29)
+      rails-assets-angular (= 1.2.29)
     rails-assets-angular-auto-focus (1.0.4)
-    rails-assets-angular-i18n (1.4.6)
+    rails-assets-angular-i18n (1.4.7)
     rails-assets-angular-ladda (0.3.1)
       rails-assets-angular (>= 1.2.0)
       rails-assets-ladda (~> 0.9.8)
-    rails-assets-angular-sanitize (1.2.28)
-      rails-assets-angular (= 1.2.28)
+    rails-assets-angular-sanitize (1.2.29)
+      rails-assets-angular (= 1.2.29)
     rails-assets-angular-ui-bootstrap-bower (0.12.1)
       rails-assets-angular (>= 1, < 1.3.0)
     rails-assets-angular-ui-router (0.2.15)
@@ -330,10 +304,10 @@ GEM
       rails-assets-jquery (>= 1.9.1)
     rails-assets-breakpoint-sass (2.6.1)
       rails-assets-sassy-maps (< 1.0.0)
-    rails-assets-cferdinandi--smooth-scroll (7.0.2)
+    rails-assets-cferdinandi--smooth-scroll (7.1.1)
     rails-assets-doc-ready (1.0.4)
       rails-assets-eventie (>= 1, < 2)
-    rails-assets-eventEmitter (4.2.11)
+    rails-assets-eventEmitter (4.3.0)
     rails-assets-eventie (1.0.6)
     rails-assets-fizzy-ui-utils (1.0.1)
       rails-assets-doc-ready (~> 1.0.4)
@@ -374,7 +348,7 @@ GEM
       rails-assets-jquery (>= 1.7.0)
       rails-assets-microplugin (~> 0.0.0)
       rails-assets-sifter (~> 0.4.0)
-    rails-assets-sifter (0.4.3)
+    rails-assets-sifter (0.4.4)
     rails-assets-spin.js (2.0.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -398,8 +372,8 @@ GEM
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     request_store (1.2.0)
-    rollbar (2.3.0)
-      oj (~> 2.12.14)
+    rollbar (2.4.0)
+      multi_json
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -409,7 +383,6 @@ GEM
     rspec-expectations (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
-    rspec-logsplit (0.1.3)
     rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -424,8 +397,8 @@ GEM
     rspec-support (3.3.0)
     russian (0.6.0)
       i18n (>= 0.5.0)
-    sass (3.4.18)
-    sassc (1.6.0)
+    sass (3.4.19)
+    sassc (1.7.1)
       bundler
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
@@ -436,8 +409,8 @@ GEM
       sprockets (> 2.11)
       tilt
     shellany (0.0.1)
-    sidekiq (3.5.0)
-      celluloid (~> 0.17.0)
+    sidekiq (3.5.1)
+      celluloid (~> 0.17.2)
       connection_pool (~> 2.2, >= 2.2.0)
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
@@ -455,8 +428,8 @@ GEM
     spring (1.4.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.3.4)
-      rack (~> 1.0)
+    sprockets (3.4.0)
+      rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
