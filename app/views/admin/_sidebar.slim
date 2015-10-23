@@ -1,0 +1,8 @@
+.navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
+  = link_to admin_path, class: 'navmenu-brand visible-md visible-lg', 'data-scroll' => '' do
+    .logo
+  .navmenu-scroll-area
+    ul.nav.navmenu-nav
+      li.navmenu-title Закажите пиццу в 3 шага
+      = main_menu_link page_path('delivery'),
+                       'page_delivery', 'fa-road', 'Оплата и доставка'

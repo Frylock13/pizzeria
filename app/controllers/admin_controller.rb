@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
-  before_filter :require_admin, only: [:index]
+  before_filter :require_admin
   layout 'admin'
 
-  def index
+  def dashboard
   end
 end

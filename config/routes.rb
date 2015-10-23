@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:create, :edit, :update]
   resources :user_sessions, only: [:create, :destroy]
   resources :users, only: [:create, :update]
-  get :admin, to: 'pages#admin'
+  get :admin, to: 'admin#dashboard'
   get :auth, to: 'user_sessions#new'
   get :login, to: 'user_sessions#new'
   get :logout, to: 'user_sessions#destroy'
