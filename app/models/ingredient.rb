@@ -11,4 +11,6 @@
 
 class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
+
+  validates :name, presence: true
 end
