@@ -28,3 +28,6 @@ angular
     'restangular'
     'ui.bootstrap'
   ])
+
+$ ->
+  angular.bootstrap(document.body, ['app']) unless $('body').hasClass('ng-scope')

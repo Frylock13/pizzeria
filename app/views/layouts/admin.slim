@@ -5,11 +5,11 @@ html
     = csrf_meta_tags
     title = content_for?(:title) ? yield(:title) : 'Админ-панель | VPZven'
     = render 'shared/favicons'
-    = stylesheet_link_tag 'pizza/application', media: 'all'
+    = stylesheet_link_tag 'pizza/application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'pizza/application', 'data-turbolinks-track' => true
     = include_gon
   body
     = render 'admin/sidebar'
     .body id='body'
       = render 'shared/header'
       = yield
-    = javascript_include_tag 'pizza/application'

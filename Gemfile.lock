@@ -6,6 +6,13 @@ GIT
       cocaine
       orm_adapter (~> 0.5.0)
 
+GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: 83d4b3d2c52a681f07900c28adb28bc8da604733
+  specs:
+    turbolinks (3.0.0)
+      coffee-rails
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -192,6 +199,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.5.8.1)
       railties (>= 3.1)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.3)
     jwt (1.5.1)
     kaminari (0.16.3)
@@ -492,6 +502,7 @@ DEPENDENCIES
   guard-unicorn
   jquery-rails
   jquery-slick-rails
+  jquery-turbolinks
   kaminari
   letter_opener
   mandrill_mailer
@@ -537,6 +548,7 @@ DEPENDENCIES
   sorcery
   spring
   spring-commands-rspec
+  turbolinks!
   uglifier
   underscore-rails
   unicorn

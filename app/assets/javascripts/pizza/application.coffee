@@ -1,5 +1,7 @@
 #= require jquery
+#= require jquery.turbolinks
 #= require jquery_ujs
+#= require turbolinks
 #= require bootstrap/affix
 #= require bootstrap/dropdown
 #= require bootstrap/modal
@@ -7,8 +9,8 @@
 #= require bootstrap/tooltip
 #= require bootstrap/transition
 #= require jasny-bootstrap
+#= require jquery.slick
 #= require masonry/dist/masonry.pkgd.js
 #= require selectize/standalone/selectize
-#= require jquery.slick
 #= require_tree ./components
 #= require app/module
