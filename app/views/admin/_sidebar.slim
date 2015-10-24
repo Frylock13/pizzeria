@@ -3,6 +3,6 @@
     .logo
   .navmenu-scroll-area
     ul.nav.navmenu-nav
-      li.navmenu-title Закажите пиццу в 3 шага
-      = main_menu_link page_path('delivery'),
-                       'page_delivery', 'fa-road', 'Оплата и доставка'
+      li.navmenu-title Данные на сайте
+      = main_menu_link admin_ingredients_path,
+                       :ingredients, 'fa-circle-o', Ingredient.model_name.human(count: 0)

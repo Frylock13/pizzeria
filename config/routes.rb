@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :ingredients
+  end
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]
   resources :password_resets, only: [:create, :edit, :update]

@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023225700) do
+ActiveRecord::Schema.define(version: 20151023231657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredient_attributes", force: :cascade do |t|
+    t.integer  "ingredient_id"
+    t.integer  "pizza_size"
+    t.decimal  "price",         precision: 5, scale: 2
+    t.integer  "weight"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "ingredient_attributes", ["ingredient_id"], name: "index_ingredient_attributes_on_ingredient_id", using: :btree
 
   create_table "ingredient_categories", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +33,15 @@ ActiveRecord::Schema.define(version: 20151023225700) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "ingredient_category_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ingredients", ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
@@ -50,5 +70,7 @@ ActiveRecord::Schema.define(version: 20151023225700) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
+  add_foreign_key "ingredient_attributes", "ingredients"
+  add_foreign_key "ingredients", "ingredient_categories"
   add_foreign_key "profiles", "users"
 end

@@ -1,0 +1,10 @@
+- title 'Ингредиенты'
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Добавить Ингредиент', new_admin_ingredient_path, class: 'btn btn-primary'
+    h1.section-title Ингредиенты
+section.page
+  .container-fluid
+    - @ingredients.each do |ingredient|
+      p = ingredient.name

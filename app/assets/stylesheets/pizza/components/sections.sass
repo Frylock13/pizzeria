@@ -49,6 +49,10 @@ section
         border-radius: 0
         margin: 0
         padding: 0
+        > li + li:before
+          content: "\2022"
+        > .active
+          color: #222
     .btn
       line-height: $line-height-computed
       margin: 3px 0

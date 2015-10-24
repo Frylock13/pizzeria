@@ -1,9 +1,14 @@
 ru:
   activerecord:
     attributes:
+      ingredient:
+        name: Название
       order:
         phone: Телефон
     models:
+      ingredient:
+        one: Ингредиент
+        many: Ингредиенты
       order: Заказ
   enums:
     user:
