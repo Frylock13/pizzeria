@@ -10,6 +10,7 @@
 #= require bootstrap/tooltip
 #= require bootstrap/transition
 #= require jasny-bootstrap
+#= require jquery-maskmoney/dist/jquery.maskMoney
 #= require jquery.slick
 #= require ladda/spin.min
 #= require ladda/ladda.min

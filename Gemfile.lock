@@ -335,6 +335,7 @@ GEM
       rails-assets-bootstrap (>= 3.1.0)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.4)
+    rails-assets-jquery-maskmoney (3.0.2)
     rails-assets-ladda (0.9.8)
       rails-assets-spin.js (~> 2.0.2)
     rails-assets-lodash (3.10.1)
@@ -539,6 +540,7 @@ DEPENDENCIES
   rails-assets-cferdinandi--smooth-scroll!
   rails-assets-ink!
   rails-assets-jasny-bootstrap!
+  rails-assets-jquery-maskmoney!
   rails-assets-ladda!
   rails-assets-lodash!
   rails-assets-masonry!
