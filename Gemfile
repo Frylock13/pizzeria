@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'active_model_serializers'
+gem 'acts_as_list'
 gem 'angular_rails_csrf'
 gem 'annotate'
 gem 'bootstrap-sass'
@@ -88,4 +89,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-normalize-css'
   gem 'rails-assets-restangular'
   gem 'rails-assets-selectize'
+  gem 'rails-assets-Sortable'
 end

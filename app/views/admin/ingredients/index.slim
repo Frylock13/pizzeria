@@ -6,11 +6,18 @@ section.heading
     h1.section-title Ингредиенты
 section.page
   .container-fluid
-    - @ingredients.each do |category, ingredients|
-      .panel.panel-default
-        .panel-heading
-          .panel-title = category.name
-        .panel-body
-          ul.list-group
-            - ingredients.each do |ingredient|
-              li.list-group-item = link_to ingredient.name, [:edit, :admin, ingredient]
+    - if @ingredient_categories.any?
+      .sortable-list
+        - @ingredient_categories.each do |ingredient_category|
+          div { class = 'panel panel-default'
+               data-model = 'ingredient_category'
+               data-url = url_for([:admin, ingredient_category])
+              }
+            .panel-heading.draggable-zone
+              .pull-right = ingredient_category.position
+              .panel-title = ingredient_category.name
+            - if ingredient_category.ingredients.any?
+              .panel-body
+                ul.list-group
+                  - ingredient_category.ingredients.each do |ingredient|
+                    li.list-group-item = link_to ingredient.name, [:edit, :admin, ingredient]

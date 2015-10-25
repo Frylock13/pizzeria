@@ -10,5 +10,7 @@
 #
 
 class IngredientCategory < ActiveRecord::Base
-  has_many :ingredients, dependent: :destroy
+  acts_as_list
+
+  has_many :ingredients, -> { order(name: :asc) }, dependent: :destroy
 end

@@ -15,5 +15,7 @@
 #= require ladda/ladda.jquery.min
 #= require masonry/dist/masonry.pkgd.js
 #= require selectize/standalone/selectize
+#= require Sortable/Sortable
+#= require Sortable/jquery.binding
 #= require_tree ./components
 #= require app/module

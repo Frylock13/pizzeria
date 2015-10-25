@@ -4,7 +4,7 @@ module Admin
     helper_method :ingredient_categories
 
     def index
-      @ingredients = Ingredient.all.order(:name).group_by(&:ingredient_category)
+      @ingredient_categories = IngredientCategory.all.order(:position)
     end
 
     def new
