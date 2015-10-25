@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'ready page:load page:partial-load', ->
   items = $('.sortable-list')
   if items.length
     items.each ->
