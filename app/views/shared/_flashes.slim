@@ -1,0 +1,7 @@
+section.flashes id='flashes' data-turbolinks-temporary=''
+  - if flash.any?
+    .container-fluid
+      - flash.each do |key, value|
+        .alert class="alert-#{key}"
+          button type='button' class='close' data-dismiss='alert' ×
+          = value

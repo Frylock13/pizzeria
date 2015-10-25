@@ -3,6 +3,7 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap/affix
+#= require bootstrap/alert
 #= require bootstrap/dropdown
 #= require bootstrap/modal
 #= require bootstrap/scrollspy
