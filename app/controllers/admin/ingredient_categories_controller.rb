@@ -24,6 +24,15 @@ module Admin
       end
     end
 
+    def destroy
+      if ingredient_category.destroy
+        flash[:success] = 'Категория успешна удалена'
+      else
+        flash[:success] = 'Невозможно удалить категорию'
+      end
+      redirect_to admin_ingredients_path, change: :ingredients
+    end
+
     private
 
     def update_by_reason

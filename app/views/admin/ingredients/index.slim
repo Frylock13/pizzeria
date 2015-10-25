@@ -4,7 +4,7 @@ section.heading
     .pull-right
       = link_to 'Добавить Ингредиент', new_admin_ingredient_path, class: 'btn btn-primary'
     h1.section-title Ингредиенты
-section.page
+section.page id='ingredients'
   .container-fluid
     - if @ingredient_categories.any?
       .sortable-list
@@ -14,7 +14,10 @@ section.page
                data-url = url_for([:admin, ingredient_category])
               }
             .panel-heading.draggable-zone
-              .pull-right = ingredient_category.position
+              .panel-actions
+                = link_to [:admin, ingredient_category], title: 'Удалить всю категорию',
+                          method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+                  span.fa.fa-trash
               .panel-title = ingredient_category.name
             - if ingredient_category.ingredients.any?
               .panel-body

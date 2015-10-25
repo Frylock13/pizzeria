@@ -1,6 +1,7 @@
 @import 'variables'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
+@import 'addons/rhythm'
 @import 'css3/transition'
 
 .panel-slider
@@ -20,3 +21,12 @@
     margin: -$panel-body-padding
     .list-group-item
       border: none
+.panel
+  > .panel-heading
+    line-height: rh()
+    position: relative
+    > .panel-actions
+      padding: $panel-heading-padding
+      position: absolute
+      right: 0
+      top: 0
