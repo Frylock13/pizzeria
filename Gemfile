@@ -24,6 +24,7 @@ gem 'nokogiri' # premailer dependency
 gem 'pg'
 gem 'premailer-rails'
 gem 'pry'
+gem 'pry-rails'
 gem 'rails', '4.2.4'
 gem 'rollbar'
 gem 'russian'
