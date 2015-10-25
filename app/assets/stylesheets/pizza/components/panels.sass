@@ -1,3 +1,4 @@
+@import 'variables'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
 @import 'css3/transition'
@@ -13,3 +14,9 @@
     img
       margin: 0 auto
       // class=" slick-slide slick-current slick-active slick-center"
+
+.panel-body
+  .list-group
+    margin: -$panel-body-padding
+    .list-group-item
+      border: none

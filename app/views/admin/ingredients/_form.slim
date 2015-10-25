@@ -12,5 +12,24 @@
                     { class: 'form-control selectize-categories' }
       = form_field_error :ingredient_category_id, item
   .form-group
+    = f.label :ingredient_attribute_attributes, class: 'col-sm-2 control-label'
+    .col-sm-9
+      .table-responsive
+        table.table
+          thead
+            tr
+              th Вес
+              th Цена
+              th.col-pizza-size Размер пиццы
+          tbody
+            - item.ingredient_attributes.each do |ingredient_attribute|
+              tr
+                = f.fields_for :ingredient_attributes, ingredient_attribute do |ff|
+                  td.col-input = ff.text_field :weight, class: 'form-control'
+                  td = ff.text_field :price, class: 'form-control'
+                  td.col-pizza-size
+                    = ff.hidden_field :pizza_size
+                    = ingredient_attribute.pizza_size_i18n
+  .form-group
     .col-sm-9.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

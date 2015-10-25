@@ -11,7 +11,9 @@
 
 class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
-  has_many :ingredient_attributes
+  has_many :ingredient_attributes, dependent: :destroy
 
   validates :name, :ingredient_category_id, presence: true
+
+  accepts_nested_attributes_for :ingredient_attributes
 end

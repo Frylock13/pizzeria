@@ -2,6 +2,7 @@ ru:
   activerecord:
     attributes:
       ingredient:
+        ingredient_attribute_attributes: Атрибуты
         ingredient_category_id: Категория
         name: Название
       order:
@@ -16,5 +17,10 @@ ru:
       role:
         user: Пользователь
         admin: Администратор
+    ingredient_attribute:
+      pizza_size:
+        d22: 22см
+        d33: 33см
+        d38: 38см
   sessions:
     not_authenticated: Необходимо войти в систему

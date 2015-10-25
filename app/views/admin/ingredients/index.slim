@@ -6,5 +6,11 @@ section.heading
     h1.section-title Ингредиенты
 section.page
   .container-fluid
-    - @ingredients.each do |ingredient|
-      p = ingredient.name
+    - @ingredients.each do |category, ingredients|
+      .panel.panel-default
+        .panel-heading
+          .panel-title = category.name
+        .panel-body
+          ul.list-group
+            - ingredients.each do |ingredient|
+              li.list-group-item = link_to ingredient.name, [:edit, :admin, ingredient]
