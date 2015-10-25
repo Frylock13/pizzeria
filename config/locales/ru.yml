@@ -19,8 +19,8 @@ ru:
         admin: Администратор
     ingredient_attribute:
       pizza_size:
-        d22: 22см
-        d33: 33см
-        d38: 38см
+        d22: 22 см
+        d33: 33 см
+        d38: 38 см
   sessions:
     not_authenticated: Необходимо войти в систему
