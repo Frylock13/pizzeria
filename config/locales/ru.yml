@@ -2,6 +2,7 @@ ru:
   activerecord:
     attributes:
       ingredient:
+        ingredient_category_id: Категория
         name: Название
       order:
         phone: Телефон

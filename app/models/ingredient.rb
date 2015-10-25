@@ -13,5 +13,5 @@ class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
   has_many :ingredient_attributes
 
-  validates :name, presence: true
+  validates :name, :ingredient_category_id, presence: true
 end

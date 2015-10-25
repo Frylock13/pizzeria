@@ -4,6 +4,13 @@
     .col-sm-9
       = f.text_field :name, class: 'form-control', required: false
       = form_field_error :name, item
+  = form_field_group :ingredient_category_id, item do
+    = f.label :ingredient_category_id, class: 'col-sm-2 control-label'
+    .col-sm-9
+      = f.collection_select :ingredient_category_id, ingredient_categories,
+        :id, :name, { include_blank: 'Выберите категорию' },
+                    { class: 'form-control selectize-categories' }
+      = form_field_error :ingredient_category_id, item
   .form-group
     .col-sm-9.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'
