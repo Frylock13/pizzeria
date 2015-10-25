@@ -18,7 +18,7 @@ module Admin
       if @ingredient.save
         redirect_to admin_ingredients_path, success: 'Ингредиент успешно добавлен'
       else
-        render :new, change: :new_ingredient
+        render :new, change: :new_ingredient, layout: !request.xhr?
       end
     end
 

@@ -34,6 +34,16 @@ body
   text-rendering: optimizeLegibility
   +breakpoint($screen-md-min)
     padding: 0 0 0 $navmenu-width
+  &.turbolinks-cached
+    &:before
+      background-color: rgba(#fff, 0.25)
+      content: ''
+      height: 100%
+      left: 0
+      position: fixed
+      top: 0
+      width: 100%
+      z-index: 1
 
 .logo
   +retina-image('logo.png', 'logo@2x.png', 295px, 35px)

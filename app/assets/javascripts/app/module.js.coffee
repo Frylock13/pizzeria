@@ -6,11 +6,9 @@
 //= require angular-sanitize
 
 //= require angular-auto-focus
-//= require autofill-event
-//= require ladda/spin.min
-//= require ladda
 //= require angular-ladda
 //= require angular-ui-bootstrap-bower
+//= require autofill-event
 //= require restangular
 
 //= require ng_states/module

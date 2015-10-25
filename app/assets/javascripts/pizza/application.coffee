@@ -10,6 +10,9 @@
 #= require bootstrap/transition
 #= require jasny-bootstrap
 #= require jquery.slick
+#= require ladda/spin.min
+#= require ladda/ladda.min
+#= require ladda/ladda.jquery.min
 #= require masonry/dist/masonry.pkgd.js
 #= require selectize/standalone/selectize
 #= require_tree ./components
