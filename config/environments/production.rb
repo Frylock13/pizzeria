@@ -13,9 +13,8 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.assets.compile = false
   config.assets.digest = true
-  config.assets.js_compressor = Uglifier.new(mangle: false)
-  config.assets.precompile += %w( *.slim ckeditor/*
-                                  mail.css )
+  config.assets.js_compressor = :closure
+  config.assets.precompile += %w( *.slim mail.css )
   config.cache_classes = true
   config.consider_all_requests_local = false
   config.eager_load = true
