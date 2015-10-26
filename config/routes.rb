@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :doughs
     resources :ingredients
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
   end

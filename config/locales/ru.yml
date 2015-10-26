@@ -1,6 +1,9 @@
 ru:
   activerecord:
     attributes:
+      dough:
+        dough_attribute_attributes: Атрибуты
+        name: Название
       ingredient:
         ingredient_attribute_attributes: Атрибуты
         ingredient_category_id: Категория
@@ -10,20 +13,26 @@ ru:
       order:
         phone: Телефон
     models:
+      dough: Тесто
       ingredient:
         one: Ингредиент
         many: Ингредиенты
       ingredient_category: Категория
       order: Заказ
   enums:
-    user:
-      role:
-        user: Пользователь
-        admin: Администратор
+    dough_attribute:
+      pizza_size:
+        d22: 22 см
+        d33: 33 см
+        d38: 38 см
     ingredient_attribute:
       pizza_size:
         d22: 22 см
         d33: 33 см
         d38: 38 см
+    user:
+      role:
+        user: Пользователь
+        admin: Администратор
   sessions:
     not_authenticated: Необходимо войти в систему

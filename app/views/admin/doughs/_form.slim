@@ -1,0 +1,28 @@
+= form_for [:admin, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
+  = form_field_group :name, item do
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-9
+      = f.text_field :name, class: 'form-control', required: false
+      = form_field_error :name, item
+  .form-group
+    = f.label :dough_attribute_attributes, class: 'col-sm-2 control-label'
+    .col-sm-9
+      .table-responsive
+        table.table
+          thead
+            tr
+              th Вес, гр.
+              th Цена, руб.
+              th.col-pizza-size Размер пиццы
+          tbody
+            - item.dough_attributes.each do |dough_attribute|
+              tr
+                = f.fields_for :dough_attributes, dough_attribute do |ff|
+                  td.col-input = ff.text_field :weight, class: 'form-control'
+                  td = ff.text_field :price, class: 'form-control mask-currency'
+                  td.col-pizza-size
+                    = ff.hidden_field :pizza_size
+                    = dough_attribute.pizza_size_i18n
+  .form-group
+    .col-sm-9.col-sm-offset-2
+      = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

@@ -1,0 +1,11 @@
+- title 'Тесто'
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Добавить Тесто', new_admin_dough_path, class: 'btn btn-primary'
+    h1.section-title Тесто
+section.page id='doughs'
+  .container-fluid
+    ul.list-group
+      - @doughs.each do |dough|
+        li.list-group-item = link_to dough.name, [:edit, :admin, dough]

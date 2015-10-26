@@ -1,0 +1,10 @@
+- title @dough.name
+section.heading
+  .container-fluid
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Тесто', admin_doughs_path
+        li.active = @dough.name
+section.page
+  .container-fluid
+    = render 'form', item: @dough
