@@ -1,0 +1,11 @@
+- title 'Пицца'
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary'
+    h1.section-title Пицца
+section.page id='pizzas'
+  .container-fluid
+    ul.list-group
+      - @pizzas.each do |pizza|
+        li.list-group-item = link_to pizza.name, [:edit, :admin, pizza]

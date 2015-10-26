@@ -7,4 +7,6 @@
       = main_menu_link admin_ingredients_path,
                        :ingredients, 'fa-circle-o', Ingredient.model_name.human(count: 0)
       = main_menu_link admin_doughs_path,
-                       :dough, 'fa-circle-o', Dough.model_name.human(count: 0)
+                       :doughs, 'fa-circle-o', Dough.model_name.human(count: 0)
+      = main_menu_link admin_pizzas_path,
+                       :pizzas, 'fa-circle-o', Pizza.model_name.human(count: 0)

@@ -4,15 +4,14 @@
     .col-sm-9
       = f.text_field :name, class: 'form-control', required: false
       = form_field_error :name, item
-  = form_field_group :ingredient_category_id, item do
-    = f.label :ingredient_category_id, class: 'col-sm-2 control-label'
-    .col-sm-9
-      = f.collection_select :ingredient_category_id, ingredient_categories,
-        :id, :name, { prompt: 'Выберите категорию' },
-                    { class: 'form-control selectize-categories' }
-      = form_field_error :ingredient_category_id, item
   .form-group
-    = f.label :ingredient_attribute_attributes, class: 'col-sm-2 control-label'
+    = f.label :visibility, class: 'col-sm-2 control-label'
+    .col-sm-9
+      = f.select :visibility, Pizza.visibilities_i18n.map { |k, v| [v, k] },
+                 { prompt: 'Укажите, где пицца будет видима' },
+                 { class: 'form-control selectize-visibility' }
+  .form-group
+    = f.label :pizza_attribute_attributes, class: 'col-sm-2 control-label'
     .col-sm-9
       .table-responsive
         table.table
@@ -22,14 +21,14 @@
               th Цена, руб.
               th.col-pizza-size Размер пиццы
           tbody
-            - item.ingredient_attributes.each do |ingredient_attribute|
+            - item.pizza_attributes.each do |pizza_attribute|
               tr
-                = f.fields_for :ingredient_attributes, ingredient_attribute do |ff|
+                = f.fields_for :pizza_attributes, pizza_attribute do |ff|
                   td.col-input = ff.text_field :weight, class: 'form-control'
                   td = ff.text_field :price, class: 'form-control mask-currency'
                   td.col-pizza-size
                     = ff.hidden_field :pizza_size
-                    = ingredient_attribute.pizza_size_i18n
+                    = pizza_attribute.pizza_size_i18n
   .form-group
     .col-sm-9.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

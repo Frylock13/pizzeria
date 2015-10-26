@@ -38,7 +38,7 @@ module Admin
     private
 
     def main_menu_key
-      @main_menu_key = :dough
+      @main_menu_key = :doughs
     end
 
     def dough_params

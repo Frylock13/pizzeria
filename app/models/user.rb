@@ -18,6 +18,7 @@
 
 class User < ActiveRecord::Base
   has_one :profile
+  has_many :pizzas, dependent: :destroy
 
   authenticates_with_sorcery!
 

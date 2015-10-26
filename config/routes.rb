@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :doughs
     resources :ingredients
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
+    resources :pizzas
   end
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]

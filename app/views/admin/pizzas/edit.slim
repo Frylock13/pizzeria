@@ -1,0 +1,10 @@
+- title @pizza.name
+section.heading
+  .container-fluid
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Пицца', admin_pizzas_path
+        li.active = @pizza.name
+section.page
+  .container-fluid
+    = render 'form', item: @pizza

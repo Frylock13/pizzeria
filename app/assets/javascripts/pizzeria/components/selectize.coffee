@@ -1,10 +1,4 @@
 $(document).on 'ready page:load page:partial-load', ->
-  $('.selectize-payment').selectize
-    labelField: 'title'
-    valueField: 'id'
-  $('.selectize-dough').selectize
-    labelField: 'title'
-    valueField: 'id'
   $('.selectize-categories').selectize
     labelField: 'name'
     valueField: 'id'
@@ -27,3 +21,10 @@ $(document).on 'ready page:load page:partial-load', ->
       option_create: (data, escape) ->
         addString = 'Создать категорию'
         return "<div class='create'>#{addString} <strong>#{escape(data.input)}</strong>&hellip;</div>"
+  $('.selectize-dough').selectize
+    labelField: 'title'
+    valueField: 'id'
+  $('.selectize-payment').selectize
+    labelField: 'title'
+    valueField: 'id'
+  $('.selectize-visibility').selectize()
