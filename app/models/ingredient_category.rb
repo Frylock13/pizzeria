@@ -13,4 +13,6 @@ class IngredientCategory < ActiveRecord::Base
   acts_as_list
 
   has_many :ingredients, -> { order(name: :asc) }, dependent: :destroy
+
+  validates :name, presence: true
 end

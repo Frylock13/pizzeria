@@ -1,7 +1,8 @@
 module Admin
   class IngredientCategoriesController < AdminController
-    def new
-      @ingredient_category = IngredientCategory.new
+    helper_method :ingredient_category
+
+    def edit
     end
 
     def create
@@ -12,15 +13,26 @@ module Admin
           format.json { render json: @ingredient_category }
         end
       else
-        render :new, change: :new_ingredient_category, layout: !request.xhr?
+        respond_to do |format|
+          format.json { render json: { message: 'error' }, status: 422 }
+        end
       end
     end
 
     def update
       if update_by_reason
-        render json: { message: 'Success' }, status: 200
+        respond_to do |format|
+          format.html { redirect_to admin_ingredients_path, success: 'Категория ингредиента успешно обновлена' }
+          format.json { render json: { message: 'Success' }, status: 200 }
+        end
       else
-        render json: { errors: ingredient_category.errors }, status: 422
+        respond_to do |format|
+          format.html {
+            flash.now[:error] = 'Данные не сохранены'
+            render :edit, change: "edit_ingredient_category_#{ingredient_category.id}", layout: !request.xhr?
+          }
+          format.json { render json: { errors: ingredient_category.errors }, status: 422 }
+        end
       end
     end
 

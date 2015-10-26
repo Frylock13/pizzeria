@@ -15,6 +15,8 @@ section.page id='ingredients'
               }
             .panel-heading.draggable-zone
               .panel-actions
+                = link_to [:edit, :admin, ingredient_category], title: 'Изменить категорию' do
+                  span.fa.fa-pencil
                 = link_to [:admin, ingredient_category], title: 'Удалить всю категорию',
                           method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
                   span.fa.fa-trash

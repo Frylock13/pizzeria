@@ -5,12 +5,15 @@ ru:
         ingredient_attribute_attributes: Атрибуты
         ingredient_category_id: Категория
         name: Название
+      ingredient_category:
+        name: Название
       order:
         phone: Телефон
     models:
       ingredient:
         one: Ингредиент
         many: Ингредиенты
+      ingredient_category: Категория
       order: Заказ
   enums:
     user:
