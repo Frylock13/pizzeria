@@ -58,3 +58,50 @@ select[multiple], select[size]
     height: 34px
     position: absolute
     width: 100px
+
+.fileinput
+  max-width: 275px
+  text-align: center
+  .thumbnail
+    display: block
+  .fileinput-body
+    background-color: $input-bg
+    border: 1px solid $input-border
+    padding: 25px 30px
+    label
+      color: $text-color
+      display: block
+      font-weight: normal
+      margin-bottom: 10px
+      text-align: center
+    .thumbnail
+      background: none
+      border-radius: 0
+      border: none
+      height: 165px
+      margin-bottom: 25px
+      padding: 0
+      .img-dummy
+        background-color: #f0f0f0
+        height: 145px
+        margin: 0 auto
+        padding: 45px 0 0
+        .dummy-icon
+          // +svg-image('publisher/dummy-photo.png', 'publisher/dummy-photo.svg', 60px, 60px)
+          margin: 0 auto
+        &.dummy-vertical
+          width: 110px
+        &.dummy-horizontal
+          width: 190px
+      p
+        color: $text-color
+        font-size: 12px
+        line-height: 20px
+  .help-block
+    color: $text-color
+    font-size: 12px
+    margin-bottom: 0
+    padding: 0 30px
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists
+  display: none

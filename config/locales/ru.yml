@@ -14,7 +14,8 @@ ru:
         phone: Телефон
       pizza:
         name: Название
-        image: Название
+        image: Фото в каталоге
+        images: Изображения
         pizza_attribute_attributes: Атрибуты
         visibility: Видимость
     models:

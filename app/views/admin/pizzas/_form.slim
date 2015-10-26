@@ -30,5 +30,26 @@
                     = ff.hidden_field :pizza_size
                     = pizza_attribute.pizza_size_i18n
   .form-group
+    = f.label :images, class: 'col-sm-2 control-label'
+    .col-sm-9
+      .fileinput.fileinput-new data-provides='fileinput'
+        .fileinput-body
+          = f.label :image, class: 'control-label'
+          .fileinput-new.thumbnail
+            - if item.image?
+              = image_tag item.image.url(:thumb)
+            - else
+              .img-dummy.dummy-vertical
+                .dummy-icon
+              p Фото нет
+          .fileinput-preview.fileinput-exists.thumbnail
+          div
+            span.btn.btn-default.btn-file
+              span.fileinput-new Выбрать фото
+              span.fileinput-exists Поменять
+              = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
+            a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
+        .help-block Рекомендованный размер 700x400 и формат: JPEG, GIF, PNG
+  .form-group
     .col-sm-9.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

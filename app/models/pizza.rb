@@ -19,6 +19,7 @@ class Pizza < ActiveRecord::Base
   belongs_to :user
   has_many :pizza_attributes, dependent: :destroy
   enum visibility: [:for_admin, :for_user, :for_all]
+  mount_uploader :image, ProductPhotoUploader
 
   validates :name, presence: true
   accepts_nested_attributes_for :pizza_attributes
