@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026103406) do
+ActiveRecord::Schema.define(version: 20151026170506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20151026103406) do
 
   add_index "pizza_attributes", ["pizza_id"], name: "index_pizza_attributes_on_pizza_id", using: :btree
 
+  create_table "pizza_ingredients", force: :cascade do |t|
+    t.integer  "pizza_id"
+    t.integer  "ingredient_id"
+    t.integer  "quantity",      default: 1
+    t.boolean  "core",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "pizza_ingredients", ["ingredient_id"], name: "index_pizza_ingredients_on_ingredient_id", using: :btree
+  add_index "pizza_ingredients", ["pizza_id"], name: "index_pizza_ingredients_on_pizza_id", using: :btree
+
   create_table "pizzas", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
@@ -116,6 +128,8 @@ ActiveRecord::Schema.define(version: 20151026103406) do
   add_foreign_key "ingredient_attributes", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
   add_foreign_key "pizza_attributes", "pizzas"
+  add_foreign_key "pizza_ingredients", "ingredients"
+  add_foreign_key "pizza_ingredients", "pizzas"
   add_foreign_key "pizzas", "doughs"
   add_foreign_key "pizzas", "users"
   add_foreign_key "profiles", "users"

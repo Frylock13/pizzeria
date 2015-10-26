@@ -12,6 +12,8 @@
 class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
   has_many :ingredient_attributes, dependent: :destroy
+  has_many :pizza_ingredients, dependent: :destroy
+  has_many :pizzas, through: :pizza_ingredients, source: :pizza
 
   validates :name, :ingredient_category_id, presence: true
 
