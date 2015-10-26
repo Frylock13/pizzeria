@@ -4,19 +4,19 @@ default: &default
   pool: 5
 development:
   <<: *default
-  database: pizza_development
+  database: pizzeria_development
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
   host: <%= ENV["DB_HOST"] %>
 production:
   <<: *default
-  database: pizza_production
+  database: pizzeria_production
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
   host: <%= ENV["DB_HOST"] %>
 test:
   <<: *default
-  database: pizza_test<%= ENV['TEST_ENV_NUMBER'] %>
+  database: pizzeria_test<%= ENV['TEST_ENV_NUMBER'] %>
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
   host: <%= ENV["DB_HOST"] %>

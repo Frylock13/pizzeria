@@ -1,13 +1,13 @@
 check_client_connection false
-listen "/home/gambala/git/pizza/tmp/sockets/pizza.socket", backlog: 1024
+listen "/home/gambala/git/pizzeria/tmp/sockets/pizzeria.socket", backlog: 1024
 listen "127.0.0.1:8080", tcp_nopush: true
-pid "/home/gambala/git/pizza/tmp/pids/unicorn.pid"
+pid "/home/gambala/git/pizzeria/tmp/pids/unicorn.pid"
 preload_app true
-stderr_path "/home/gambala/git/pizza/log/unicorn.stderr.log"
-stdout_path "/home/gambala/git/pizza/log/unicorn.stdout.log"
+stderr_path "/home/gambala/git/pizzeria/log/unicorn.stderr.log"
+stdout_path "/home/gambala/git/pizzeria/log/unicorn.stdout.log"
 timeout 15
 worker_processes 1
-working_directory "/home/gambala/git/pizza"
+working_directory "/home/gambala/git/pizzeria"
 
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
 

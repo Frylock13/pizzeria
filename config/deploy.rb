@@ -1,9 +1,9 @@
-set :application, 'pizza'
+set :application, 'pizzeria'
 set :deploy_to, "/home/deployer/apps/#{fetch(:application)}"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/assets public/sitemaps}
 set :linked_files, %w{config/application.yml}
 set :log_level, :info
-set :repo_url, 'git@bitbucket.org:gambala/pizza.git'
+set :repo_url, 'git@bitbucket.org:gambala/pizzeria.git'
 set :sidekiq_queue, ['default', 'mailers']
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
