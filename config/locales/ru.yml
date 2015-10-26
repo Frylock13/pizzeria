@@ -17,6 +17,7 @@ ru:
         image: Фото в каталоге
         images: Изображения
         pizza_attribute_attributes: Атрибуты
+        pizza_ingredient_attributes: Ингредиенты
         visibility: Видимость
     models:
       dough: Тесто
