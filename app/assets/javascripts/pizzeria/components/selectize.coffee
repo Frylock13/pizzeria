@@ -3,6 +3,7 @@ $(document).on 'ready page:load page:partial-load', ->
     labelField: 'name'
     valueField: 'id'
     persist: false
+    delimiter: null
     create: (input) ->
       id = 0
       $.ajax
@@ -14,7 +15,7 @@ $(document).on 'ready page:load page:partial-load', ->
             name: input
         dataType: 'json'
         success: (response) =>
-          id = response.id
+          id = response.ingredient_category.id
       return false if id == 0
       { id: id, name: input }
     render:
@@ -32,6 +33,7 @@ $(document).on 'ready page:load page:partial-load', ->
     labelField: 'name'
     valueField: 'id'
     persist: false
+    delimiter: null
     create: (input) ->
       id = 0
       $.ajax
@@ -43,7 +45,7 @@ $(document).on 'ready page:load page:partial-load', ->
             name: input
         dataType: 'json'
         success: (response) =>
-          id = response.id
+          id = response.product_category.id
       return false if id == 0
       { id: id, name: input }
     render:
