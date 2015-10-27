@@ -82,7 +82,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-cferdinandi--smooth-scroll'
   gem 'rails-assets-ink'
   gem 'rails-assets-jasny-bootstrap'
-  gem 'rails-assets-jquery-maskmoney'
+  gem 'rails-assets-jquery.inputmask'
   gem 'rails-assets-ladda'
   gem 'rails-assets-lodash'
   gem 'rails-assets-masonry'

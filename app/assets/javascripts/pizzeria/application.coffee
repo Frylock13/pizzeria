@@ -9,8 +9,10 @@
 #= require bootstrap/scrollspy
 #= require bootstrap/tooltip
 #= require bootstrap/transition
+#= require jquery.inputmask/dist/inputmask/inputmask.js
+#= require jquery.inputmask/dist/inputmask/inputmask.numeric.extensions.js
+#= require jquery.inputmask/dist/inputmask/jquery.inputmask.js
 #= require jasny-bootstrap
-#= require jquery-maskmoney/dist/jquery.maskMoney
 #= require jquery.slick
 #= require ladda/spin.min
 #= require ladda/ladda.min
