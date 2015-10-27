@@ -10,18 +10,18 @@ module Admin
 
     def new
       @product = Product.new
-      render :new if stale? @product
+      render :new if stale? [@product, product_categories]
     end
 
     def edit
       @product = Product.find(params[:id])
-      render :edit if stale? @product
+      render :edit if stale? [@product, product_categories]
     end
 
     def create
       @product = Product.new(product_params)
       if @product.save
-        redirect_to [:edit, :admin, @product], success: 'Продукт успешно добавлен'
+        redirect_to admin_products_path, success: 'Продукт успешно добавлен'
       else
         render :new, change: :new_product, layout: !request.xhr?
       end
@@ -39,7 +39,7 @@ module Admin
     private
 
     def product_categories
-      @product_categories ||= ProductCategory.select(:id, :name).order(name: :asc)
+      @product_categories ||= ProductCategory.all.order(name: :asc)
     end
 
     def main_menu_key

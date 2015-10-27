@@ -23,7 +23,7 @@ module Admin
     def create
       @dough = Dough.new(dough_params)
       if @dough.save
-        redirect_to [:edit, :admin, @dough], success: 'Тесто успешно добавлено'
+        redirect_to admin_doughs_path, success: 'Тесто успешно добавлено'
       else
         render :new, change: :new_dough, layout: !request.xhr?
       end

@@ -13,18 +13,18 @@ module Admin
       IngredientAttribute.pizza_sizes.each do |key, value|
         @ingredient.ingredient_attributes << IngredientAttribute.new(pizza_size: key)
       end
-      render :new if stale? @ingredient
+      render :new if stale? [@ingredient, ingredient_categories]
     end
 
     def edit
       @ingredient = Ingredient.find(params[:id])
-      render :edit if stale? @ingredient
+      render :edit if stale? [@ingredient, ingredient_categories]
     end
 
     def create
       @ingredient = Ingredient.new(ingredient_params)
       if @ingredient.save
-        redirect_to [:edit, :admin, @ingredient], success: 'Ингредиент успешно добавлен'
+        redirect_to admin_ingredients_path, success: 'Ингредиент успешно добавлен'
       else
         render :new, change: :new_ingredient, layout: !request.xhr?
       end
@@ -42,7 +42,7 @@ module Admin
     private
 
     def ingredient_categories
-      @ingredient_categories ||= IngredientCategory.select(:id, :name).order(name: :asc)
+      @ingredient_categories ||= IngredientCategory.all.order(name: :asc)
     end
 
     def main_menu_key
