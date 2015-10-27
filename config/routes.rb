@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :doughs
-    resources :ingredients
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
+    resources :ingredients
     resources :pizzas
+    resources :product_categories, only: [:edit, :create, :update, :destroy]
+    resources :products
   end
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]

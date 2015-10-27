@@ -1,5 +1,5 @@
 $(document).on 'ready page:load page:partial-load', ->
-  $('.selectize-categories').selectize
+  $('.selectize-ingredient-categories').selectize
     labelField: 'name'
     valueField: 'id'
     persist: false
@@ -28,3 +28,25 @@ $(document).on 'ready page:load page:partial-load', ->
     labelField: 'title'
     valueField: 'id'
   $('.selectize-visibility').selectize()
+  $('.selectize-product-categories').selectize
+    labelField: 'name'
+    valueField: 'id'
+    persist: false
+    create: (input) ->
+      id = 0
+      $.ajax
+        url: '/admin/product_categories'
+        type: 'POST'
+        async: false
+        data:
+          product_category:
+            name: input
+        dataType: 'json'
+        success: (response) =>
+          id = response.id
+      return false if id == 0
+      { id: id, name: input }
+    render:
+      option_create: (data, escape) ->
+        addString = 'Создать категорию'
+        return "<div class='create'>#{addString} <strong>#{escape(data.input)}</strong>&hellip;</div>"

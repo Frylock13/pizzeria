@@ -9,7 +9,7 @@
     .col-sm-9
       = f.collection_select :ingredient_category_id, ingredient_categories,
         :id, :name, { prompt: 'Выберите категорию' },
-                    { class: 'form-control selectize-categories' }
+                    { class: 'form-control selectize-ingredient-categories' }
       = form_field_error :ingredient_category_id, item
   .form-group
     = f.label :ingredient_attribute_attributes, class: 'col-sm-2 control-label'

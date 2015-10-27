@@ -19,6 +19,12 @@ ru:
         pizza_attribute_attributes: Атрибуты
         pizza_ingredient_attributes: Ингредиенты
         visibility: Видимость
+      product:
+        name: Название
+        image: Фото в каталоге
+        images: Изображения
+        product_category_id: Категория
+        visibility: Видимость
     models:
       dough: Тесто
       ingredient:
@@ -27,6 +33,9 @@ ru:
       ingredient_category: Категория
       order: Заказ
       pizza: Пицца
+      product:
+        one: Продукт
+        many: Продукты
   enums:
     dough_attribute:
       pizza_size:
@@ -48,6 +57,11 @@ ru:
         d22: 22 см
         d33: 33 см
         d38: 38 см
+    product:
+      visibility:
+        for_admin: В админ-панели
+        for_user: В персональном меню
+        for_all: В общем меню
     user:
       role:
         user: Пользователь

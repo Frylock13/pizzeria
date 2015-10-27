@@ -1,15 +1,16 @@
 # == Schema Information
 #
-# Table name: attribute_values
+# Table name: product_categories
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-RSpec.describe AttributeValue, type: :model do
+RSpec.describe ProductCategory, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

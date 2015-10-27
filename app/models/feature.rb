@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: attributes
+# Table name: features
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,8 +8,6 @@
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
-
-RSpec.describe Attribute, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+class Feature < ActiveRecord::Base
+  validates :name, presence: true
 end

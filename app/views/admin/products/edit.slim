@@ -1,0 +1,10 @@
+- title @product.name
+section.heading
+  .container-fluid
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Продукты', admin_products_path
+        li.active = @product.name
+section.page
+  .container-fluid
+    = render 'form', item: @product

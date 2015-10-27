@@ -1,0 +1,28 @@
+- title 'Продукты'
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Добавить Продукт', new_admin_product_path, class: 'btn btn-primary'
+    h1.section-title Продукты
+section.page id='products'
+  .container-fluid
+    - if @product_categories.any?
+      .sortable-list
+        - @product_categories.each do |product_category|
+          div { class = 'panel panel-default'
+               data-model = 'product_category'
+               data-url = url_for([:admin, product_category])
+              }
+            .panel-heading.draggable-zone
+              .panel-actions
+                = link_to [:edit, :admin, product_category], title: 'Изменить категорию' do
+                  span.fa.fa-pencil
+                = link_to [:admin, product_category], title: 'Удалить всю категорию',
+                          method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+                  span.fa.fa-trash
+              .panel-title = product_category.name
+            - if product_category.products.any?
+              .panel-body
+                ul.list-group
+                  - product_category.products.each do |product|
+                    li.list-group-item = link_to product.name, [:edit, :admin, product]

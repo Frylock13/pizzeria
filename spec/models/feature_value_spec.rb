@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: attribute_values
+# Table name: feature_values
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-class AttributeValue < ActiveRecord::Base
-  validates :name, presence: true
+require 'rails_helper'
+
+RSpec.describe FeatureValue, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

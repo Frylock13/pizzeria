@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027104634) do
+ActiveRecord::Schema.define(version: 20151027105807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "attribute_values", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "attributes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "dough_attributes", force: :cascade do |t|
     t.integer  "dough_id"
@@ -40,6 +28,18 @@ ActiveRecord::Schema.define(version: 20151027104634) do
   add_index "dough_attributes", ["dough_id"], name: "index_dough_attributes_on_dough_id", using: :btree
 
   create_table "doughs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feature_values", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "features", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,6 +109,41 @@ ActiveRecord::Schema.define(version: 20151027104634) do
   add_index "pizzas", ["dough_id"], name: "index_pizzas_on_dough_id", using: :btree
   add_index "pizzas", ["user_id"], name: "index_pizzas_on_user_id", using: :btree
 
+  create_table "product_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_features", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "feature_id"
+    t.integer  "feature_value_id"
+    t.decimal  "price",            precision: 5, scale: 2
+    t.integer  "weight"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "product_features", ["feature_id"], name: "index_product_features_on_feature_id", using: :btree
+  add_index "product_features", ["feature_value_id"], name: "index_product_features_on_feature_value_id", using: :btree
+  add_index "product_features", ["product_id", "feature_id", "feature_value_id"], name: "index_product_features_compound_key", unique: true, using: :btree
+  add_index "product_features", ["product_id"], name: "index_product_features_on_product_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.text     "description"
+    t.integer  "weight"
+    t.decimal  "price",               precision: 5, scale: 2
+    t.integer  "product_category_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "products", ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.integer  "user_id"
@@ -144,5 +179,9 @@ ActiveRecord::Schema.define(version: 20151027104634) do
   add_foreign_key "pizza_ingredients", "pizzas"
   add_foreign_key "pizzas", "doughs"
   add_foreign_key "pizzas", "users"
+  add_foreign_key "product_features", "feature_values"
+  add_foreign_key "product_features", "features"
+  add_foreign_key "product_features", "products"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "profiles", "users"
 end
