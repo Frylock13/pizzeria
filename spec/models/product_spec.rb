@@ -7,10 +7,11 @@
 #  image               :string
 #  description         :text
 #  weight              :integer
-#  price               :decimal(5, 2)
+#  price               :decimal(15, 2)
 #  product_category_id :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  visibility          :integer          default(0)
 #
 
 require 'rails_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027105807) do
+ActiveRecord::Schema.define(version: 20151027142225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20151027105807) do
   create_table "dough_attributes", force: :cascade do |t|
     t.integer  "dough_id"
     t.integer  "pizza_size"
-    t.decimal  "price",      precision: 5, scale: 2
+    t.decimal  "price",      precision: 15, scale: 2
     t.integer  "weight"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "dough_attributes", ["dough_id"], name: "index_dough_attributes_on_dough_id", using: :btree
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20151027105807) do
   create_table "ingredient_attributes", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "pizza_size"
-    t.decimal  "price",         precision: 5, scale: 2
+    t.decimal  "price",         precision: 15, scale: 2
     t.integer  "weight"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "ingredient_attributes", ["ingredient_id"], name: "index_ingredient_attributes_on_ingredient_id", using: :btree
@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(version: 20151027105807) do
   create_table "pizza_attributes", force: :cascade do |t|
     t.integer  "pizza_id"
     t.integer  "pizza_size"
-    t.decimal  "price",      precision: 5, scale: 2
+    t.decimal  "price",      precision: 15, scale: 2
     t.integer  "weight"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "pizza_attributes", ["pizza_id"], name: "index_pizza_attributes_on_pizza_id", using: :btree
@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(version: 20151027105807) do
     t.integer  "product_id"
     t.integer  "feature_id"
     t.integer  "feature_value_id"
-    t.decimal  "price",            precision: 5, scale: 2
+    t.decimal  "price",            precision: 15, scale: 2
     t.integer  "weight"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "product_features", ["feature_id"], name: "index_product_features_on_feature_id", using: :btree
@@ -136,10 +136,11 @@ ActiveRecord::Schema.define(version: 20151027105807) do
     t.string   "image"
     t.text     "description"
     t.integer  "weight"
-    t.decimal  "price",               precision: 5, scale: 2
+    t.decimal  "price",               precision: 15, scale: 2
     t.integer  "product_category_id"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.integer  "visibility",                                   default: 0
   end
 
   add_index "products", ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
