@@ -1,16 +1,13 @@
 # == Schema Information
 #
-# Table name: ingredient_categories
+# Table name: attributes
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class IngredientCategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :position
-
-  has_many :ingredients
+class Attribute < ActiveRecord::Base
+  validates :name, presence: true
 end

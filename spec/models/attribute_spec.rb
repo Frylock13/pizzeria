@@ -1,16 +1,15 @@
 # == Schema Information
 #
-# Table name: ingredient_categories
+# Table name: attributes
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class IngredientCategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :position
+require 'rails_helper'
 
-  has_many :ingredients
+RSpec.describe Attribute, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
