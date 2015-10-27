@@ -27,5 +27,7 @@ angular
     'ui.bootstrap'
   ])
 
-$ ->
-  angular.bootstrap(document.body, ['app']) unless $('body').hasClass('ng-scope')
+$(document).on 'page:before-unload', ->
+  angular.element('body').scope().$broadcast('$destroy')
+$(document).on 'ready page:load page:partial-load', ->
+  angular.bootstrap(document.body, ['app'])
