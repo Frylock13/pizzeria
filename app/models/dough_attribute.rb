@@ -13,5 +13,5 @@
 
 class DoughAttribute < ActiveRecord::Base
   include Sizeable
-  belongs_to :dough
+  belongs_to :dough, touch: true
 end

@@ -13,5 +13,5 @@
 
 class IngredientAttribute < ActiveRecord::Base
   include Sizeable
-  belongs_to :ingredient
+  belongs_to :ingredient, touch: true
 end

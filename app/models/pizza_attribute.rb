@@ -13,5 +13,5 @@
 
 class PizzaAttribute < ActiveRecord::Base
   include Sizeable
-  belongs_to :pizza
+  belongs_to :pizza, touch: true
 end
