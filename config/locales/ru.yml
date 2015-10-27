@@ -24,10 +24,10 @@ ru:
         image: Фото в каталоге
         images: Изображения
         name: Название
-        price: Цена
+        price: Цена, руб.
         product_category_id: Категория
         visibility: Видимость
-        weight: Вес
+        weight: Вес, гр.
     models:
       dough: Тесто
       ingredient:

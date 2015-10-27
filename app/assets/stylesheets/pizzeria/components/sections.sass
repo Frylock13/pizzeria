@@ -176,3 +176,31 @@ section
         &.pizza-objora
           .panel-body
             +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
+  &.tabs
+    min-height: 60px
+    .nav-tabs
+      border: none
+      margin-top: 10px
+      overflow: hidden
+      > li
+        margin-top: 10px
+        border-bottom: 1px solid #a4a3a3
+        > a
+          background: #ede9e9
+          border: none
+          color: #a4a3a3
+          font-size: 16px
+          font-weight: bold
+          height: 40px
+          line-height: $line-height-computed
+          margin-right: 6px
+          span
+            display: inline-block
+            vertical-align: middle
+          &:hover, &:focus
+            background: darken(#ede9e9, 2%)
+        &.active
+          > a
+            background: #ffffff
+            border: none
+            color: #2796de

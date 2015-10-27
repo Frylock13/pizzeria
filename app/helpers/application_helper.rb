@@ -29,6 +29,14 @@ module ApplicationHelper
     end
   end
 
+  def tab_link(text, path, active:, disabled: nil)
+    content_tag :li, class: "#{'active' if active } #{'disabled' if disabled == true }" do
+      link_to path do
+        concat content_tag :span, text
+      end
+    end
+  end
+
   def form_field_error(field_name, form_record)
     if form_record.errors[field_name].any?
       content_tag :div, form_record.errors[field_name].join(', '), class: 'help-block'

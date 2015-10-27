@@ -1,0 +1,7 @@
+section.tabs
+  .container-fluid
+    ul.nav.nav-tabs
+      = tab_link 'Основные данные', [:edit, :admin, product],
+                 active: :edit == active
+      = tab_link 'Атрибуты товаров', [:admin, product, :product_features],
+                 active: :product_features == active
