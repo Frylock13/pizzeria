@@ -1,9 +1,9 @@
 = form_for [:admin, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
   = form_field_group :name, item do
     = f.label :name, class: 'col-sm-2 control-label'
-    .col-sm-9
+    .col-sm-10
       = f.text_field :name, class: 'form-control', required: false
       = form_field_error :name, item
   .form-group
-    .col-sm-9.col-sm-offset-2
+    .col-sm-10.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

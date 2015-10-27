@@ -1,25 +1,40 @@
 = form_for [:admin, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
   = form_field_group :name, item do
     = f.label :name, class: 'col-sm-2 control-label'
-    .col-sm-9
+    .col-sm-10
       = f.text_field :name, class: 'form-control', required: false
       = form_field_error :name, item
   = form_field_group :product_category_id, item do
     = f.label :product_category_id, class: 'col-sm-2 control-label'
-    .col-sm-9
+    .col-sm-10
       = f.collection_select :product_category_id, product_categories,
         :id, :name, { prompt: 'Выберите категорию' },
                     { class: 'form-control selectize-product-categories' }
       = form_field_error :product_category_id, item
   .form-group
     = f.label :visibility, class: 'col-sm-2 control-label'
-    .col-sm-9
+    .col-sm-10
       = f.select :visibility, Pizza.visibilities_i18n.map { |k, v| [v, k] },
                  { prompt: 'Укажите, где продукт будет видим' },
                  { class: 'form-control selectize-visibility' }
   .form-group
+    = f.label :description, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :description, class: 'form-control', rows: 4
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :price, class: 'col-sm-4 control-label'
+        .col-sm-8
+          = f.text_field :price, class: 'form-control mask-currency'
+    .col-sm-6
+      .form-group
+        = f.label :weight, class: 'col-sm-4 control-label'
+        .col-sm-8
+          = f.text_field :weight, class: 'form-control'
+  .form-group
     = f.label :images, class: 'col-sm-2 control-label'
-    .col-sm-9
+    .col-sm-10
       .fileinput.fileinput-new data-provides='fileinput'
         .fileinput-body
           = f.label :image, class: 'control-label'
@@ -39,5 +54,5 @@
             a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
         .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
   .form-group
-    .col-sm-9.col-sm-offset-2
+    .col-sm-10.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

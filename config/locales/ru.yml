@@ -13,18 +13,21 @@ ru:
       order:
         phone: Телефон
       pizza:
-        name: Название
         image: Фото в каталоге
         images: Изображения
+        name: Название
         pizza_attribute_attributes: Атрибуты
         pizza_ingredient_attributes: Ингредиенты
         visibility: Видимость
       product:
-        name: Название
+        description: Описание
         image: Фото в каталоге
         images: Изображения
+        name: Название
+        price: Цена
         product_category_id: Категория
         visibility: Видимость
+        weight: Вес
     models:
       dough: Тесто
       ingredient:
@@ -50,8 +53,8 @@ ru:
     pizza:
       visibility:
         for_admin: В админ-панели
-        for_user: В персональном меню
         for_all: В общем меню
+        for_user: В персональном меню
     pizza_attribute:
       pizza_size:
         d22: 22 см
@@ -60,11 +63,11 @@ ru:
     product:
       visibility:
         for_admin: В админ-панели
-        for_user: В персональном меню
         for_all: В общем меню
+        for_user: В персональном меню
     user:
       role:
-        user: Пользователь
         admin: Администратор
+        user: Пользователь
   sessions:
     not_authenticated: Необходимо войти в систему
