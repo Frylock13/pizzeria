@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :pizzas
     resources :product_categories, only: [:edit, :create, :update, :destroy]
     resources :products do
-      resources :product_features
+      resources :product_features, controller: 'products/product_features'
     end
   end
   resources :orders, only: [:index, :show, :new, :create]

@@ -1,0 +1,10 @@
+- title 'Особенности продукта'
+section.heading
+  .container-fluid
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Продукты', admin_products_path
+        li.active = product.name
+= render 'admin/products/menu', active: :product_features, product: product
+section.page id='product_features'
+  .container-fluid

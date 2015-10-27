@@ -1,11 +1,11 @@
 - title @product.name
-= render 'menu', active: :edit, product: @product
 section.heading
   .container-fluid
     .section-title
       ol.breadcrumb
         li = link_to 'Продукты', admin_products_path
         li.active = @product.name
+= render 'menu', active: :edit, product: @product
 section.page
   .container-fluid
     = render 'form', item: @product
