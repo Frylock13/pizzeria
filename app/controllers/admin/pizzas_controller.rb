@@ -15,6 +15,14 @@ module Admin
 
     def edit
       @pizza = Pizza.find(params[:id])
+      gon.ingredient_categories = ActiveModel::ArraySerializer.new(
+        IngredientCategory.all.order(:position),
+        each_serializer: IngredientCategorySerializer
+      )
+      gon.pizza_ingredients = ActiveModel::ArraySerializer.new(
+        @pizza.pizza_ingredients,
+        each_serializer: PizzaIngredientSerializer
+      )
     end
 
     def create
@@ -44,7 +52,8 @@ module Admin
     def pizza_params
       params.require(:pizza).permit(
         :name, :image, :visibility,
-        { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] }
+        { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
+        { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :core, :_destroy] }
       )
     end
   end

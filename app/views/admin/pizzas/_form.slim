@@ -11,25 +11,6 @@
                  { prompt: 'Укажите, где пицца будет видима' },
                  { class: 'form-control selectize-visibility' }
   .form-group
-    = f.label :pizza_attribute_attributes, class: 'col-sm-2 control-label'
-    .col-sm-9
-      .table-responsive
-        table.table
-          thead
-            tr
-              th Вес, гр.
-              th Цена, руб.
-              th.col-pizza-size Размер пиццы
-          tbody
-            - item.pizza_attributes.each do |pizza_attribute|
-              tr
-                = f.fields_for :pizza_attributes, pizza_attribute do |ff|
-                  td.col-input = ff.text_field :weight, class: 'form-control'
-                  td = ff.text_field :price, class: 'form-control mask-currency'
-                  td.col-pizza-size
-                    = ff.hidden_field :pizza_size
-                    = pizza_attribute.pizza_size_i18n
-  .form-group
     = f.label :images, class: 'col-sm-2 control-label'
     .col-sm-9
       .fileinput.fileinput-new data-provides='fileinput'
@@ -50,123 +31,88 @@
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
             a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
         .help-block Рекомендованный размер 700x400 и формат: JPEG, GIF, PNG
-
-  .form-group
+  div { class = 'form-group ng-hide'
+        ng-controller = 'PizzaIngredientsFormController as vm'
+        ng-show = 'vm.ingredient_categories'
+      }
     = f.label :pizza_ingredient_attributes, class: 'col-sm-2 control-label'
     .col-sm-9
       .product-ingredients
         ul.list-group
-          li.list-group-item
-            .list-group-item-heading соусы
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 40 р.
-            .ingredient-title
-              | сливочный соус
-              small 45 г.
-          li.list-group-item
-            .list-group-item-heading сыры
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 70 р.
-            .ingredient-title
-              | сыр
-              small 40 г.
-          li.list-group-item
-            .list-group-item-heading мясное
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 50 р.
-            | ветчина
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 0
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 50 р.
-            | салями
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 0
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 50 р.
-            | сосиски
-          li.list-group-item
-            .list-group-item-heading овощи
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 40 р.
-            | грибы
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 50 р.
-            | картофель фри
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 0
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 20 р.
-            | маслины
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 0
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 40 р.
-            | помидор
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 50 р.
-            | соленый огурец
-          li.list-group-item
-            .product-controls
-              a.product-counter href='javascript:;'
-                span.fa.fa-minus
-              span.product-amount 1
-              a.product-counter href='javascript:;'
-                span.fa.fa-plus
-            .ingredient-price 20 р.
-            | чеснок
+          div ng-repeat='ingredient_category in vm.ingredient_categories'
+            li.list-group-item
+              .list-group-item-heading ng-bind='ingredient_category.name'
+              li { class = 'list-group-item'
+                   ng-repeat = 'ingredient in ingredient_category.ingredients'
+                 }
+                .product-controls
+                  span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
+                    span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
+                      input { type = 'checkbox'
+                              ng-model = 'vm.pizzaIngredient(ingredient.id).core'
+                              id = 'pizza_ingredient_{{ingredient.id}}_core'
+                            }
+                      label for='pizza_ingredient_{{ingredient.id}}_core' Базовый ингредиент?
+                  a.product-counter ng-click='vm.decreaseIngredient(ingredient.id)'
+                    span.fa.fa-minus
+                  span.product-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
+                  a.product-counter ng-click='vm.increaseIngredient(ingredient.id)'
+                    span.fa.fa-plus
+                .ingredient-title ng-bind='ingredient.name'
+                span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
+                  span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
+                    input { type = 'hidden'
+                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][id]'
+                            value = '{{vm.pizzaIngredient(ingredient.id).id}}'
+                          }
+                    input { type = 'hidden'
+                            ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
+                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][_destroy]'
+                            value = 'true'
+                          }
+                    input { type = 'hidden'
+                            ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][quantity]'
+                            value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                          }
+                    input { type = 'hidden'
+                            ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][core]'
+                            value = '{{vm.pizzaIngredient(ingredient.id).core}}'
+                          }
+                  span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
+                    span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
+                      input { type = 'hidden'
+                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][ingredient_id]'
+                              value = '{{ingredient.id}}'
+                            }
+                      input { type = 'hidden'
+                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][quantity]'
+                              value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                            }
+                      input { type = 'hidden'
+                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][core]'
+                              value = '{{vm.pizzaIngredient(ingredient.id).core}}'
+                            }
+  .form-group
+    = f.label :pizza_attribute_attributes, class: 'col-sm-2 control-label'
+    .col-sm-9
+      .table-responsive
+        table.table
+          thead
+            tr
+              th Вес, гр.
+              th Цена, руб.
+              th.col-pizza-size Размер пиццы
+          tbody
+            - item.pizza_attributes.each do |pizza_attribute|
+              tr
+                = f.fields_for :pizza_attributes, pizza_attribute do |ff|
+                  td.col-input = ff.text_field :weight, class: 'form-control'
+                  td = ff.text_field :price, class: 'form-control mask-currency'
+                  td.col-pizza-size
+                    = ff.hidden_field :pizza_size
+                    = pizza_attribute.pizza_size_i18n
   .form-group
     .col-sm-9.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

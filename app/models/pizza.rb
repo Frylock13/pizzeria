@@ -25,4 +25,5 @@ class Pizza < ActiveRecord::Base
 
   validates :name, presence: true
   accepts_nested_attributes_for :pizza_attributes
+  accepts_nested_attributes_for :pizza_ingredients, allow_destroy: true
 end
