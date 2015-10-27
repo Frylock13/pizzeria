@@ -4,6 +4,7 @@ module Admin
 
     def index
       @doughs = Dough.all
+      render :index if stale? @doughs
     end
 
     def new
@@ -11,10 +12,12 @@ module Admin
       DoughAttribute.pizza_sizes.each do |key, value|
         @dough.dough_attributes << DoughAttribute.new(pizza_size: key)
       end
+      render :new if stale? @dough
     end
 
     def edit
       @dough = Dough.find(params[:id])
+      render :edit if stale? @dough
     end
 
     def create

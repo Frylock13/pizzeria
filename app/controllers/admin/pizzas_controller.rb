@@ -4,6 +4,7 @@ module Admin
 
     def index
       @pizzas = Pizza.all.order(:name)
+      render :index if stale? @pizzas
     end
 
     def new
@@ -11,6 +12,7 @@ module Admin
       PizzaAttribute.pizza_sizes.each do |key, value|
         @pizza.pizza_attributes << PizzaAttribute.new(pizza_size: key)
       end
+      render :new if stale? @pizza
     end
 
     def edit
@@ -23,6 +25,7 @@ module Admin
         @pizza.pizza_ingredients,
         each_serializer: PizzaIngredientSerializer
       )
+      render :edit if stale? @pizza
     end
 
     def create

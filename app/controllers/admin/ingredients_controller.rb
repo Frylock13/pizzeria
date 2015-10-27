@@ -4,7 +4,8 @@ module Admin
     helper_method :ingredient_categories
 
     def index
-      @ingredient_categories = IngredientCategory.all.order(:position)
+      @ingredient_categories = IngredientCategory.includes(:ingredients).all.order(:position)
+      render :index if stale? @ingredient_categories
     end
 
     def new
@@ -12,10 +13,12 @@ module Admin
       IngredientAttribute.pizza_sizes.each do |key, value|
         @ingredient.ingredient_attributes << IngredientAttribute.new(pizza_size: key)
       end
+      render :new if stale? @ingredient
     end
 
     def edit
       @ingredient = Ingredient.find(params[:id])
+      render :edit if stale? @ingredient
     end
 
     def create

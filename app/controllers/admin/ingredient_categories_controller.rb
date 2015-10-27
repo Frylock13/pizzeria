@@ -3,6 +3,7 @@ module Admin
     helper_method :ingredient_category
 
     def edit
+      render :edit if stale? ingredient_category
     end
 
     def create

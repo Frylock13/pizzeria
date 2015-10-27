@@ -3,5 +3,6 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def dashboard
+    render :dashboard if stale? :admin_dashboard
   end
 end

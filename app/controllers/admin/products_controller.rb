@@ -4,15 +4,18 @@ module Admin
     helper_method :product_categories
 
     def index
-      @product_categories = ProductCategory.all.order(:position)
+      @product_categories = ProductCategory.includes(:products).all.order(:position)
+      render :index if stale? @product_categories
     end
 
     def new
       @product = Product.new
+      render :new if stale? @product
     end
 
     def edit
       @product = Product.find(params[:id])
+      render :edit if stale? @product
     end
 
     def create

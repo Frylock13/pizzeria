@@ -6,6 +6,7 @@ module Admin
 
       def index
         @product_features = product.product_features
+        render :index if stale? @product_features
       end
 
       def new

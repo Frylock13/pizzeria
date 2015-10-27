@@ -3,6 +3,7 @@ module Admin
     helper_method :product_category
 
     def edit
+      render :edit if stale? product_category
     end
 
     def create
