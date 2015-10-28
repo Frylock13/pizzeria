@@ -123,7 +123,6 @@ GEM
       timers (>= 4.1.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    closure-compiler (1.1.11)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
@@ -464,6 +463,9 @@ GEM
       hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     underscore-rails (1.8.3)
     unicorn (4.9.0)
       kgio (~> 2.6)
@@ -494,7 +496,6 @@ DEPENDENCIES
   capistrano-unicorn-nginx
   carrierwave
   ckeditor!
-  closure-compiler
   coffee-rails
   enum_help
   factory_girl
@@ -559,6 +560,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   turbolinks!
+  uglifier
   underscore-rails
   unicorn
   web-console

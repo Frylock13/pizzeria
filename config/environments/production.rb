@@ -13,7 +13,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.assets.compile = false
   config.assets.digest = true
-  config.assets.js_compressor = Closure::Compiler.new(compilation_level: 'WHITESPACE_ONLY')
+  config.assets.js_compressor = Uglifier.new(mangle: false)
   config.assets.precompile += %w( *.slim mail.css )
   config.cache_classes = true
   config.consider_all_requests_local = false
