@@ -17,4 +17,8 @@ Rails.application.configure do
   config.sass.inline_source_maps = true
   config.sass.line_comments = false
   config.sass.preferred_syntax = :sass
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+  end
 end
