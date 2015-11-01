@@ -37,7 +37,7 @@ gem 'sorcery'
 gem 'turbolinks', github: 'rails/turbolinks'
 gem 'uglifier'
 gem 'underscore-rails'
-gem 'unicorn'
+gem 'unicorn', group: :production
 
 group :development, :test do
   gem 'factory_girl'
@@ -59,10 +59,11 @@ group :development do
   gem 'guard', require: false
   gem 'guard-bundler', require: false
   gem 'guard-livereload', require: false
+  gem 'guard-passenger', github: 'beverlyguillermo/guard-passenger', require: false
   gem 'guard-rspec', require: false
-  gem 'guard-unicorn', require: false
   gem 'letter_opener'
   gem 'meta_request'
+  gem 'passenger'
   gem 'rack-livereload'
   gem 'web-console'
 end
