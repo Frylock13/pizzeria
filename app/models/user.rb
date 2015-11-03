@@ -17,12 +17,11 @@
 #
 
 class User < ActiveRecord::Base
+  include Roles
   has_one :profile
   has_many :pizzas, dependent: :destroy
 
   authenticates_with_sorcery!
 
   accepts_nested_attributes_for :profile
-
-  enum role: [:user, :admin]
 end

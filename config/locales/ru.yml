@@ -49,8 +49,6 @@ ru:
         for_admin: В админ-панели
         for_all: В общем меню
         for_user: В персональном меню
-  enums:
-    user:
       role:
         admin: Администратор
         user: Пользователь

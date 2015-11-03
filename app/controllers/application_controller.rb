@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    forbidden unless current_user.try(:admin?)
+    forbidden unless current_user.role.try(:admin?)
   end
 
   def not_found

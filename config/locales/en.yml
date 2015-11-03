@@ -1,8 +1,16 @@
 en:
-  enums:
-    user:
+  enumerize:
+    defaults:
+      pizza_size:
+        d22: 22 sm
+        d33: 33 sm
+        d38: 38 sm
+      visibility:
+        for_admin: Only for administrators
+        for_all: For all
+        for_user: For user in personal menu
       role:
-        user: User
         admin: Admin
+        user: User
   sessions:
     not_authenticated: You need sign in
