@@ -12,6 +12,6 @@
 #
 
 class DoughAttribute < ActiveRecord::Base
-  include Sizeable
+  include PizzaSizes
   belongs_to :dough, touch: true
 end

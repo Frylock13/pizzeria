@@ -39,27 +39,18 @@ ru:
       product:
         one: Продукт
         many: Продукты
+  enumerize:
+    defaults:
+      pizza_size:
+        d22: 22 см
+        d33: 33 см
+        d38: 38 см
   enums:
-    dough_attribute:
-      pizza_size:
-        d22: 22 см
-        d33: 33 см
-        d38: 38 см
-    ingredient_attribute:
-      pizza_size:
-        d22: 22 см
-        d33: 33 см
-        d38: 38 см
     pizza:
       visibility:
         for_admin: В админ-панели
         for_all: В общем меню
         for_user: В персональном меню
-    pizza_attribute:
-      pizza_size:
-        d22: 22 см
-        d33: 33 см
-        d38: 38 см
     product:
       visibility:
         for_admin: В админ-панели

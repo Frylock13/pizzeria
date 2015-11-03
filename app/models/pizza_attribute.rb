@@ -12,6 +12,6 @@
 #
 
 class PizzaAttribute < ActiveRecord::Base
-  include Sizeable
+  include PizzaSizes
   belongs_to :pizza, touch: true
 end

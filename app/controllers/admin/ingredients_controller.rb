@@ -10,8 +10,8 @@ module Admin
 
     def new
       @ingredient = Ingredient.new
-      IngredientAttribute.pizza_sizes.each do |key, value|
-        @ingredient.ingredient_attributes << IngredientAttribute.new(pizza_size: key)
+      PizzaSizes.pizza_size.values.each do |value|
+        @ingredient.ingredient_attributes << IngredientAttribute.new(pizza_size: value)
       end
       render :new if stale? [@ingredient, ingredient_categories]
     end

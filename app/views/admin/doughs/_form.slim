@@ -22,7 +22,7 @@
                   td = ff.text_field :price, class: 'form-control mask-currency'
                   td.col-pizza-size
                     = ff.hidden_field :pizza_size
-                    = dough_attribute.pizza_size_i18n
+                    = dough_attribute.pizza_size.text
   .form-group
     .col-sm-10.col-sm-offset-2
       = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

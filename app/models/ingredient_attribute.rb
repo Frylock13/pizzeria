@@ -12,6 +12,6 @@
 #
 
 class IngredientAttribute < ActiveRecord::Base
-  include Sizeable
+  include PizzaSizes
   belongs_to :ingredient, touch: true
 end
