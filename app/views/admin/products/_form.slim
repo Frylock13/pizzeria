@@ -14,7 +14,7 @@
   .form-group
     = f.label :visibility, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.select :visibility, Pizza.visibilities_i18n.map { |k, v| [v, k] },
+      = f.select :visibility, Visibilities.visibility.options,
                  { prompt: 'Укажите, где продукт будет видим' },
                  { class: 'form-control selectize-visibility' }
   .form-group

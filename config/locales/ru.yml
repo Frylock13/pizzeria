@@ -45,17 +45,11 @@ ru:
         d22: 22 см
         d33: 33 см
         d38: 38 см
+      visibility:
+        for_admin: В админ-панели
+        for_all: В общем меню
+        for_user: В персональном меню
   enums:
-    pizza:
-      visibility:
-        for_admin: В админ-панели
-        for_all: В общем меню
-        for_user: В персональном меню
-    product:
-      visibility:
-        for_admin: В админ-панели
-        for_all: В общем меню
-        for_user: В персональном меню
     user:
       role:
         admin: Администратор

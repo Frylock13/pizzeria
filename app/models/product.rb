@@ -15,9 +15,9 @@
 #
 
 class Product < ActiveRecord::Base
+  include Visibilities
   belongs_to :product_category
   has_many :product_features
-  enum visibility: [:for_admin, :for_user, :for_all]
   mount_uploader :image, ProductPhotoUploader
 
   validates :name, :product_category_id, presence: true
