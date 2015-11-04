@@ -7,8 +7,8 @@ html
     = render 'shared/favicons'
     = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
-    = include_gon
   body
+    = include_gon(init: true)
     = render 'admin/sidebar'
     .body id='body'
       = render 'shared/header'
