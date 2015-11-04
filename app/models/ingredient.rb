@@ -10,7 +10,7 @@
 #
 
 class Ingredient < ActiveRecord::Base
-  belongs_to :ingredient_category
+  belongs_to :ingredient_category, touch: true
   has_many :ingredient_attributes, dependent: :destroy
   has_many :pizza_ingredients, dependent: :destroy
   has_many :pizzas, through: :pizza_ingredients, source: :pizza

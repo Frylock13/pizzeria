@@ -16,7 +16,7 @@
 
 class Product < ActiveRecord::Base
   include Visibilities
-  belongs_to :product_category
+  belongs_to :product_category, touch: true
   has_many :product_features
   mount_uploader :image, ProductPhotoUploader
 
