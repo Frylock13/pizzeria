@@ -1,5 +1,9 @@
-$(document).on 'ready page:load page:partial-load', ->
-  $('.selectize-ingredient-categories').selectize
+creatableElements = (elem, elems, text) ->
+  dataForElem = (input) ->
+    data = {}
+    data[elem] = { name: input }
+    data
+  {
     labelField: 'name'
     valueField: 'id'
     persist: false
@@ -7,48 +11,43 @@ $(document).on 'ready page:load page:partial-load', ->
     create: (input) ->
       id = 0
       $.ajax
-        url: '/admin/ingredient_categories'
+        url: "/admin/#{elems}"
         type: 'POST'
         async: false
-        data:
-          ingredient_category:
-            name: input
+        data: dataForElem(input)
         dataType: 'json'
         success: (response) =>
-          id = response.ingredient_category.id
+          id = response[elem].id
       return false if id == 0
       { id: id, name: input }
     render:
       option_create: (data, escape) ->
-        addString = 'Создать категорию'
-        return "<div class='create'>#{addString} <strong>#{escape(data.input)}</strong>&hellip;</div>"
+        return "<div class='create'>#{text} <strong>#{escape(data.input)}</strong>&hellip;</div>"
+  }
+
+$(document).on 'ready page:load page:partial-load', ->
   $('.selectize-dough').selectize
     labelField: 'title'
     valueField: 'id'
+
+  $('.selectize-feature-values').selectize(
+    creatableElements('feature_value', 'feature_values', 'Создать значение атрибута')
+  )
+
+  $('.selectize-features').selectize(
+    creatableElements('feature', 'features', 'Создать атрибут')
+  )
+
+  $('.selectize-ingredient-categories').selectize(
+    creatableElements('ingredient_category', 'ingredient_categories', 'Создать категорию')
+  )
+
   $('.selectize-payment').selectize
     labelField: 'title'
     valueField: 'id'
+
+  $('.selectize-product-categories').selectize(
+    creatableElements('product_category', 'product_categories', 'Создать категорию')
+  )
+
   $('.selectize-visibility').selectize()
-  $('.selectize-product-categories').selectize
-    labelField: 'name'
-    valueField: 'id'
-    persist: false
-    delimiter: null
-    create: (input) ->
-      id = 0
-      $.ajax
-        url: '/admin/product_categories'
-        type: 'POST'
-        async: false
-        data:
-          product_category:
-            name: input
-        dataType: 'json'
-        success: (response) =>
-          id = response.product_category.id
-      return false if id == 0
-      { id: id, name: input }
-    render:
-      option_create: (data, escape) ->
-        addString = 'Создать категорию'
-        return "<div class='create'>#{addString} <strong>#{escape(data.input)}</strong>&hellip;</div>"
