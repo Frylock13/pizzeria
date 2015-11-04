@@ -15,7 +15,7 @@ guard :bundler do
   watch('Gemfile')
 end
 
-guard :passenger do
+guard :passenger, cli: '--daemonize --engine=builtin' do
   watch('Gemfile.lock')
   watch(%r{^config|lib|api/.*})
 end
