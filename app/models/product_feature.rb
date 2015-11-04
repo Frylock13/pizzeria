@@ -20,4 +20,8 @@ class ProductFeature < ActiveRecord::Base
   validates :product_id, :feature_id, :feature_value_id,
             presence: true,
             uniqueness: { scope: [:product_id, :feature_id, :feature_value_id] }
+
+  def name
+    "#{feature.name}: #{feature_value.name}"
+  end
 end

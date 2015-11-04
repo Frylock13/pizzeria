@@ -1,0 +1,11 @@
+- title @product_feature.name
+section.heading
+  .container-fluid
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Продукты', admin_products_path
+        li = link_to product.name, admin_product_product_features_path
+        li.active = @product_feature.name
+section.page
+  .container-fluid
+    = render 'form', item: @product_feature

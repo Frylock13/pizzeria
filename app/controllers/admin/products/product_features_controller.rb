@@ -5,7 +5,7 @@ module Admin
       helper_method :feature_values, :features, :product
 
       def index
-        @product_features = product.product_features
+        @product_features = product.product_features.includes(:feature, :feature_value)
         render :index if stale? @product_features
       end
 
@@ -14,6 +14,7 @@ module Admin
       end
 
       def edit
+        @product_feature = ProductFeature.find(params[:id])
       end
 
       def create
@@ -26,6 +27,22 @@ module Admin
       end
 
       def update
+        @product_feature = ProductFeature.find(params[:id])
+        if @product_feature.update(product_feature_params)
+          redirect_to [:edit, :admin, product, @product_feature], success: 'Атрибут успешно обновлен'
+        else
+          render :edit, change: "edit_product_feature_#{@product_feature.id}", layout: !request.xhr?
+        end
+      end
+
+      def destroy
+        @product_feature = ProductFeature.find(params[:id])
+        if @product_feature.destroy
+          flash[:success] = 'Атрибут успешно удален'
+        else
+          flash[:success] = 'Невозможно удалить атрибут'
+        end
+        redirect_to [:admin, product, :product_features], change: :product_features
       end
 
       private

@@ -5,5 +5,7 @@
     position: absolute
     right: 0
     top: 0
-    > a + a
-      margin-left: 10px
+    > a, small
+      & +
+        a, small
+          margin-left: 10px
