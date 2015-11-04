@@ -28,6 +28,8 @@ ru:
         product_category_id: Категория
         visibility: Видимость
         weight: Вес
+      product_category:
+        name: Название
       product_feature:
         feature_id: Атрибут
         feature_value_id: Значение атрибута
@@ -45,6 +47,7 @@ ru:
       product:
         one: Продукт
         many: Продукты
+      product_category: Категория
       product_feature: Атрибут продукта
   enumerize:
     defaults:
