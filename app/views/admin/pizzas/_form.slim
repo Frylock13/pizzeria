@@ -62,36 +62,36 @@
                 span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
                   span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
                     input { type = 'hidden'
-                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][id]'
+                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][id]'
                             value = '{{vm.pizzaIngredient(ingredient.id).id}}'
                           }
                     input { type = 'hidden'
                             ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
-                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][_destroy]'
+                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][_destroy]'
                             value = 'true'
                           }
                     input { type = 'hidden'
                             ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][quantity]'
+                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
                             value = '{{vm.ingredientQuantity(ingredient.id)}}'
                           }
                     input { type = 'hidden'
                             ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                            name = 'pizza[pizza_ingredients_attributes][{{$index}}][core]'
+                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][core]'
                             value = '{{vm.pizzaIngredient(ingredient.id).core}}'
                           }
                   span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
                     span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
                       input { type = 'hidden'
-                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][ingredient_id]'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][ingredient_id]'
                               value = '{{ingredient.id}}'
                             }
                       input { type = 'hidden'
-                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][quantity]'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
                               value = '{{vm.ingredientQuantity(ingredient.id)}}'
                             }
                       input { type = 'hidden'
-                              name = 'pizza[pizza_ingredients_attributes][{{$index}}][core]'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][core]'
                               value = '{{vm.pizzaIngredient(ingredient.id).core}}'
                             }
   .form-group
