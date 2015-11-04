@@ -10,12 +10,19 @@ module Admin
       end
 
       def new
+        @product_feature = ProductFeature.new()
       end
 
       def edit
       end
 
       def create
+        @product_feature = ProductFeature.new(product_feature_params)
+        if @product_feature.save
+          redirect_to [:admin, product, :product_features], success: 'Атрибут успешно добавлен'
+        else
+          render :new, change: :new_product_feature, layout: !request.xhr?
+        end
       end
 
       def update
@@ -32,7 +39,8 @@ module Admin
       end
 
       def product_feature_params
-        params.require(:product_feature).permit(:product_id, :feature_id, :feature_value_id, :price, :weight)
+        params.require(:product_feature).permit(:feature_id, :feature_value_id, :price, :weight)
+                                        .merge(product_id: params[:product_id])
       end
     end
   end

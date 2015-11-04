@@ -28,6 +28,12 @@ ru:
         product_category_id: Категория
         visibility: Видимость
         weight: Вес
+      product_feature:
+        feature_id: Атрибут
+        feature_value_id: Значение атрибута
+        price: Наценка
+        product_id: Продукт
+        weight: Навесок
     models:
       dough: Тесто
       ingredient:
@@ -39,6 +45,7 @@ ru:
       product:
         one: Продукт
         many: Продукты
+      product_feature: Атрибут продукта
   enumerize:
     defaults:
       pizza_size:

@@ -1,6 +1,8 @@
-- title 'Особенности продукта'
+- title 'Атрибуты продукта'
 section.heading
   .container-fluid
+    .pull-right
+      = link_to 'Добавить Атрибут', new_admin_product_product_feature_path, class: 'btn btn-primary'
     .section-title
       ol.breadcrumb
         li = link_to 'Продукты', admin_products_path

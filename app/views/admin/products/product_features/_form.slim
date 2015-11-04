@@ -1,0 +1,25 @@
+= form_for [:admin, product, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
+  = form_field_group :feature_id, item do
+    = f.label :feature_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :feature_id, class: 'form-control', required: false
+      = form_field_error :feature_id, item
+  = form_field_group :feature_value_id, item do
+    = f.label :feature_value_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :feature_value_id, class: 'form-control', required: false
+      = form_field_error :feature_value_id, item
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :price, class: 'col-sm-4 control-label'
+        .col-sm-8
+          = f.text_field :price, class: 'form-control mask-currency'
+    .col-sm-6
+      .form-group
+        = f.label :weight, class: 'col-sm-4 control-label'
+        .col-sm-8
+          = f.text_field :weight, class: 'form-control mask-weight'
+  .form-group
+    .col-sm-10.col-sm-offset-2
+      = f.button nil, class: 'btn btn-primary btn-lg ladda-button'
