@@ -18,7 +18,7 @@ module Admin
     def edit
       @pizza = Pizza.find(params[:id])
       gon.ingredient_categories = ActiveModel::ArraySerializer.new(
-        IngredientCategory.all.order(:position),
+        IngredientCategory.includes(:ingredients).all.order(:position),
         each_serializer: IngredientCategorySerializer
       )
       gon.pizza_ingredients = ActiveModel::ArraySerializer.new(
