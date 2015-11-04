@@ -9,23 +9,22 @@ module Admin
 
     def new
       @pizza = Pizza.new
+      gon.ingredient_categories = ingredient_categories
+      gon.pizza_ingredients = []
       PizzaSizes.pizza_size.values.each do |value|
         @pizza.pizza_attributes << PizzaAttribute.new(pizza_size: value)
       end
-      render :new if stale? @pizza
+      render :new if stale? [@pizza, ingredient_categories]
     end
 
     def edit
       @pizza = Pizza.find(params[:id])
-      gon.ingredient_categories = ActiveModel::ArraySerializer.new(
-        IngredientCategory.includes(:ingredients).all.order(:position),
-        each_serializer: IngredientCategorySerializer
-      )
+      gon.ingredient_categories = ingredient_categories
       gon.pizza_ingredients = ActiveModel::ArraySerializer.new(
         @pizza.pizza_ingredients,
         each_serializer: PizzaIngredientSerializer
       )
-      render :edit if stale? @pizza
+      render :edit if stale? [@pizza, ingredient_categories]
     end
 
     def create
@@ -47,6 +46,13 @@ module Admin
     end
 
     private
+
+    def ingredient_categories
+      @ingredient_categories ||= ActiveModel::ArraySerializer.new(
+        IngredientCategory.includes(:ingredients).all.order(:position),
+        each_serializer: IngredientCategorySerializer
+      )
+    end
 
     def main_menu_key
       @main_menu_key = :pizzas
