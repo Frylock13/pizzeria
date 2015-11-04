@@ -2,7 +2,7 @@ module Admin
   module Products
     class ProductFeaturesController < AdminController
       before_action :main_menu_key
-      helper_method :product
+      helper_method :feature_values, :features, :product
 
       def index
         @product_features = product.product_features
@@ -29,6 +29,14 @@ module Admin
       end
 
       private
+
+      def feature_values
+        @feature_values ||= FeatureValue.all.order(name: :asc)
+      end
+
+      def features
+        @features ||= Feature.all.order(name: :asc)
+      end
 
       def product
         @product ||= Product.find(params[:product_id])

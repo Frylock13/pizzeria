@@ -2,12 +2,16 @@
   = form_field_group :feature_id, item do
     = f.label :feature_id, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :feature_id, class: 'form-control', required: false
+      = f.collection_select :feature_id, features,
+        :id, :name, { prompt: 'Выберите атрибут' },
+                    { class: 'form-control selectize-features' }
       = form_field_error :feature_id, item
   = form_field_group :feature_value_id, item do
     = f.label :feature_value_id, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :feature_value_id, class: 'form-control', required: false
+      = f.collection_select :feature_value_id, feature_values,
+        :id, :name, { prompt: 'Выберите значение атрибута' },
+                    { class: 'form-control selectize-feature-values' }
       = form_field_error :feature_value_id, item
   .row
     .col-sm-6

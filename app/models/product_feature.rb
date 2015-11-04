@@ -17,5 +17,7 @@ class ProductFeature < ActiveRecord::Base
   belongs_to :feature
   belongs_to :feature_value
 
-  validates :product_id, :feature_id, :feature_value_id, presence: true
+  validates :product_id, :feature_id, :feature_value_id,
+            presence: true,
+            uniqueness: { scope: [:product_id, :feature_id, :feature_value_id] }
 end
