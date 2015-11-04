@@ -14,6 +14,7 @@
 #  reset_password_token_expires_at :datetime
 #  reset_password_email_sent_at    :datetime
 #  role                            :integer          default(0)
+#  bonus_points                    :decimal(15, 2)
 #
 
 class User < ActiveRecord::Base
