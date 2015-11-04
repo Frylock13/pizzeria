@@ -36,6 +36,16 @@ module Admin
       end
     end
 
+    def destroy
+      @product = Product.find(params[:id])
+      if @product.destroy
+        flash[:success] = 'Продукт успешно удален'
+      else
+        flash[:success] = 'Невозможно удалить продукт'
+      end
+      redirect_to admin_products_path, change: :products
+    end
+
     private
 
     def product_categories

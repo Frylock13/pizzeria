@@ -45,6 +45,16 @@ module Admin
       end
     end
 
+    def destroy
+      @pizza = Pizza.find(params[:id])
+      if @pizza.destroy
+        flash[:success] = 'Пицца успешно удалено'
+      else
+        flash[:success] = 'Невозможно удалить пиццу'
+      end
+      redirect_to admin_pizzas_path, change: :pizzas
+    end
+
     private
 
     def ingredient_categories

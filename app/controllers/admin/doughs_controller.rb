@@ -38,6 +38,16 @@ module Admin
       end
     end
 
+    def destroy
+      @dough = Dough.find(params[:id])
+      if @dough.destroy
+        flash[:success] = 'Тесто успешно удалено'
+      else
+        flash[:success] = 'Невозможно удалить тесто'
+      end
+      redirect_to admin_doughs_path, change: :doughs
+    end
+
     private
 
     def main_menu_key

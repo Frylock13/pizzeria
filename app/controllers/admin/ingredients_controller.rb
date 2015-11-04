@@ -39,6 +39,16 @@ module Admin
       end
     end
 
+    def destroy
+      @ingredient = Ingredient.find(params[:id])
+      if @ingredient.destroy
+        flash[:success] = 'Ингредиент успешно удален'
+      else
+        flash[:success] = 'Невозможно удалить ингредиент'
+      end
+      redirect_to admin_ingredients_path, change: :ingredients
+    end
+
     private
 
     def ingredient_categories

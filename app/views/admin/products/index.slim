@@ -14,7 +14,7 @@ section.page id='products'
                data-url = url_for([:admin, product_category])
               }
             .panel-heading.draggable-zone
-              .panel-actions
+              .block.item-actions
                 = link_to [:edit, :admin, product_category], title: 'Изменить категорию' do
                   span.fa.fa-pencil
                 = link_to [:admin, product_category], title: 'Удалить всю категорию',
@@ -25,4 +25,11 @@ section.page id='products'
               .panel-body
                 ul.list-group
                   - product_category.products.each do |product|
-                    li.list-group-item = link_to product.name, [:edit, :admin, product]
+                    li.list-group-item
+                      .block.item-actions
+                        = link_to [:edit, :admin, product], title: 'Изменить продукт' do
+                          span.fa.fa-pencil
+                        = link_to [:admin, product], title: 'Удалить продукт',
+                                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+                          span.fa.fa-trash
+                      = link_to product.name, [:edit, :admin, product]

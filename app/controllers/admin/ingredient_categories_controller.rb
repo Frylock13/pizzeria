@@ -39,7 +39,7 @@ module Admin
 
     def destroy
       if ingredient_category.destroy
-        flash[:success] = 'Категория успешна удалена'
+        flash[:success] = 'Категория успешно удалена'
       else
         flash[:success] = 'Невозможно удалить категорию'
       end

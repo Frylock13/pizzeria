@@ -4,6 +4,19 @@
 @import 'addons/rhythm'
 @import 'css3/transition'
 
+.panel
+  > .panel-heading
+    line-height: rh()
+    position: relative
+    > .block.item-actions
+      padding: $panel-heading-padding
+  > .panel-body
+    .list-group
+      margin: -$panel-body-padding
+      .list-group-item
+        border: none
+        position: relative
+
 .panel-slider
   .panel-body
     padding: 0
@@ -14,20 +27,3 @@
         opacity: 1
     img
       margin: 0 auto
-
-.panel-body
-  .list-group
-    margin: -$panel-body-padding
-    .list-group-item
-      border: none
-.panel
-  > .panel-heading
-    line-height: rh()
-    position: relative
-    > .panel-actions
-      padding: $panel-heading-padding
-      position: absolute
-      right: 0
-      top: 0
-      > a + a
-        margin-left: 10px

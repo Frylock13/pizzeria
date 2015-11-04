@@ -8,4 +8,11 @@ section.page id='doughs'
   .container-fluid
     ul.list-group
       - @doughs.each do |dough|
-        li.list-group-item = link_to dough.name, [:edit, :admin, dough]
+        li.list-group-item
+          .block.item-actions
+            = link_to [:edit, :admin, dough], title: 'Изменить тесто' do
+              span.fa.fa-pencil
+            = link_to [:admin, dough], title: 'Удалить тесто',
+                      method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+              span.fa.fa-trash
+          = link_to dough.name, [:edit, :admin, dough]
