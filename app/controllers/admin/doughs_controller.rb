@@ -9,9 +9,7 @@ module Admin
 
     def new
       @dough = Dough.new
-      PizzaSizes.pizza_size.values.each do |value|
-        @dough.dough_attributes << DoughAttribute.new(pizza_size: value)
-      end
+      PizzaSizes.pizza_size.values.each { |value| @dough.dough_attributes.build(pizza_size: value) }
       render :new if stale? @dough
     end
 

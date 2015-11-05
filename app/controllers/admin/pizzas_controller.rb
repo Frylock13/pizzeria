@@ -9,11 +9,9 @@ module Admin
 
     def new
       @pizza = Pizza.new
+      PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
       gon.ingredient_categories = ingredient_categories
       gon.pizza_ingredients = []
-      PizzaSizes.pizza_size.values.each do |value|
-        @pizza.pizza_attributes << PizzaAttribute.new(pizza_size: value)
-      end
       render :new if stale? [@pizza, ingredient_categories]
     end
 
