@@ -1,8 +1,6 @@
 class ProductsController < ApplicationController
   def index
     @main_menu_key = :products
-    if stale? :products
-      render :index
-    end
+    render :index if stale? [:products, revision]
   end
 end
