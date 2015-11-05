@@ -1,0 +1,18 @@
+- title 'Страницы'
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Добавить страницу', new_admin_page_path, class: 'btn btn-primary'
+    h1.section-title Страницы
+section.page id='pages'
+  .container-fluid
+    ul.list-group
+      - @pages.each do |page|
+        li.list-group-item
+          .block.item-actions
+            = link_to [:edit, :admin, page], title: 'Изменить страницу' do
+              span.fa.fa-pencil
+            = link_to [:admin, page], title: 'Удалить страницу',
+                      method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+              span.fa.fa-trash
+          = link_to page.meta_title, [:edit, :admin, page]

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :features, only: [:edit, :create, :update, :destroy]
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
     resources :ingredients
+    resources :pages
     resources :pizzas
     resources :product_categories, only: [:edit, :create, :update, :destroy]
     resources :products do

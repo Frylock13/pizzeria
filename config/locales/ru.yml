@@ -12,6 +12,8 @@ ru:
         name: Название
       order:
         phone: Телефон
+      page:
+        slug: URL-адрес
       pizza:
         image: Фото в каталоге
         images: Изображения
@@ -36,6 +38,13 @@ ru:
         price: Наценка
         product_id: Продукт
         weight: Навесок
+      viewable_resource:
+        anchor: Анкор
+        meta_title: Заголовок (мета)
+        meta_keywords: Ключевики (мета)
+        page_title: Заголовок (H1)
+        page_annotation: Аннотация
+        page_description: Основной текст
     models:
       dough: Тесто
       ingredient:
@@ -43,12 +52,16 @@ ru:
         many: Ингредиенты
       ingredient_category: Категория
       order: Заказ
+      page:
+        one: Страница
+        many: Страницы
       pizza: Пицца
       product:
         one: Продукт
         many: Продукты
       product_category: Категория
       product_feature: Атрибут продукта
+      viewable_resource: Ресурс
   enumerize:
     defaults:
       pizza_size:
@@ -73,5 +86,14 @@ ru:
         assembled: Собран
         delivered: Доставлен
         closed: Выполнен
+  helpers:
+    label:
+      page[viewable_resource_attributes]:
+        anchor: Анкор
+        meta_title: Заголовок (мета)
+        meta_keywords: Ключевики (мета)
+        page_title: Заголовок (H1)
+        page_annotation: Аннотация
+        page_description: Основной текст
   sessions:
     not_authenticated: Необходимо войти в систему

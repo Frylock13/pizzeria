@@ -16,5 +16,5 @@
 #
 
 class ViewableResource < ActiveRecord::Base
-  belongs_to :viewable, polymorphic: true
+  belongs_to :viewable, polymorphic: true, touch: true
 end
