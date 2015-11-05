@@ -14,7 +14,7 @@ module Admin
 
     def edit
       @page = Page.find(params[:id])
-      # render :edit if stale? @page
+      render :edit if stale? @page
     end
 
     def create

@@ -33,8 +33,7 @@
     = form_field_group :page_description, item do
       = ff.label :page_description, class: 'col-sm-2 control-label'
       .col-sm-10
-        .summernote = item.page_description.try(:html_safe)
-        = ff.text_area :page_description, class: 'form-control', required: false, rows: 5
+        = ff.text_area :page_description, class: 'form-control summernote', required: true, rows: 5
         = form_field_error :page_description, item
   .form-group
     .col-sm-10.col-sm-offset-2

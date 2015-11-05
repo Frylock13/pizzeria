@@ -1,7 +1,6 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
-#= require turbolinks
 #= require bootstrap/affix
 #= require bootstrap/alert
 #= require bootstrap/dropdown
@@ -22,5 +21,8 @@
 #= require Sortable/Sortable
 #= require Sortable/jquery.binding
 #= require summernote
+#= require summernote/locales/ru-RU
+#= require summernote/plugin/summernote-ext-video
 #= require_tree ./components
 #= require app/module
+#= require turbolinks
