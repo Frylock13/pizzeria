@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :pages
 
   def not_authenticated
     render 'user_sessions/new', layout: 'application'
@@ -16,5 +17,11 @@ class ApplicationController < ActionController::Base
 
   def forbidden
     redirect_to root_path, status: :forbidden
+  end
+
+  private
+
+  def pages
+    @pages ||= Page.all.includes(:viewable_resource).order(:slug)
   end
 end

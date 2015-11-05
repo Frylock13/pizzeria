@@ -166,10 +166,8 @@
           span Информация
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
-          = main_menu_link page_path('delivery'),
-                           'page_delivery', 'fa-road', 'Оплата и доставка'
-          = main_menu_link page_path('bonus'),
-                           'page_bonus', 'fa-ticket', 'Бонусные баллы'
+          - pages.each do |page|
+            = main_menu_link page, "page-#{page.slug}", 'fa-fw', page.anchor
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'

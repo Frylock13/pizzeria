@@ -1,1 +1,8 @@
-= render @page
+- title @page.meta_title
+- description @page.page_annotation
+- keywords @page.meta_keywords
+section.heading
+  .container-fluid
+    h1.section-title = @page.page_title
+section.page
+  .container-fluid = @page.page_description.html_safe

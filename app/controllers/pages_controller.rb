@@ -1,9 +1,7 @@
 class PagesController < ApplicationController
   def show
-    @main_menu_key = "page_#{params[:id]}"
-    @page = params[:id]
-    if stale?(params[:id])
-      render :show
-    end
+    @main_menu_key = "page-#{params[:id]}"
+    @page = Page.find(params[:id])
+    render :show if stale? @page
   end
 end

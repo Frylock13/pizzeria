@@ -2,7 +2,6 @@ $(document).on 'ready page:load page:partial-load', ->
   summernotes = $('.summernote')
   if summernotes.length
     summernotes.each ->
-      console.log $(this)
       $(this).summernote
         height: 300
         lang: 'ru-RU'
