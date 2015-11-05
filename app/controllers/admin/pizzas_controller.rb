@@ -4,7 +4,7 @@ module Admin
 
     def index
       @pizzas = Pizza.all.order(:name)
-      render :index if stale? @pizzas
+      render :index if stale? @pizzas | layout_resources
     end
 
     def new
@@ -12,7 +12,7 @@ module Admin
       PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
       gon.ingredient_categories = ingredient_categories
       gon.pizza_ingredients = []
-      render :new if stale? [@pizza, ingredient_categories]
+      render :new if stale? [@pizza, ingredient_categories] | layout_resources
     end
 
     def edit
@@ -22,7 +22,7 @@ module Admin
         @pizza.pizza_ingredients,
         each_serializer: PizzaIngredientSerializer
       )
-      render :edit if stale? [@pizza, ingredient_categories]
+      render :edit if stale? [@pizza, ingredient_categories] | layout_resources
     end
 
     def create

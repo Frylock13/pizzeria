@@ -6,7 +6,7 @@ module Admin
 
       def index
         @product_features = product.product_features.includes(:feature, :feature_value)
-        render :index if stale? @product_features
+        render :index if stale? @product_features | layout_resources
       end
 
       def new

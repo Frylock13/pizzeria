@@ -3,7 +3,7 @@ module Admin
     helper_method :ingredient_category
 
     def edit
-      render :edit if stale? ingredient_category
+      render :edit if stale? [ingredient_category] | layout_resources
     end
 
     def create

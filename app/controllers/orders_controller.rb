@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @main_menu_key = :orders
-    if stale? :orders
-      render :index
-    end
+    render :index if stale? [:orders] | layout_resources
   end
 
   def show
@@ -12,9 +10,7 @@ class OrdersController < ApplicationController
   def new
     @main_menu_key = :new_order
     @order = Order.new
-    if stale? :new_order
-      render :new
-    end
+    render :new if stale? [:new_order] | layout_resources
   end
 
   def create

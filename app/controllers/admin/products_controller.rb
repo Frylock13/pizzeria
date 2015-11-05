@@ -5,17 +5,17 @@ module Admin
 
     def index
       @product_categories = ProductCategory.includes(:products).all.order(:position)
-      render :index if stale? @product_categories
+      render :index if stale? @product_categories | layout_resources
     end
 
     def new
       @product = Product.new
-      render :new if stale? [@product, product_categories]
+      render :new if stale? [@product, product_categories] | layout_resources
     end
 
     def edit
       @product = Product.find(params[:id])
-      render :edit if stale? [@product, product_categories]
+      render :edit if stale? [@product, product_categories] | layout_resources
     end
 
     def create

@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     @pages ||= Page.all.includes(:viewable_resource).order(:slug)
   end
 
+  def layout_resources
+    [pages, revision]
+  end
+
   def revision
     @revision ||= { last_modified: File.atime("#{Rails.root}/REVISION").utc, etag: :revision }
   end
