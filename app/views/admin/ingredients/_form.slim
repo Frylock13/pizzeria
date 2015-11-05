@@ -25,7 +25,7 @@
             - item.ingredient_attributes.each do |ingredient_attribute|
               tr
                 = f.fields_for :ingredient_attributes, ingredient_attribute do |ff|
-                  td.col-input = ff.text_field :weight, class: 'form-control mask-weight'
+                  td = ff.text_field :weight, class: 'form-control mask-weight'
                   td = ff.text_field :price, class: 'form-control mask-currency'
                   td.col-pizza-size
                     = ff.hidden_field :pizza_size
