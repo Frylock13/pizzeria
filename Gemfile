@@ -22,6 +22,7 @@ gem 'mandrill_mailer'
 gem 'mini_magick'
 gem 'ngannotate-rails'
 gem 'nokogiri' # premailer dependency
+gem 'non-stupid-digest-assets'
 gem 'pg'
 gem 'premailer-rails'
 gem 'pry'
