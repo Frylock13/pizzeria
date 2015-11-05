@@ -19,10 +19,9 @@
 
 class User < ActiveRecord::Base
   include Roles
-  has_one :profile
+  has_many :owned_profiles, class_name: 'Profile', foreign_key: :owner_id
   has_many :pizzas, dependent: :destroy
+  has_many :profiles, foreign_key: :email, primary_key: :email
 
   authenticates_with_sorcery!
-
-  accepts_nested_attributes_for :profile
 end
