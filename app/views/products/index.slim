@@ -16,7 +16,7 @@ section.products id='top'
 .navbar.navbar-inverse.hidden-print id='menu'
   .container-fluid
     .navbar-header
-      = link_to 'Составьте заказ:', root_path(anchor: 'menu'), class: 'navbar-brand'
+      = link_to 'Составьте заказ:', '#menu', class: 'navbar-brand', 'data-scroll' => ''
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
