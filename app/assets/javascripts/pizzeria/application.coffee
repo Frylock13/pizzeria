@@ -21,5 +21,6 @@
 #= require selectize/standalone/selectize
 #= require Sortable/Sortable
 #= require Sortable/jquery.binding
+#= require summernote
 #= require_tree ./components
 #= require app/module

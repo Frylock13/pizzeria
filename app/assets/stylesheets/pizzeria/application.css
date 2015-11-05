@@ -1,6 +1,5 @@
 /*
 *= require angular-xeditable
-*= require font-awesome
 *= require jasny-bootstrap
 *= require ladda
 *= require normalize-css
@@ -8,5 +7,7 @@
 *= require selectize/selectize.bootstrap3
 *= require slick
 *= require slick-theme
+*= require summernote
+*= require summernote/summernote-bs3
 *= require_tree ./components
 */

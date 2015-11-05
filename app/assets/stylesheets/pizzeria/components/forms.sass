@@ -52,6 +52,19 @@ input[type="checkbox"]
 .selectize-dropdown [data-selectable].active
   background: rgba($brand-primary, 0.2)
 
+.summernote
+  + .note-editor
+    margin: 0
+    .note-toolbar
+      padding: 6px 12px
+    + .form-control
+      bottom: 0
+      left: 0
+      opacity: 0
+      pointer-events: none
+      position: absolute
+      width: 100%
+
 select[multiple], select[size]
   &.selectized
     display: block !important

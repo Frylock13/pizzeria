@@ -167,8 +167,6 @@ GEM
     ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
-    font-awesome-rails (4.4.0.0)
-      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -342,6 +340,7 @@ GEM
     rails-assets-fizzy-ui-utils (1.0.1)
       rails-assets-doc-ready (~> 1.0.4)
       rails-assets-matches-selector (~> 1.0.2)
+    rails-assets-font-awesome (4.4.0)
     rails-assets-get-size (1.2.2)
       rails-assets-get-style-property (~> 1.0)
     rails-assets-get-style-property (1.0.4)
@@ -382,6 +381,10 @@ GEM
       rails-assets-sifter (~> 0.4.0)
     rails-assets-sifter (0.4.5)
     rails-assets-spin.js (2.0.2)
+    rails-assets-summernote (0.6.16)
+      rails-assets-bootstrap (>= 3.0.1)
+      rails-assets-font-awesome (>= 4.2.0)
+      rails-assets-jquery (>= 1.9.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -518,7 +521,6 @@ DEPENDENCIES
   enumerize
   factory_girl
   figaro
-  font-awesome-rails
   friendly_id
   gon
   guard
@@ -558,6 +560,7 @@ DEPENDENCIES
   rails-assets-autofill-event!
   rails-assets-breakpoint-sass!
   rails-assets-cferdinandi--smooth-scroll!
+  rails-assets-font-awesome!
   rails-assets-ink!
   rails-assets-jasny-bootstrap!
   rails-assets-jquery.inputmask!
@@ -568,6 +571,7 @@ DEPENDENCIES
   rails-assets-normalize-css!
   rails-assets-restangular!
   rails-assets-selectize!
+  rails-assets-summernote!
   rollbar
   rspec-rails
   russian
