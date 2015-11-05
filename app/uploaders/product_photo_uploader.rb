@@ -4,7 +4,7 @@ class ProductPhotoUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [1400, 800]
 
   version :thumb do
-    process resize_to_fill: [700, 400]
+    process resize_to_fit: [700, 400]
   end
 
   def default_url
