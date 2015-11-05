@@ -5,7 +5,9 @@ module Admin
       helper_method :feature_values, :features, :product
 
       def index
-        @product_features = product.product_features.includes(:feature, :feature_value)
+        @product_features = product.product_features
+                                   .includes(:feature, :feature_value)
+                                   .order('features.name', 'feature_values.name')
         render :index if stale? @product_features | layout_resources
       end
 

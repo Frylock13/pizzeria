@@ -20,404 +20,185 @@ section.products id='top'
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
-        li = link_to 'Салаты', '#pizza', 'data-scroll' => ''
-        li = link_to 'Соусы', '#sauces', 'data-scroll' => ''
-        li = link_to 'Напитки', '#drinks', 'data-scroll' => ''
+        - product_categories.each do |product_category|
+          li = link_to product_category.name, "\#product_category_#{product_category.id}", 'data-scroll' => ''
       = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn pull-right'
 section.products id='pizza'
   .container-masonry
     .section-title Пицца
     .masonry-grid.row
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product.pizza-derevenskaya id='pizza1'
-          .panel-body
-            .product-title «Деревенская»
-            .pizza-ingredients сливочный соус, грибы, ветчина, сыр, соленый огурец, картофель фри, чеснок
-            .pizza-edit-ingredients
-              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
-          .panel-footer.product-items
-            .product-item.item-in-cart
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 2
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 22см
-              .item-price 340 р.
-            .product-item.item-in-cart
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 1
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 33см
-              .item-price 420 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 38см
-              .item-price 480 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product.pizza-domashyaya
-          .panel-body
-            .product-title «Домашняя»
-            .pizza-ingredients сливочный соус, копченая курица, сыр, томаты, кунжут, картофель фри
-            .pizza-edit-ingredients
-              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 22см
-              .item-price 340 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 33см
-              .item-price 420 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 38см
-              .item-price 480 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product.pizza-kurica id='pizza3'
-          .panel-body
-            .product-title «Куриная»
-            .pizza-ingredients сливочный соус, копченая курица, сладкий перец, томаты, зелень, сыр, грибы, чеснок
-            .pizza-edit-ingredients
-              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
-          .panel-footer.product-items
-            .product-item.item-in-cart
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 1
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 22см
-              .item-price 350 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 33см
-              .item-price 420 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 38см
-              .item-price 480 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product.pizza-objora
-          .panel-body
-            .product-title «Обжора»
-            .pizza-ingredients сыр, ветчина, курица, сливочный соус, томаты, зелень
-            .pizza-edit-ingredients
-              a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 22см
-              .item-price 340 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 33см
-              .item-price 420 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 38см
-              .item-price 480 р.
-section.products id='sauces'
-  .container-masonry
-    .section-title Соусы
-    .masonry-grid.row
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product
-          .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b012ebeab8bdf.jpg"); background-size: 350px; background-position: 35% 60%;'
-            .product-title «Барбекью»
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-price 40 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product
-          .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b06ae7a088415.jpg"); background-size: 350px; background-position: 35% 60%;'
-            .product-title «Карри»
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-price 40 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product
-          .panel-body style='background-image: url("http://www.rosshokolad.ru/u/catalog/orig/f71b09b8d94109a7.jpg"); background-size: 350px; background-position: 35% 60%;'
-            .product-title «Кисло-сладкий»
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-price 40 р.
-section.products id='drinks'
-  .container-masonry
-    .section-title Напитки
-    .masonry-grid.row
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product id='product23'
-          .panel-body style='background-image: url("http://paneladebarrorestaurant.com/wp-content/uploads/2014/03/Orange-juice.jpg"); background-size: 350px;'
-            .product-title Сок апельсиновый
-          .panel-footer.product-items
-            .product-item.item-in-cart
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 4
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 0.2л
-              .item-price 40 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 0.5л
-              .item-price 80 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 1л
-              .item-price 150 р.
-      .masonry-item.col-xs-6.col-md-4.col-lg-3
-        .panel.panel-default.panel-product id='product23'
-          .panel-body style='background-image: url("http://i.huffpost.com/gen/1239551/images/o-APPLE-JUICE-ARSENIC-facebook.jpg"); background-size: 350px;'
-            .product-title Сок яблочный
-          .panel-footer.product-items
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 0.2л
-              .item-price 40 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 0.5л
-              .item-price 80 р.
-            .product-item
-              .item-controls
-                a href='javascript:;'
-                  span.fa.fa-minus
-                span.item-amount 0
-                a href='javascript:;'
-                  span.fa.fa-plus
-              .item-value 1л
-              .item-price 150 р.
-  .modal.fade id='productModal'
-    .modal-dialog.modal-lg.modal-product
-      .modal-content
-        .modal-body
-          button.close type='button' data-dismiss='modal' &times;
-          .row
-            .col-sm-4.col-md-6.modal-col.col-image.hidden-xs
-              = image_tag 'pizza/derevenskaya@2x.jpg'
-            .col-sm-8.col-md-6.modal-col.col-info
-              .product-title
-                | Пицца «Деревенская»
-              .product-ingredients
-                ul.nav.nav-pills
-                  li.active = link_to 'Все ингредиенты', 'javascript:;'
-                  li = link_to 'В пицце', 'javascript:;'
-                  li = link_to 'Обязательные', 'javascript:;'
-                ul.list-group
-                  li.list-group-item
-                    .list-group-item-heading соусы
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 40 р.
-                    .ingredient-title
-                      | сливочный соус
-                      small 45 г.
-                  li.list-group-item
-                    .list-group-item-heading сыры
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 70 р.
-                    .ingredient-title
-                      | сыр
-                      small 40 г.
-                  li.list-group-item
-                    .list-group-item-heading мясное
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 50 р.
-                    | ветчина
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 0
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 50 р.
-                    | салями
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 0
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 50 р.
-                    | сосиски
-                  li.list-group-item
-                    .list-group-item-heading овощи
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 40 р.
-                    | грибы
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 50 р.
-                    | картофель фри
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 0
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 20 р.
-                    | маслины
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 0
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 40 р.
-                    | помидор
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 50 р.
-                    | соленый огурец
-                  li.list-group-item
-                    .product-controls
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-minus
-                      span.product-amount 1
-                      a.product-counter href='javascript:;'
-                        span.fa.fa-plus
-                    .ingredient-price 20 р.
-                    | чеснок
-              .form-group
-                = select_tag :term, options_for_select([['Тонкое тесто', 1], ['Толстое тесто', 2]]), class: 'form-control selectize-dough'
-              .product-items
-                .pull-right
-                  button.btn.btn-primary type='button' data-dismiss='modal' Сохранить как особую пиццу
+      - pizzas.each do |pizza|
+        .masonry-item.col-xs-6.col-md-4.col-lg-3
+          .panel.panel-default.panel-product id="pizza-#{pizza.id}"
+            .panel-body
+              .product-image = image_tag pizza.image.url(:thumb)
+              .product-title = pizza.name
+              .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
+              .pizza-edit-ingredients
+                a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
+            .panel-footer.product-items
+              - pizza.pizza_attributes.each do |pizza_attribute|
                 .product-item
-                  .item-value 22см
-                  .item-price 340 р.
-                .product-item
-                  .item-value 33см
-                  .item-price 420 р.
-                .product-item
-                  .item-value 38см
-                  .item-price 480 р.
+                  .item-controls
+                    a href='javascript:;'
+                      span.fa.fa-minus
+                    span.item-amount 0
+                    a href='javascript:;'
+                      span.fa.fa-plus
+                  .item-value = pizza_attribute.pizza_size.text
+                  .item-price = pizza_attribute.price
+- product_categories.each do |product_category|
+  section.products id="product_category_#{product_category.id}"
+    .container-masonry
+      .section-title = product_category.name
+      .masonry-grid.row
+        - product_category.products.each do |product|
+          .masonry-item.col-xs-6.col-md-4.col-lg-3
+            .panel.panel-default.panel-product
+              .panel-body
+                .product-image = image_tag product.image.url(:thumb)
+                .product-title = product.name
+              .panel-footer.product-items
+                = render "item_with_#{product.features.uniq.size}_features", item: product
+.modal.fade id='productModal'
+  .modal-dialog.modal-lg.modal-product
+    .modal-content
+      .modal-body
+        button.close type='button' data-dismiss='modal' &times;
+        .row
+          .col-sm-4.col-md-6.modal-col.col-image.hidden-xs
+            = image_tag 'pizza/derevenskaya@2x.jpg'
+          .col-sm-8.col-md-6.modal-col.col-info
+            .product-title
+              | Пицца «Деревенская»
+            .product-ingredients
+              ul.nav.nav-pills
+                li.active = link_to 'Все ингредиенты', 'javascript:;'
+                li = link_to 'В пицце', 'javascript:;'
+                li = link_to 'Обязательные', 'javascript:;'
+              ul.list-group
+                li.list-group-item
+                  .list-group-item-heading соусы
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 40 р.
+                  .ingredient-title
+                    | сливочный соус
+                    small 45 г.
+                li.list-group-item
+                  .list-group-item-heading сыры
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 70 р.
+                  .ingredient-title
+                    | сыр
+                    small 40 г.
+                li.list-group-item
+                  .list-group-item-heading мясное
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 50 р.
+                  | ветчина
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 50 р.
+                  | салями
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 50 р.
+                  | сосиски
+                li.list-group-item
+                  .list-group-item-heading овощи
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 40 р.
+                  | грибы
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 50 р.
+                  | картофель фри
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 20 р.
+                  | маслины
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 0
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 40 р.
+                  | помидор
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 50 р.
+                  | соленый огурец
+                li.list-group-item
+                  .product-controls
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-minus
+                    span.product-amount 1
+                    a.product-counter href='javascript:;'
+                      span.fa.fa-plus
+                  .ingredient-price 20 р.
+                  | чеснок
+            .form-group
+              = select_tag :term, options_for_select([['Тонкое тесто', 1], ['Толстое тесто', 2]]), class: 'form-control selectize-dough'
+            .product-items
+              .pull-right
+                button.btn.btn-primary type='button' data-dismiss='modal' Сохранить как особую пиццу
+              .product-item
+                .item-value 22см
+                .item-price 340 р.
+              .product-item
+                .item-value 33см
+                .item-price 420 р.
+              .product-item
+                .item-value 38см
+                .item-price 480 р.
