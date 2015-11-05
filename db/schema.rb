@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105110417) do
+ActiveRecord::Schema.define(version: 20151105140534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,12 @@ ActiveRecord::Schema.define(version: 20151105110417) do
   add_index "orders", ["payment_method"], name: "index_orders_on_payment_method", using: :btree
   add_index "orders", ["receiving_profile_id"], name: "index_orders_on_receiving_profile_id", using: :btree
   add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pizza_attributes", force: :cascade do |t|
     t.integer  "pizza_id"
@@ -206,6 +212,21 @@ ActiveRecord::Schema.define(version: 20151105110417) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
+
+  create_table "viewable_resources", force: :cascade do |t|
+    t.string   "anchor"
+    t.string   "meta_keywords"
+    t.string   "meta_title"
+    t.text     "page_annotation"
+    t.text     "page_description"
+    t.string   "page_title"
+    t.integer  "viewable_id"
+    t.string   "viewable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "viewable_resources", ["viewable_type", "viewable_id"], name: "index_viewable_resources_on_viewable_type_and_viewable_id", using: :btree
 
   add_foreign_key "dough_attributes", "doughs"
   add_foreign_key "ingredient_attributes", "ingredients"
