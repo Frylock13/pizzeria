@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105100502) do
+ActiveRecord::Schema.define(version: 20151105110417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,24 @@ ActiveRecord::Schema.define(version: 20151105100502) do
   end
 
   add_index "ingredients", ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "address_id"
+    t.integer  "status"
+    t.text     "wishes"
+    t.integer  "receiving_profile_id"
+    t.integer  "ordering_profile_id"
+    t.integer  "payment_method"
+    t.datetime "booked_on"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
+  add_index "orders", ["ordering_profile_id"], name: "index_orders_on_ordering_profile_id", using: :btree
+  add_index "orders", ["payment_method"], name: "index_orders_on_payment_method", using: :btree
+  add_index "orders", ["receiving_profile_id"], name: "index_orders_on_receiving_profile_id", using: :btree
+  add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
 
   create_table "pizza_attributes", force: :cascade do |t|
     t.integer  "pizza_id"
@@ -192,6 +210,7 @@ ActiveRecord::Schema.define(version: 20151105100502) do
   add_foreign_key "dough_attributes", "doughs"
   add_foreign_key "ingredient_attributes", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
+  add_foreign_key "orders", "addresses"
   add_foreign_key "pizza_attributes", "pizzas"
   add_foreign_key "pizza_ingredients", "ingredients"
   add_foreign_key "pizza_ingredients", "pizzas"

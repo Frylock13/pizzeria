@@ -51,13 +51,6 @@ ru:
       product_feature: Атрибут продукта
   enumerize:
     defaults:
-      order_status:
-        created: Оформляется
-        booked: Забронирован
-        accepted: Принят
-        assembled: Собран
-        delivered: Доставлен
-        closed: Выполнен
       pizza_size:
         d22: 22 см
         d33: 33 см
@@ -69,5 +62,16 @@ ru:
         for_admin: В админ-панели
         for_all: В общем меню
         for_user: В персональном меню
+    order_enums:
+      payment_method:
+        cash: Наличными курьеру
+        bonus_points: Бонусными баллами
+      status:
+        created: Оформляется
+        booked: Забронирован
+        accepted: Принят
+        assembled: Собран
+        delivered: Доставлен
+        closed: Выполнен
   sessions:
     not_authenticated: Необходимо войти в систему

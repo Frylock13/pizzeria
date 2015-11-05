@@ -14,4 +14,10 @@
 class Profile < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   belongs_to :user, foreign_key: :email, primary_key: :email
+  has_many :ordering_orders, class_name: 'Order', foreign_key: :ordering_profile_id
+  has_many :receiving_orders, class_name: 'Order', foreign_key: :receiving_profile_id
+
+  def orders
+    ordering_orders | receiving_orders
+  end
 end
