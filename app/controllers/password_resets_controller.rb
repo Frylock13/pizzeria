@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :main_menu_link
+  helper_method :user
 
   def new
     @password_reset = PasswordReset.new
@@ -24,19 +25,18 @@ class PasswordResetsController < ApplicationController
 
   def edit
     @token = params[:id]
-    user = User.load_from_reset_password_token(params[:id])
     return not_authenticated if user.blank?
   end
 
   def update
-    user = User.load_from_reset_password_token(params[:id])
+    @token = params[:id]
     return not_authenticated if user.blank?
-
-    if user.change_password!(params[:user][:password])
+    if user.change_password!(user_params[:password])
       auto_login(user)
-      render json: { status: 'success' }
+      redirect_to root_path, success: 'Вы успешно установили пароль'
     else
-      render json: { status: 'error' }, status: 422
+      flash[:error] = 'Не удается установить пароль'
+      render :edit, change: "edit_user_#{user.id}"
     end
   end
 
@@ -46,7 +46,15 @@ class PasswordResetsController < ApplicationController
     @main_menu_link = :auth
   end
 
+  def user
+    @user ||= User.load_from_reset_password_token(params[:id])
+  end
+
   def password_reset_params
     params.require(:password_reset).permit(:email)
+  end
+
+  def user_params
+    params.require(:user).permit(:password)
   end
 end

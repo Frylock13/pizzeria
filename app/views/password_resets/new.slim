@@ -7,7 +7,7 @@
           .b Не помните пароль?
           span Напишите почту, под которой регистрировались
         .panel-body
-          = render 'form', item: @password_reset
+          = render 'form_new', item: @password_reset
           .row
             .elems.col-xs-12.col-sm-6
               .text-center = link_to 'Попробовать войти', login_path, class: 'btn btn-link'
