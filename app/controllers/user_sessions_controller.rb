@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
-    render :new if stale? [@user_session] | layout_resources
+    # render :new if stale? [@user_session] | layout_resources
   end
 
   def create

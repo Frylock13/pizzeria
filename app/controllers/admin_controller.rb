@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def dashboard
-    render :dashboard if stale? [:admin_dashboard] | layout_resources
+    # render :dashboard if stale? [:admin_dashboard] | layout_resources
   end
 
   private

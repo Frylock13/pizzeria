@@ -4,18 +4,18 @@ module Admin
 
     def index
       @doughs = Dough.all
-      render :index if stale? @doughs | layout_resources
+      # render :index if stale? @doughs | layout_resources
     end
 
     def new
       @dough = Dough.new
       PizzaSizes.pizza_size.values.each { |value| @dough.dough_attributes.build(pizza_size: value) }
-      render :new if stale? [@dough] | layout_resources
+      # render :new if stale? [@dough] | layout_resources
     end
 
     def edit
       @dough = Dough.find(params[:id])
-      render :edit if stale? [@dough] | layout_resources
+      # render :edit if stale? [@dough] | layout_resources
     end
 
     def create

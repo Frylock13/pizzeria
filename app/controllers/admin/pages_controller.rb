@@ -4,17 +4,17 @@ module Admin
 
     def index
       @pages = Page.all.includes(:viewable_resource)
-      render :index if stale? @pages | layout_resources
+      # render :index if stale? @pages | layout_resources
     end
 
     def new
       @page = Page.new(viewable_resource: ViewableResource.new)
-      render :new if stale? [@page] | layout_resources
+      # render :new if stale? [@page] | layout_resources
     end
 
     def edit
       @page = Page.find(params[:id])
-      render :edit if stale? [@page] | layout_resources
+      # render :edit if stale? [@page] | layout_resources
     end
 
     def create

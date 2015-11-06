@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def new
     @main_menu_link = :auth
     @user = User.new
-    render :new if stale? [@user] | layout_resources
+    # render :new if stale? [@user] | layout_resources
   end
 
   def create
