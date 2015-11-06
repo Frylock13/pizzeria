@@ -1,0 +1,123 @@
+- title 'Вход в систему'
+.container-fluid.container-centered
+  .row
+    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+      .panel.panel-default ng-controller='AuthController as vm'
+        .panel-heading class='message-{{vm.message.length}}' ng-bind-html='vm.message'
+        .panel-body
+          form { class = 'elems ng-hide'
+                 id = 'sign_in'
+                 name = 'sign_in'
+                 ng-show = 'vm.elems.form_sign_in'
+                 ng-submit = 'vm.submitSignIn()'
+               }
+            .form-group
+              input { type = 'email'
+                      auto-focus = ''
+                      class = 'form-control'
+                      name = 'username'
+                      ng-model = 'vm.data.email'
+                      placeholder = 'Email'
+                      required = ''
+                    }
+            .form-group
+              .input-group
+                input { type = 'password'
+                        class = 'form-control'
+                        name = 'password'
+                        ng-model = 'vm.data.password'
+                        placeholder = 'Пароль'
+                        required = ''
+                      }
+                span.input-group-btn
+                  button { type = 'submit'
+                           class = 'btn btn-primary'
+                           data-style = 'zoom-in'
+                           ladda = 'vm.states.sign_in.isPending()'
+                           ng-disabled = '!vm.data.email || !vm.data.password'
+                         } Войти
+          form { class = 'elems ng-hide'
+                 id = 'sign_up'
+                 name = 'sign_up'
+                 ng-show = 'vm.elems.form_sign_up'
+                 ng-submit = 'vm.submitSignUp()'
+               }
+            .form-group
+              input { type = 'text'
+                      class = 'form-control'
+                      name = 'first_name'
+                      ng-model = 'vm.data.first_name'
+                      placeholder = 'Имя'
+                      required = ''
+                    }
+            .form-group
+              input { type = 'email'
+                      class = 'form-control'
+                      name = 'username'
+                      ng-model = 'vm.data.email'
+                      placeholder = 'Email'
+                      required = ''
+                    }
+              .help-block ng-bind='vm.errors.email.join(", ")'
+            .form-group
+              input { type = 'password'
+                      class = 'form-control'
+                      name = 'password'
+                      ng-model = 'vm.data.password'
+                      placeholder = 'Пароль'
+                      required = ''
+                    }
+              .help-block ng-bind='vm.errors.password.join(", ")'
+            .form-group
+              button { type = 'submit'
+                       class = 'btn btn-primary btn-block'
+                       data-style = 'zoom-in'
+                       ladda = 'vm.states.sign_up.isPending()'
+                       ng-disabled = '!vm.data.first_name || !vm.data.email || !vm.data.password'
+                     } Зарегистрироваться
+          form { class = 'elems ng-hide'
+                 id = 'password_reset'
+                 name = 'password_reset'
+                 ng-show = 'vm.elems.form_password_reset'
+                 ng-submit = 'vm.submitPasswordReset()'
+               }
+            .form-group
+              input { type = 'email'
+                      class = 'form-control'
+                      name = 'username'
+                      ng-model = 'vm.data.email'
+                      placeholder = 'Email'
+                      required = ''
+                    }
+            .form-group
+              button { type = 'submit'
+                       class = 'btn btn-primary btn-block'
+                       data-style = 'zoom-in'
+                       ladda = 'vm.states.password_reset.isPending()'
+                       ng-disabled = '!vm.data.email'
+                     } Отправить письмо с инструкциями
+          .row
+            div { class = 'elems ng-hide col-xs-12 col-sm-6'
+                  ng-show = 'vm.elems.button_password_reset'
+                }
+              .text-center
+                button { type = 'button'
+                         class = 'btn btn-link'
+                         ng-click = 'vm.goToPasswordReset()'
+                       } Я не помню пароль
+            div { class = 'elems ng-hide col-xs-12 col-sm-6'
+                  ng-show = 'vm.elems.button_sign_in'
+                }
+              .text-center
+                button { type = 'button'
+                         class = 'btn btn-link'
+                         ng-click = 'vm.goToSignIn()'
+                       } Попробовать войти снова
+            div { class = 'elems ng-hide col-xs-12 col-sm-6'
+                  ng-show = 'vm.elems.button_sign_up'
+                }
+              .text-center
+                button { type = 'button'
+                         class = 'btn btn-link'
+                         ng-click = 'vm.goToSignUp()'
+                       } Я хочу зарегистрироваться

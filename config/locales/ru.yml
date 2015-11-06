@@ -38,6 +38,9 @@ ru:
         price: Наценка
         product_id: Продукт
         weight: Навесок
+      user:
+        email: Почта
+        password: Пароль
       viewable_resource:
         anchor: Анкор
         meta_title: Заголовок (мета)
@@ -61,6 +64,9 @@ ru:
         many: Продукты
       product_category: Категория
       product_feature: Атрибут продукта
+      user:
+        one: Пользователь
+        many: Пользователи
       viewable_resource: Ресурс
   enumerize:
     defaults:
@@ -95,5 +101,9 @@ ru:
         page_title: Заголовок (H1)
         page_annotation: Аннотация
         page_description: Основной текст
+    placeholder:
+      user_session:
+        email: Почта
+        password: Пароль
   sessions:
     not_authenticated: Необходимо войти в систему

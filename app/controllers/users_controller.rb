@@ -1,33 +1,21 @@
 class UsersController < ApplicationController
-  before_filter :require_login, only: :update
-
-  def create
-    user = User.new(user_params)
-    if user.save
-      auto_login(user, should_remember=true)
-      render json: { status: 'success' }
-    else
-      if user.errors.any?
-        render json: { status: 'error', errors: user.errors }
-      else
-        render json: { status: 'error' }, status: 422
-      end
-    end
+  def new
+    @main_menu_link = :auth
+    @user = User.new
   end
 
-  def update
-    if user.update_attributes(user_params)
-      render json: user
+  def create
+    @main_menu_link = :auth
+    @user = User.new(user_params)
+    if @user.save
+      auto_login(@user, should_remember = true)
+      redirect_to root_path, success: 'Вы успешно зарегистрированы'
     else
-      render json: { error: true }, status: 422
+      render :new, change: :new_user, layout: !request.xhr?
     end
   end
 
   private
-
-  def user
-    @user ||= User.find(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:email, :password)

@@ -14,7 +14,7 @@
 #  reset_password_token_expires_at :datetime
 #  reset_password_email_sent_at    :datetime
 #  role                            :integer          default(0)
-#  bonus_points                    :decimal(15, 2)
+#  bonus_points                    :decimal(15, 2)   default(0.0)
 #
 
 class User < ActiveRecord::Base
@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
   has_many :owned_addresses, class_name: 'Address', foreign_key: :owner_id
   has_many :owned_profiles, class_name: 'Profile', foreign_key: :owner_id
   has_many :profiles, foreign_key: :email, primary_key: :email
+  has_many :owned_pizzas, through: :profiles, source: :owned_pizzas
 
   authenticates_with_sorcery!
+
+  validates :email, presence: true, uniqueness: true,
+            format: { with: Regexp.new('\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z', true) }, on: :create
+  validates :password, presence: true, length: { minimum: 3 }, on: :create
 end

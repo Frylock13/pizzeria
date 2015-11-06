@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106064238) do
+ActiveRecord::Schema.define(version: 20151106095404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 20151106064238) do
   add_index "profiles", ["owner_id"], name: "index_profiles_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                                                null: false
+    t.string   "email",                                                                  null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20151106064238) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer  "role",                                                     default: 0
-    t.decimal  "bonus_points",                    precision: 15, scale: 2
+    t.decimal  "bonus_points",                    precision: 15, scale: 2, default: 0.0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

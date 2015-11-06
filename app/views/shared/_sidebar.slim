@@ -137,26 +137,27 @@
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'
-          span.fa.fa-user.fa-lg
+          span.fa.fa-lg class=(current_user.present? ? 'fa-user' : 'fa-user-secret')
           span Личный кабинет
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
             li
               div
-                .nav-item-title Александр Новиков
+                .nav-item-title = current_user.email
                 .nav-item-subtitle
                   .pull-right
-                    span 1050
-                  span Бонусных баллов
+                    span = number_to_currency current_user.bonus_points, precision: 0
+                  span Бонусных баллов на сумму
                 .nav-item-subtitle
                   .pull-right
-                    span 4
+                    span = current_user.owned_pizzas.size
                   span Особых пицц в меню
+            = main_menu_link logout_path, :logout, 'fa-fw', 'Выйти'
           - else
-            li class=('active' if @main_menu_link == :login)
+            li class=('active' if @main_menu_link == :auth)
               = link_to login_path do
-                .nav-item-title Вход / Регистрация
+                .nav-item-title Войти / Зарегистрироваться
                 .nav-item-subtitle
                   span Получите доступ к бонусным баллам и особой пицце в меню
     ul.nav.navmenu-nav

@@ -40,6 +40,7 @@ gem 'turbolinks', github: 'rails/turbolinks'
 gem 'uglifier'
 gem 'underscore-rails'
 gem 'unicorn', group: :production
+gem 'virtus'
 
 group :development, :test do
   gem 'factory_girl'
