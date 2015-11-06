@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_resources
-    [current_profile, current_user_etag, pages, revision]
+    [current_user_etag, pages, revision]
   end
 
   def profile_from_session
@@ -36,21 +36,20 @@ class ApplicationController < ActionController::Base
   def profile_for_user
     return nil unless current_user.present?
     profile = current_user.profiles.owned_by_user(current_user.id).last
-    profile = Profile.create(email: current_user.email, owner_id: current_user.id) if profile.nil?
-    session[:profile_id] = profile.id
+    profile = Profile.new(email: current_user.email, owner_id: current_user.id) if profile.nil?
     profile
   end
 
   def profile_for_guest
-    profile = Profile.create
-    session[:profile_id] = profile.id
-    profile
+    Profile.new
+  end
+
+  def current_order
+    @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
   end
 
   def current_profile
     @current_profile ||= profile_from_session || profile_for_user || profile_for_guest
-    logger.debug @current_profile.to_json
-    @current_profile
   end
 
   def current_user_etag
