@@ -46,7 +46,7 @@ section.products id='pizza'
                     a href='javascript:;'
                       span.fa.fa-plus
                   .item-value = pizza_attribute.pizza_size.text
-                  .item-price = pizza_attribute.price
+                  .item-price = number_to_currency pizza_attribute.price, precision: 0
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry

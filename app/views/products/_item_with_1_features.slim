@@ -7,4 +7,4 @@
       a href='javascript:;'
         span.fa.fa-plus
     .item-value = product_feature.feature_value.name
-    .item-price = product_feature.price
+    .item-price = number_to_currency product_feature.price, precision: 0
