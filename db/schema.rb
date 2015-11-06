@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106095404) do
+ActiveRecord::Schema.define(version: 20151106162436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,39 @@ ActiveRecord::Schema.define(version: 20151106095404) do
   end
 
   add_index "ingredients", ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id", using: :btree
+
+  create_table "ordered_pizzas", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "pizza_id"
+    t.integer  "quantity",   default: 1
+    t.integer  "pizza_size"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ordered_pizzas", ["order_id"], name: "index_ordered_pizzas_on_order_id", using: :btree
+  add_index "ordered_pizzas", ["pizza_id"], name: "index_ordered_pizzas_on_pizza_id", using: :btree
+
+  create_table "ordered_product_features", force: :cascade do |t|
+    t.integer  "ordered_product_id"
+    t.integer  "product_feature_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "ordered_product_features", ["ordered_product_id"], name: "index_ordered_product_features_on_ordered_product_id", using: :btree
+  add_index "ordered_product_features", ["product_feature_id"], name: "index_ordered_product_features_on_product_feature_id", using: :btree
+
+  create_table "ordered_products", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity",   default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ordered_products", ["order_id"], name: "index_ordered_products_on_order_id", using: :btree
+  add_index "ordered_products", ["product_id"], name: "index_ordered_products_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "address_id"
@@ -244,6 +277,12 @@ ActiveRecord::Schema.define(version: 20151106095404) do
   add_foreign_key "dough_attributes", "doughs"
   add_foreign_key "ingredient_attributes", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
+  add_foreign_key "ordered_pizzas", "orders"
+  add_foreign_key "ordered_pizzas", "pizzas"
+  add_foreign_key "ordered_product_features", "ordered_products"
+  add_foreign_key "ordered_product_features", "product_features"
+  add_foreign_key "ordered_products", "orders"
+  add_foreign_key "ordered_products", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "pizza_attributes", "pizzas"
   add_foreign_key "pizza_ingredients", "ingredients"
