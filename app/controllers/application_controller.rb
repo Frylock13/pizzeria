@@ -26,7 +26,11 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_resources
-    [pages, revision]
+    [current_user_etag, pages, revision]
+  end
+
+  def current_user_etag
+    current_user || :guest
   end
 
   def revision

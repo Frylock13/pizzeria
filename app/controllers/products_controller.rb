@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @main_menu_key = :products
-    render :index if stale? @pizzas | layout_resources
+    render :index if stale? pizzas | layout_resources
   end
 
   private
