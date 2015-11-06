@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def new
     @main_menu_key = :new_order
-    @order = Order.new
+    @order = OrderDummy.new
     # render :new if stale? [:new_order] | layout_resources
   end
 
