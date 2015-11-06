@@ -18,6 +18,8 @@ class Profile < ActiveRecord::Base
   has_many :owned_pizzas, class_name: 'Pizza', foreign_key: :owner_id
   has_many :receiving_orders, class_name: 'Order', foreign_key: :receiving_profile_id
 
+  scope :owned_by_user, -> (user_id) { where(owner_id: user_id) }
+
   def orders
     ordering_orders | receiving_orders
   end

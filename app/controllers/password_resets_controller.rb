@@ -4,6 +4,7 @@ class PasswordResetsController < ApplicationController
 
   def new
     @password_reset = PasswordReset.new
+    render :new if stale? [@password_reset] | layout_resources
   end
 
   def create
@@ -33,6 +34,7 @@ class PasswordResetsController < ApplicationController
     return not_authenticated if user.blank?
     if user.change_password!(user_params[:password])
       auto_login(user)
+      current_profile.update(email: current_user.email, owner_id: current_user.id)
       redirect_to root_path, success: 'Вы успешно установили пароль'
     else
       flash[:error] = 'Не удается установить пароль'
