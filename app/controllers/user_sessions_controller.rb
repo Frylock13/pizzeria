@@ -1,23 +1,19 @@
 class UserSessionsController < ApplicationController
   before_filter :require_login, only: :destroy
+  before_action :main_menu_link
 
   def new
-    @main_menu_link = :auth
     @user_session = UserSession.new
   end
 
   def create
-    @main_menu_link = :auth
     @user_session = UserSession.new(user_session_params)
-    if @user_session.save
-      if login(@user_session.email, @user_session.password, remember_me = true)
-        redirect_to root_path, success: 'Вы успешно вошли в систему'
-      else
-        flash[:error] = 'Не удалось войти в систему'
-        render :new, change: :new_user_session
-      end
+    return render :new, change: :new_user_session, layout: !request.xhr? unless @user_session.valid?
+    if login(@user_session.email, @user_session.password, remember_me = true)
+      redirect_to root_path, success: 'Вы успешно вошли в систему'
     else
-      render :new, change: :new_user_session, layout: !request.xhr?
+      flash[:error] = 'Не удалось войти в систему'
+      render :new, change: :new_user_session
     end
   end
 
@@ -27,6 +23,10 @@ class UserSessionsController < ApplicationController
   end
 
   private
+
+  def main_menu_link
+    @main_menu_link = :auth
+  end
 
   def user_session_params
     params.require(:user_session).permit(:email, :password)
