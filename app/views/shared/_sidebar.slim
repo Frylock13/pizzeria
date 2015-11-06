@@ -142,6 +142,8 @@
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
+            = main_menu_link admin_path, :admin, 'fa-cogs fa-fw', 'В админку' if current_user.role.admin?
+            = main_menu_link logout_path, :logout, 'fa-sign-out fa-fw', 'Выйти'
             li
               div
                 .nav-item-title = current_user.email
@@ -153,7 +155,6 @@
                   .pull-right
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
-            = main_menu_link logout_path, :logout, 'fa-fw', 'Выйти'
           - else
             li class=('active' if @main_menu_link == :auth)
               = link_to login_path do
