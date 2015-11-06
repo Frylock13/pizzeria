@@ -1,14 +1,23 @@
 class PasswordResetsController < ApplicationController
+  before_action :main_menu_link
+
+  def new
+    @password_reset = PasswordReset.new
+  end
+
   def create
-    user = User.find_by(email: params[:email])
-    return render json: { status: 'error' } unless user.present?
+    @password_reset = PasswordReset.new(password_reset_params)
+    return render :new, change: :new_password_reset, layout: !request.xhr? unless @password_reset.valid?
+    user = User.find_by(email: @password_reset.email)
     if user.deliver_reset_password_instructions!
-      render json: { status: 'success' }
+      redirect_to new_password_reset_path, success: 'Письмо для восстановления пароля отправлено на почту'
     else
       if user.reset_password_email_sent_at > (5*60).seconds.ago.utc
-        render json: { status: 'error', message: '<b>Письмо уже отправлено</b><br/>Повторно отправить вы сможете через пару минут:' }, status: 422
+        flash[:error] = 'Письмо отправлено совсем недавно: подождите 5 минут'
+        render :new, change: :new_password_reset
       else
-        render json: { status: 'error' }, status: 422
+        flash[:error] = 'Не удается отправить письмо'
+        render :new, change: :new_password_reset
       end
     end
   end
@@ -29,5 +38,15 @@ class PasswordResetsController < ApplicationController
     else
       render json: { status: 'error' }, status: 422
     end
+  end
+
+  private
+
+  def main_menu_link
+    @main_menu_link = :auth
+  end
+
+  def password_reset_params
+    params.require(:password_reset).permit(:email)
   end
 end

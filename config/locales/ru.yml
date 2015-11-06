@@ -102,6 +102,8 @@ ru:
         page_annotation: Аннотация
         page_description: Основной текст
     placeholder:
+      password_reset:
+        email: Почта
       user_session:
         email: Почта
         password: Пароль

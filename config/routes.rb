@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]
-  resources :password_resets, only: [:create, :edit, :update]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   get :admin, to: 'admin#dashboard'
