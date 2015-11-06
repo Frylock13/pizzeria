@@ -19,6 +19,6 @@ Rails.application.configure do
   config.sass.preferred_syntax = :sass
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.console = true
   end
 end
