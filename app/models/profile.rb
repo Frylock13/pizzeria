@@ -15,6 +15,7 @@ class Profile < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   belongs_to :user, foreign_key: :email, primary_key: :email
   has_many :ordering_orders, class_name: 'Order', foreign_key: :ordering_profile_id
+  has_many :owned_pizzas, class_name: 'Pizza', foreign_key: :owner_id
   has_many :receiving_orders, class_name: 'Order', foreign_key: :receiving_profile_id
 
   def orders

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105141815) do
+ActiveRecord::Schema.define(version: 20151106064238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20151105141815) do
     t.string   "name"
     t.string   "image"
     t.integer  "visibility", default: 0
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.integer  "dough_id"
     t.integer  "parent_id"
     t.datetime "created_at",             null: false
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20151105141815) do
   end
 
   add_index "pizzas", ["dough_id"], name: "index_pizzas_on_dough_id", using: :btree
-  add_index "pizzas", ["user_id"], name: "index_pizzas_on_user_id", using: :btree
+  add_index "pizzas", ["owner_id"], name: "index_pizzas_on_owner_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
@@ -249,7 +249,7 @@ ActiveRecord::Schema.define(version: 20151105141815) do
   add_foreign_key "pizza_ingredients", "ingredients"
   add_foreign_key "pizza_ingredients", "pizzas"
   add_foreign_key "pizzas", "doughs"
-  add_foreign_key "pizzas", "users"
+  add_foreign_key "pizzas", "users", column: "owner_id"
   add_foreign_key "product_features", "feature_values"
   add_foreign_key "product_features", "features"
   add_foreign_key "product_features", "products"
