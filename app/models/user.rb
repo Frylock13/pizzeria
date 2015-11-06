@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  validates :email, presence: true, uniqueness: true,
-            format: { with: Regexp.new('\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z', true) }, on: :create
+  validates :email, presence: true, email: true, uniqueness: true, on: :create
   validates :password, presence: true, length: { minimum: 3 }, on: :create
 end

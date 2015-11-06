@@ -5,8 +5,7 @@ class UserSession < ActiveData
   attribute :password
   attribute :user_session
 
-  validates :email, presence: true,
-            format: { with: Regexp.new('\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z', true) }
+  validates :email, presence: true, email: true, user_by_email: true
   validates :password, presence: true, length: { minimum: 3 }
 
   def build
