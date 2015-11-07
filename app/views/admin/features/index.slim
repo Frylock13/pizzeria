@@ -1,0 +1,27 @@
+- title 'Атрибуты'
+section.heading
+  .container-fluid
+    h1.section-title Атрибуты
+section.page id='features'
+  .container-fluid
+    .row
+      - @features.in_groups_of(3, false).each do |features|
+        .col-sm-3
+          - features.each do |feature|
+            p = link_to [:edit, :admin, feature] do
+              = feature.name
+              '
+              sub = feature.product_features.size
+section.heading
+  .container-fluid
+    h1.section-title Значения атрибутов
+section.page id='feature_values'
+  .container-fluid
+    .row
+      - @feature_values.in_groups_of(3, false).each do |feature_values|
+        .col-sm-3
+          - feature_values.each do |feature_value|
+            p = link_to [:edit, :admin, feature_value] do
+              = feature_value.name
+              '
+              sub = feature_value.product_features.size

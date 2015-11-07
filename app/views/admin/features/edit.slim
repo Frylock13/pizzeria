@@ -1,0 +1,13 @@
+- title feature.name
+section.heading
+  .container-fluid
+    .pull-right
+      = link_to 'Удалить атрибут', [:admin, feature], class: 'btn btn-danger',
+                method: :delete, data: { confirm: 'Вы уверены?' }, remote: true
+    .section-title
+      ol.breadcrumb
+        li = link_to 'Атрибуты', admin_features_path
+        li.active Атрибут #{feature.name}
+section.page
+  .container-fluid
+    = render 'form', item: feature

@@ -1,5 +1,18 @@
 module Admin
   class FeaturesController < AdminController
+    helper_method :feature
+
+    def index
+      @main_menu_key = :features
+      @features = Feature.all
+      @feature_values = FeatureValue.all
+      # render :index if stale? [@features, @feature_values] | layout_resources
+    end
+
+    def edit
+      # render :edit if stale? [feature] | layout_resources
+    end
+
     def create
       @feature = Feature.new(feature_params)
       if @feature.save
@@ -14,7 +27,29 @@ module Admin
       end
     end
 
+    def update
+      if feature.update(feature_params)
+        FeaturesMergingService.new(feature).merge
+        redirect_to admin_features_path, success: 'Атрибут успешно обновлен'
+      else
+        render :edit, change: "edit_feature_#{@feature.id}", layout: !request.xhr?
+      end
+    end
+
+    def destroy
+      if feature.destroy
+        flash[:success] = 'Атрибут успешно удален'
+      else
+        flash[:success] = 'Невозможно удалить атрибут'
+      end
+      redirect_to admin_features_path
+    end
+
     private
+
+    def feature
+      @feature ||= Feature.find(params[:id])
+    end
 
     def feature_params
       params.require(:feature).permit(:name)

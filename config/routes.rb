@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :doughs
     resources :feature_values, only: [:edit, :create, :update, :destroy]
-    resources :features, only: [:edit, :create, :update, :destroy]
+    resources :features, only: [:index, :edit, :create, :update, :destroy]
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
     resources :ingredients
     resources :pages

@@ -9,5 +9,7 @@
 #
 
 class Feature < ActiveRecord::Base
+  has_many :product_features
+
   validates :name, presence: true
 end

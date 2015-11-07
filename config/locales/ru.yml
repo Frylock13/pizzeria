@@ -4,6 +4,10 @@ ru:
       dough:
         dough_attribute_attributes: Атрибуты
         name: Название
+      feature:
+        name: Название
+      feature_value:
+        name: Название
       ingredient:
         ingredient_attribute_attributes: Атрибуты
         ingredient_category_id: Категория
@@ -50,6 +54,12 @@ ru:
         page_description: Основной текст
     models:
       dough: Тесто
+      feature:
+        one: Атрибут
+        many: Атрибуты
+      feature_value:
+        one: Значение атрибута
+        many: Значения атрибутов
       ingredient:
         one: Ингредиент
         many: Ингредиенты
