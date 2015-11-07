@@ -31,6 +31,13 @@
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
             a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
         .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
+  = form_field_group :dough_id, item do
+    = f.label :dough_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.collection_select :dough_id, doughs,
+        :id, :name, { prompt: 'Выберите тесто' },
+                    { class: 'form-control selectize-doughs' }
+      = form_field_error :dough_id, item
   div { class = 'form-group ng-hide'
         ng-controller = 'PizzaIngredientsFormController as vm'
         ng-show = 'vm.ingredient_categories'

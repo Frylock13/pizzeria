@@ -30,6 +30,10 @@ $(document).on 'ready page:load page:partial-load', ->
     labelField: 'title'
     valueField: 'id'
 
+  $('.selectize-doughs').selectize
+    labelField: 'name'
+    valueField: 'id'
+
   $('.selectize-feature-values').selectize(
     creatableElements('feature_value', 'feature_values', 'Создать значение атрибута')
   )

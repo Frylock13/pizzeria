@@ -1,6 +1,7 @@
 module Admin
   class PizzasController < AdminController
     before_action :main_menu_key
+    helper_method :doughs
 
     def index
       @pizzas = Pizza.all.order(:name)
@@ -55,6 +56,10 @@ module Admin
 
     private
 
+    def doughs
+      @doughs ||= Dough.all.order(name: :asc)
+    end
+
     def ingredient_categories
       @ingredient_categories ||= ActiveModel::ArraySerializer.new(
         IngredientCategory.includes(:ingredients).all.order(:position),
@@ -68,7 +73,7 @@ module Admin
 
     def pizza_params
       params.require(:pizza).permit(
-        :name, :image, :visibility,
+        :name, :image, :visibility, :dough_id,
         { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
         { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :core, :_destroy] }
       )

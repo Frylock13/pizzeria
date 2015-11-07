@@ -19,6 +19,7 @@ ru:
       page:
         slug: URL-адрес
       pizza:
+        dough_id: Тесто
         image: Фото в каталоге
         images: Изображения
         name: Название
