@@ -16,3 +16,7 @@
                        :pages, 'fa-circle-o', Page.model_name.human(count: 0)
       = main_menu_link admin_features_path,
                        :features, 'fa-circle-o', Feature.model_name.human(count: 0)
+    ul.nav.navmenu-nav
+      li.navmenu-title Заявки
+      = main_menu_link admin_call_requests_path,
+                       :call_requests, 'fa-circle-o', CallRequest.model_name.human(count: 0)

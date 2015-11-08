@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :call_requests, only: :index
     resources :doughs
     resources :feature_values, only: [:edit, :create, :update, :destroy]
     resources :features, only: [:index, :edit, :create, :update, :destroy]

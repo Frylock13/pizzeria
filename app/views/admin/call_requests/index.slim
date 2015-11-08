@@ -1,0 +1,21 @@
+- title 'Заявки на звонок'
+section.heading
+  .container-fluid
+    h1.section-title Заявки на звонок
+section.page id='call_requests'
+  .container-fluid
+    .table-responsive
+      table.table
+        thead
+          tr
+            th.col-date Дата подачи заявки
+            th Имя
+            th Телефон
+            th Пожелания
+        tbody
+          - @call_requests.each do |call_request|
+            tr
+              td.col-date = call_request.created_at
+              td = call_request.profile.first_name
+              td = call_request.profile.phone
+              td = call_request.wishes

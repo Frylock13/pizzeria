@@ -57,7 +57,9 @@ ru:
         page_annotation: Аннотация
         page_description: Основной текст
     models:
-      call_request: Заявка на звонок
+      call_request:
+        one: Заявка на звонок
+        many: Заявки на звонок
       dough: Тесто
       feature:
         one: Атрибут
