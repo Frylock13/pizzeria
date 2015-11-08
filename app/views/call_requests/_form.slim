@@ -1,0 +1,19 @@
+= form_for item, remote: false, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
+  = f.fields_for :profile_attributes, item.profile do |ff|
+    = form_field_group :first_name, item do
+      = ff.label :first_name, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = ff.text_field :first_name, class: 'form-control'
+        = form_field_error :first_name, item
+    = form_field_group :phone, item do
+      = ff.label :phone, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = ff.text_field :phone, class: 'form-control'
+        = form_field_error :phone, item
+  .form-group
+    = f.label :wishes, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :wishes, class: 'form-control'
+  .form-group
+    .col-sm-10.col-sm-offset-2
+      = f.button 'Отправить заявку на звонок', class: 'btn btn-primary btn-lg ladda-button'

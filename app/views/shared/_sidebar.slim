@@ -177,7 +177,10 @@
           span Связь с нами
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
-          = main_menu_link '+7 (495) 123-45-67',
-                           'phone', 'fa-phone', '+7 (495) 123-45-67'
           = main_menu_link 'mailto:help@vpzven.ru',
                            'email', 'fa-envelope', 'help@vpzven.ru'
+          = main_menu_link '+7 (495) 123-45-67',
+                           'phone', 'fa-phone', '+7 (495) 123-45-67'
+          li class=('active' if @main_menu_key == :new_call_request)
+            .text-center
+              = link_to 'Заказать обратный звонок', new_call_request_path, class: 'btn btn-default btn-block'

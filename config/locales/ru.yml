@@ -1,6 +1,8 @@
 ru:
   activerecord:
     attributes:
+      call_request:
+        wishes: Пожелания
       dough:
         dough_attribute_attributes: Атрибуты
         name: Название
@@ -55,6 +57,7 @@ ru:
         page_annotation: Аннотация
         page_description: Основной текст
     models:
+      call_request: Заявка на звонок
       dough: Тесто
       feature:
         one: Атрибут
@@ -106,6 +109,9 @@ ru:
         closed: Выполнен
   helpers:
     label:
+      call_request[profile_attributes]:
+        first_name: Имя
+        phone: Телефон
       page[viewable_resource_attributes]:
         anchor: Анкор
         meta_title: Заголовок (мета)

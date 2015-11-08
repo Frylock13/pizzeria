@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :product_features, controller: 'products/product_features'
     end
   end
+  resources :call_requests, only: [:new, :create]
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]
   resources :password_resets, only: [:new, :create, :edit, :update]
