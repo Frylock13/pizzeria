@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   private
 
   def pizzas
-    @pizzas ||= Pizza.all.includes(:pizza_attributes).order(:name)
+    @pizzas ||= Pizza.with_visibility(:for_all).includes(:pizza_attributes).order(:name)
   end
 
   def product_categories
