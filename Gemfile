@@ -80,6 +80,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery.inputmask'
   gem 'rails-assets-ladda'
   gem 'rails-assets-masonry'
+  gem 'rails-assets-moment'
   gem 'rails-assets-normalize-css'
   gem 'rails-assets-selectize'
   gem 'rails-assets-Sortable'

@@ -17,6 +17,8 @@
 #= require ladda/ladda.min
 #= require ladda/ladda.jquery.min
 #= require masonry/dist/masonry.pkgd
+#= require moment
+#= require moment/locale/ru
 #= require selectize/standalone/selectize
 #= require Sortable/Sortable
 #= require Sortable/jquery.binding

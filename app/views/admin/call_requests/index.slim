@@ -15,7 +15,7 @@ section.page id='call_requests'
         tbody
           - @call_requests.each do |call_request|
             tr
-              td.col-date = call_request.created_at
+              td.col-date.date-moment = call_request.created_at
               td = call_request.profile.first_name
               td = call_request.profile.phone
               td = call_request.wishes
