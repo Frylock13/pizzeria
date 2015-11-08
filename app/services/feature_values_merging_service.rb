@@ -1,5 +1,4 @@
 class FeatureValuesMergingService
-
   attr_accessor :feature_value
 
   def initialize(feature_value)
