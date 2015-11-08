@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106162436) do
+ActiveRecord::Schema.define(version: 20151108104050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20151106162436) do
     t.integer  "pizza_id"
     t.integer  "ingredient_id"
     t.integer  "quantity",      default: 1
-    t.boolean  "core",          default: false
+    t.boolean  "base",          default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end

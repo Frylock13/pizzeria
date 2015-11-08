@@ -15,7 +15,7 @@ PizzaIngredientsFormController = ->
       pizza_ingredient =
         ingredient_id: ingredient_id
         quantity: 1
-        core: false
+        base: false
       @pizza_ingredients.push pizza_ingredient
 
   ingredientQuantity = (ingredient_id) =>

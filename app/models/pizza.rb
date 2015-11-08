@@ -26,4 +26,12 @@ class Pizza < ActiveRecord::Base
   validates :name, presence: true
   accepts_nested_attributes_for :pizza_attributes
   accepts_nested_attributes_for :pizza_ingredients, allow_destroy: true
+
+  def price(pizza_size)
+    dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(:d22) }.sum
+  end
+
+  def weight(pizza_size)
+    dough.weight(pizza_size) + pizza_ingredients.map{ |item| item.weight(:d22) }.sum
+  end
 end

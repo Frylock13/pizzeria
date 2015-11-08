@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
     resources :ingredients
     resources :pages
-    resources :pizzas
+    resources :pizzas do
+      get :recalculate
+    end
     resources :product_categories, only: [:edit, :create, :update, :destroy]
     resources :products do
       resources :product_features, controller: 'products/product_features'

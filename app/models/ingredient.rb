@@ -18,4 +18,12 @@ class Ingredient < ActiveRecord::Base
   validates :name, :ingredient_category_id, presence: true
 
   accepts_nested_attributes_for :ingredient_attributes
+
+  def price(pizza_size)
+    ingredient_attributes.with_pizza_size(pizza_size).first.price
+  end
+
+  def weight(pizza_size)
+    ingredient_attributes.with_pizza_size(pizza_size).first.weight
+  end
 end

@@ -31,6 +31,13 @@
               = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
             a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
         .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
+  = form_field_group :parent_id, item do
+    = f.label :parent_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.collection_select :parent_id, pizzas,
+        :id, :name, { include_blank: 'Выберите пиццу, на основе которой создана данная' },
+                    { class: 'form-control selectize-pizzas' }
+      = form_field_error :parent_id, item
   = form_field_group :dough_id, item do
     = f.label :dough_id, class: 'col-sm-2 control-label'
     .col-sm-10
@@ -56,10 +63,10 @@
                   span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
                     span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
                       input { type = 'checkbox'
-                              ng-model = 'vm.pizzaIngredient(ingredient.id).core'
-                              id = 'pizza_ingredient_{{ingredient.id}}_core'
+                              ng-model = 'vm.pizzaIngredient(ingredient.id).base'
+                              id = 'pizza_ingredient_{{ingredient.id}}_base'
                             }
-                      label for='pizza_ingredient_{{ingredient.id}}_core' Базовый ингредиент?
+                      label for='pizza_ingredient_{{ingredient.id}}_base' Базовый ингредиент?
                   a.product-counter ng-click='vm.decreaseIngredient(ingredient.id)'
                     span.fa.fa-minus
                   span.product-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
@@ -84,8 +91,8 @@
                           }
                     input { type = 'hidden'
                             ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][core]'
-                            value = '{{vm.pizzaIngredient(ingredient.id).core}}'
+                            name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                            value = '{{vm.pizzaIngredient(ingredient.id).base}}'
                           }
                   span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
                     span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
@@ -98,8 +105,8 @@
                               value = '{{vm.ingredientQuantity(ingredient.id)}}'
                             }
                       input { type = 'hidden'
-                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][core]'
-                              value = '{{vm.pizzaIngredient(ingredient.id).core}}'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                              value = '{{vm.pizzaIngredient(ingredient.id).base}}'
                             }
   .form-group
     = f.label :pizza_attribute_attributes, class: 'col-sm-2 control-label'
@@ -112,7 +119,7 @@
               th Цена
               th.col-pizza-size Размер пиццы
           tbody
-            - item.pizza_attributes.each do |pizza_attribute|
+            - item.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
               tr
                 = f.fields_for :pizza_attributes, pizza_attribute do |ff|
                   td = ff.text_field :weight, class: 'form-control mask-weight'

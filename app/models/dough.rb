@@ -14,4 +14,12 @@ class Dough < ActiveRecord::Base
 
   validates :name, presence: true
   accepts_nested_attributes_for :dough_attributes
+
+  def price(pizza_size)
+    dough_attributes.with_pizza_size(pizza_size).first.price
+  end
+
+  def weight(pizza_size)
+    dough_attributes.with_pizza_size(pizza_size).first.weight
+  end
 end

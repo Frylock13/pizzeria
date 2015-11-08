@@ -50,6 +50,10 @@ $(document).on 'ready page:load page:partial-load', ->
     labelField: 'title'
     valueField: 'id'
 
+  $('.selectize-pizzas').selectize
+    labelField: 'name'
+    valueField: 'id'
+
   $('.selectize-product-categories').selectize(
     creatableElements('product_category', 'product_categories', 'Создать категорию')
   )
