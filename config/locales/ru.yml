@@ -121,6 +121,10 @@ ru:
         page_annotation: Аннотация
         page_description: Основной текст
     placeholder:
+      call_request:
+        first_name: Имя
+        phone: Телефон
+        wishes: Пожелания
       password_reset:
         email: Почта
       user_session:

@@ -1,1 +1,4 @@
-$('#dynamic_modal').find('#modal_body').html('<%= j render("thanks_message") %>');
+dialog = $('#dynamic_modal').children().first();
+$.resizeDialog(dialog, 'modal-sm');
+dialog.html('<%= j render("thanks_message_modal") %>');
+$('#dynamic_modal').modal('show');
