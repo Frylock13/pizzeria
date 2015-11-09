@@ -22,7 +22,6 @@ class CallRequestsController < ApplicationController
         format.html { render :new }
         format.js { render :new, layout: false }
       end
-      # render :new, change: :new_call_request, layout: !request.xhr?
     end
   end
 
