@@ -93,6 +93,8 @@ body
         padding: 15px 15px
         text-transform: uppercase
       li > a, li > div
+        border-left: 3px solid transparent
+        padding-left: 12px
         .nav-item-title
           font-size: 15px
           font-weight: bold
@@ -125,7 +127,8 @@ body
     &.dropdown-menu
       >
         li > a, li > div
-          padding: 10px 15px
+          border-left: 3px solid transparent
+          padding: 10px 15px 10px 12px
           white-space: initial
           span + small,
           small + span
@@ -158,9 +161,12 @@ body
           background-color: $navbar-default-link-disabled-bg
           color: $navbar-default-link-disabled-color
       .open > a
-        &, &:hover, &:focus
+        &
           background-color: $navbar-default-link-active-bg
           color: $navbar-default-link-active-color
+        &:hover, &:focus
+          background-color: $navbar-default-link-hover-bg
+          color: $navbar-default-link-hover-color
     &.dropdown-menu
       background-color: rgba(#000, 0.04)
       border-top: 1px solid darken($navbar-default-bg, 15%)
@@ -186,21 +192,23 @@ body
           background-color: $navbar-inverse-link-hover-bg
           color: $navbar-inverse-link-hover-color
       .active > a
-        border-left: 2px solid $brand-primary
-        padding-left: 13px
         &, &:hover, &:focus
           background-color: $navbar-inverse-link-active-bg
+          border-color: $brand-primary
           color: $navbar-inverse-link-active-color
       .disabled > a
         &, &:hover, &:focus
           background-color: $navbar-inverse-link-disabled-bg
           color: $navbar-inverse-link-disabled-color
       .open > a
-        &, &:hover, &:focus
-          background-color: $navbar-inverse-link-active-bg
-          color: $navbar-inverse-link-active-color
+        &
+          background-color: $navbar-inverse-link-open-bg
+          color: $navbar-inverse-link-open-color
+        &:hover, &:focus
+          background-color: $navbar-inverse-link-hover-bg
+          color: $navbar-inverse-link-hover-color
     &.dropdown-menu
-      background-color: rgba(#000, 0.1)
+      background-color: rgba(#000, 0.2)
       border-top: 1px solid darken($navbar-inverse-bg, 2%)
       border-bottom: 1px solid darken($navbar-inverse-bg, 3%)
       >
@@ -211,6 +219,7 @@ body
         .active > a
           &, &:hover, &:focus
             background-color: $navbar-inverse-link-active-bg
+            border-color: $brand-primary
             color: $navbar-inverse-link-active-color
 
 .body
