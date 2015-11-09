@@ -9,13 +9,17 @@ section.page id='call_requests'
         thead
           tr
             th.col-date Дата подачи заявки
-            th Имя
-            th Телефон
+            th Кто подал заявку
+            th Кому позвонить
             th Пожелания
         tbody
           - @call_requests.each do |call_request|
             tr
               td.col-date.date-moment = call_request.created_at
-              td = call_request.profile.first_name
-              td = call_request.profile.phone
+              td
+                p = call_request.ordering_profile.first_name
+                p = call_request.ordering_profile.phone
+              td
+                p = call_request.receiving_profile.first_name
+                p = call_request.receiving_profile.phone
               td = call_request.wishes
