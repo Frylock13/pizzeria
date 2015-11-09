@@ -1,17 +1,9 @@
-class UserSession < ActiveData
-  RECORDS = %W(user_session)
-
+class UserSession < ActiveForm
   attribute :email
   attribute :password
-  attribute :user_session
 
   validates :email, presence: true, email: true, user_by_email: true
   validates :password, presence: true, length: { minimum: 3 }
-
-  def build
-    self.email = user_session.email
-    self.password = user_session.password
-  end
 
   private
 

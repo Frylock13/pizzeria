@@ -1,4 +1,4 @@
-class ActiveData
+class ActiveForm
   include ActiveModel::Model
   include Virtus.model
 

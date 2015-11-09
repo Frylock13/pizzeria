@@ -1,4 +1,4 @@
-class PasswordReset < ActiveData
+class PasswordReset < ActiveForm
   RECORDS = %W(password_reset)
 
   attribute :email
