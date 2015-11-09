@@ -2,6 +2,10 @@ class CallRequestsController < ApplicationController
   def new
     @main_menu_key = :new_call_request
     @call_request = CallRequestForm.new(ordering_profile: current_profile).build
+    respond_to do |format|
+      format.html
+      format.js { render :new, layout: false }
+    end
     # render :new if stale? [:new_call_request] | layout_resources
   end
 
@@ -9,9 +13,16 @@ class CallRequestsController < ApplicationController
     @call_request = CallRequestForm.new(call_request_params)
     if @call_request.save
       session[:profile_id] = @call_request.ordering_profile.id
-      redirect_to root_path, success: 'Ваша заявка успешно отправлена'
+      respond_to do |format|
+        format.html { redirect_to thanks_call_requests_path, success: 'Ваша заявка успешно отправлена' }
+        format.js { render :thanks, layout: false }
+      end
     else
-      render :new, change: :new_call_request, layout: !request.xhr?
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render :new, layout: false }
+      end
+      # render :new, change: :new_call_request, layout: !request.xhr?
     end
   end
 

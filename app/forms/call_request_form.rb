@@ -3,6 +3,7 @@ class CallRequestForm < ActiveForm
   attribute :phone
   attribute :wishes
   attribute :ordering_profile, Profile
+  attribute :call_request, CallRequest
 
   validates :first_name, :phone, presence: true
 
@@ -20,9 +21,9 @@ class CallRequestForm < ActiveForm
 
   def persist_data
     ActiveRecord::Base.transaction do
-      call_request = CallRequest.create(wishes: wishes,
-                                        ordering_profile: get_ordering_profile,
-                                        receiving_profile: get_receiving_profile)
+      self.call_request = CallRequest.create(wishes: wishes,
+                                             ordering_profile: get_ordering_profile,
+                                             receiving_profile: get_receiving_profile)
       true
     end
   end

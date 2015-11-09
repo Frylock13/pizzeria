@@ -183,4 +183,4 @@
                            'phone', 'fa-phone', '+7 (495) 123-45-67'
           li class=('active' if @main_menu_key == :new_call_request)
             .text-center
-              = link_to 'Заказать обратный звонок', new_call_request_path, class: 'btn btn-default btn-block'
+              = link_to 'Заказать обратный звонок', new_call_request_path, class: 'btn btn-default btn-block', remote: true
