@@ -14,6 +14,7 @@ class ActiveForm
   private
 
   def collect_errors
+    return unless defined?(self.class::RECORDS)
     self.class::RECORDS.each do |record_str|
       record = try(record_str)
       next unless record.present? && record.errors.any?

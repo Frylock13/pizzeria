@@ -1,18 +1,16 @@
 class PasswordReset < ActiveForm
-  RECORDS = %W(password_reset)
-
   attribute :email
-  attribute :password_reset
 
   validates :email, presence: true, email: true, user_by_email: true
-
-  def build
-    self.email = password_reset.email
-  end
 
   private
 
   def persist_data
-    true
+    user = User.find_by(email: email)
+    return true if user.deliver_reset_password_instructions!
+    if user.reset_password_email_sent_at > (5*60).seconds.ago.utc
+      errors.add(:email, 'письмо отправлено совсем недавно, попробуйте через 5 минут')
+    end
+    false
   end
 end
