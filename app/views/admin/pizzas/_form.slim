@@ -119,7 +119,7 @@
               th Цена
               th.col-pizza-size Размер пиццы
           tbody
-            - item.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
+            - item.pizza_attributes.each do |pizza_attribute|
               tr
                 = f.fields_for :pizza_attributes, pizza_attribute do |ff|
                   td = ff.text_field :weight, class: 'form-control mask-weight'
