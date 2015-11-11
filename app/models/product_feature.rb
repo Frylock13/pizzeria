@@ -21,6 +21,9 @@ class ProductFeature < ActiveRecord::Base
             presence: true,
             uniqueness: { scope: [:product_id, :feature_id, :feature_value_id] }
 
+  delegate :name, to: :feature, allow_nil: true, prefix: true
+  delegate :name, to: :feature_value, allow_nil: true, prefix: true
+
   def name
     "#{feature.name}: #{feature_value.name}"
   end

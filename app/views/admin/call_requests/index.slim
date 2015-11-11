@@ -17,9 +17,9 @@ section.page id='call_requests'
             tr
               td.col-date.date-moment = call_request.created_at
               td
-                p = call_request.ordering_profile.first_name
-                p = call_request.ordering_profile.phone
+                p = call_request.ordering_first_name
+                p = call_request.ordering_phone
               td
-                p = call_request.receiving_profile.first_name
-                p = call_request.receiving_profile.phone
+                p = call_request.receiving_first_name
+                p = call_request.receiving_phone
               td = call_request.wishes

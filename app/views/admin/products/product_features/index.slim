@@ -22,8 +22,8 @@ section.page id='product_features'
         tbody
           - @product_features.each do |product_feature|
             tr
-              td = product_feature.feature.name
-              td = product_feature.feature_value.name
+              td = product_feature.feature_name
+              td = product_feature.feature_value_name
               td = product_feature.weight
               td = product_feature.price
               td.col-actions
