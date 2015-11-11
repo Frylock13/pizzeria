@@ -21,7 +21,7 @@ class Profile < ActiveRecord::Base
 
   scope :owned_by_user, -> (user_id) { where(owner_id: user_id) }
 
-  def orders
-    ordering_orders | receiving_orders
-  end
+  # def orders
+  #   ordering_orders | receiving_orders
+  # end
 end

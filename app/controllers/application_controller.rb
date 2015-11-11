@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
     @pages ||= Page.all.includes(:viewable_resource).order(:slug)
   end
 
-  def layout_resources
-    [current_user_etag, pages, revision]
-  end
+  # def layout_resources
+  #   [current_user_etag, pages, revision]
+  # end
 
   def profile_from_session
     Profile.find_by(id: session[:profile_id]) if session[:profile_id]
@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
     Profile.new
   end
 
-  def current_order
-    @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
-  end
+  # def current_order
+  #   @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
+  # end
 
   def current_profile
     @current_profile ||= profile_from_session || profile_for_user || profile_for_guest

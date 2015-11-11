@@ -4,7 +4,7 @@ class AdminController < ApplicationController
 
   private
 
-  def layout_resources
-    [revision]
-  end
+  # def layout_resources
+  #   [revision]
+  # end
 end
