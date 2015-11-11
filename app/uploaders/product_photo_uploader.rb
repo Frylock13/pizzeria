@@ -16,14 +16,17 @@ class ProductPhotoUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    random_token = Digest::SHA2.hexdigest("#{Time.now.utc}--#{model.id.to_s}").first(20)
-    ivar = "@#{mounted_as}_secure_token"
-    token = model.instance_variable_get(ivar)
-    token ||= model.instance_variable_set(ivar, random_token)
-    "#{model.id}_#{token}.jpg" if original_filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}"
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
   end
 end

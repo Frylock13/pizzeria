@@ -1,5 +1,5 @@
 = form_for [:admin, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
-  = image_tag item.parent.image.url(:thumb) if item.parent.present?
+  = image_tag item.image.url(:thumb) if item.image?
   = f.hidden_field :parent_id
   = form_field_group :dough_id, item do
     = f.label :dough_id, class: 'col-sm-2 control-label'
