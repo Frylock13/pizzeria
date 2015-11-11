@@ -67,8 +67,9 @@ group :development do
   gem 'meta_request'
   gem 'passenger'
   gem 'rack-livereload'
-  gem 'rails_best_practices'
-  gem 'traceroute'
+  gem 'rails_best_practices', require: false
+  gem 'rubycritic', require: false
+  gem 'traceroute', require: false
   gem 'web-console'
 end
 
