@@ -67,6 +67,7 @@ group :development do
   gem 'meta_request'
   gem 'passenger'
   gem 'rack-livereload'
+  gem 'rails_best_practices'
   gem 'traceroute'
   gem 'web-console'
 end
