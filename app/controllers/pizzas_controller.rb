@@ -4,10 +4,9 @@ class PizzasController < ApplicationController
 
   def new
     if parent.present?
-      @pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes]
+      @pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes], except: [:owner_id]
       @pizza.parent = parent
       @pizza.visibility = :for_user
-      @pizza.owner = nil
     else
       @pizza = Pizza.new
       PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
