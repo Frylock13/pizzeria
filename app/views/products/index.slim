@@ -52,7 +52,7 @@ section.products id='pizza'
     .container-masonry
       .section-title = product_category.name
       .masonry-grid.row
-        - product_category.products.each do |product|
+        - product_category.products.with_visibility(:for_all).each do |product|
           .masonry-item.col-xs-6.col-md-4.col-lg-3
             .panel.panel-default.panel-product
               .panel-body
