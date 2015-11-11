@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109180623) do
+ActiveRecord::Schema.define(version: 20151111012256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 20151109180623) do
 
   add_index "pizzas", ["dough_id"], name: "index_pizzas_on_dough_id", using: :btree
   add_index "pizzas", ["owner_id"], name: "index_pizzas_on_owner_id", using: :btree
+  add_index "pizzas", ["parent_id"], name: "index_pizzas_on_parent_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
