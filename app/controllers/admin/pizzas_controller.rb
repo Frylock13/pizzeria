@@ -67,7 +67,7 @@ module Admin
     end
 
     def pizzas
-      @pizzas ||= Pizza.where(parent_id: nil).order(name: :asc)
+      @pizzas ||= Pizza.standard.order(name: :asc)
     end
 
     def ingredient_categories

@@ -1,9 +1,9 @@
-class PizzasController < AdminController
+class PizzasController < ApplicationController
   before_action :main_menu_key
   helper_method :doughs, :pizzas
 
   def new
-    @pizza = Pizza.new
+    @pizza = Pizza.new(parent: parent)
     PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = []
@@ -21,12 +21,16 @@ class PizzasController < AdminController
 
   private
 
+  def parent
+    @parent ||= Pizza.standard.find(params[:parent_id])
+  end
+
   def doughs
     @doughs ||= Dough.all.order(name: :asc)
   end
 
   def pizzas
-    @pizzas ||= Pizza.where(parent_id: nil).order(name: :asc)
+    @pizzas ||= Pizza.standard.order(name: :asc)
   end
 
   def ingredient_categories
@@ -42,9 +46,11 @@ class PizzasController < AdminController
 
   def pizza_params
     params.require(:pizza).permit(
-      :name, :image, :visibility, :dough_id, :parent_id,
+      :image, :dough_id, :parent_id,
       { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
       { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :base, :_destroy] }
+    ).merge(
+      { visibility: :for_user }
     )
   end
 end

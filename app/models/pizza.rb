@@ -27,6 +27,8 @@ class Pizza < ActiveRecord::Base
   accepts_nested_attributes_for :pizza_attributes
   accepts_nested_attributes_for :pizza_ingredients, allow_destroy: true
 
+  scope :standard, -> { where(parent_id: nil) }
+
   def price(pizza_size)
     dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(:d22) }.sum
   end
