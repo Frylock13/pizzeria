@@ -45,6 +45,11 @@ module Admin
       redirect_to admin_pages_path, change: :pages
     end
 
+    def dashboard
+      @main_menu_key = :dashboard
+      # render :dashboard if stale? [:admin_dashboard] | layout_resources
+    end
+
     private
 
     def main_menu_key

@@ -25,6 +25,9 @@ class CallRequestsController < ApplicationController
     end
   end
 
+  def thanks
+  end
+
   private
 
   def call_request_params
