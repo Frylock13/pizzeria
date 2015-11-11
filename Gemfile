@@ -7,7 +7,6 @@ gem 'annotate'
 gem 'bootstrap-sass'
 gem 'bourbon'
 gem 'carrierwave'
-gem 'ckeditor', github: 'gambala/ckeditor'
 gem 'coffee-rails'
 gem 'enum_help'
 gem 'enumerize'
@@ -68,6 +67,7 @@ group :development do
   gem 'meta_request'
   gem 'passenger'
   gem 'rack-livereload'
+  gem 'traceroute'
   gem 'web-console'
 end
 

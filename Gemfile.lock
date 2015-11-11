@@ -7,14 +7,6 @@ GIT
       guard-compat (~> 1.1)
 
 GIT
-  remote: git://github.com/gambala/ckeditor.git
-  revision: 1cc4e298af3bea82a17130d8a4b29cdeeca43706
-  specs:
-    ckeditor (4.1.3)
-      cocaine
-      orm_adapter (~> 0.5.0)
-
-GIT
   remote: git://github.com/rails/turbolinks.git
   revision: 90d4132be6275edd997beeb66bf3876b0207291d
   specs:
@@ -136,10 +128,6 @@ GEM
       timers (>= 4.1.1)
     celluloid-supervision (0.20.5)
       timers (>= 4.1.1)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.7)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -282,7 +270,6 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    orm_adapter (0.5.0)
     parallel (1.6.1)
     parallel_tests (1.9.0)
       parallel
@@ -466,6 +453,8 @@ GEM
     tilt (2.0.1)
     timers (4.1.1)
       hitimes
+    traceroute (0.5.0)
+      rails (>= 3.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -507,7 +496,6 @@ DEPENDENCIES
   capistrano-sidekiq
   capistrano-unicorn-nginx
   carrierwave
-  ckeditor!
   coffee-rails
   enum_help
   enumerize
@@ -562,6 +550,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   summernote-rails
+  traceroute
   turbolinks!
   uglifier
   underscore-rails
