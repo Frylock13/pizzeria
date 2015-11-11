@@ -11,7 +11,7 @@ html
     = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
   body
     = include_gon(init: true)
-    = render 'shared/sidebar'
+    = render 'shared/sidebar', main_menu_key: @main_menu_key
     .body id='body'
       = render 'shared/header'
       = render 'shared/flashes'

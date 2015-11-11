@@ -4,7 +4,7 @@
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       li.navmenu-title Закажите пиццу в 3 шага
-      - if @main_menu_key == :products
+      - if main_menu_key == :products
         li.dropdown.open
           = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle', 'data-scroll' => '' do
             span.fa.fa-check-circle-o.fa-lg.text-success
@@ -56,7 +56,7 @@
           span.fa.fa-check-circle-o.fa-lg.text-success
           span Шаг 1. Составьте заказ
           span.fa.fa-chevron-down
-      - if @main_menu_key == :new_order
+      - if main_menu_key == :new_order
         li.dropdown.open
           = link_to 'javascript:;', class: 'dropdown-toggle' do
             span.fa.fa-circle-o.fa-lg
@@ -107,7 +107,7 @@
           span.fa.fa-circle-o.fa-lg
           span Шаг 2. Оформите доставку
           span.fa.fa-chevron-down
-      - if @main_menu_key == :orders
+      - if main_menu_key == :orders
         li.dropdown.open
           = link_to 'javascript:;', class: 'dropdown-toggle' do
             span.fa.fa-clock-o.fa-lg
@@ -156,7 +156,7 @@
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
           - else
-            li class=('active' if @main_menu_link == :auth)
+            li class=('active' if main_menu_key == :auth)
               = link_to login_path do
                 .nav-item-title Войти / Зарегистрироваться
                 .nav-item-subtitle
@@ -181,6 +181,6 @@
                            'email', 'fa-envelope', 'help@vpzven.ru'
           = main_menu_link '+7 (495) 123-45-67',
                            'phone', 'fa-phone', '+7 (495) 123-45-67'
-          li class=('active' if @main_menu_key == :new_call_request)
+          li class=('active' if main_menu_key == :new_call_request)
             .text-center
               = link_to 'Заказать обратный звонок', new_call_request_path, class: 'btn btn-default btn-block', remote: true
