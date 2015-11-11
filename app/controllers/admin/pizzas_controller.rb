@@ -19,10 +19,7 @@ module Admin
     def edit
       @pizza = Pizza.find(params[:id])
       gon.ingredient_categories = ingredient_categories
-      gon.pizza_ingredients = ActiveModel::ArraySerializer.new(
-        @pizza.pizza_ingredients,
-        each_serializer: PizzaIngredientSerializer
-      )
+      gon.pizza_ingredients = pizza_ingredients(@pizza)
       # render :edit if stale? [@pizza, ingredient_categories] | layout_resources
     end
 
@@ -64,6 +61,13 @@ module Admin
 
     def doughs
       @doughs ||= Dough.all.order(name: :asc)
+    end
+
+    def pizza_ingredients(pizza)
+      @pizza_ingredients ||= ActiveModel::ArraySerializer.new(
+        pizza.pizza_ingredients,
+        each_serializer: PizzaIngredientSerializer
+      )
     end
 
     def pizzas

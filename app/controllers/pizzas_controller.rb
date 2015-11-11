@@ -3,10 +3,17 @@ class PizzasController < ApplicationController
   helper_method :doughs, :pizzas
 
   def new
-    @pizza = Pizza.new(parent: parent)
-    PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
+    if parent.present?
+      @pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes]
+      @pizza.parent = parent
+      @pizza.visibility = :for_user
+      @pizza.owner = nil
+    else
+      @pizza = Pizza.new
+      PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
+    end
     gon.ingredient_categories = ingredient_categories
-    gon.pizza_ingredients = []
+    gon.pizza_ingredients = pizza_ingredients(@pizza)
     # render :new if stale? [@pizza, ingredient_categories] | layout_resources
   end
 
@@ -27,6 +34,13 @@ class PizzasController < ApplicationController
 
   def doughs
     @doughs ||= Dough.all.order(name: :asc)
+  end
+
+  def pizza_ingredients(pizza)
+    @pizza_ingredients ||= ActiveModel::ArraySerializer.new(
+      pizza.pizza_ingredients,
+      each_serializer: PizzaIngredientSerializer
+    )
   end
 
   def pizzas
