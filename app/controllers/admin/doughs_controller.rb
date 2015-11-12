@@ -1,9 +1,9 @@
 module Admin
   class DoughsController < AdminController
     before_action :main_menu_key
+    helper_method :doughs
 
     def index
-      @doughs = Dough.all
       # render :index if stale? @doughs | layout_resources
     end
 
@@ -50,6 +50,10 @@ module Admin
 
     def main_menu_key
       @main_menu_key = :doughs
+    end
+
+    def doughs
+      @doughs ||= Dough.all.order(:name)
     end
 
     def dough_params

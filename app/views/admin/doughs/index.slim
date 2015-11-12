@@ -2,16 +2,8 @@
 - content_for :header do
   ol.breadcrumb
     li.active Тесто
-section.page id='doughs'
+section.page
   .container-fluid
-    = link_to 'Добавить Тесто', new_admin_dough_path, class: 'btn btn-primary'
-    ul.list-group
-      - @doughs.each do |dough|
-        li.list-group-item
-          .block.item-actions
-            = link_to [:edit, :admin, dough], title: 'Изменить тесто' do
-              span.fa.fa-pencil
-            = link_to [:admin, dough], title: 'Удалить тесто',
-                      method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-              span.fa.fa-trash
-          = link_to dough.name, [:edit, :admin, dough]
+    .row
+      .col-lg-4 id='doughs'
+        = render 'doughs'

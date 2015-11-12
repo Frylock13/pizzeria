@@ -5,4 +5,13 @@
     li.active = @dough.name
 section.page
   .container-fluid
-    = render 'form', item: @dough
+    .row
+      .col-lg-4 id='doughs'
+        = render 'doughs'
+      .col-lg-8
+        .panel.panel-default
+          .panel-heading
+            = link_to '&times;'.html_safe, admin_doughs_path, class: 'close'
+            .panel-title = @dough.name
+          .panel-body
+            = render 'form', item: @dough

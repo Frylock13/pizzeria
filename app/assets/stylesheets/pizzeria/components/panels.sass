@@ -5,12 +5,19 @@
 @import 'css3/transition'
 
 .panel
+  margin-bottom: 8px
   > .panel-heading
     line-height: rh()
+    min-height: 40px
     position: relative
     > .block.item-actions
       padding: $panel-heading-padding
   > .panel-body
+    line-height: rh()
+    min-height: 40px
+    position: relative
+    > .block.item-actions
+      padding: $panel-body-padding
     > .list-group
       margin: -$panel-body-padding
       .list-group-item
