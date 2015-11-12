@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    forbidden unless current_user.role.try(:admin?)
+    forbidden unless current_user.try(:role).try(:admin?)
   end
 
   def current_profile
