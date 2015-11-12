@@ -1,12 +1,9 @@
 - title @pizza.name
-section.heading
-  .container-fluid
-    .pull-right
-      = link_to 'Пересчитать стоимость', [:admin, @pizza, :recalculate], class: 'btn btn-default'
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Пицца', admin_pizzas_path
-        li.active = @pizza.name
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Пицца', admin_pizzas_path
+    li.active = @pizza.name
 section.page
   .container-fluid
     = render 'form', item: @pizza
+    = link_to 'Пересчитать стоимость', [:admin, @pizza, :recalculate], class: 'btn btn-default'

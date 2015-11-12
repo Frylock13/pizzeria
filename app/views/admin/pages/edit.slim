@@ -1,10 +1,8 @@
 - title @page.meta_title
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Страницы', admin_pages_path
-        li.active = @page.meta_title
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Страницы', admin_pages_path
+    li.active = @page.meta_title
 section.page
   .container-fluid
     = render 'form', item: @page

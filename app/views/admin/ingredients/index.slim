@@ -1,11 +1,10 @@
 - title 'Ингредиенты'
-section.heading
-  .container-fluid
-    .pull-right
-      = link_to 'Добавить Ингредиент', new_admin_ingredient_path, class: 'btn btn-primary'
-    h1.section-title Ингредиенты
+- content_for :header do
+  ol.breadcrumb
+    li.active Ингредиенты
 section.page id='ingredients'
   .container-fluid
+    = link_to 'Добавить Ингредиент', new_admin_ingredient_path, class: 'btn btn-primary'
     - if @ingredient_categories.any?
       .sortable-list
         - @ingredient_categories.each do |ingredient_category|

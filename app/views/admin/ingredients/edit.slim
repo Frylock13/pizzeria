@@ -1,10 +1,8 @@
 - title @ingredient.name
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Ингредиенты', admin_ingredients_path
-        li.active = @ingredient.name
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ингредиенты', admin_ingredients_path
+    li.active = @ingredient.name
 section.page
   .container-fluid
     = render 'form', item: @ingredient

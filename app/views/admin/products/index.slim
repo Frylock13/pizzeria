@@ -1,11 +1,10 @@
 - title 'Продукты'
-section.heading
-  .container-fluid
-    .pull-right
-      = link_to 'Добавить Продукт', new_admin_product_path, class: 'btn btn-primary'
-    h1.section-title Продукты
+- content_for :header do
+  ol.breadcrumb
+    li.active Продукты
 section.page id='products'
   .container-fluid
+    = link_to 'Добавить Продукт', new_admin_product_path, class: 'btn btn-primary'
     - if @product_categories.any?
       .sortable-list
         - @product_categories.each do |product_category|

@@ -1,9 +1,9 @@
 - title 'Страницы'
-section.heading
-  .container-fluid
-    .pull-right
-      = link_to 'Добавить страницу', new_admin_page_path, class: 'btn btn-primary'
-    h1.section-title Страницы
+- content_for :header do
+  = link_to new_admin_page_path, title: 'Добавить страницу', class: 'btn btn-primary navbar-btn navbar-right' do
+    span.fa.fa-plus
+  ol.breadcrumb
+    li.active Страницы
 section.page id='pages'
   .container-fluid
     ul.list-group

@@ -1,35 +1,38 @@
-= form_for [:admin, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
-  = form_field_group :name, item do
-    = f.label :name, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :name, class: 'form-control', required: false
-      = form_field_error :name, item
-  = form_field_group :ingredient_category_id, item do
-    = f.label :ingredient_category_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.collection_select :ingredient_category_id, ingredient_categories,
-        :id, :name, { prompt: 'Выберите категорию' },
-                    { class: 'form-control selectize-ingredient-categories' }
-      = form_field_error :ingredient_category_id, item
-  .form-group
-    = f.label :ingredient_attribute_attributes, class: 'col-sm-2 control-label'
-    .col-sm-10
-      .table-responsive
-        table.table
-          thead
-            tr
-              th Вес
-              th Цена
-              th.col-pizza-size Размер пиццы
-          tbody
-            - item.ingredient_attributes.each do |ingredient_attribute|
+= form_for [:admin, item], remote: true, authenticity_token: true do |f|
+  .row
+    .col-sm-12.col-lg-4
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-sm-6.col-lg-12
+              = form_field_group :name, item do
+                = f.label :name, class: 'control-label'
+                = f.text_field :name, class: 'form-control', required: false
+                = form_field_error :name, item
+            .col-sm-6.col-lg-12
+              = form_field_group :ingredient_category_id, item do
+                = f.label :ingredient_category_id, class: 'control-label'
+                = f.collection_select :ingredient_category_id, ingredient_categories,
+                  :id, :name, { prompt: 'Выберите категорию' },
+                              { class: 'form-control selectize-ingredient-categories' }
+                = form_field_error :ingredient_category_id, item
+    .col-sm-12.col-lg-8
+      .form-group
+        .table-responsive
+          table.table
+            thead
               tr
-                = f.fields_for :ingredient_attributes, ingredient_attribute do |ff|
-                  td = ff.text_field :weight, class: 'form-control mask-weight'
-                  td = ff.text_field :price, class: 'form-control mask-currency'
-                  td.col-pizza-size
-                    = ff.hidden_field :pizza_size
-                    = ingredient_attribute.pizza_size.text
+                th Вес
+                th Цена
+                th.col-pizza-size Размер пиццы
+            tbody
+              - item.ingredient_attributes.each do |ingredient_attribute|
+                tr
+                  = f.fields_for :ingredient_attributes, ingredient_attribute do |ff|
+                    td = ff.text_field :weight, class: 'form-control mask-weight'
+                    td = ff.text_field :price, class: 'form-control mask-currency'
+                    td.col-pizza-size
+                      = ff.hidden_field :pizza_size
+                      = ingredient_attribute.pizza_size.text
   .form-group
-    .col-sm-10.col-sm-offset-2
-      = f.button nil, class: 'btn btn-primary btn-lg ladda-button'
+    = f.button nil, class: 'btn btn-primary btn-lg ladda-button'

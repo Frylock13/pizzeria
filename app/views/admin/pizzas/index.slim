@@ -1,9 +1,7 @@
 - title 'Пицца'
-section.heading
-  .container-fluid
-    .pull-right
-      = link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary'
-    h1.section-title Пицца
+- content_for :header do
+  ol.breadcrumb
+    li.active Пицца
 section.page id='pizzas'
   .container-fluid
     ul.list-group
@@ -16,3 +14,4 @@ section.page id='pizzas'
                       method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
               span.fa.fa-trash
           = link_to pizza.name, [:edit, :admin, pizza]
+    = link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary'

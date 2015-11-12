@@ -1,10 +1,8 @@
 - title 'Добавление страницы'
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Страницы', admin_pages_path
-        li.active Добавление страницы
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Страницы', admin_pages_path
+    li.active Добавление страницы
 section.page
   .container-fluid
     = render 'form', item: @page

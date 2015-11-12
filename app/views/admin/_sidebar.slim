@@ -11,10 +11,10 @@
     ul.nav.navmenu-nav
       li.navmenu-title Данные на сайте
       = main_menu_link admin_pages_path,
-                       :pages, 'fa-file-o', Page.model_name.human(count: 0)
+                       :pages, 'fa-file', Page.model_name.human(count: 0)
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'
-          span.fa.fa-fw.fa-lg
+          span.fa.fa-tags.fa-lg
           span Товары
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav

@@ -1,10 +1,8 @@
 - title 'Добавление продукта'
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Продукты', admin_products_path
-        li.active Добавление продукта
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Продукты', admin_products_path
+    li.active Добавление продукта
 section.page
   .container-fluid
     = render 'form', item: @product

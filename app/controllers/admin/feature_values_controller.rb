@@ -3,6 +3,7 @@ module Admin
     helper_method :feature_value
 
     def edit
+      @main_menu_key = :features
       # render :edit if stale? [feature_value] | layout_resources
     end
 

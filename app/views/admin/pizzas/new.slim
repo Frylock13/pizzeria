@@ -1,10 +1,8 @@
 - title 'Создание пиццы'
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Пицца', admin_pizzas_path
-        li.active Создание пиццы
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Пицца', admin_pizzas_path
+    li.active Создание пиццы
 section.page
   .container-fluid
     = render 'form', item: @pizza

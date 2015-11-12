@@ -1,9 +1,9 @@
 module Admin
   class FeaturesController < AdminController
+    before_action :main_menu_key
     helper_method :feature
 
     def index
-      @main_menu_key = :features
       @features = Feature.all
       @feature_values = FeatureValue.all
       # render :index if stale? [@features, @feature_values] | layout_resources
@@ -46,6 +46,10 @@ module Admin
     end
 
     private
+
+    def main_menu_key
+      @main_menu_key = :features
+    end
 
     def feature
       @feature ||= Feature.find(params[:id])
