@@ -10,7 +10,7 @@ html
   body
     = include_gon(init: true)
     = render 'admin/sidebar'
-    .body id='body'
-      = render 'shared/header'
+    .body.body-padded id='body'
+      = render 'admin/header'
       = render 'shared/flashes'
       = yield
