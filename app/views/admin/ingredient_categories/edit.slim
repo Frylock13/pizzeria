@@ -1,10 +1,15 @@
 - title ingredient_category.name
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Ингредиенты', admin_ingredients_path
-        li.active Категория #{ingredient_category.name}
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ингредиенты', admin_ingredients_path
+    li.active #{ingredient_category.name} (категория)
+section.submenu id='ingredients'
+  = render 'admin/ingredients/ingredients'
 section.page
   .container-fluid
-    = render 'form', item: ingredient_category
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_ingredients_path, class: 'close'
+        .panel-title #{ingredient_category.name} (категория)
+      .panel-body
+        = render 'form', item: ingredient_category

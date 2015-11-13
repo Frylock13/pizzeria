@@ -2,34 +2,7 @@
 - content_for :header do
   ol.breadcrumb
     li.active Страницы
-section.page id='pages'
+section.submenu.submenu-visible id='pages'
+  = render 'pages'
+section.page
   .container-fluid
-    .row
-      .col-lg-8
-        - @pages.each do |page|
-          .panel.panel-default
-            .panel-body
-              .block.item-actions
-                = link_to [:edit, :admin, page], title: 'Изменить страницу' do
-                  span.fa.fa-pencil
-                = link_to [:admin, page], title: 'Удалить страницу',
-                          method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-                  span.fa.fa-trash
-              = link_to page.meta_title, [:edit, :admin, page]
-        .panel.panel-default
-          .panel-body
-            .block.item-actions
-              = link_to new_admin_page_path, title: 'Добавить страницу' do
-                span.fa.fa-plus
-
-
-        / ul.list-group
-        /   - @pages.each do |page|
-        /     li.list-group-item
-        /       .block.item-actions
-        /         = link_to [:edit, :admin, page], title: 'Изменить страницу' do
-        /           span.fa.fa-pencil
-        /         = link_to [:admin, page], title: 'Удалить страницу',
-        /                   method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-        /           span.fa.fa-trash
-        /       = link_to page.meta_title, [:edit, :admin, page]

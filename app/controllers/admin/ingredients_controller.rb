@@ -4,7 +4,6 @@ module Admin
     helper_method :ingredient_categories
 
     def index
-      @ingredient_categories = IngredientCategory.includes(:ingredients).all.order(:position)
       # render :index if stale? @ingredient_categories | layout_resources
     end
 
@@ -50,7 +49,7 @@ module Admin
     private
 
     def ingredient_categories
-      @ingredient_categories ||= IngredientCategory.all.order(name: :asc)
+      @ingredient_categories ||= IngredientCategory.includes(:ingredients).all.order(:position)
     end
 
     def main_menu_key

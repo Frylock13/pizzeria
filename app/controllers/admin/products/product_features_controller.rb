@@ -2,12 +2,9 @@ module Admin
   module Products
     class ProductFeaturesController < AdminController
       before_action :main_menu_key
-      helper_method :feature_values, :features, :product
+      helper_method :feature_values, :features, :product, :product_features
 
       def index
-        @product_features = product.product_features
-                                   .includes(:feature, :feature_value)
-                                   .order('features.name', 'feature_values.name')
         # render :index if stale? @product_features | layout_resources
       end
 
@@ -49,6 +46,10 @@ module Admin
 
       private
 
+      def main_menu_key
+        @main_menu_key = :products
+      end
+
       def feature_values
         @feature_values ||= FeatureValue.all.order(name: :asc)
       end
@@ -61,8 +62,10 @@ module Admin
         @product ||= Product.find(params[:product_id])
       end
 
-      def main_menu_key
-        @main_menu_key = :products
+      def product_features
+        @product_features ||= product.product_features
+                                     .includes(:feature, :feature_value)
+                                     .order('features.name', 'feature_values.name')
       end
 
       def product_feature_params

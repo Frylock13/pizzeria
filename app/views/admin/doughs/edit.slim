@@ -3,15 +3,13 @@
   ol.breadcrumb
     li = link_to 'Тесто', admin_doughs_path
     li.active = @dough.name
+section.submenu id='doughs'
+  = render 'doughs'
 section.page
   .container-fluid
-    .row
-      .col-lg-4 id='doughs'
-        = render 'doughs'
-      .col-lg-8
-        .panel.panel-default
-          .panel-heading
-            = link_to '&times;'.html_safe, admin_doughs_path, class: 'close'
-            .panel-title = @dough.name
-          .panel-body
-            = render 'form', item: @dough
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_doughs_path, class: 'close'
+        .panel-title = @dough.name
+      .panel-body
+        = render 'form', item: @dough

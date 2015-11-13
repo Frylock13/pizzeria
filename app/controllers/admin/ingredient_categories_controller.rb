@@ -1,6 +1,7 @@
 module Admin
   class IngredientCategoriesController < AdminController
-    helper_method :ingredient_category
+    before_action :main_menu_key
+    helper_method :ingredient_category, :ingredient_categories
 
     def edit
       # render :edit if stale? [ingredient_category] | layout_resources
@@ -48,6 +49,10 @@ module Admin
 
     private
 
+    def main_menu_key
+      @main_menu_key = :ingredients
+    end
+
     def update_by_reason
       if ingredient_category_params[:position] != ingredient_category.position
         ingredient_category.insert_at ingredient_category_params[:position].to_i
@@ -57,6 +62,10 @@ module Admin
 
     def ingredient_category
       @ingredient_category ||= IngredientCategory.find(params[:id])
+    end
+
+    def ingredient_categories
+      @ingredient_categories ||= IngredientCategory.includes(:ingredients).all.order(:position)
     end
 
     def ingredient_category_params

@@ -1,6 +1,7 @@
 module Admin
   class ProductCategoriesController < AdminController
-    helper_method :product_category
+    before_action :main_menu_key
+    helper_method :product_category, :product_categories
 
     def edit
       # render :edit if stale? [product_category] | layout_resources
@@ -48,6 +49,10 @@ module Admin
 
     private
 
+    def main_menu_key
+      @main_menu_key = :products
+    end
+
     def update_by_reason
       if product_category_params[:position] != product_category.position
         product_category.insert_at product_category_params[:position].to_i
@@ -57,6 +62,10 @@ module Admin
 
     def product_category
       @product_category ||= ProductCategory.find(params[:id])
+    end
+
+    def product_categories
+      @product_categories ||= ProductCategory.includes(:products).all.order(:position)
     end
 
     def product_category_params

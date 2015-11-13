@@ -1,9 +1,9 @@
 module Admin
   class PagesController < AdminController
     before_action :main_menu_key
+    helper_method :pages
 
     def index
-      @pages = Page.all.includes(:viewable_resource)
       # render :index if stale? @pages | layout_resources
     end
 
@@ -54,6 +54,10 @@ module Admin
 
     def main_menu_key
       @main_menu_key = :pages
+    end
+
+    def pages
+      @pages ||= Page.all.includes(:viewable_resource)
     end
 
     def page_params

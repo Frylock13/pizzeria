@@ -1,11 +1,17 @@
 - title 'Добавление атрибута продукта'
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Продукты', admin_products_path
-        li = link_to product.name, admin_product_product_features_path
-        li.active Добавление атрибута продукта
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Продукты', admin_products_path
+    li = link_to product.name, [:edit, :admin, product]
+    li = link_to 'Атрибуты продукта', admin_product_product_features_path
+    li.active Создание атрибута продукта
+section.submenu id='product_features'
+  = render 'product_features'
 section.page
   .container-fluid
-    = render 'form', item: @product_feature
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_product_product_features_path, class: 'close'
+        .panel-title Создание атрибута продукта
+      .panel-body
+        = render 'form', item: @product_feature

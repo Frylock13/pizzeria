@@ -3,7 +3,14 @@
   ol.breadcrumb
     li = link_to 'Продукты', admin_products_path
     li.active = @product.name
-= render 'menu', active: :edit, product: @product
+section.submenu id='products'
+  = render 'products'
 section.page
   .container-fluid
-    = render 'form', item: @product
+    = render 'menu', active: :edit, product: @product
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_products_path, class: 'close'
+        .panel-title = @product.name
+      .panel-body
+        = render 'form', item: @product

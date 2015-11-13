@@ -4,7 +4,6 @@ module Admin
     helper_method :product_categories
 
     def index
-      @product_categories = ProductCategory.includes(:products).all.order(:position)
       # render :index if stale? @product_categories | layout_resources
     end
 
@@ -48,12 +47,12 @@ module Admin
 
     private
 
-    def product_categories
-      @product_categories ||= ProductCategory.all.order(name: :asc)
-    end
-
     def main_menu_key
       @main_menu_key = :products
+    end
+
+    def product_categories
+      @product_categories ||= ProductCategory.includes(:products).all.order(:position)
     end
 
     def product_params

@@ -1,7 +1,5 @@
-section.tabs
-  .container-fluid
-    ul.nav.nav-tabs
-      = tab_link 'Основные данные', [:edit, :admin, product],
-                 active: :edit == active
-      = tab_link 'Атрибуты продукта', [:admin, product, :product_features],
-                 active: :product_features == active
+ul.nav.nav-pills
+  = tab_link 'Основные данные', [:edit, :admin, product],
+             active: :edit == active
+  = tab_link 'Атрибуты продукта', [:admin, product, :product_features],
+             active: :product_features == active

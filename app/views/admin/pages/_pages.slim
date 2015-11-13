@@ -1,0 +1,12 @@
+= link_to 'Добавить страницу', new_admin_page_path, class: 'btn btn-primary btn-block'
+hr
+- pages.each do |page|
+  .panel.panel-default
+    .panel-body
+      .block.item-actions
+        = link_to [:edit, :admin, page], title: 'Изменить страницу' do
+          span.fa.fa-pencil
+        = link_to [:admin, page], title: 'Удалить страницу',
+                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+          span.fa.fa-trash
+      = link_to page.meta_title, [:edit, :admin, page]

@@ -4,8 +4,10 @@
 @import 'addons/border-radius'
 @import 'addons/prefixer'
 @import 'css3/animation'
+@import 'css3/calc'
 @import 'css3/keyframes'
 @import 'mixins'
+@import 'breakpoint-sass'
 
 +keyframes(anchorHighlight)
   0%
@@ -194,6 +196,27 @@ section
         &.pizza-objora
           .panel-body
             +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
+  &.submenu
+    // +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
+    +calc(height, '100vh - 50px')
+    +scrollbar
+    background-color: #f5f5f5
+    border-right: 1px solid #e7e7e7
+    display: none
+    overflow: auto
+    overflow: overlay
+    padding: 20px 19px 20px 20px
+    position: fixed
+    width: 300px
+    z-index: 4
+    +breakpoint($screen-lg-min)
+      display: block
+      + .page
+        margin-left: 300px
+    &.submenu-visible
+      display: block
+      + .page
+        margin-left: 300px
   &.tabs
     background-color: rgba(#fff, 0.6)
     border-bottom: 1px solid #e0e1e1

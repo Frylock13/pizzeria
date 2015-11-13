@@ -4,7 +4,6 @@ module Admin
     helper_method :doughs, :pizzas
 
     def index
-      @pizzas = Pizza.all.order(:name)
       # render :index if stale? @pizzas | layout_resources
     end
 
@@ -71,7 +70,7 @@ module Admin
     end
 
     def pizzas
-      @pizzas ||= Pizza.standard.order(name: :asc)
+      @pizzas ||= Pizza.all.order(:name)
     end
 
     def ingredient_categories

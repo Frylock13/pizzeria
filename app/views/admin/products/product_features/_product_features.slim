@@ -1,0 +1,17 @@
+= link_to 'Добавить Атрибут', new_admin_product_product_feature_path, class: 'btn btn-primary btn-block'
+hr
+- product_features.each do |product_feature|
+  .panel.panel-default
+    .panel-body
+      .block.item-actions
+        = link_to [:edit, :admin, product, product_feature], title: 'Изменить атрибут продукта' do
+          span.fa.fa-pencil
+        = link_to [:admin, product, product_feature], title: 'Удалить атрибут продукта',
+                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+          span.fa.fa-trash
+      = link_to [:edit, :admin, product, product_feature] do
+        = product_feature.feature_name
+        ' :
+        = product_feature.feature_value_name
+        '
+        sub = number_to_currency product_feature.price, precision: 0

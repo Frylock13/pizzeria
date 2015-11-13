@@ -3,17 +3,6 @@
     = f.label :name, class: 'control-label'
     = f.text_field :name, class: 'form-control', required: false
     = form_field_error :name, item
-  .well
-    - item.dough_attributes.each do |pizza_attribute|
-      .form-group
-        = f.fields_for :dough_attributes, pizza_attribute do |ff|
-          = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
-                     class: 'control-label'
-          = ff.hidden_field :pizza_size
-          .row
-            .col-xs-6
-              = ff.text_field :price, class: 'form-control mask-currency'
-            .col-xs-6
-              = ff.text_field :weight, class: 'form-control mask-weight'
+  = render 'admin/attributes_fields', f: f, fields: :dough_attributes, items: item.dough_attributes
   .form-group
     = f.button nil, class: 'btn btn-primary ladda-button'

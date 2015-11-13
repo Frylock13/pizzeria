@@ -3,6 +3,13 @@
   ol.breadcrumb
     li = link_to 'Страницы', admin_pages_path
     li.active Добавление страницы
+section.submenu id='pages'
+  = render 'pages'
 section.page
   .container-fluid
-    = render 'form', item: @page
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_pages_path, class: 'close'
+        .panel-title Добавление страницы
+      .panel-body
+        = render 'form', item: @page

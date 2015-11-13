@@ -3,7 +3,15 @@
   ol.breadcrumb
     li = link_to 'Пицца', admin_pizzas_path
     li.active = @pizza.name
+section.submenu id='pizzas'
+  = render 'pizzas'
 section.page
   .container-fluid
-    = render 'form', item: @pizza
-    = link_to 'Пересчитать стоимость', [:admin, @pizza, :recalculate], class: 'btn btn-default'
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_pizzas_path, class: 'close'
+        .panel-title = @pizza.name
+      .panel-body
+        = render 'form', item: @pizza
+      .panel-footer
+        = link_to 'Пересчитать стоимость', [:admin, @pizza, :recalculate], class: 'btn btn-default'

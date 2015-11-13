@@ -1,125 +1,102 @@
 = form_for [:admin, item], remote: true, authenticity_token: true do |f|
   .row
-    .col-lg-8
-      .panel.panel-default
-        .panel-body
-          .row
-            .col-xs-6
-              = form_field_group :name, item do
-                = f.label :name, class: 'control-label'
-                = f.text_field :name, class: 'form-control', required: false
-                = form_field_error :name, item
-              .form-group
-                = f.label :visibility, class: 'control-label'
-                = f.select :visibility, Visibilities.visibility.options,
-                           { prompt: 'Укажите, где пицца будет видима' },
-                           { class: 'form-control selectize-visibility' }
-              = form_field_group :parent_id, item do
-                = f.label :parent_id, class: 'control-label'
-                = f.collection_select :parent_id, pizzas,
-                  :id, :name, { include_blank: 'Укажите основу, если она есть' },
-                              { class: 'form-control selectize-pizzas' }
-                = form_field_error :parent_id, item
-              = form_field_group :dough_id, item do
-                = f.label :dough_id, class: 'control-label'
-                = f.collection_select :dough_id, doughs,
-                  :id, :name, { prompt: 'Выберите тесто' },
-                              { class: 'form-control selectize-doughs' }
-                = form_field_error :dough_id, item
-              .well
-                - item.pizza_attributes.each do |pizza_attribute|
-                  .form-group
-                    = f.fields_for :pizza_attributes, pizza_attribute do |ff|
-                      = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
-                                 class: 'control-label'
-                      = ff.hidden_field :pizza_size
-                      .row
-                        .col-xs-6
-                          = ff.text_field :price, class: 'form-control mask-currency'
-                        .col-xs-6
-                          = ff.text_field :weight, class: 'form-control mask-weight'
-            .col-xs-6
-              div { class = 'form-group ng-hide'
-                    ng-controller = 'PizzaIngredientsFormController as vm'
-                    ng-show = 'vm.ingredient_categories'
-                  }
-                = f.label :pizza_ingredient_attributes, class: 'control-label'
-                .product-ingredients
-                  ul.list-group
-                    div ng-repeat='ingredient_category in vm.ingredient_categories'
-                      li.list-group-item
-                        .list-group-item-heading ng-bind='ingredient_category.name'
-                        li { class = 'list-group-item'
-                             ng-repeat = 'ingredient in ingredient_category.ingredients'
-                           }
-                          .product-controls
-                            span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
-                              span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
-                                input { type = 'checkbox'
-                                        ng-model = 'vm.pizzaIngredient(ingredient.id).base'
-                                        id = 'pizza_ingredient_{{ingredient.id}}_base'
-                                      }
-                                label for='pizza_ingredient_{{ingredient.id}}_base' базовый?
-                            a.product-counter ng-click='vm.decreaseIngredient(ingredient.id)'
-                              span.fa.fa-minus
-                            span.product-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
-                            a.product-counter ng-click='vm.increaseIngredient(ingredient.id)'
-                              span.fa.fa-plus
-                          .ingredient-title ng-bind='ingredient.name'
-                          span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
-                            span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
-                              input { type = 'hidden'
-                                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][id]'
-                                      value = '{{vm.pizzaIngredient(ingredient.id).id}}'
-                                    }
-                              input { type = 'hidden'
-                                      ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
-                                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][_destroy]'
-                                      value = 'true'
-                                    }
-                              input { type = 'hidden'
-                                      ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
-                                      value = '{{vm.ingredientQuantity(ingredient.id)}}'
-                                    }
-                              input { type = 'hidden'
-                                      ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
-                                      value = '{{vm.pizzaIngredient(ingredient.id).base}}'
-                                    }
-                            span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
-                              span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
-                                input { type = 'hidden'
-                                        name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][ingredient_id]'
-                                        value = '{{ingredient.id}}'
-                                      }
-                                input { type = 'hidden'
-                                        name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
-                                        value = '{{vm.ingredientQuantity(ingredient.id)}}'
-                                      }
-                                input { type = 'hidden'
-                                        name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
-                                        value = '{{vm.pizzaIngredient(ingredient.id).base}}'
-                                      }
-    .col-lg-4
+    .col-xs-6
+      = form_field_group :name, item do
+        = f.label :name, class: 'control-label'
+        = f.text_field :name, class: 'form-control', required: false
+        = form_field_error :name, item
       .form-group
-        .fileinput.fileinput-new data-provides='fileinput'
-          .fileinput-body
-            .fileinput-new.thumbnail
-              - if item.image?
-                = image_tag item.image.url(:thumb)
-              - else
-                .img-dummy
-                  .dummy-icon
-            .fileinput-preview.fileinput-exists.thumbnail
-            = f.label :image, class: 'control-label'
-            div
-              span.btn.btn-default.btn-file
-                span.fileinput-new Выбрать фото
-                span.fileinput-exists Поменять
-                = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
-              a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
-          .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
+        = f.label :visibility, class: 'control-label'
+        = f.select :visibility, Visibilities.visibility.options,
+                   { prompt: 'Укажите, где пицца будет видима' },
+                   { class: 'form-control selectize-visibility' }
+      = form_field_group :parent_id, item do
+        = f.label :parent_id, class: 'control-label'
+        = f.collection_select :parent_id, pizzas,
+          :id, :name, { include_blank: 'Укажите основу, если она есть' },
+                      { class: 'form-control selectize-pizzas' }
+        = form_field_error :parent_id, item
+      = form_field_group :dough_id, item do
+        = f.label :dough_id, class: 'control-label'
+        = f.collection_select :dough_id, doughs,
+          :id, :name, { prompt: 'Выберите тесто' },
+                      { class: 'form-control selectize-doughs' }
+        = form_field_error :dough_id, item
+      .well
+        - item.pizza_attributes.each do |pizza_attribute|
+          .form-group
+            = f.fields_for :pizza_attributes, pizza_attribute do |ff|
+              = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
+                         class: 'control-label'
+              = ff.hidden_field :pizza_size
+              .row
+                .col-xs-6
+                  = ff.text_field :price, class: 'form-control mask-currency'
+                .col-xs-6
+                  = ff.text_field :weight, class: 'form-control mask-weight'
+      = render 'admin/fileinput_field', f: f, item: item
+    .col-xs-6
+      div { class = 'form-group ng-hide'
+            ng-controller = 'PizzaIngredientsFormController as vm'
+            ng-show = 'vm.ingredient_categories'
+          }
+        = f.label :pizza_ingredient_attributes, class: 'control-label'
+        .product-ingredients
+          ul.list-group
+            div ng-repeat='ingredient_category in vm.ingredient_categories'
+              li.list-group-item
+                .list-group-item-heading ng-bind='ingredient_category.name'
+                li { class = 'list-group-item'
+                     ng-repeat = 'ingredient in ingredient_category.ingredients'
+                   }
+                  .product-controls
+                    span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
+                      span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
+                        input { type = 'checkbox'
+                                ng-model = 'vm.pizzaIngredient(ingredient.id).base'
+                                id = 'pizza_ingredient_{{ingredient.id}}_base'
+                              }
+                        label for='pizza_ingredient_{{ingredient.id}}_base' базовый?
+                    a.product-counter ng-click='vm.decreaseIngredient(ingredient.id)'
+                      span.fa.fa-minus
+                    span.product-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
+                    a.product-counter ng-click='vm.increaseIngredient(ingredient.id)'
+                      span.fa.fa-plus
+                  .ingredient-title ng-bind='ingredient.name'
+                  span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
+                    span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
+                      input { type = 'hidden'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][id]'
+                              value = '{{vm.pizzaIngredient(ingredient.id).id}}'
+                            }
+                      input { type = 'hidden'
+                              ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][_destroy]'
+                              value = 'true'
+                            }
+                      input { type = 'hidden'
+                              ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
+                              value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                            }
+                      input { type = 'hidden'
+                              ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                              value = '{{vm.pizzaIngredient(ingredient.id).base}}'
+                            }
+                    span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
+                      span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
+                        input { type = 'hidden'
+                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][ingredient_id]'
+                                value = '{{ingredient.id}}'
+                              }
+                        input { type = 'hidden'
+                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
+                                value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                              }
+                        input { type = 'hidden'
+                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                                value = '{{vm.pizzaIngredient(ingredient.id).base}}'
+                              }
   .form-group
-    = f.button class: 'btn btn-primary btn-submit ladda-button' do
-      span.fa.fa-save.fa-lg
+    = f.button nil, class: 'btn btn-primary ladda-button'

@@ -1,6 +1,6 @@
 module Admin
   class FeatureValuesController < AdminController
-    helper_method :feature_value
+    helper_method :feature_value, :features, :feature_values
 
     def edit
       @main_menu_key = :features
@@ -43,6 +43,14 @@ module Admin
 
     def feature_value
       @feature_value ||= FeatureValue.find(params[:id])
+    end
+
+    def features
+      @features ||= Feature.all
+    end
+
+    def feature_values
+      @feature_values ||= FeatureValue.all
     end
 
     def feature_value_params

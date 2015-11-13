@@ -43,8 +43,11 @@ input[type="checkbox"]
     margin: 0
   .btn + .btn
     margin-left: 15px
-  + .form-group, + .well, + .row
-    margin-top: 20px
+form
+  .form-group, .well, .row
+    & +
+      .form-group, .well, .row
+        margin-top: 20px
 
 .form-control.selectize-control
   height: $input-height-base

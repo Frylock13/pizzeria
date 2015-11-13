@@ -3,6 +3,13 @@
   ol.breadcrumb
     li = link_to 'Пицца', admin_pizzas_path
     li.active Создание пиццы
+section.submenu id='pizzas'
+  = render 'pizzas'
 section.page
   .container-fluid
-    = render 'form', item: @pizza
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_pizzas_path, class: 'close'
+        .panel-title Создание пиццы
+      .panel-body
+        = render 'form', item: @pizza

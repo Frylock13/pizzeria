@@ -2,9 +2,16 @@
 - content_for :header do
   ol.breadcrumb
     li = link_to 'Атрибуты', admin_features_path
-    li.active «#{feature_value.name}»
+    li.active = feature_value.name
+section.submenu id='features'
+  = render 'admin/features/features'
+  hr
+  = render 'admin/feature_values/feature_values'
 section.page
   .container-fluid
-    = render 'form', item: feature_value
-    = link_to 'Удалить значение атрибута', [:admin, feature_value], class: 'btn btn-danger',
-              method: :delete, data: { confirm: 'Вы уверены?' }, remote: true
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_features_path, class: 'close'
+        .panel-title = feature_value.name
+      .panel-body
+        = render 'form', item: feature_value

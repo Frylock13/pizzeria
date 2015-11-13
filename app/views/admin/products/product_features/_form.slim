@@ -1,29 +1,28 @@
-= form_for [:admin, product, item], remote: true, authenticity_token: true, html: { class: 'form-horizontal' } do |f|
-  = form_field_group :feature_id, item do
-    = f.label :feature_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.collection_select :feature_id, features,
-        :id, :name, { prompt: 'Выберите атрибут' },
-                    { class: 'form-control selectize-features' }
-      = form_field_error :feature_id, item
-  = form_field_group :feature_value_id, item do
-    = f.label :feature_value_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.collection_select :feature_value_id, feature_values,
-        :id, :name, { prompt: 'Выберите значение атрибута' },
-                    { class: 'form-control selectize-feature-values' }
-      = form_field_error :feature_value_id, item
+= form_for [:admin, product, item], remote: true, authenticity_token: true do |f|
   .row
-    .col-sm-6
-      .form-group
-        = f.label :price, class: 'col-sm-4 control-label'
-        .col-sm-8
+    .col-xs-6
+      = form_field_group :feature_id, item do
+        = f.label :feature_id, class: 'control-label'
+        = f.collection_select :feature_id, features,
+          :id, :name, { prompt: 'Выберите атрибут' },
+                      { class: 'form-control selectize-features' }
+        = form_field_error :feature_id, item
+    .col-xs-6
+      = form_field_group :feature_value_id, item do
+        = f.label :feature_value_id, class: 'control-label'
+        = f.collection_select :feature_value_id, feature_values,
+          :id, :name, { prompt: 'Выберите значение атрибута' },
+                      { class: 'form-control selectize-feature-values' }
+        = form_field_error :feature_value_id, item
+  .well
+    .row
+      .col-xs-6
+        .form-group
+          = f.label :price, class: 'control-label'
           = f.text_field :price, class: 'form-control mask-currency'
-    .col-sm-6
-      .form-group
-        = f.label :weight, class: 'col-sm-4 control-label'
-        .col-sm-8
+      .col-xs-6
+        .form-group
+          = f.label :weight, class: 'control-label'
           = f.text_field :weight, class: 'form-control mask-weight'
   .form-group
-    .col-sm-10.col-sm-offset-2
-      = f.button nil, class: 'btn btn-primary btn-lg ladda-button'
+    = f.button nil, class: 'btn btn-primary ladda-button'

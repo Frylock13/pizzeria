@@ -1,12 +1,12 @@
-ul.list-group
-  - doughs.each do |dough|
-    .panel.panel-default
-      .panel-body
-        .block.item-actions
-          = link_to [:edit, :admin, dough], title: 'Изменить тесто' do
-            span.fa.fa-pencil
-          = link_to [:admin, dough], title: 'Удалить тесто',
-                    method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-            span.fa.fa-trash
-        = link_to dough.name, [:edit, :admin, dough]
 = link_to 'Добавить Тесто', new_admin_dough_path, class: 'btn btn-primary btn-block'
+hr
+- doughs.each do |dough|
+  .panel.panel-default
+    .panel-body
+      .block.item-actions
+        = link_to [:edit, :admin, dough], title: 'Изменить тесто' do
+          span.fa.fa-pencil
+        = link_to [:admin, dough], title: 'Удалить тесто',
+                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+          span.fa.fa-trash
+      = link_to dough.name, [:edit, :admin, dough]

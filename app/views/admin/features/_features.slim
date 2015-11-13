@@ -1,0 +1,13 @@
+- features.each do |feature|
+  .panel.panel-default
+    .panel-body
+      .block.item-actions
+        = link_to [:edit, :admin, feature], title: 'Изменить атрибут' do
+          span.fa.fa-pencil
+        = link_to [:admin, feature], title: 'Удалить атрибут',
+                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+          span.fa.fa-trash
+      = link_to [:edit, :admin, feature] do
+        = feature.name
+        '
+        sub = feature.product_features.size

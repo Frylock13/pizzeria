@@ -1,10 +1,15 @@
 - title product_category.name
-section.heading
-  .container-fluid
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Продукты', admin_products_path
-        li.active Категория #{product_category.name}
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Продукты', admin_products_path
+    li.active #{product_category.name} (категория)
+section.submenu id='products'
+  = render 'admin/products/products'
 section.page
   .container-fluid
-    = render 'form', item: product_category
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_products_path, class: 'close'
+        .panel-title #{product_category.name} (категория)
+      .panel-body
+        = render 'form', item: product_category

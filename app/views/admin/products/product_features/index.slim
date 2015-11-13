@@ -1,35 +1,10 @@
 - title 'Атрибуты продукта'
-section.heading
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Продукты', admin_products_path
+    li = link_to product.name, [:edit, :admin, product]
+    li.active Атрибуты продукта
+section.submenu.submenu-visible id='product_features'
+  = render 'product_features'
+section.page
   .container-fluid
-    .pull-right
-      = link_to 'Добавить Атрибут', new_admin_product_product_feature_path, class: 'btn btn-primary'
-    .section-title
-      ol.breadcrumb
-        li = link_to 'Продукты', admin_products_path
-        li.active = product.name
-= render 'admin/products/menu', active: :product_features, product: product
-section.page id='product_features'
-  .container-fluid
-    .table-responsive
-      table.table
-        thead
-          tr
-            th Атрибут
-            th Значение
-            th Навесок, г.
-            th Наценка, руб.
-            th.col-actions Действия
-        tbody
-          - @product_features.each do |product_feature|
-            tr
-              td = product_feature.feature_name
-              td = product_feature.feature_value_name
-              td = product_feature.weight
-              td = product_feature.price
-              td.col-actions
-                .block.item-actions
-                  = link_to [:edit, :admin, product, product_feature], title: 'Изменить атрибут продукта' do
-                    span.fa.fa-pencil
-                  = link_to [:admin, product, product_feature], title: 'Удалить атрибут продукта',
-                            method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-                    span.fa.fa-trash

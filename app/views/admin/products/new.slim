@@ -3,6 +3,13 @@
   ol.breadcrumb
     li = link_to 'Продукты', admin_products_path
     li.active Добавление продукта
+section.submenu id='products'
+  = render 'products'
 section.page
   .container-fluid
-    = render 'form', item: @product
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_products_path, class: 'close'
+        .panel-title Добавление продукта
+      .panel-body
+        = render 'form', item: @product

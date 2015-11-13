@@ -3,6 +3,13 @@
   ol.breadcrumb
     li = link_to 'Ингредиенты', admin_ingredients_path
     li.active = @ingredient.name
+section.submenu id='ingredients'
+  = render 'ingredients'
 section.page
   .container-fluid
-    = render 'form', item: @ingredient
+    .panel.panel-default
+      .panel-heading
+        = link_to '&times;'.html_safe, admin_ingredients_path, class: 'close'
+        .panel-title = @ingredient.name
+      .panel-body
+        = render 'form', item: @ingredient
