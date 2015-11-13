@@ -1,6 +1,11 @@
 @import 'variables'
 @import 'addons/rhythm'
+@import 'breakpoint-sass'
 
 .btn
   line-height: rh()
   margin: 3px 0
+  &.navbar-btn
+    margin: 8px 0
+    +breakpoint($grid-float-breakpoint)
+      margin-right: -10px

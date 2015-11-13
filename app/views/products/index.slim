@@ -22,7 +22,7 @@ section.products id='top'
         li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
         - product_categories.each do |product_category|
           li = link_to product_category.name, "\#product_category_#{product_category.id}", 'data-scroll' => ''
-      = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn pull-right'
+      = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn navbar-right'
 section.products id='pizza'
   .container-masonry
     .section-title Пицца
