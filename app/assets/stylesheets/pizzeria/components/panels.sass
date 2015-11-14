@@ -2,7 +2,9 @@
 @import 'settings/prefixer'
 @import 'addons/prefixer'
 @import 'addons/rhythm'
+@import 'css3/calc'
 @import 'css3/transition'
+@import 'mixins'
 
 .panel
   margin-bottom: 8px
@@ -23,6 +25,60 @@
       .list-group-item
         border: none
         position: relative
+  &.panel-pizza
+    max-width: 1000px
+    .panel-heading
+      .panel-title
+        small
+          color: #959286
+          font-size: 16px
+    .panel-body
+      padding: 0
+      .pizza-controls, .pizza-image
+        +calc(width, '100% - 400px')
+        float: left
+        height: 600px
+        min-height: 1px
+        position: relative
+      .pizza-controls
+        background-color: #f5f5f5
+        border-left: 1px solid #ccc
+        padding: 10px 15px
+        width: 400px
+        .form-group.group-ingredients
+          .list-group
+            +scrollbar
+            height: 600px - 215px
+            overflow: auto
+            overflow: overlay
+        .pizza-attributes
+          display: inline-block
+          .pizza-attribute
+            display: block
+            .pizza-size, .pizza-price, .pizza-weight
+              display: inline-block
+              line-height: rh()
+            .pizza-size
+            .pizza-price
+              font-size: 16px
+              font-weight: bold
+              margin: 0 7px
+            .pizza-weight
+              font-size: 12px
+        .pizza-submit
+          float: right
+          padding: 15px 0
+      .pizza-image
+        overflow: hidden
+        text-align: right
+        img
+          max-width: 100%
+      &:before, &:after
+        content: " "
+        display: table
+      &:after
+        clear: both
+
 
 .panel-slider
   .panel-body

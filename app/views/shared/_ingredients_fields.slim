@@ -1,0 +1,60 @@
+div { class = 'form-group group-ingredients ng-hide'
+      ng-controller = 'PizzaIngredientsFormController as vm'
+      ng-show = 'vm.ingredient_categories'
+    }
+  = label_tag :pizza_ingredient_attributes, 'Ингредиенты', class: 'control-label'
+  ul.list-group
+    div ng-repeat='ingredient_category in vm.ingredient_categories track by ingredient_category.id'
+      li.list-group-item
+        .list-group-item-heading ng-bind='ingredient_category.name'
+      li { class = 'list-group-item'
+           ng-repeat = 'ingredient in ingredient_category.ingredients'
+         }
+        .block.quantity-controls
+          span { ng-if = "vm.isBaseControlVisible(ingredient.id, #{hide_control})" }
+            input { type = 'checkbox'
+                    ng-model = 'vm.pizzaIngredient(ingredient.id).base'
+                    id = 'pizza_ingredient_{{ingredient.id}}_base'
+                  }
+            label for='pizza_ingredient_{{ingredient.id}}_base' базовый?
+          a.quantity-control ng-click='vm.decreaseIngredient(ingredient.id)'
+            span.fa.fa-minus
+          span.quantity-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
+          a.quantity-control ng-click='vm.increaseIngredient(ingredient.id)'
+            span.fa.fa-plus
+        .ingredient-title ng-bind='ingredient.name'
+        span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
+          span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
+            input { type = 'hidden'
+                    name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][id]'
+                    value = '{{vm.pizzaIngredient(ingredient.id).id}}'
+                  }
+            input { type = 'hidden'
+                    ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
+                    name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][_destroy]'
+                    value = 'true'
+                  }
+            input { type = 'hidden'
+                    ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                    name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
+                    value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                  }
+            input { type = 'hidden'
+                    ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
+                    name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                    value = '{{vm.pizzaIngredient(ingredient.id).base}}'
+                  }
+          span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
+            span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
+              input { type = 'hidden'
+                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][ingredient_id]'
+                      value = '{{ingredient.id}}'
+                    }
+              input { type = 'hidden'
+                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
+                      value = '{{vm.ingredientQuantity(ingredient.id)}}'
+                    }
+              input { type = 'hidden'
+                      name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
+                      value = '{{vm.pizzaIngredient(ingredient.id).base}}'
+                    }

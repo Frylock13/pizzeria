@@ -23,6 +23,12 @@ PizzaIngredientsFormController = ->
     return 0 unless pizza_ingredient
     pizza_ingredient.quantity
 
+  isBaseControlVisible = (ingredient_id, hide_control = false) =>
+    return false unless pizzaIngredient(ingredient_id)
+    return false unless ingredientQuantity(ingredient_id) > 0
+    return false if hide_control == true
+    true
+
   pizzaIngredient = (ingredient_id) =>
     _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
 
@@ -37,6 +43,7 @@ PizzaIngredientsFormController = ->
   @decreaseIngredient = decreaseIngredient
   @increaseIngredient = increaseIngredient
   @ingredientQuantity = ingredientQuantity
+  @isBaseControlVisible = isBaseControlVisible
   @pizzaIngredient = pizzaIngredient
   init()
   return

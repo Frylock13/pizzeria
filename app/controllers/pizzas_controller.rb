@@ -28,7 +28,7 @@ class PizzasController < ApplicationController
   private
 
   def parent
-    @parent ||= Pizza.standard.find(params[:parent_id])
+    @parent ||= Pizza.standard.find(params[:parent_id]) if params[:parent_id]
   end
 
   def doughs

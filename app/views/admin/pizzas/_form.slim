@@ -36,67 +36,6 @@
                   = ff.text_field :weight, class: 'form-control mask-weight'
       = render 'admin/fileinput_field', f: f, item: item
     .col-xs-6
-      div { class = 'form-group ng-hide'
-            ng-controller = 'PizzaIngredientsFormController as vm'
-            ng-show = 'vm.ingredient_categories'
-          }
-        = f.label :pizza_ingredient_attributes, class: 'control-label'
-        .product-ingredients
-          ul.list-group
-            div ng-repeat='ingredient_category in vm.ingredient_categories'
-              li.list-group-item
-                .list-group-item-heading ng-bind='ingredient_category.name'
-                li { class = 'list-group-item'
-                     ng-repeat = 'ingredient in ingredient_category.ingredients'
-                   }
-                  .product-controls
-                    span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
-                      span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
-                        input { type = 'checkbox'
-                                ng-model = 'vm.pizzaIngredient(ingredient.id).base'
-                                id = 'pizza_ingredient_{{ingredient.id}}_base'
-                              }
-                        label for='pizza_ingredient_{{ingredient.id}}_base' базовый?
-                    a.product-counter ng-click='vm.decreaseIngredient(ingredient.id)'
-                      span.fa.fa-minus
-                    span.product-amount ng-bind='vm.ingredientQuantity(ingredient.id)'
-                    a.product-counter ng-click='vm.increaseIngredient(ingredient.id)'
-                      span.fa.fa-plus
-                  .ingredient-title ng-bind='ingredient.name'
-                  span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
-                    span { ng-if = 'vm.pizzaIngredient(ingredient.id).id' }
-                      input { type = 'hidden'
-                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][id]'
-                              value = '{{vm.pizzaIngredient(ingredient.id).id}}'
-                            }
-                      input { type = 'hidden'
-                              ng-if = 'vm.ingredientQuantity(ingredient.id) == 0'
-                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][_destroy]'
-                              value = 'true'
-                            }
-                      input { type = 'hidden'
-                              ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
-                              value = '{{vm.ingredientQuantity(ingredient.id)}}'
-                            }
-                      input { type = 'hidden'
-                              ng-if = 'vm.ingredientQuantity(ingredient.id) > 0'
-                              name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
-                              value = '{{vm.pizzaIngredient(ingredient.id).base}}'
-                            }
-                    span { ng-if = '!vm.pizzaIngredient(ingredient.id).id' }
-                      span { ng-if = 'vm.ingredientQuantity(ingredient.id) > 0' }
-                        input { type = 'hidden'
-                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][ingredient_id]'
-                                value = '{{ingredient.id}}'
-                              }
-                        input { type = 'hidden'
-                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][quantity]'
-                                value = '{{vm.ingredientQuantity(ingredient.id)}}'
-                              }
-                        input { type = 'hidden'
-                                name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
-                                value = '{{vm.pizzaIngredient(ingredient.id).base}}'
-                              }
+      = render 'shared/ingredients_fields', hide_control: false
   .form-group
     = f.button nil, class: 'btn btn-primary ladda-button'
