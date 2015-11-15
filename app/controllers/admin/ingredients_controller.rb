@@ -21,7 +21,7 @@ module Admin
     def create
       @ingredient = Ingredient.new(ingredient_params)
       if @ingredient.save
-        redirect_to admin_ingredients_path, success: 'Ингредиент успешно добавлен'
+        redirect_to [:edit, :admin, @ingredient], success: 'Ингредиент успешно добавлен'
       else
         render :new, change: :new_ingredient, layout: !request.xhr?
       end

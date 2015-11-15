@@ -25,7 +25,7 @@ module Admin
     def create
       @pizza = Pizza.new(pizza_params)
       if @pizza.save
-        redirect_to admin_pizzas_path, success: 'Пицца успешно добавлена'
+        redirect_to [:edit, :admin, @pizza], success: 'Пицца успешно добавлена'
       else
         render :new, change: :new_pizza, layout: !request.xhr?
       end

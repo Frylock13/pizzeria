@@ -19,7 +19,7 @@ module Admin
       def create
         @product_feature = ProductFeature.new(product_feature_params)
         if @product_feature.save
-          redirect_to [:admin, product, :product_features], success: 'Атрибут успешно добавлен'
+          redirect_to [:edit, :admin, product, @product_feature], success: 'Атрибут успешно добавлен'
         else
           render :new, change: :new_product_feature, layout: !request.xhr?
         end

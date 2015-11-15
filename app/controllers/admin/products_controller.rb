@@ -20,7 +20,7 @@ module Admin
     def create
       @product = Product.new(product_params)
       if @product.save
-        redirect_to admin_products_path, success: 'Продукт успешно добавлен'
+        redirect_to [:edit, :admin, @product], success: 'Продукт успешно добавлен'
       else
         render :new, change: :new_product, layout: !request.xhr?
       end

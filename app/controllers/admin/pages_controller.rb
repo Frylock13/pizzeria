@@ -20,7 +20,7 @@ module Admin
     def create
       @page = Page.new(page_params)
       if @page.save
-        redirect_to admin_pages_path, success: 'Страница успешно добавлена'
+        redirect_to [:edit, :admin, @page], success: 'Страница успешно добавлена'
       else
         render :new, change: :new_page, layout: !request.xhr?
       end
