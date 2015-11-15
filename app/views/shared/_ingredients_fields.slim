@@ -15,7 +15,6 @@ div { class = 'form-group group-ingredients ng-hide'
             href = 'javascript:;'
             ng-class = '{"active": vm.ingredientQuantity(ingredient.id) > 0}'
             ng-click = 'vm.increaseIngredient(ingredient.id)'
-            title = 'Добавить порцию ингредиента'
           }
           .ingredient-title ng-bind='ingredient.name'
         .quantity-controls
@@ -31,7 +30,6 @@ div { class = 'form-group group-ingredients ng-hide'
           a { class = 'quantity-decrease'
               href = 'javascript:;'
               ng-click = 'vm.decreaseIngredient(ingredient.id)'
-              title = 'Убавить порцию ингредиента'
             }
             span.fa.fa-minus
         span { ng-if = 'vm.pizzaIngredient(ingredient.id)' }
