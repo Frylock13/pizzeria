@@ -5,6 +5,7 @@
 @import 'bootstrap/_mixins-plus'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
+@import 'addons/rhythm'
 @import 'css3/transition'
 
 *:focus
@@ -30,6 +31,7 @@ body
   -moz-osx-font-smoothing: auto
   -webkit-font-smoothing: subpixel-antialiased
   font-smoothing: subpixel-antialiased
+  line-height: rh()
   position: relative
   text-rendering: optimizeLegibility
   &.turbolinks-cached
