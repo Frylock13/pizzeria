@@ -1,6 +1,7 @@
 div { class = 'form-group group-ingredients ng-hide'
       ng-controller = 'PizzaIngredientsFormController as vm'
       ng-show = 'vm.ingredient_categories'
+      id = 'ingredients_fields'
     }
   = label_tag :pizza_ingredient_attributes, 'Ингредиенты', class: 'control-label'
   ul.list-group

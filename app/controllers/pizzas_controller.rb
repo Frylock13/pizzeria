@@ -24,7 +24,12 @@ class PizzasController < ApplicationController
     if @pizza.save
       redirect_to admin_pizzas_path, success: 'Пицца успешно добавлена'
     else
-      render :new, change: :new_pizza, layout: !request.xhr?
+      gon.ingredient_categories = ingredient_categories
+      gon.pizza_ingredients = pizza_ingredients(@pizza)
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render :new, layout: false }
+      end
     end
   end
 

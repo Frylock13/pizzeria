@@ -1,4 +1,12 @@
-dialog = $('#dynamic_modal').children().first();
-$.resizeDialog(dialog, 'modal-lg');
-dialog.html('<%= j render("new") %>');
-$('#dynamic_modal').modal('show');
+if ($('#new_pizza').length == 0 || $('#new_pizza').closest('.modal').length) {
+  dialog = $('#dynamic_modal').children().first();
+  $.resizeDialog(dialog, 'modal-lg');
+  dialog.html('<%= j render("new") %>');
+  $('#dynamic_modal').modal('show');
+} else {
+  Turbolinks.replace('<%= j render("new") %>', { change: ['new_pizza'] });
+}
+$('body').injector().invoke(function($compile, $rootScope) {
+  $compile($('#ingredients_fields'))($rootScope);
+  $rootScope.$apply();
+});
