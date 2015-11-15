@@ -1,7 +1,7 @@
 = link_to 'Добавить страницу', new_admin_page_path, class: 'btn btn-primary btn-block'
 hr
 - pages.each do |page|
-  .panel.panel-default
+  .panel.panel-default.panel-item
     .panel-body
       .block.item-actions
         = link_to [:edit, :admin, page], title: 'Изменить страницу' do

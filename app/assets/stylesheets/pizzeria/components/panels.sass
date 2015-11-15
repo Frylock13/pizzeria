@@ -15,16 +15,19 @@
     > .block.item-actions
       padding: $panel-heading-padding
   > .panel-body
-    line-height: rh()
-    min-height: 40px
-    position: relative
-    > .block.item-actions
-      padding: $panel-body-padding
     > .list-group
       margin: -10px -15px
       .list-group-item
         border: none
         position: relative
+  &.panel-item
+    > .panel-body
+      line-height: rh()
+      min-height: $input-height-base - 2px
+      padding: $padding-base-vertical $padding-base-horizontal $padding-base-vertical - 1px
+      position: relative
+      > .block.item-actions
+        padding: $padding-base-vertical $padding-base-horizontal $padding-base-vertical - 1px
   &.panel-pizza
     max-width: 1200px
     .panel-heading
@@ -46,7 +49,7 @@
         padding: 10px 15px
         width: 400px
         .form-group.group-ingredients
-          .list-group
+          .group-scrollable
             +scrollbar
             height: 600px - 215px
             overflow: auto

@@ -1,7 +1,7 @@
 = link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary btn-block'
 hr
 - pizzas.each do |pizza|
-  .panel.panel-default
+  .panel.panel-default.panel-item
     .panel-body
       .block.item-actions
         = link_to [:edit, :admin, pizza], title: 'Изменить тесто' do
