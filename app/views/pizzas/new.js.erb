@@ -1,0 +1,4 @@
+dialog = $('#dynamic_modal').children().first();
+$.resizeDialog(dialog, 'modal-lg');
+dialog.html('<%= j render("new") %>');
+$('#dynamic_modal').modal('show');

@@ -1,4 +1,8 @@
 - title 'Создание пиццы'
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ваша пицца', root_path
+    li.active Создание особой пиццы
 section.page
   .container-fluid
     .panel.panel-default.panel-pizza

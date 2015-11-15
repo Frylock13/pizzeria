@@ -13,7 +13,10 @@ class PizzasController < ApplicationController
     end
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = pizza_ingredients(@pizza)
-    # render :new if stale? [@pizza, ingredient_categories] | layout_resources
+    respond_to do |format|
+      format.html
+      format.js { render :new, layout: false }
+    end
   end
 
   def create

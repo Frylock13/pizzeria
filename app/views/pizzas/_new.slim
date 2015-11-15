@@ -1,0 +1,8 @@
+.panel.panel-default.panel-pizza
+  .panel-heading
+    button.close type='button' data-dismiss='modal' &times;
+    .panel-title
+      ' Создание особой пиццы
+      small = "на основе пиццы «#{@pizza.parent.name}»" if @pizza.parent.present?
+  .panel-body
+    = render 'form', item: @pizza

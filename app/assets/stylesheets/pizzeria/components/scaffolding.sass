@@ -230,8 +230,12 @@ body
     z-index: 1
   &.body-padded
     padding-top: $navbar-height
+    .navbar-fixed-top
+      display: block
   +breakpoint(max-width $screen-sm-max)
     padding-top: $navbar-height
+    .navbar-fixed-top
+      display: block
   &.canvas-sliding,
   &.canvas-slid
     &:before
@@ -241,3 +245,6 @@ body
 .body, .navbar-fixed-top
   +breakpoint($screen-md-min)
     margin: 0 0 0 $navmenu-width
+
+.navbar-fixed-top
+  display: none

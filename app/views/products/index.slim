@@ -35,7 +35,7 @@ section.products id='pizza'
               .product-title = pizza.name
               .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
               .pizza-edit-ingredients
-                a href='javascript:;' data-toggle='modal' data-target='#productModal' Подобрать ингредиенты
+                = link_to 'Подобрать ингредиенты', new_pizza_path(parent_id: pizza.id), remote: true
             .panel-footer.product-items
               - pizza.pizza_attributes.each do |pizza_attribute|
                 .product-item

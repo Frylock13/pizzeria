@@ -12,7 +12,7 @@ html
   body
     = include_gon(init: true)
     = render 'shared/sidebar', main_menu_key: @main_menu_key
-    .body id='body'
+    .body class=('body-padded' if content_for?(:header)) id='body'
       = render 'shared/header'
       = render 'shared/flashes'
       = yield

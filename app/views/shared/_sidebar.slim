@@ -6,7 +6,7 @@
       li.navmenu-title Закажите пиццу в 3 шага
       - if main_menu_key == :products
         li.dropdown.open
-          = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle', 'data-scroll' => '' do
+          = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
             span.fa.fa-check-circle-o.fa-lg.text-success
             span Шаг 1. Составьте заказ
             span.fa.fa-chevron-down
@@ -45,7 +45,7 @@
                   span 0.2л
                   small 50 р.
             li
-              = link_to root_path(anchor: 'menu'), 'data-scroll' => '' do
+              = link_to root_path(anchor: 'menu') do
                 .nav-item-title
                   .pull-right
                     small Итого:
