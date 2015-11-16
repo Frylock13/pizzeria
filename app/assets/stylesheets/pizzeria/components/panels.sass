@@ -51,6 +51,7 @@
           height: 600px - 215px
           overflow: auto
         .pizza-attributes
+          +transition(color 1.5s)
           display: inline-block
           height: rh(3)
           position: relative
@@ -66,6 +67,8 @@
               margin: 0 7px
             .pizza-weight
               font-size: 12px
+          &.ladda-button[data-loading]
+            color: #959286
         .pizza-submit
           float: right
           padding: 15px 0
