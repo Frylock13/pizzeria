@@ -1,10 +1,10 @@
-div { class = 'form-group group-ingredients ng-hide'
-      ng-controller = 'PizzaIngredientsFormController as vm'
-      ng-show = 'vm.ingredient_categories'
-      id = 'ingredients_fields'
-    }
+.form-group
   = label_tag :pizza_ingredient_attributes, 'Ингредиенты', class: 'control-label'
-  .group-scrollable
+  div { class = 'block group-ingredients ng-hide'
+        ng-controller = 'PizzaIngredientsFormController as vm'
+        ng-show = 'vm.ingredient_categories'
+        id = 'ingredients_fields'
+      }
     ul.list-group ng-repeat='ingredient_category in vm.ingredient_categories track by ingredient_category.id'
       li.list-group-item
         .list-group-item-heading ng-bind='ingredient_category.name'

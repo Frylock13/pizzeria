@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :new, :create]
   resources :pages, only: [:show]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :pizzas, only: [:new, :create]
+  resources :pizzas, only: [:new, :create] do
+    match :recalculate, via: :post, on: :collection
+  end
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   get :admin, to: 'admin/pages#dashboard'

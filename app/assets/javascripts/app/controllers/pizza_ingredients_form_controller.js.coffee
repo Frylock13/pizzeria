@@ -1,11 +1,20 @@
 ### @ngInject ###
-PizzaIngredientsFormController = ->
+PizzaIngredientsFormController = ($timeout) ->
+
+  submitToRecalculate = =>
+    $('#ingredients_fields').closest('form').attr('action', '/pizzas/recalculate')
+                            .submit().attr('action', '/pizzas')
+
+  runSubmitToRecalculate = =>
+    $timeout.cancel(@submit_to_recalculate_timer)
+    @submit_to_recalculate_timer = $timeout submitToRecalculate, 500
 
   decreaseIngredient = (ingredient_id) =>
     pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
     return false unless pizza_ingredient
     return false if pizza_ingredient.quantity == 0
     pizza_ingredient.quantity -= 1
+    runSubmitToRecalculate()
 
   increaseIngredient = (ingredient_id) =>
     pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
@@ -17,6 +26,7 @@ PizzaIngredientsFormController = ->
         quantity: 1
         base: false
       @pizza_ingredients.push pizza_ingredient
+    runSubmitToRecalculate()
 
   ingredientQuantity = (ingredient_id) =>
     pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
@@ -38,6 +48,7 @@ PizzaIngredientsFormController = ->
 
   # # # # # # # # # # # # # # # # # # #
 
+  @submit_to_recalculate_timer = null
   @ingredient_categories = null
   @pizza_ingredients = null
   @decreaseIngredient = decreaseIngredient

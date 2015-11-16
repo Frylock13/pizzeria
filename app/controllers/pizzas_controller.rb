@@ -33,6 +33,14 @@ class PizzasController < ApplicationController
     end
   end
 
+  def recalculate
+    @pizza = Pizza.new(pizza_params)
+    respond_to do |format|
+      format.html { render :new }
+      format.js { render :recalculate, layout: false }
+    end
+  end
+
   private
 
   def parent

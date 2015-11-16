@@ -13,9 +13,4 @@
     .form-group
       .pizza-submit
         = f.button 'Создать особую пиццу', class: 'btn btn-primary ladda-button'
-      .pizza-attributes
-        - item.pizza_attributes.each do |pizza_attribute|
-          .pizza-attribute
-            span.pizza-size = pizza_attribute.pizza_size.text
-            span.pizza-price = number_to_currency pizza_attribute.price, precision: 0
-            / span.pizza-weight = pizza_attribute.weight
+      = render 'pizza_attributes', item: item
