@@ -3,6 +3,7 @@ if ($('#new_pizza').length == 0) {
   $.resizeDialog(dialog, 'modal-lg');
   dialog.html('<%= j render("new") %>');
   $('#dynamic_modal').modal('show');
+  $('.pizza-edit-ingredients .ladda-button[data-loading]').ladda().ladda('stop')
 } else {
   Turbolinks.replace('<%= j render("new") %>', { change: ['new_pizza'] });
 }

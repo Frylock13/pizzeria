@@ -35,7 +35,9 @@ section.products id='pizza'
               .product-title = pizza.name
               .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
               .pizza-edit-ingredients
-                = link_to 'Подобрать ингредиенты', new_pizza_path(parent_id: pizza.id), remote: true
+                = link_to 'Подобрать ингредиенты', new_pizza_path(parent_id: pizza.id),
+                          remote: true, class: 'ladda-button',
+                          data: { spinner_color: '#383783', spinner_size: '20', style: 'expand-right' }
             .panel-footer.product-items
               - pizza.pizza_attributes.each do |pizza_attribute|
                 .product-item

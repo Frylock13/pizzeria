@@ -1,4 +1,9 @@
-.pizza-attributes id='pizza_attributes'
+div { class = 'pizza-attributes ladda-button'
+      id = 'pizza_attributes'
+      data-spinner-color = '#383783'
+      data-spinner-size = '20'
+      data-style = 'expand-right'
+    }
   - item.pizza_attributes.each do |pizza_attribute|
     .pizza-attribute
       span.pizza-size = pizza_attribute.pizza_size.text

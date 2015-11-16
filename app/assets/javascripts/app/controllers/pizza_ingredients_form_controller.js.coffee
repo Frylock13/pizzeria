@@ -2,6 +2,7 @@
 PizzaIngredientsFormController = ($timeout) ->
 
   submitToRecalculate = =>
+    $('#pizza_attributes').ladda().ladda('start')
     $('#ingredients_fields').closest('form').attr('action', '/pizzas/recalculate')
                             .submit().attr('action', '/pizzas')
 
