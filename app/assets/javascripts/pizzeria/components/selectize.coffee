@@ -25,37 +25,41 @@ creatableElements = (elem, elems, text) ->
         return "<div class='create'>#{text} <strong>#{escape(data.input)}</strong>&hellip;</div>"
   }
 
-$(document).on 'ready page:load page:partial-load', ->
-  $('.selectize-dough').selectize
+initSelectize = ->
+  $('select.selectize-dough:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
 
-  $('.selectize-doughs').selectize
+  $('select.selectize-doughs:not(.selectized)').selectize
     labelField: 'name'
     valueField: 'id'
 
-  $('.selectize-feature-values').selectize(
+  $('select.selectize-feature-values:not(.selectized)').selectize(
     creatableElements('feature_value', 'feature_values', 'Создать значение атрибута')
   )
 
-  $('.selectize-features').selectize(
+  $('select.selectize-features:not(.selectized)').selectize(
     creatableElements('feature', 'features', 'Создать атрибут')
   )
 
-  $('.selectize-ingredient-categories').selectize(
+  $('select.selectize-ingredient-categories:not(.selectized)').selectize(
     creatableElements('ingredient_category', 'ingredient_categories', 'Создать категорию')
   )
 
-  $('.selectize-payment').selectize
+  $('select.selectize-payment:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
 
-  $('.selectize-pizzas').selectize
+  $('select.selectize-pizzas:not(.selectized)').selectize
     labelField: 'name'
     valueField: 'id'
 
-  $('.selectize-product-categories').selectize(
+  $('select.selectize-product-categories:not(.selectized)').selectize(
     creatableElements('product_category', 'product_categories', 'Создать категорию')
   )
 
-  $('.selectize-visibility').selectize()
+  $('select.selectize-visibility:not(.selectized)').selectize()
+
+$(document).on 'ready page:load page:partial-load', initSelectize
+$(document).on 'ready', ->
+  $('#dynamic_modal').on 'shown.bs.modal', initSelectize
