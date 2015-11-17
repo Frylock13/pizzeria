@@ -6,6 +6,8 @@ if ($('#new_pizza').length == 0) {
   $('.pizza-edit-ingredients .ladda-button[data-loading]').ladda().ladda('stop')
 } else {
   Turbolinks.replace('<%= j render("new") %>', { change: ['new_pizza'] });
+  modal = $('#new_pizza').closest('#dynamic_modal').first();
+  if (modal.length) { modal.modal('show'); }
 }
 $('body').injector().invoke(function($compile, $rootScope) {
   $compile($('#ingredients_fields'))($rootScope);
