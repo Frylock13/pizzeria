@@ -80,7 +80,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-cferdinandi--smooth-scroll'
   gem 'rails-assets-ink'
   gem 'rails-assets-jasny-bootstrap'
-  gem 'rails-assets-jquery.inputmask'
+  gem 'rails-assets-jquery.inputmask', '3.2.2'
   gem 'rails-assets-ladda'
   gem 'rails-assets-masonry'
   gem 'rails-assets-moment'

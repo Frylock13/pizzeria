@@ -338,7 +338,7 @@ GEM
       rails-assets-bootstrap (>= 3.1.0)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.4)
-    rails-assets-jquery.inputmask (3.2.3)
+    rails-assets-jquery.inputmask (3.2.2)
       rails-assets-jquery (>= 1.7)
     rails-assets-ladda (0.9.8)
       rails-assets-spin.js (~> 2.0.2)
@@ -571,7 +571,7 @@ DEPENDENCIES
   rails-assets-cferdinandi--smooth-scroll!
   rails-assets-ink!
   rails-assets-jasny-bootstrap!
-  rails-assets-jquery.inputmask!
+  rails-assets-jquery.inputmask (= 3.2.2)!
   rails-assets-ladda!
   rails-assets-masonry!
   rails-assets-moment!
