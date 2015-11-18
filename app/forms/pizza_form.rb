@@ -17,42 +17,65 @@ class PizzaForm < ActiveForm
   end
 
   def build
-    self.parent = Pizza.standard.find_by(id: parent_id)
-    if parent.present?
-      pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes], except: [:owner_id]
-      self.dough_id = pizza.dough_id
-      self.image = pizza.image
-      self.name = "#{pizza.name} особая"
-      self.pizza_attributes = pizza.pizza_attributes
-      self.pizza_ingredients = pizza.pizza_ingredients
-    else
-      self.name = "Уникальная"
-      pizza = Pizza.new
-      PizzaSizes.pizza_size.values.each { |value| pizza.pizza_attributes.build(pizza_size: value) }
-      self.pizza_attributes = pizza.pizza_attributes
-      self.pizza_ingredients = []
-    end
+    build_parent
+    build_pizza
+    build_image
+    build_name
+    build_dough_id
+    build_pizza_attributes
+    build_pizza_ingredients
+    recalculate
     self
   end
 
-  def rebuild
+  def build_parent
     self.parent = Pizza.standard.find_by(id: parent_id)
+  end
+
+  def build_pizza
     if parent.present?
-      self.pizza = parent.deep_clone except: [:dough_id, :owner_id]
+      self.pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes], except: [:owner_id]
       pizza.parent = parent
-      # self.image = pizza.image
-      # self.name = "#{pizza.name} особая"
     else
       self.pizza = Pizza.new
-      # self.name = "Уникальная"
     end
-    PizzaSizes.pizza_size.values.each { |value| pizza.pizza_attributes.build(pizza_size: value) }
-    pizza.dough_id = dough_id
-    pizza_ingredients_attributes.each { |key, value| pizza.pizza_ingredients.build(value) }
+  end
+
+  def build_image
+    self.image = pizza.image
+  end
+
+  def build_name
+    pizza.name = parent.present? ? "#{pizza.name} особая" : "Уникальная"
+    self.name = pizza.name
+  end
+
+  def build_dough_id
+    if self.dough_id.present?
+      pizza.dough_id = self.dough_id
+    else
+      self.dough_id = pizza.dough_id
+    end
+  end
+
+  def build_pizza_attributes
+    unless parent.present?
+      PizzaSizes.pizza_size.values.each { |value| pizza.pizza_attributes.build(pizza_size: value) }
+    end
+    self.pizza_attributes = pizza.pizza_attributes
+  end
+
+  def build_pizza_ingredients
+    if pizza_ingredients_attributes.present?
+      pizza.pizza_ingredients = []
+      pizza_ingredients_attributes.each { |key, value| pizza.pizza_ingredients.build(value) }
+    end
+    self.pizza_ingredients = pizza.pizza_ingredients
+  end
+
+  def recalculate
     PizzaRecalculatingService.new(pizza).recalculate
     self.pizza_attributes = pizza.pizza_attributes
-    self.pizza_ingredients = pizza.pizza_ingredients
-    self
   end
 
   private

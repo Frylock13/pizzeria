@@ -13,7 +13,7 @@ class PizzasController < ApplicationController
   end
 
   def create
-    @pizza = PizzaForm.new(pizza_params).rebuild
+    @pizza = PizzaForm.new(pizza_params).build
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = pizza_ingredients(@pizza)
     respond_to do |format|
@@ -27,7 +27,7 @@ class PizzasController < ApplicationController
   end
 
   def recalculate
-    @pizza = PizzaForm.new(pizza_params).rebuild
+    @pizza = PizzaForm.new(pizza_params).build
     respond_to do |format|
       format.html { render :new }
       format.js { render :recalculate, layout: false }

@@ -30,10 +30,10 @@ class Pizza < ActiveRecord::Base
   scope :standard, -> { where(parent_id: nil) }
 
   def price(pizza_size)
-    dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(:d22) }.sum
+    dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(pizza_size) }.sum
   end
 
   def weight(pizza_size)
-    dough.weight(pizza_size) + pizza_ingredients.map{ |item| item.weight(:d22) }.sum
+    dough.weight(pizza_size) + pizza_ingredients.map{ |item| item.weight(pizza_size) }.sum
   end
 end
