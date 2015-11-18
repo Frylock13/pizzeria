@@ -35,8 +35,9 @@ initSelectize = ->
     valueField: 'id'
     onChange: (value) ->
       $('#pizza_attributes').ladda().ladda('start')
-      $(this.$control[0]).closest('form').attr('action', '/pizzas/recalculate')
-                         .submit().attr('action', '/pizzas')
+      form = $(this.$control[0]).closest('form')
+      action = form.attr('action')
+      form.attr('action', "#{action}/recalculate").submit().attr('action', action) if action == '/pizzas'
 
   $('select.selectize-feature-values:not(.selectized)').selectize(
     creatableElements('feature_value', 'feature_values', 'Создать значение атрибута')

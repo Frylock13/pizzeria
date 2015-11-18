@@ -53,6 +53,7 @@ module Admin
     def recalculate
       pizza = Pizza.find(params[:pizza_id])
       PizzaRecalculatingService.new(pizza).recalculate
+      pizza.save
       redirect_to [:edit, :admin, pizza], success: 'Стоимость пиццы успешно пересчитана'
     end
 
