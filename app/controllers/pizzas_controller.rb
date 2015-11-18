@@ -3,14 +3,7 @@ class PizzasController < ApplicationController
   helper_method :doughs, :pizzas
 
   def new
-    if parent.present?
-      @pizza = parent.deep_clone include: [:pizza_ingredients, :pizza_attributes], except: [:owner_id]
-      @pizza.parent = parent
-      @pizza.visibility = :for_user
-    else
-      @pizza = Pizza.new
-      PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
-    end
+    @pizza = PizzaForm.new(parent_id: params[:parent_id]).build
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = pizza_ingredients(@pizza)
     respond_to do |format|
@@ -20,21 +13,21 @@ class PizzasController < ApplicationController
   end
 
   def create
-    @pizza = Pizza.new(pizza_params)
-    if @pizza.save
-      redirect_to admin_pizzas_path, success: 'Пицца успешно добавлена'
-    else
-      gon.ingredient_categories = ingredient_categories
-      gon.pizza_ingredients = pizza_ingredients(@pizza)
-      respond_to do |format|
-        format.html { render :new }
-        format.js { render :new, layout: false }
-      end
+    @pizza = PizzaForm.new(pizza_params).rebuild
+    gon.ingredient_categories = ingredient_categories
+    gon.pizza_ingredients = pizza_ingredients(@pizza)
+    respond_to do |format|
+      format.html { render :new }
+      format.js { render :new, layout: false }
     end
+    # if @pizza.save
+    #   redirect_to admin_pizzas_path, success: 'Пицца успешно добавлена'
+    # else
+    # end
   end
 
   def recalculate
-    @pizza = Pizza.new(pizza_params)
+    @pizza = PizzaForm.new(pizza_params).rebuild
     respond_to do |format|
       format.html { render :new }
       format.js { render :recalculate, layout: false }
@@ -76,10 +69,7 @@ class PizzasController < ApplicationController
   def pizza_params
     params.require(:pizza).permit(
       :image, :dough_id, :parent_id,
-      { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
-      { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :base, :_destroy] }
-    ).merge(
-      { visibility: :for_user }
+      { pizza_ingredients_attributes: [:ingredient_id, :quantity] }
     )
   end
 end

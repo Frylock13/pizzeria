@@ -1,6 +1,6 @@
 = form_for item, remote: true, authenticity_token: true do |f|
   .pizza-image
-    = image_tag item.image.url if item.image?
+    = image_tag item.image.url if item.image.present?
   .pizza-controls
     = f.hidden_field :parent_id
     = form_field_group :dough_id, item do
