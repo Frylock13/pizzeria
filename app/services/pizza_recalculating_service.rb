@@ -17,13 +17,13 @@ class PizzaRecalculatingService
         dweight += parent.pizza_ingredients.based
                          .where.not(ingredient_id: pizza.pizza_ingredients.pluck(:ingredient_id))
                          .map{ |item| item.weight(pizza_size) }.sum
-        pizza.pizza_attributes.with_pizza_size(pizza_size).first
-             .update(price: dprice + pizza.price(pizza_size), weight: dweight + pizza.weight(pizza_size))
+        pizza.pizza_attributes.select{ |r| r.pizza_size == pizza_size }.first
+          .assign_attributes(price: dprice + pizza.price(pizza_size), weight: dweight + pizza.weight(pizza_size))
       end
     else
       PizzaSizes.pizza_size.values.each do |pizza_size|
-        pizza.pizza_attributes.with_pizza_size(pizza_size).first
-             .update(price: pizza.price(pizza_size), weight: pizza.weight(pizza_size))
+        pizza.pizza_attributes.select{ |r| r.pizza_size == pizza_size }.first
+          .assign_attributes(price: pizza.price(pizza_size), weight: pizza.weight(pizza_size))
       end
     end
   end
