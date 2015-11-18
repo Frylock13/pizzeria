@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  helper_method :pizzas, :product_categories
+  helper_method :pizzas, :user_pizzas, :product_categories
 
   def index
     @main_menu_key = :products
@@ -10,6 +10,14 @@ class ProductsController < ApplicationController
 
   def pizzas
     @pizzas ||= Pizza.with_visibility(:for_all).includes(:pizza_attributes).order(:name)
+  end
+
+  def user_pizzas
+    @user_pizzas ||= if current_user.present?
+                       current_user.owned_pizzas.with_visibility(:for_user)
+                     else
+                       current_profile.owned_pizzas.with_visibility(:for_user)
+                     end
   end
 
   def product_categories

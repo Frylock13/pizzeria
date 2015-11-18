@@ -20,6 +20,8 @@ section.products id='top'
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
+        - if user_pizzas.any?
+          li = link_to 'Мои рецепты', '#user_pizza', 'data-scroll' => ''
         - product_categories.each do |product_category|
           li = link_to product_category.name, "\#product_category_#{product_category.id}", 'data-scroll' => ''
       = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary navbar-btn navbar-right'
@@ -49,6 +51,29 @@ section.products id='pizza'
                       span.fa.fa-plus
                   .item-value = pizza_attribute.pizza_size.text
                   .item-price = number_to_currency pizza_attribute.price, precision: 0
+- if user_pizzas.any?
+  section.products id='user_pizza'
+    .container-masonry
+      .section-title Мои рецепты
+      .masonry-grid.row
+        - user_pizzas.each do |pizza|
+          .masonry-item.col-xs-6.col-md-4.col-lg-3
+            .panel.panel-default.panel-product id="pizza-#{pizza.id}"
+              .panel-body
+                .product-image = image_tag pizza.image.url(:thumb)
+                .product-title = pizza.name
+                .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
+              .panel-footer.product-items
+                - pizza.pizza_attributes.each do |pizza_attribute|
+                  .product-item
+                    .item-controls
+                      a href='javascript:;'
+                        span.fa.fa-minus
+                      span.item-amount 0
+                      a href='javascript:;'
+                        span.fa.fa-plus
+                    .item-value = pizza_attribute.pizza_size.text
+                    .item-price = number_to_currency pizza_attribute.price, precision: 0
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry
