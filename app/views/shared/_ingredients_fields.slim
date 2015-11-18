@@ -1,5 +1,5 @@
-.form-group
-  = label_tag :pizza_ingredient_attributes, 'Ингредиенты', class: 'control-label'
+= form_field_group :pizza_ingredients_attributes, item do
+  = label_tag :pizza_ingredients_attributes, 'Ингредиенты', class: 'control-label'
   = include_gon
   div { class = 'block group-ingredients ng-hide'
         ng-controller = 'PizzaIngredientsFormController as vm'
@@ -68,3 +68,4 @@
                       name = 'pizza[pizza_ingredients_attributes][{{ingredient.id}}][base]'
                       value = '{{vm.pizzaIngredient(ingredient.id).base}}'
                     }
+  = form_field_error :pizza_ingredients_attributes, item

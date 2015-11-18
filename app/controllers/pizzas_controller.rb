@@ -14,16 +14,17 @@ class PizzasController < ApplicationController
 
   def create
     @pizza = PizzaForm.new(pizza_params).build
-    gon.ingredient_categories = ingredient_categories
-    gon.pizza_ingredients = pizza_ingredients(@pizza)
-    respond_to do |format|
-      format.html { render :new }
-      format.js { render :new, layout: false }
+    if @pizza.save
+      session[:profile_id] = @pizza.owner.id
+      redirect_to root_path, success: 'Пицца успешно добавлена'
+    else
+      gon.ingredient_categories = ingredient_categories
+      gon.pizza_ingredients = pizza_ingredients(@pizza)
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render :new, layout: false }
+      end
     end
-    # if @pizza.save
-    #   redirect_to admin_pizzas_path, success: 'Пицца успешно добавлена'
-    # else
-    # end
   end
 
   def recalculate
@@ -70,6 +71,6 @@ class PizzasController < ApplicationController
     params.require(:pizza).permit(
       :image, :dough_id, :parent_id,
       { pizza_ingredients_attributes: [:ingredient_id, :quantity] }
-    )
+    ).merge(owner: current_profile)
   end
 end

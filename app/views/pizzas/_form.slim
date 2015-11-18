@@ -9,7 +9,7 @@
         :id, :name, { prompt: 'Выберите тесто' },
                     { class: 'form-control selectize-doughs' }
       = form_field_error :dough_id, item
-    = render 'shared/ingredients_fields', hide_control: true
+    = render 'shared/ingredients_fields', item: item, hide_control: true
     .form-group
       .pizza-submit
         = f.button 'Создать особую пиццу', class: 'btn btn-primary ladda-button'

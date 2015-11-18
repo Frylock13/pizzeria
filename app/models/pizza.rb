@@ -24,16 +24,19 @@ class Pizza < ActiveRecord::Base
   mount_uploader :image, ProductPhotoUploader
 
   validates :name, presence: true
+  accepts_nested_attributes_for :owner
   accepts_nested_attributes_for :pizza_attributes
   accepts_nested_attributes_for :pizza_ingredients, allow_destroy: true
 
   scope :standard, -> { where(parent_id: nil) }
 
   def price(pizza_size)
+    return nil unless dough.present?
     dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(pizza_size) }.sum
   end
 
   def weight(pizza_size)
+    return nil unless dough.present?
     dough.weight(pizza_size) + pizza_ingredients.map{ |item| item.weight(pizza_size) }.sum
   end
 end

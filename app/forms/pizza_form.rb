@@ -2,6 +2,7 @@ class PizzaForm < ActiveForm
   attribute :dough_id, Integer
   attribute :image
   attribute :name, String
+  attribute :owner, Profile
   attribute :parent, Pizza
   attribute :parent_id, Integer
   attribute :pizza, Pizza
@@ -21,6 +22,8 @@ class PizzaForm < ActiveForm
     build_pizza
     build_image
     build_name
+    build_owner
+    build_visibility
     build_dough_id
     build_pizza_attributes
     build_pizza_ingredients
@@ -48,6 +51,14 @@ class PizzaForm < ActiveForm
   def build_name
     pizza.name = parent.present? ? "#{pizza.name} особая" : "Уникальная"
     self.name = pizza.name
+  end
+
+  def build_owner
+    pizza.owner = owner
+  end
+
+  def build_visibility
+    pizza.visibility = visibility
   end
 
   def build_dough_id
@@ -81,9 +92,6 @@ class PizzaForm < ActiveForm
   private
 
   def persist_data
-    # ActiveRecord::Base.transaction do
-    #   self.pizza = Pizza.create
-    #   true
-    # end
+    pizza.save
   end
 end

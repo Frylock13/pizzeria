@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111012256) do
+ActiveRecord::Schema.define(version: 20151118191235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(version: 20151111012256) do
   add_foreign_key "pizza_ingredients", "ingredients"
   add_foreign_key "pizza_ingredients", "pizzas"
   add_foreign_key "pizzas", "doughs"
-  add_foreign_key "pizzas", "users", column: "owner_id"
+  add_foreign_key "pizzas", "profiles", column: "owner_id"
   add_foreign_key "product_features", "feature_values"
   add_foreign_key "product_features", "features"
   add_foreign_key "product_features", "products"

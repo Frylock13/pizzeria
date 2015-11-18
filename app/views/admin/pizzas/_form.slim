@@ -36,6 +36,6 @@
                   = ff.text_field :weight, class: 'form-control mask-weight'
       = render 'admin/fileinput_field', f: f, item: item
     .col-xs-6
-      = render 'shared/ingredients_fields', hide_control: false
+      = render 'shared/ingredients_fields', item: item, hide_control: false
   .form-group
     = f.button nil, class: 'btn btn-primary ladda-button'
