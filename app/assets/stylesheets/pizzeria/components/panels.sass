@@ -73,11 +73,31 @@
           padding: 15px 0
       .pizza-image
         line-height: 600px
+        min-height: 600px
         overflow: hidden
         text-align: right
         img
           max-width: 100%
           vertical-align: middle
+        .pizza-plate
+          background: #2D2A24
+          border-radius: 50%
+          height: 510px
+          margin: 45px auto
+          position: relative
+          width: 510px
+          .pizza-frame
+            -webkit-transform: rotate(0deg)
+            background-image: image_url('pizza.png')
+            background-size: 100%
+            border-radius: 50%
+            height: 500px
+            left: 50%
+            margin: -250px
+            position: absolute
+            top: 50%
+            transform: rotate(0deg)
+            width: 500px
       &:before, &:after
         content: " "
         display: table

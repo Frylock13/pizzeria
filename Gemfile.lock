@@ -334,6 +334,7 @@ GEM
       rails-assets-get-style-property (~> 1.0)
     rails-assets-get-style-property (1.0.4)
     rails-assets-ink (1.0.5)
+    rails-assets-interact (1.2.6)
     rails-assets-jasny-bootstrap (3.1.3)
       rails-assets-bootstrap (>= 3.1.0)
       rails-assets-jquery (>= 1.9.0)
@@ -570,6 +571,7 @@ DEPENDENCIES
   rails-assets-breakpoint-sass!
   rails-assets-cferdinandi--smooth-scroll!
   rails-assets-ink!
+  rails-assets-interact!
   rails-assets-jasny-bootstrap!
   rails-assets-jquery.inputmask (= 3.2.2)!
   rails-assets-ladda!

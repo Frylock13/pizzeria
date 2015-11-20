@@ -8,6 +8,7 @@
 #= require bootstrap/scrollspy
 #= require bootstrap/tooltip
 #= require bootstrap/transition
+#= require interact
 #= require jquery.inputmask/dist/inputmask/inputmask
 #= require jquery.inputmask/dist/inputmask/inputmask.numeric.extensions
 #= require jquery.inputmask/dist/inputmask/jquery.inputmask
