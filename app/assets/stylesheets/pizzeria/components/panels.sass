@@ -1,5 +1,7 @@
 @import 'variables'
 @import 'settings/prefixer'
+@import 'bootstrap/_mixins-plus'
+@import 'addons/border-radius'
 @import 'addons/prefixer'
 @import 'addons/rhythm'
 @import 'css3/calc'
@@ -103,6 +105,71 @@
         display: table
       &:after
         clear: both
+  &.panel-product
+    margin-bottom: 18px
+    .panel-body
+      background-position: 100% 0
+      .product-image
+        +border-top-radius($panel-border-radius)
+        margin: -10px -15px -25px
+        height: 215px
+        overflow: hidden
+        position: relative
+        img
+          height: auto
+          left: 0
+          position: absolute
+          top: 0
+          width: 100%
+      .product-title
+        font-size: 16px
+        font-weight: bold
+        line-height: 20px
+        margin-bottom: 5px
+        position: relative
+        text-shadow: 0 0 4px #fff
+      .pizza-ingredients
+        height: 60px
+        line-height: 20px
+        margin-bottom: 5px
+        overflow: hidden
+      .pizza-edit-ingredients
+        line-height: 20px
+    .panel-footer
+      padding: 0
+      .list-group
+        margin: 0
+        a.list-group-item
+          border: none
+          height: rh(2)
+          overflow: hidden
+          position: relative
+          span + span
+            margin-left: 7px
+          .pull-right
+            +transition(background-color 0.25s)
+            background-color: transparent
+            font-size: 12px
+            margin: -10px -15px
+            padding: 10px 15px
+          &.ladda-button
+            .ladda-spinner
+              right: -19px
+          &:hover
+            .pull-right
+              background-color: $brand-primary
+    &.pizza-derevenskaya
+      .panel-body
+        +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg', no-repeat, 300px, 200px)
+    &.pizza-domashyaya
+      .panel-body
+        +retina-bg('pizza/domashyaya.jpg', 'pizza/domashyaya@2x.jpg', no-repeat, 300px, 200px)
+    &.pizza-kurica
+      .panel-body
+        +retina-bg('pizza/kurica.jpg', 'pizza/kurica@2x.jpg', no-repeat, 300px, 200px)
+    &.pizza-objora
+      .panel-body
+        +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
 
 .panel-slider
   .panel-body

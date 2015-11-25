@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :pages
+  helper_method :current_order, :current_profile, :pages
 
   private
 
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     forbidden unless current_user.try(:role).try(:admin?)
   end
 
+  def current_order
+    @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
+  end
+
   def current_profile
     @current_profile ||= profile_from_session || profile_for_user || profile_for_guest
   end
@@ -46,10 +50,6 @@ class ApplicationController < ActionController::Base
 
   # def layout_resources
   #   [current_user_etag, pages, revision]
-  # end
-
-  # def current_order
-  #   @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
   # end
 
   # def current_user_etag

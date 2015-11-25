@@ -19,4 +19,5 @@ class Order < ActiveRecord::Base
   belongs_to :address
   belongs_to :ordering_profile, class_name: 'Profile'
   belongs_to :receiving_profile, class_name: 'Profile'
+  has_many :ordered_pizzas
 end

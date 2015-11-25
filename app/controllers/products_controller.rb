@@ -15,8 +15,10 @@ class ProductsController < ApplicationController
   def user_pizzas
     @user_pizzas ||= if current_user.present?
                        current_user.owned_pizzas.with_visibility(:for_user)
+                                   .includes(:pizza_attributes).order(:name)
                      else
                        current_profile.owned_pizzas.with_visibility(:for_user)
+                                      .includes(:pizza_attributes).order(:name)
                      end
   end
 

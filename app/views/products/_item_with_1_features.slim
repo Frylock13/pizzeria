@@ -1,10 +1,11 @@
-- item.product_features.each do |product_feature|
-  .product-item
-    .item-controls
-      a href='javascript:;'
-        span.fa.fa-minus
-      span.item-amount 0
-      a href='javascript:;'
-        span.fa.fa-plus
-    .item-value = product_feature.feature_value_name
-    .item-price = number_to_currency product_feature.price, precision: 0
+.list-group
+  - item.product_features.each do |product_feature|
+    a { class = 'list-group-item ladda-button'
+          href = 'javascript:;'
+          data-spinner-color = '#959286'
+          data-spinner-size = '20'
+          data-style = 'expand-right'
+      }
+      .pull-right В корзину
+      span = product_feature.feature_value_name
+      span.b = number_to_currency product_feature.price, precision: 0

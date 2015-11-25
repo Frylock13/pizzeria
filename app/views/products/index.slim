@@ -40,17 +40,18 @@ section.products id='pizza'
                 = link_to 'Подобрать ингредиенты', new_pizza_path(parent_id: pizza.id),
                           remote: true, class: 'ladda-button',
                           data: { spinner_color: '#383783', spinner_size: '20', style: 'expand-right' }
-            .panel-footer.product-items
-              - pizza.pizza_attributes.each do |pizza_attribute|
-                .product-item
-                  .item-controls
-                    a href='javascript:;'
-                      span.fa.fa-minus
-                    span.item-amount 0
-                    a href='javascript:;'
-                      span.fa.fa-plus
-                  .item-value = pizza_attribute.pizza_size.text
-                  .item-price = number_to_currency pizza_attribute.price, precision: 0
+            .panel-footer
+              .list-group
+                - pizza.pizza_attributes.each do |pizza_attribute|
+                  a { class = 'list-group-item ladda-button'
+                      href = 'javascript:;'
+                      data-spinner-color = '#959286'
+                      data-spinner-size = '20'
+                      data-style = 'expand-right'
+                    }
+                    .pull-right В корзину
+                    span = pizza_attribute.pizza_size.text
+                    span.b = number_to_currency pizza_attribute.price, precision: 0
 - if user_pizzas.any?
   section.products id='user_pizza'
     .container-masonry
@@ -63,17 +64,18 @@ section.products id='pizza'
                 .product-image = image_tag pizza.image.url(:thumb)
                 .product-title = pizza.name
                 .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
-              .panel-footer.product-items
-                - pizza.pizza_attributes.each do |pizza_attribute|
-                  .product-item
-                    .item-controls
-                      a href='javascript:;'
-                        span.fa.fa-minus
-                      span.item-amount 0
-                      a href='javascript:;'
-                        span.fa.fa-plus
-                    .item-value = pizza_attribute.pizza_size.text
-                    .item-price = number_to_currency pizza_attribute.price, precision: 0
+              .panel-footer
+                .list-group
+                  - pizza.pizza_attributes.each do |pizza_attribute|
+                    a { class = 'list-group-item ladda-button'
+                        href = 'javascript:;'
+                        data-spinner-color = '#959286'
+                        data-spinner-size = '20'
+                        data-style = 'expand-right'
+                      }
+                      .pull-right В корзину
+                      span = pizza_attribute.pizza_size.text
+                      span.b = number_to_currency pizza_attribute.price, precision: 0
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry
@@ -85,7 +87,7 @@ section.products id='pizza'
               .panel-body
                 .product-image = image_tag product.image.url(:thumb)
                 .product-title = product.name
-              .panel-footer.product-items
+              .panel-footer
                 = render "item_with_#{product.features.uniq.size}_features", item: product
 .modal.fade id='productModal'
   .modal-dialog.modal-lg.modal-product

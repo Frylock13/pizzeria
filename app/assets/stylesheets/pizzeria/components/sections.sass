@@ -1,21 +1,12 @@
 @import 'variables'
 @import 'bootstrap/_mixins-plus'
 @import 'settings/prefixer'
-@import 'addons/border-radius'
 @import 'addons/prefixer'
 @import 'css3/animation'
 @import 'css3/calc'
 @import 'css3/keyframes'
 @import 'mixins'
 @import 'breakpoint-sass'
-
-+keyframes(anchorHighlight)
-  0%
-    background-color: lighten($brand-primary, 25%)
-  25%
-    background-color: lighten($brand-primary, 25%)
-  100%
-    background-color: $panel-footer-bg
 
 section
   &.banners
@@ -103,52 +94,6 @@ section
         &.item-in-cart
           .item-amount
             color: $text-color
-    .panel
-      &.panel-product
-        margin-bottom: 18px
-        &:target
-          .panel-footer
-            +animation(anchorHighlight 2s)
-        .panel-body
-          background-position: 100% 0
-          .product-image
-            +border-top-radius($panel-border-radius)
-            margin: -10px -15px -25px
-            height: 215px
-            overflow: hidden
-            position: relative
-            img
-              height: auto
-              left: 0
-              position: absolute
-              top: 0
-              width: 100%
-          .product-title
-            font-size: 16px
-            font-weight: bold
-            line-height: 20px
-            margin-bottom: 5px
-            position: relative
-            text-shadow: 0 0 4px #fff
-          .pizza-ingredients
-            height: 60px
-            line-height: 20px
-            margin-bottom: 5px
-            overflow: hidden
-          .pizza-edit-ingredients
-            line-height: 20px
-        &.pizza-derevenskaya
-          .panel-body
-            +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg', no-repeat, 300px, 200px)
-        &.pizza-domashyaya
-          .panel-body
-            +retina-bg('pizza/domashyaya.jpg', 'pizza/domashyaya@2x.jpg', no-repeat, 300px, 200px)
-        &.pizza-kurica
-          .panel-body
-            +retina-bg('pizza/kurica.jpg', 'pizza/kurica@2x.jpg', no-repeat, 300px, 200px)
-        &.pizza-objora
-          .panel-body
-            +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
   &.submenu
     // +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
     +calc(height, '100vh - 50px')
