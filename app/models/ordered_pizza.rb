@@ -17,4 +17,8 @@ class OrderedPizza < ActiveRecord::Base
   belongs_to :pizza
 
   scope :for_pizza, -> (pizza_id) { where(pizza_id: pizza_id) }
+
+  def price
+    pizza.fair_price(pizza_size) * quantity
+  end
 end

@@ -11,46 +11,27 @@
             span Шаг 1. Составьте заказ
             span.fa.fa-chevron-down
           ul.dropdown-menu.navmenu-nav
-            li
-              = link_to root_path(anchor: 'pizza1') do
-                .nav-item-title Пицца «Деревенская»
-                .nav-item-subtitle
-                  .pull-right
-                    small 2 шт
-                    span 680 р.
-                  span 22см
-                  small 340 р.
-                .nav-item-subtitle
-                  .pull-right
-                    small 1 шт
-                    span 420 р.
-                  span 33см
-                  small 420 р.
-            li
-              = link_to root_path(anchor: 'pizza3') do
-                .nav-item-title Пицца «Куриная»
-                .nav-item-subtitle
-                  .pull-right
-                    small 1 шт
-                    span 350 р.
-                  span 22см
-                  small 350 р.
-            li
-              = link_to root_path(anchor: 'product23') do
-                .nav-item-title Сок апельсиновый
-                .nav-item-subtitle
-                  .pull-right
-                    small 4 шт
-                    span 200 р.
-                  span 0.2л
-                  small 50 р.
+            - if current_order.empty?
+              li
+                .nav-item-title Корзина пуста
+                .nav-item-subtitle Добавьте в неё что-нибудь
+            - else
+              - current_order.ordered_pizzas.each do |ordered_pizza|
+                li
+                  div
+                    .nav-item-title = ordered_pizza.pizza.name
+                    .nav-item-subtitle
+                      .pull-right
+                        small #{ordered_pizza.quantity} шт
+                        span = number_to_currency ordered_pizza.price, precision: 0
+                      span = ordered_pizza.pizza_size.text
             li
               = link_to root_path(anchor: 'menu') do
                 .nav-item-title
                   .pull-right
                     small Итого:
-                    span 1650 р.
-                  small.text-muted мин. заказ от 500 р.
+                    span = number_to_currency current_order.price, precision: 0
+                  small.text-muted мин. заказ от 500 руб.
       - else
         li = link_to root_path do
           span.fa.fa-check-circle-o.fa-lg.text-success

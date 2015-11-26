@@ -30,6 +30,10 @@ class Pizza < ActiveRecord::Base
 
   scope :standard, -> { where(parent_id: nil) }
 
+  def fair_price(pizza_size)
+    pizza_attributes.with_pizza_size(pizza_size).first.try(:price)
+  end
+
   def price(pizza_size)
     return nil unless dough.present?
     dough.price(pizza_size) + pizza_ingredients.map{ |item| item.price(pizza_size) }.sum
