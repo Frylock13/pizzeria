@@ -18,10 +18,10 @@ class PizzaIngredient < ActiveRecord::Base
   scope :based, -> { where(base: true) }
 
   def price(pizza_size)
-    ingredient.price(pizza_size)*quantity
+    ingredient.price(pizza_size) * quantity
   end
 
   def weight(pizza_size)
-    ingredient.weight(pizza_size)*quantity
+    ingredient.weight(pizza_size) * quantity
   end
 end

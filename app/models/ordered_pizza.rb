@@ -19,6 +19,6 @@ class OrderedPizza < ActiveRecord::Base
   scope :for_pizza, -> (pizza_id) { where(pizza_id: pizza_id) }
 
   def price
-    pizza.fair_price(pizza_size) * quantity
+    pizza.price(pizza_size) * quantity
   end
 end
