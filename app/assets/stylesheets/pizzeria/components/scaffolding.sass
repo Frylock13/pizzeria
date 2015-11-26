@@ -90,6 +90,16 @@ body
         .nav-item-title
           font-size: 15px
           font-weight: bold
+          .pull-right
+            a
+              border-radius: 3px
+              display: inline-block
+              height: 20px
+              line-height: 20px
+              text-align: center
+              width: 24px
+              + a
+                margin-left: 6px
         .nav-item-subtitle
           font-size: 14px
         >
@@ -183,6 +193,12 @@ body
         &:hover, &:focus
           background-color: $navbar-inverse-link-hover-bg
           color: $navbar-inverse-link-hover-color
+      li > div
+        .pull-right > a
+          +transition(background-color 0.2s, color 0.2s)
+          color: $navbar-inverse-link-color
+          &:hover, &:focus
+            background-color: rgba($btn-primary-bg, 0.85)
       .active > a
         &, &:hover, &:focus
           background-color: $navbar-inverse-link-active-bg

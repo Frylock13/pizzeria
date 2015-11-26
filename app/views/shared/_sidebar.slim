@@ -19,7 +19,13 @@
               - current_order.ordered_pizzas.each do |ordered_pizza|
                 li
                   div
-                    .nav-item-title = ordered_pizza.pizza.name
+                    .nav-item-title
+                      .pull-right
+                        = link_to 'javascript:;' do
+                          span.fa.fa-plus
+                        = link_to 'javascript:;' do
+                          span.fa.fa-minus
+                      span = ordered_pizza.pizza.name
                     .nav-item-subtitle
                       .pull-right
                         small #{ordered_pizza.quantity} шт
