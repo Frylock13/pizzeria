@@ -5,7 +5,7 @@ class OrderedPizzasController < ApplicationController
     ordered_pizza.save
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { render :cart, layout: false }
+      format.js { render 'shared/cart', layout: false }
     end
   end
 
@@ -21,7 +21,7 @@ class OrderedPizzasController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { render :cart, layout: false }
+      format.js { render 'shared/cart', layout: false }
     end
   end
 

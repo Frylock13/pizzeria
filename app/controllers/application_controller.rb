@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_order, :current_profile, :current_ordered_pizzas, :pages
+  helper_method :current_order, :current_ordered_pizzas, :current_ordered_products,
+                :current_profile, :pages
 
   private
 
@@ -35,6 +36,10 @@ class ApplicationController < ActionController::Base
 
   def current_ordered_pizzas
     current_order.ordered_pizzas.includes(:pizza).order('pizzas.name', :pizza_size)
+  end
+
+  def current_ordered_products
+    current_order.ordered_products.includes(:product).order('products.name')
   end
 
   def profile_from_session

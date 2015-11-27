@@ -20,13 +20,15 @@ class Order < ActiveRecord::Base
   belongs_to :ordering_profile, class_name: 'Profile'
   belongs_to :receiving_profile, class_name: 'Profile'
   has_many :ordered_pizzas
+  has_many :ordered_products
 
   def empty?
     return false if ordered_pizzas.any?
+    return false if ordered_products.any?
     true
   end
 
   def price
-    ordered_pizzas.map{ |item| item.price }.sum
+    ordered_pizzas.map{ |item| item.price }.sum + ordered_products.map{ |item| item.price }.sum
   end
 end

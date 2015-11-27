@@ -1,9 +1,8 @@
 .list-group
-  a { class = 'list-group-item ladda-button'
-        href = 'javascript:;'
-        data-spinner-color = '#959286'
-        data-spinner-size = '20'
-        data-style = 'expand-right'
-    }
+  = link_to increase_ordered_products_path(product_id: item.id),
+            remote: true, class: 'list-group-item ladda-button',
+            data: { spinner_color: '#959286',
+                    spinner_size: '20',
+                    style: 'expand-right' } do
     .pull-right В корзину
     span.b = number_to_currency item.price, precision: 0
