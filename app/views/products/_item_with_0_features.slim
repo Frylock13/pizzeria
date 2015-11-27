@@ -1,6 +1,6 @@
 .list-group
-  = link_to increase_ordered_products_path(product_id: item.id),
-            remote: true, class: 'list-group-item ladda-button',
+  = link_to ordered_products_path(product_id: item.id),
+            method: :post, remote: true, class: 'list-group-item ladda-button',
             data: { spinner_color: '#959286',
                     spinner_size: '20',
                     style: 'expand-right' } do

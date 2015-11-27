@@ -1,33 +1,39 @@
 class OrderedProductsController < ApplicationController
-  def increase
-    ordered_product = ordered_products.first_or_initialize
+  def create
+    ordered_product = current_order.ordered_products
+                                   .where(product_id: params[:product_id])
+                                   .first_or_initialize
     ordered_product.quantity += 1
     ordered_product.save
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
-    end
+    render_cart
   end
 
   def decrease
-    ordered_product = ordered_products.first
-    if ordered_product.present?
-      if ordered_product.quantity <= 1
-        ordered_product.destroy
-      else
-        ordered_product.quantity -= 1
-        ordered_product.save
-      end
+    if ordered_product.quantity <= 1
+      ordered_product.destroy
+    else
+      ordered_product.quantity -= 1
+      ordered_product.save
     end
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
-    end
+    render_cart
+  end
+
+  def increase
+    ordered_product.quantity += 1
+    ordered_product.save
+    render_cart
   end
 
   private
 
-  def ordered_products
-    @ordered_products ||= current_order.ordered_products.where(product_id: params[:product_id])
+  def render_cart
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render 'shared/cart', layout: false }
+    end
+  end
+
+  def ordered_product
+    @ordered_product ||= OrderedProduct.find(params[:ordered_product_id])
   end
 end

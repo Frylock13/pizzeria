@@ -23,11 +23,9 @@ Rails.application.routes.draw do
     get :decrease
     get :increase
   end
-  resources :ordered_products, only: [] do
-    collection do
-      get :increase
-      get :decrease
-    end
+  resources :ordered_products, only: [:create] do
+    get :decrease
+    get :increase
   end
   resources :pages, only: [:show]
   resources :password_resets, only: [:new, :create, :edit, :update]
