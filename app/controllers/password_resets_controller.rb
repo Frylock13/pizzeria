@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  before_action :main_menu_link
+  before_action :main_menu_key
   helper_method :user
 
   def new
@@ -37,8 +37,8 @@ class PasswordResetsController < ApplicationController
 
   private
 
-  def main_menu_link
-    @main_menu_link = :auth
+  def main_menu_key
+    @main_menu_key = :auth
   end
 
   def user

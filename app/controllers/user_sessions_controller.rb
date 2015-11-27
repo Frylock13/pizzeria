@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
   before_filter :require_login, only: :destroy
-  before_action :main_menu_link
+  before_action :main_menu_key
 
   def new
     @user_session = UserSession.new
@@ -26,8 +26,8 @@ class UserSessionsController < ApplicationController
 
   private
 
-  def main_menu_link
-    @main_menu_link = :auth
+  def main_menu_key
+    @main_menu_key = :auth
   end
 
   def user_session_params

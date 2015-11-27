@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def new
-    @main_menu_link = :auth
+    @main_menu_key = :auth
     @user = User.new
     # render :new if stale? [@user] | layout_resources
   end
 
   def create
-    @main_menu_link = :auth
+    @main_menu_key = :auth
     @user = User.new(user_params)
     if @user.save
       auto_login(@user, should_remember = true)
