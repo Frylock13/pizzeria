@@ -21,6 +21,7 @@ class Order < ActiveRecord::Base
   belongs_to :receiving_profile, class_name: 'Profile'
   has_many :ordered_pizzas
   has_many :ordered_products
+  accepts_nested_attributes_for :ordering_profile
 
   def empty?
     return false if ordered_pizzas.any?

@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    @current_order ||= current_profile.ordering_orders.with_status(:created).first_or_initialize
+    @current_order ||= current_profile.ordering_orders
+                                      .with_status(:created)
+                                      .first_or_initialize(ordering_profile: current_profile)
   end
 
   def current_profile

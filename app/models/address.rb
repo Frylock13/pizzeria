@@ -16,4 +16,12 @@
 class Address < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_many :orders
+
+  def to_s
+    str = "#{street} #{house}"
+    str += ", кв #{flat}" if flat.present?
+    str += ", #{floor}-й этаж" if floor.present?
+    str += ", домофон #{intercom_code}" if intercom_code.present?
+    str
+  end
 end

@@ -43,7 +43,9 @@ module ApplicationHelper
     end
   end
 
-  def form_field_group(field_name, form_record, &block)
-    content_tag :div, capture(&block), class: "form-group #{'has-error' if form_record.errors[field_name].any?}"
+  def form_field_group(field_name, form_record, div_class: nil, div_id: nil, &block)
+    classes = ['form-group', div_class]
+    classes << 'has-error' if form_record.errors[field_name].any?
+    content_tag :div, capture(&block), class: classes.join(' '), id: div_id
   end
 end

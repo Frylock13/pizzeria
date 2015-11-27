@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :check_order_price, only: [:new, :create]
+  helper_method :owned_addresses, :owned_profiles, :payment_methods
 
   def index
     @main_menu_key = :orders
@@ -11,7 +12,7 @@ class OrdersController < ApplicationController
 
   def new
     @main_menu_key = :new_order
-    # @order = Order.new
+    current_order.booked_on = Time.zone.now
     # render :new if stale? [:new_order] | layout_resources
   end
 
@@ -20,6 +21,20 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def owned_addresses
+    return [] unless current_user.present?
+    @owned_addresses ||= current_user.owned_addresses.map{ |item| [item.to_s, item.id] }
+  end
+
+  def owned_profiles
+    return [] unless current_user.present?
+    @owned_profiles ||= current_user.owned_profiles.map{ |item| [item.to_s, item.id] }
+  end
+
+  def payment_methods
+    @payment_methods ||= OrderEnums.payment_method.options
+  end
 
   def check_order_price
     if current_order.price < 500

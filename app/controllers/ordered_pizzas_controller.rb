@@ -6,6 +6,7 @@ class OrderedPizzasController < ApplicationController
                                  .first_or_initialize
     ordered_pizza.quantity += 1
     ordered_pizza.save
+    session[:profile_id] = current_order.ordering_profile.id
     render_cart
   end
 

@@ -10,6 +10,7 @@ class OrderedProductsController < ApplicationController
     end
     ordered_product.quantity += 1
     ordered_product.save
+    session[:profile_id] = current_order.ordering_profile.id
     render_cart
   end
 

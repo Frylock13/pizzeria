@@ -3,66 +3,106 @@
     .order-step
       .step-title Когда выполнить заказ?
     .order-form
-      .form-group
-        = select_tag :payment_method, options_for_select([['В ближайшее время', 1], ['В определенный день', 2]]), class: 'form-control selectize-booking'
-      / = form_field_group :booking_date, item do
-      /   = f.date_field :booking_date, class: 'form-control'
-      / .form-group
-      /   .col-sm-9.col-sm-offset-2
-      /     = f.check_box :booking_date, class: 'form-control'
-      /     = f.label :booking_date, 'Оформить заказ на определенную дату', class: 'control-label'
+      = form_field_group :status, item do
+        = f.select :status,
+                   options_for_select([['В ближайшее время', :accepted],
+                                       ['В определенный день и час', :booked]]),
+                   { prompt: 'Выберите один из вариантов' },
+                   class: 'form-control selectize-order-booking'
+        = form_field_error :status, item
+      = form_field_group :booked_on, item, div_class: 'hide', div_id: 'booked_attributes' do
+        = f.datetime_local_field :booked_on, class: 'form-control', disabled: true
+        = form_field_error :booked_on, item
   .row.row-order
     .order-step
       .step-title Куда привезти?
     .order-form
-      = f.fields_for :address, item.address do |ff|
-        .row
-          .col-xs-8
-            = form_field_group :street, item do
-              = ff.text_field :street, class: 'form-control', required: false, placeholder: 'Улица'
-              = form_field_error :street, item
-          .col-xs-4
-            = form_field_group :build, item do
-              = ff.text_field :build, class: 'form-control', required: false, placeholder: 'Дом'
-              = form_field_error :build, item
-        .row
-          .col-xs-4
-            = ff.text_field :flat, class: 'form-control', required: false, placeholder: 'Квартира'
-          .col-xs-4
-            = ff.text_field :floor, class: 'form-control', required: false, placeholder: 'Этаж'
-          .col-xs-4
-            = ff.text_field :intercom, class: 'form-control', required: false, placeholder: 'Домофон'
+      = form_field_group :address_id, item do
+        = f.select :address_id,
+                   options_for_select(owned_addresses.push(['Введу адрес вручную', :attributes])),
+                   { prompt: 'Выберите один из вариантов' },
+                   class: 'form-control selectize-order-address'
+        = form_field_error :address_id, item
+      .form-group.hide id='address_attributes'
+        = f.fields_for :address, item.address do |ff|
+          .row
+            .col-xs-8
+              = form_field_group :street, item do
+                = ff.text_field :street, class: 'form-control', placeholder: 'Улица',
+                                required: false, disabled: true
+                = form_field_error :street, item
+            .col-xs-4
+              = form_field_group :build, item do
+                = ff.text_field :build, class: 'form-control', placeholder: 'Дом',
+                                required: false, disabled: true
+                = form_field_error :build, item
+          .row
+            .col-xs-4
+              = ff.text_field :flat, class: 'form-control', placeholder: 'Квартира',
+                              required: false, disabled: true
+            .col-xs-4
+              = ff.text_field :floor, class: 'form-control', placeholder: 'Этаж',
+                              required: false, disabled: true
+            .col-xs-4
+              = ff.text_field :intercom, class: 'form-control', placeholder: 'Домофон',
+                              required: false, disabled: true
   .row.row-order
     .order-step
       .step-title Кто примет доставку?
     .order-form
-      = f.fields_for :receiving_profile, item.receiving_profile do |ff|
-        = form_field_group :name, item do
-          = ff.text_field :name, class: 'form-control', required: false, placeholder: 'Имя'
-          = form_field_error :name, item
-        = form_field_group :phone, item do
-          = ff.text_field :phone, class: 'form-control', required: false, placeholder: 'Телефон'
-          = form_field_error :phone, item
+      = form_field_group :receiving_profile_id, item do
+        = f.select :receiving_profile_id,
+                   options_for_select(owned_profiles.push(['Введу контакты вручную', :attributes])),
+                   { prompt: 'Выберите один из вариантов' },
+                   class: 'form-control selectize-order-profile'
+        = form_field_error :receiving_profile_id, item
+      .form-group.hide id='receiving_profile_attributes'
+        = f.fields_for :receiving_profile, item.receiving_profile do |ff|
+          = form_field_group :name, item do
+            = ff.text_field :name, class: 'form-control', placeholder: 'Имя',
+                            required: false, disabled: true
+            = form_field_error :name, item
+          = form_field_group :phone, item do
+            = ff.text_field :phone, class: 'form-control', placeholder: 'Телефон',
+                            required: false, disabled: true
+            = form_field_error :phone, item
   .row.row-order
     .order-step
       .step-title Как лучше оплатить заказ?
     .order-form
       .form-group
-        = f.select :payment_method, options_for_select([['Наличными курьеру', 1], ['Бонусными баллами', 2]]), {}, class: 'form-control selectize-payment'
-      / = f.collection_select :payment_method,
-      /   [{ id: 1, title: 'Наличными курьеру' }, { id: 2, title: 'Бонусными баллами' }],
-      /   :id, :title, { include_blank: true },
-      /   { class: 'form-control selectize-payment',
-      /     data: { placeholder: 'Выберите метод' } }
+        = f.select :payment_method,
+                   options_for_select(payment_methods),
+                   { prompt: 'Выберите один из вариантов' },
+                   class: 'form-control selectize-order-payment'
+      .form-group.hide id='payment_bonus_points'
+        - unless current_user.present?
+          | Чтобы получить доступ к своим бонусным баллам, введите ваш e-mail ниже.
+        - else
+          - if current_user.bonus_points < current_order.price
+            ' У вас на бонусном счете
+            = number_to_currency current_user.bonus_points, precision: 0
+            | , их не хватит для оплаты заказа.
+            br
+            | Заказывайте пиццу у нас, копите бонусные баллы и оплачивайте ими заказы.
+          - else
+            | Отлично, вы можете оплатить заказ бонусными баллами!
   .row.row-order
     .order-step
       .step-title Последние штрихи
     .order-form
       = form_field_group :wishes, item do
         = f.text_area :wishes, class: 'form-control', rows: 3, placeholder: 'Особые пожелания'
-      = f.fields_for :ordering_profile, item.receiving_profile do |ff|
-        = form_field_group :email, item do
-          = ff.text_field :email, class: 'form-control', required: false, placeholder: 'Ваш e-mail адрес'
-          = form_field_error :email, item
+      - if current_user.present?
+        .form-group
+          = f.hidden_field :ordering_profile_id
+      - else
+        = f.fields_for :ordering_profile, item.ordering_profile do |ff|
+          .form-group
+            = ff.hidden_field :id
+          = form_field_group :email, item do
+            = ff.text_field :email, class: 'form-control', placeholder: 'Ваш e-mail адрес',
+                            required: false
+            = form_field_error :email, item
       .form-group
         = f.submit 'Оформить заказ', class: 'btn btn-primary btn-lg ladda-button'
