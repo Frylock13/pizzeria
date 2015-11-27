@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     get :thanks, on: :collection
   end
   resources :orders, only: [:index, :show, :new, :create]
+  resources :ordered_pizzas, only: [] do
+    collection do
+      get :increase
+      get :decrease
+    end
+  end
   resources :pages, only: [:show]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :pizzas, only: [:new, :create] do

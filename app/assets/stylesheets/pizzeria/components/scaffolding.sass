@@ -91,11 +91,14 @@ body
           font-size: 15px
           font-weight: bold
           .pull-right
+            height: 20px
             a
               border-radius: 3px
+              border: none
               display: inline-block
               height: 20px
               line-height: 20px
+              padding: 0
               text-align: center
               width: 24px
               + a
@@ -196,9 +199,10 @@ body
       li > div
         .pull-right > a
           +transition(background-color 0.2s, color 0.2s)
+          background-color: transparent
           color: $navbar-inverse-link-color
           &:hover, &:focus
-            background-color: rgba($btn-primary-bg, 0.85)
+            background-color: rgba($btn-primary-bg, 0.75)
       .active > a
         &, &:hover, &:focus
           background-color: $navbar-inverse-link-active-bg
