@@ -1,8 +1,13 @@
 class OrderedProductsController < ApplicationController
   def create
-    ordered_product = current_order.ordered_products
-                                   .where(product_id: params[:product_id])
-                                   .first_or_initialize
+    ordered_product = current_order.ordered_products.includes(:ordered_product_features)
+      .where(product_id: params[:product_id])
+      .where('ordered_product_features.product_feature_id': params[:product_feature_id])
+      .first_or_initialize
+    unless ordered_product.persisted?
+      ordered_product.ordered_product_features
+                     .build(product_feature_id: params[:product_feature_id])
+    end
     ordered_product.quantity += 1
     ordered_product.save
     render_cart

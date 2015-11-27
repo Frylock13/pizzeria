@@ -39,7 +39,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ordered_products
-    current_order.ordered_products.includes(:product).order('products.name')
+    current_order.ordered_products
+                 .includes(:product, ordered_product_features: [product_feature: [:feature_value]])
+                 .order('products.name', 'feature_values.name')
   end
 
   def profile_from_session
