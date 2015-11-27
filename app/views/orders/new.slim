@@ -1,56 +1,13 @@
 - title 'Оформление заказа'
-section.heading
-  .container-fluid
-    h1.section-title Оформление заказа
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ваша пицца', root_path
+    li.active Оформление заказа
 section.page
   .container-fluid
-    = form_for @order, url: orders_path, method: :post, html: { class: 'form-horizontal' } do |f|
-      = form_field_group :phone, @order do
-        = f.label :phone, 'Телефон', class: 'col-sm-2 control-label'
-        .col-sm-9.col-lg-7
-          = f.text_field :phone, class: 'form-control', required: true
-          = form_field_error :phone, @order
-      = form_field_group :name, @order do
-        = f.label :name, 'Ваше имя', class: 'col-sm-2 control-label'
-        .col-sm-9.col-lg-7
-          = f.text_field :name, class: 'form-control', required: true
-          = form_field_error :name, @order
-      = form_field_group :street, @order do
-        = f.label :street, 'Адрес', class: 'col-sm-2 control-label'
-        .col-sm-6.col-lg-4
-          = f.text_field :street, class: 'form-control', required: true, placeholder: 'Улица'
-          = form_field_error :street, @order
-        .col-sm-3
-          = f.text_field :build, class: 'form-control', required: true, placeholder: 'Дом'
-          = form_field_error :build, @order
-      .form-group
-        .col-sm-3.col-sm-offset-2.col-lg-2
-          = f.text_field :flat, class: 'form-control', required: true, placeholder: 'Квартира'
-        .col-sm-3.col-lg-2
-          = f.text_field :floor, class: 'form-control', required: true, placeholder: 'Этаж'
-        .col-sm-3
-          = f.text_field :intercom, class: 'form-control', required: true, placeholder: 'Домофон'
-      .form-group
-        .col-sm-9.col-sm-offset-2
-          = f.check_box :booking_date, class: 'form-control'
-          = f.label :booking_date, 'Оформить заказ на определенную дату и время', class: 'control-label'
-      / = form_field_group :booking_date, @order do
-      /   .col-sm-9.col-sm-offset-2.col-lg-7
-      /     = f.date_field :booking_date, class: 'form-control'
-      = form_field_group :comment, @order do
-        = f.label :comment, 'Комментарий', class: 'col-sm-2 control-label'
-        .col-sm-9.col-lg-7
-          = f.text_area :comment, class: 'form-control', rows: 3
-      .form-group
-        = f.label :payment_type, 'Метод оплаты', class: 'col-sm-2 control-label'
-        .col-sm-9.col-lg-7
-          = select_tag :payment_type, options_for_select([['Наличными курьеру', 1], ['Бонусными баллами', 2]]),
-                       class: 'form-control selectize-payment'
-          / = f.collection_select :payment_type,
-          /   [{ id: 1, title: 'Наличными курьеру' }, { id: 2, title: 'Бонусными баллами' }],
-          /   :id, :title, { include_blank: true },
-          /   { class: 'form-control selectize-payment',
-          /     data: { placeholder: 'Выберите метод' } }
-      .form-group
-        .col-sm-9.col-sm-offset-2
-          = f.submit 'Оформить заказ', class: 'btn btn-primary btn-lg'
+    .panel.panel-default.panel-order
+      .panel-heading
+        = link_to '&times;'.html_safe, root_path, class: 'close'
+        .panel-title Оформление заказа
+      .panel-body
+        = render 'form', item: current_order

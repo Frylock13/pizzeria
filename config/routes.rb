@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :call_requests, only: [:new, :create] do
     get :thanks, on: :collection
   end
-  resources :orders, only: [:index, :show, :new, :create]
+  resources :orders, only: [:index, :show, :new, :update]
   resources :ordered_pizzas, only: [:create] do
     get :decrease
     get :increase

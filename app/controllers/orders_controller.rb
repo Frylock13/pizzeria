@@ -11,11 +11,12 @@ class OrdersController < ApplicationController
 
   def new
     @main_menu_key = :new_order
-    @order = OrderDummy.new
+    # @order = Order.new
     # render :new if stale? [:new_order] | layout_resources
   end
 
-  def create
+  def update
+    render json: params
   end
 
   private

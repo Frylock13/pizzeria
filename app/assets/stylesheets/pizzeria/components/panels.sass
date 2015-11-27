@@ -1,6 +1,7 @@
 @import 'variables'
 @import 'settings/prefixer'
 @import 'bootstrap/_mixins-plus'
+@import 'breakpoint-sass'
 @import 'addons/border-radius'
 @import 'addons/prefixer'
 @import 'addons/rhythm'
@@ -28,6 +29,36 @@
       position: relative
       > .block.item-actions
         padding: $padding-base-vertical $padding-base-horizontal $padding-base-vertical - 1px
+  &.panel-order
+    max-width: 1000px
+    .panel-body
+      background-color: #f5f5f5
+      padding: 0 10px
+      .row-order
+        .order-step, .order-form
+          float: left
+          min-height: 1px
+          padding: 20px 15px
+          position: relative
+        .order-step
+          width: 200px
+          .step-title
+            font-weight: bold
+            line-height: 35px
+          +breakpoint($screen-lg-min)
+            width: 300px
+        .order-form
+          +calc(width, '100% - 200px')
+          border-left: 1px solid #ccc
+          background-color: #fff
+          +breakpoint($screen-lg-min)
+            +calc(width, '100% - 300px')
+        + .row-order
+          margin-top: 0
+          .order-step
+            border-top: 1px dashed #ccc
+          .order-form
+            border-top: 1px dashed #eee
   &.panel-pizza
     max-width: 1200px
     .panel-heading
@@ -38,7 +69,6 @@
     .panel-body
       padding: 0
       .pizza-controls, .pizza-image
-        +calc(width, '100% - 400px')
         float: left
         min-height: 1px
         position: relative
@@ -74,6 +104,7 @@
           float: right
           padding: 15px 0
       .pizza-image
+        +calc(width, '100% - 400px')
         line-height: 600px
         min-height: 600px
         overflow: hidden

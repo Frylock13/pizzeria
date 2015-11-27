@@ -26,6 +26,10 @@ creatableElements = (elem, elems, text) ->
   }
 
 initSelectize = ->
+  $('select.selectize-booking:not(.selectized)').selectize
+    labelField: 'title'
+    valueField: 'id'
+
   $('select.selectize-dough:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
