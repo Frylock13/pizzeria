@@ -14,15 +14,15 @@ class OrderedProduct < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
   has_many :ordered_product_features, dependent: :destroy
+  has_many :product_features, through: :ordered_product_features, source: :product_feature
   accepts_nested_attributes_for :ordered_product_features
 
   def feature_names
     return '' unless ordered_product_features.any?
-    ordered_product_features.map{ |item| item.product_feature.name }.join(', ')
+    product_features.map{ |item| item.name }.join(', ')
   end
 
   def price
-    return 0 unless product.price
-    product.price * quantity
+    (product.safe_price + (product_features.map{ |item| item.price }.sum || 0)) * quantity
   end
 end

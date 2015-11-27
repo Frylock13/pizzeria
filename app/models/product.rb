@@ -22,4 +22,8 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ProductPhotoUploader
 
   validates :name, :product_category_id, presence: true
+
+  def safe_price
+    price || 0
+  end
 end
