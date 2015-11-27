@@ -87,22 +87,25 @@ body
       li > a, li > div
         border-left: 3px solid transparent
         padding-left: 12px
+        .nav-item-title, .nav-item-subtitle
+          position: relative
+          a.ladda-button
+            border-radius: 3px
+            border: none
+            display: block
+            height: 20px
+            left: -27px
+            line-height: 20px
+            padding: 1px 4px
+            position: absolute
+            text-align: center
+            top: 0
+            width: 24px
         .nav-item-title
           font-size: 15px
           font-weight: bold
           .pull-right
             height: 20px
-            a
-              border-radius: 3px
-              border: none
-              display: inline-block
-              height: 20px
-              line-height: 20px
-              padding: 0
-              text-align: center
-              width: 24px
-              + a
-                margin-left: 6px
         .nav-item-subtitle
           font-size: 14px
           min-height: 20px
@@ -198,7 +201,7 @@ body
           background-color: $navbar-inverse-link-hover-bg
           color: $navbar-inverse-link-hover-color
       li > div
-        .pull-right > a
+        a.ladda-button
           +transition(background-color 0.2s, color 0.2s)
           background-color: transparent
           color: $navbar-inverse-link-color

@@ -15,47 +15,47 @@ li.dropdown.open id='cart'
         li
           div
             .nav-item-title
+              = link_to [ordered_pizza, :increase],
+                        remote: true, class: 'ladda-button',
+                        data: { spinner_color: '#f5f5f5',
+                                spinner_size: '16',
+                                style: 'zoom-in' } do
+                span.fa.fa-plus
               .pull-right
-                = link_to [ordered_pizza, :increase],
-                          remote: true, class: 'list-group-item ladda-button',
-                          data: { spinner_color: '#f5f5f5',
-                                  spinner_size: '16',
-                                  style: 'zoom-in' } do
-                  span.fa.fa-plus
-                = link_to [ordered_pizza, :decrease],
-                          remote: true, class: 'list-group-item ladda-button',
-                          data: { spinner_color: '#f5f5f5',
-                                  spinner_size: '16',
-                                  style: 'zoom-in' } do
-                  span.fa.fa-minus
+                small #{ordered_pizza.quantity} шт.
               span = ordered_pizza.pizza.name
             .nav-item-subtitle
+              = link_to [ordered_pizza, :decrease],
+                        remote: true, class: 'ladda-button',
+                        data: { spinner_color: '#f5f5f5',
+                                spinner_size: '16',
+                                style: 'zoom-in' } do
+                span.fa.fa-minus
               .pull-right
-                small #{ordered_pizza.quantity} шт
-                span = number_to_currency ordered_pizza.price, precision: 0
+                span.b = number_to_currency ordered_pizza.price, precision: 0
               span = ordered_pizza.pizza_size.text
       - current_ordered_products.each do |ordered_product|
         li
           div
             .nav-item-title
+              = link_to [ordered_product, :increase],
+                        remote: true, class: 'ladda-button',
+                        data: { spinner_color: '#f5f5f5',
+                                spinner_size: '16',
+                                style: 'zoom-in' } do
+                span.fa.fa-plus
               .pull-right
-                = link_to [ordered_product, :increase],
-                          remote: true, class: 'list-group-item ladda-button',
-                          data: { spinner_color: '#f5f5f5',
-                                  spinner_size: '16',
-                                  style: 'zoom-in' } do
-                  span.fa.fa-plus
-                = link_to [ordered_product, :decrease],
-                          remote: true, class: 'list-group-item ladda-button',
-                          data: { spinner_color: '#f5f5f5',
-                                  spinner_size: '16',
-                                  style: 'zoom-in' } do
-                  span.fa.fa-minus
+                small #{ordered_product.quantity} шт.
               span = ordered_product.product.name
             .nav-item-subtitle
+              = link_to [ordered_product, :decrease],
+                        remote: true, class: 'ladda-button',
+                        data: { spinner_color: '#f5f5f5',
+                                spinner_size: '16',
+                                style: 'zoom-in' } do
+                span.fa.fa-minus
               .pull-right
-                small #{ordered_product.quantity} шт
-                span = number_to_currency ordered_product.price, precision: 0
+                span.b = number_to_currency ordered_product.price, precision: 0
               span = ordered_product.feature_names
     li
       = link_to root_path(anchor: 'menu') do
