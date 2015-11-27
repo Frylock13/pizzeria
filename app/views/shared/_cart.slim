@@ -1,9 +1,6 @@
 li.dropdown.open id='cart'
   = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
-    span.fa.fa-lg class=(current_order.price >= 500 ? 'fa-check-circle-o text-success' : 'fa-circle-o')
-    span Шаг 1. Составьте заказ
-    - unless current_order.empty?
-      span.fa.fa-chevron-down
+    = render 'shared/sidebar_step_1_title'
   ul.dropdown-menu.navmenu-nav
     - if current_order.empty?
       li.disabled
@@ -58,10 +55,13 @@ li.dropdown.open id='cart'
                 span.b = number_to_currency ordered_product.price, precision: 0
               span = ordered_product.feature_names
     li
-      = link_to root_path(anchor: 'menu') do
+      div
         .nav-item-title
           - unless current_order.empty?
             .pull-right
               small Итого:
               span = number_to_currency current_order.price, precision: 0
-          small.text-muted мин. заказ от 500 руб.
+          - if current_order.price >= 500
+            = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary btn-sm'
+          - else
+            small.text-muted мин. заказ от 500 руб.

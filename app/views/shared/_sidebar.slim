@@ -8,16 +8,12 @@
         = render 'shared/cart'
       - else
         li = link_to root_path do
-          span.fa.fa-lg class=(current_order.price >= 500 ? 'fa-check-circle-o text-success' : 'fa-circle-o')
-          span Шаг 1. Составьте заказ
-          - unless current_order.empty?
-            span.fa.fa-chevron-down
+          = render 'shared/sidebar_step_1_title'
       - if main_menu_key == :new_order
         li.dropdown.open
           = link_to 'javascript:;', class: 'dropdown-toggle' do
             span.fa.fa-circle-o.fa-lg
             span Шаг 2. Оформите доставку
-            span.fa.fa-chevron-down
           ul.dropdown-menu.navmenu-nav
             li
               = link_to root_path(anchor: 'pizza1') do
@@ -59,16 +55,15 @@
                     small Итого:
                     span 1650 р.
       - else
-        li = link_to new_order_path do
-          span.fa.fa-circle-o.fa-lg
-          span Шаг 2. Оформите доставку
-          span.fa.fa-chevron-down
+        li.disabled
+          div
+            span.fa.fa-circle-o.fa-lg
+            span Шаг 2. Оформите доставку
       - if main_menu_key == :orders
         li.dropdown.open
           = link_to 'javascript:;', class: 'dropdown-toggle' do
             span.fa.fa-clock-o.fa-lg
             span Шаг 3. Примите заказ
-            span.fa.fa-chevron-down
           ul.dropdown-menu.navmenu-nav
             li
               = link_to orders_path(anchor: 'order1') do
@@ -84,11 +79,15 @@
                     span 8150 р.
                   span Бронь на 14 октября
       - else
-        li class=('disabled' unless current_user.present?) = link_to orders_path do
-          span.fa.fa-lg class=(current_user.present? ? 'fa-clock-o' : 'fa-circle-o')
-          span Шаг 3. Примите заказ
-          - if current_user.present?
-            span.fa.fa-chevron-down
+        - if current_user.present?
+          li = link_to orders_path do
+            span.fa.fa-lg.fa-clock-o
+            span Шаг 3. Примите заказ
+        - else
+          li.disabled
+            div
+              span.fa.fa-lg.fa-circle-o
+              span Шаг 3. Примите заказ
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse

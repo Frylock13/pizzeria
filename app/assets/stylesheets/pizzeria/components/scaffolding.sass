@@ -86,6 +86,7 @@ body
         text-transform: uppercase
       li > a, li > div
         border-left: 3px solid transparent
+        padding: 10px 15px
         padding-left: 12px
         .nav-item-title, .nav-item-subtitle
           position: relative
@@ -104,6 +105,8 @@ body
         .nav-item-title
           font-size: 15px
           font-weight: bold
+          .btn-sm
+            margin: -6px 0
           .pull-right
             height: 20px
         .nav-item-subtitle
@@ -212,7 +215,7 @@ body
           background-color: $navbar-inverse-link-active-bg
           border-color: $brand-primary
           color: $navbar-inverse-link-active-color
-      .disabled > a
+      .disabled > a, .disabled > div
         &, &:hover, &:focus
           background-color: $navbar-inverse-link-disabled-bg
           color: $navbar-inverse-link-disabled-color
