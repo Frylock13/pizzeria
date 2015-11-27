@@ -1,35 +1,40 @@
 class OrderedPizzasController < ApplicationController
-  def increase
-    ordered_pizza = ordered_pizzas.first_or_initialize
+  def create
+    ordered_pizza = current_order.ordered_pizzas
+                                 .where(pizza_id: params[:pizza_id])
+                                 .with_pizza_size(params[:pizza_size])
+                                 .first_or_initialize
     ordered_pizza.quantity += 1
     ordered_pizza.save
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
-    end
+    render_cart
   end
 
   def decrease
-    ordered_pizza = ordered_pizzas.first
-    if ordered_pizza.present?
-      if ordered_pizza.quantity <= 1
-        ordered_pizza.destroy
-      else
-        ordered_pizza.quantity -= 1
-        ordered_pizza.save
-      end
+    if ordered_pizza.quantity <= 1
+      ordered_pizza.destroy
+    else
+      ordered_pizza.quantity -= 1
+      ordered_pizza.save
     end
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
-    end
+    render_cart
+  end
+
+  def increase
+    ordered_pizza.quantity += 1
+    ordered_pizza.save
+    render_cart
   end
 
   private
 
-  def ordered_pizzas
-    @ordered_pizzas ||= current_order.ordered_pizzas
-                                     .where(pizza_id: params[:pizza_id])
-                                     .with_pizza_size(params[:pizza_size])
+  def render_cart
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render 'shared/cart', layout: false }
+    end
+  end
+
+  def ordered_pizza
+    @ordered_pizza ||= OrderedPizza.find(params[:ordered_pizza_id])
   end
 end

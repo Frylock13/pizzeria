@@ -19,11 +19,9 @@ Rails.application.routes.draw do
     get :thanks, on: :collection
   end
   resources :orders, only: [:index, :show, :new, :create]
-  resources :ordered_pizzas, only: [] do
-    collection do
-      get :increase
-      get :decrease
-    end
+  resources :ordered_pizzas, only: [:create] do
+    get :decrease
+    get :increase
   end
   resources :ordered_products, only: [] do
     collection do
