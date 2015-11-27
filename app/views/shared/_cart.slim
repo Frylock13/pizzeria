@@ -6,7 +6,7 @@ li.dropdown.open id='cart'
       span.fa.fa-chevron-down
   ul.dropdown-menu.navmenu-nav
     - if current_order.empty?
-      li
+      li.disabled
         div
           .nav-item-title Корзина пуста
           .nav-item-subtitle Добавьте в неё что-нибудь
@@ -39,7 +39,8 @@ li.dropdown.open id='cart'
     li
       = link_to root_path(anchor: 'menu') do
         .nav-item-title
-          .pull-right
-            small Итого:
-            span = number_to_currency current_order.price, precision: 0
+          - unless current_order.empty?
+            .pull-right
+              small Итого:
+              span = number_to_currency current_order.price, precision: 0
           small.text-muted мин. заказ от 500 руб.

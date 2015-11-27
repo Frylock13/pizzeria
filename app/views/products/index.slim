@@ -69,12 +69,12 @@ section.products id='pizza'
               .panel-footer
                 .list-group
                   - pizza.pizza_attributes.each do |pizza_attribute|
-                    a { class = 'list-group-item ladda-button'
-                        href = 'javascript:;'
-                        data-spinner-color = '#959286'
-                        data-spinner-size = '20'
-                        data-style = 'expand-right'
-                      }
+                    = link_to increase_ordered_pizzas_path(pizza_id: pizza.id,
+                                                           pizza_size: pizza_attribute.pizza_size),
+                              remote: true, class: 'list-group-item ladda-button',
+                              data: { spinner_color: '#959286',
+                                      spinner_size: '20',
+                                      style: 'expand-right' } do
                       .pull-right В корзину
                       span = pizza_attribute.pizza_size.text
                       span.b = number_to_currency pizza_attribute.price, precision: 0

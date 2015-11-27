@@ -233,6 +233,10 @@ body
             background-color: $navbar-inverse-link-active-bg
             border-color: $brand-primary
             color: $navbar-inverse-link-active-color
+        .disabled > a, .disabled > div
+          &, &:hover, &:focus
+            background-color: $navbar-inverse-link-disabled-bg
+            color: $navbar-inverse-link-disabled-color
 
 .body
   +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
