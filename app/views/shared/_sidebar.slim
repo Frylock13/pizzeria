@@ -5,50 +5,7 @@
     ul.nav.navmenu-nav
       li.navmenu-title Закажите пиццу в 3 шага
       - if main_menu_key == :products
-        li.dropdown.open id='cart'
-          = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
-            span.fa.fa-lg class=(current_order.price >= 500 ? 'fa-check-circle-o text-success' : 'fa-circle-o')
-            span Шаг 1. Составьте заказ
-            - unless current_order.empty?
-              span.fa.fa-chevron-down
-          ul.dropdown-menu.navmenu-nav
-            - if current_order.empty?
-              li
-                .nav-item-title Корзина пуста
-                .nav-item-subtitle Добавьте в неё что-нибудь
-            - else
-              - current_order.ordered_pizzas.each do |ordered_pizza|
-                li
-                  div
-                    .nav-item-title
-                      .pull-right
-                        = link_to increase_ordered_pizzas_path(pizza_id: ordered_pizza.pizza_id,
-                                                               pizza_size: ordered_pizza.pizza_size),
-                                  remote: false, class: 'list-group-item ladda-button',
-                                  data: { spinner_color: '#f5f5f5',
-                                          spinner_size: '16',
-                                          style: 'zoom-in' } do
-                          span.fa.fa-plus
-                        = link_to decrease_ordered_pizzas_path(pizza_id: ordered_pizza.pizza_id,
-                                                               pizza_size: ordered_pizza.pizza_size),
-                                  remote: false, class: 'list-group-item ladda-button',
-                                  data: { spinner_color: '#f5f5f5',
-                                          spinner_size: '16',
-                                          style: 'zoom-in' } do
-                          span.fa.fa-minus
-                      span = ordered_pizza.pizza.name
-                    .nav-item-subtitle
-                      .pull-right
-                        small #{ordered_pizza.quantity} шт
-                        span = number_to_currency ordered_pizza.price, precision: 0
-                      span = ordered_pizza.pizza_size.text
-            li
-              = link_to root_path(anchor: 'menu') do
-                .nav-item-title
-                  .pull-right
-                    small Итого:
-                    span = number_to_currency current_order.price, precision: 0
-                  small.text-muted мин. заказ от 500 руб.
+        = render 'shared/cart'
       - else
         li = link_to root_path do
           span.fa.fa-lg class=(current_order.price >= 500 ? 'fa-check-circle-o text-success' : 'fa-circle-o')

@@ -47,7 +47,7 @@ section.products id='pizza'
                 - pizza.pizza_attributes.each do |pizza_attribute|
                   = link_to increase_ordered_pizzas_path(pizza_id: pizza.id,
                                                          pizza_size: pizza_attribute.pizza_size),
-                            remote: false, class: 'list-group-item ladda-button',
+                            remote: true, class: 'list-group-item ladda-button',
                             data: { spinner_color: '#959286',
                                     spinner_size: '20',
                                     style: 'expand-right' } do
