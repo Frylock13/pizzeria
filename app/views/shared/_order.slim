@@ -1,0 +1,33 @@
+li.dropdown.open
+  = link_to 'javascript:;', class: 'dropdown-toggle' do
+    span.fa.fa-circle-o.fa-lg
+    span Шаг 2. Оформите доставку
+  ul.dropdown-menu.navmenu-nav
+    - current_ordered_pizzas.each do |ordered_pizza|
+      li
+        div
+          .nav-item-title
+            .pull-right
+              small #{ordered_pizza.quantity} шт.
+            span = ordered_pizza.pizza.name
+          .nav-item-subtitle
+            .pull-right
+              span.b = number_to_currency ordered_pizza.price, precision: 0
+            span = ordered_pizza.pizza_size.text
+    - current_ordered_products.each do |ordered_product|
+      li
+        div
+          .nav-item-title
+            .pull-right
+              small #{ordered_product.quantity} шт.
+            span = ordered_product.product.name
+          .nav-item-subtitle
+            .pull-right
+              span.b = number_to_currency ordered_product.price, precision: 0
+            span = ordered_product.feature_names
+    li
+      div
+        .nav-item-title
+          .pull-right
+            span = number_to_currency current_order.price, precision: 0
+          small.text-muted Сверьте перед покупкой
