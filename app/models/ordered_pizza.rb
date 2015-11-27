@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  order_id   :integer
 #  pizza_id   :integer
-#  quantity   :integer          default(1)
+#  quantity   :integer          default(0)
 #  pizza_size :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
