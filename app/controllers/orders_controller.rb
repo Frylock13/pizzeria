@@ -17,8 +17,12 @@ class OrdersController < ApplicationController
   end
 
   def update
-    order.update(order_params)
-    render json: order_params
+    if current_order.update(order_params)
+      redirect_to root_path, success: 'Заказ успешно оформлен'
+      # render json: order_params
+    else
+      render :new
+    end
   end
 
   private
@@ -49,10 +53,6 @@ class OrdersController < ApplicationController
 
   def receiving_profile
     @receiving_profile ||= current_order.receiving_profile || Profile.new(owner: current_user)
-  end
-
-  def order
-    @order ||= Order.find(params[:id])
   end
 
   def order_params
