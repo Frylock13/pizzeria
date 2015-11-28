@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127110636) do
+ActiveRecord::Schema.define(version: 20151128003557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,11 +144,11 @@ ActiveRecord::Schema.define(version: 20151127110636) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "address_id"
-    t.integer  "status"
+    t.string   "status"
     t.text     "wishes"
     t.integer  "receiving_profile_id"
     t.integer  "ordering_profile_id"
-    t.integer  "payment_method"
+    t.string   "payment_method"
     t.datetime "booked_on"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false

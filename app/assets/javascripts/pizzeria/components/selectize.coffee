@@ -51,56 +51,75 @@ initSelectize = ->
     creatableElements('ingredient_category', 'ingredient_categories', 'Создать категорию')
   )
 
+  changeOrderAddress = (value) ->
+    block = $('#address_attributes').first()
+    switch value
+      when 'attributes'
+        block.removeClass('hide')
+        block.find('input').prop('disabled', false)
+      else
+        block.addClass('hide')
+        block.find('input').prop('disabled', true)
+
   $('select.selectize-order-address:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
     onChange: (value) ->
-      block = $('#address_attributes').first()
-      switch value
-        when 'attributes'
-          block.removeClass('hide')
-          block.find('input').prop('disabled', false)
-        else
-          block.addClass('hide')
-          block.find('input').prop('disabled', true)
+      changeOrderAddress(value)
+    onInitialize: (data) ->
+      changeOrderAddress(this.$input[0].value)
+
+  changeOrderBooking = (value) ->
+    block = $('#booked_attributes').first()
+    switch value
+      when 'accepted'
+        block.addClass('hide')
+        block.find('input').prop('disabled', true)
+      when 'booked'
+        block.removeClass('hide')
+        block.find('input').prop('disabled', false)
 
   $('select.selectize-order-booking:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
     onChange: (value) ->
-      block = $('#booked_attributes').first()
-      switch value
-        when 'accepted'
-          block.addClass('hide')
-          block.find('input').prop('disabled', true)
-        when 'booked'
-          block.removeClass('hide')
-          block.find('input').prop('disabled', false)
+      changeOrderBooking(value)
+    onInitialize: (data) ->
+      changeOrderBooking(this.$input[0].value)
+
+  changeOrderPayment = (value) ->
+    block = $('#payment_bonus_points').first()
+    switch value
+      when 'bonus_points'
+        block.removeClass('hide')
+      else
+        block.addClass('hide')
 
   $('select.selectize-order-payment:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
     onChange: (value) ->
-      console.log value
-      block = $('#payment_bonus_points').first()
-      switch value
-        when 'bonus_points'
-          block.removeClass('hide')
-        else
-          block.addClass('hide')
+      changeOrderPayment(value)
+    onInitialize: (data) ->
+      changeOrderPayment(this.$input[0].value)
+
+  changeOrderProfile = (value) ->
+    block = $('#receiving_profile_attributes').first()
+    switch value
+      when 'attributes'
+        block.removeClass('hide')
+        block.find('input').prop('disabled', false)
+      else
+        block.addClass('hide')
+        block.find('input').prop('disabled', true)
 
   $('select.selectize-order-profile:not(.selectized)').selectize
     labelField: 'title'
     valueField: 'id'
     onChange: (value) ->
-      block = $('#receiving_profile_attributes').first()
-      switch value
-        when 'attributes'
-          block.removeClass('hide')
-          block.find('input').prop('disabled', false)
-        else
-          block.addClass('hide')
-          block.find('input').prop('disabled', true)
+      changeOrderProfile(value)
+    onInitialize: (data) ->
+      changeOrderProfile(this.$input[0].value)
 
   $('select.selectize-pizzas:not(.selectized)').selectize
     labelField: 'name'

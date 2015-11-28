@@ -4,11 +4,11 @@
 #
 #  id                   :integer          not null, primary key
 #  address_id           :integer
-#  status               :integer
+#  status               :string
 #  wishes               :text
 #  receiving_profile_id :integer
 #  ordering_profile_id  :integer
-#  payment_method       :integer
+#  payment_method       :string
 #  booked_on            :datetime
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
@@ -21,7 +21,9 @@ class Order < ActiveRecord::Base
   belongs_to :receiving_profile, class_name: 'Profile'
   has_many :ordered_pizzas
   has_many :ordered_products
+  accepts_nested_attributes_for :address
   accepts_nested_attributes_for :ordering_profile
+  accepts_nested_attributes_for :receiving_profile
 
   def empty?
     return false if ordered_pizzas.any?

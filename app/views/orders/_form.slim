@@ -24,7 +24,7 @@
                    class: 'form-control selectize-order-address'
         = form_field_error :address_id, item
       .form-group.hide id='address_attributes'
-        = f.fields_for :address, item.address do |ff|
+        = f.fields_for :address, address do |ff|
           .row
             .col-xs-8
               = form_field_group :street, item do
@@ -32,10 +32,10 @@
                                 required: false, disabled: true
                 = form_field_error :street, item
             .col-xs-4
-              = form_field_group :build, item do
-                = ff.text_field :build, class: 'form-control', placeholder: 'Дом',
+              = form_field_group :house, item do
+                = ff.text_field :house, class: 'form-control', placeholder: 'Дом',
                                 required: false, disabled: true
-                = form_field_error :build, item
+                = form_field_error :house, item
           .row
             .col-xs-4
               = ff.text_field :flat, class: 'form-control', placeholder: 'Квартира',
@@ -44,7 +44,7 @@
               = ff.text_field :floor, class: 'form-control', placeholder: 'Этаж',
                               required: false, disabled: true
             .col-xs-4
-              = ff.text_field :intercom, class: 'form-control', placeholder: 'Домофон',
+              = ff.text_field :intercom_code, class: 'form-control', placeholder: 'Домофон',
                               required: false, disabled: true
   .row.row-order
     .order-step
@@ -57,11 +57,11 @@
                    class: 'form-control selectize-order-profile'
         = form_field_error :receiving_profile_id, item
       .form-group.hide id='receiving_profile_attributes'
-        = f.fields_for :receiving_profile, item.receiving_profile do |ff|
-          = form_field_group :name, item do
-            = ff.text_field :name, class: 'form-control', placeholder: 'Имя',
+        = f.fields_for :receiving_profile, receiving_profile do |ff|
+          = form_field_group :first_name, item do
+            = ff.text_field :first_name, class: 'form-control', placeholder: 'Имя',
                             required: false, disabled: true
-            = form_field_error :name, item
+            = form_field_error :first_name, item
           = form_field_group :phone, item do
             = ff.text_field :phone, class: 'form-control', placeholder: 'Телефон',
                             required: false, disabled: true
