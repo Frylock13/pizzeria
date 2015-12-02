@@ -22,6 +22,7 @@ section.page id='orders'
             th Кто оформил заказ
             th Кто примет заказ
             th Пожелания
+            th Действия
         tbody
           - @orders.each do |order|
             tr
@@ -33,3 +34,12 @@ section.page id='orders'
                 p = order.receiving_first_name
                 p = order.receiving_phone
               td = order.wishes
+              td
+                .btn-group
+                  = link_to 'Перевести на след. этап', 'javascript:;', class: 'btn btn-default'
+                  = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
+                            data: { toggle: 'dropdown' } do
+                    span.caret
+                  ul.dropdown-menu.dropdown-menu-right
+                    - OrderEnums.status.options.each do |status|
+                      li = link_to status[0], 'javascript:;'
