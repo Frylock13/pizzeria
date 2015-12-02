@@ -1,0 +1,35 @@
+- title 'Заказы'
+- content_for :header do
+  ol.breadcrumb
+    li.active Заказы
+section.tabs
+  .container-fluid
+    ul.nav.nav-tabs
+      = tab_link "Все (#{Order.all.count})", params.merge(status: nil),
+                 active: params[:status] == nil
+      - OrderEnums.status.options.each do |status|
+        = tab_link "#{status[0]} (#{Order.with_status(status[1]).count})",
+                   params.merge(status: status[1]),
+                   active: params[:status] == status[1],
+                   disabled: Order.with_status(status[1]).count == 0
+section.page id='orders'
+  .container-fluid
+    .table-responsive
+      table.table
+        thead
+          tr
+            th.col-date Дата оформления заказа
+            th Кто оформил заказ
+            th Кто примет заказ
+            th Пожелания
+        tbody
+          - @orders.each do |order|
+            tr
+              td.col-date.date-moment = order.created_at
+              td
+                p = order.ordering_first_name
+                p = order.ordering_phone
+              td
+                p = order.receiving_first_name
+                p = order.receiving_phone
+              td = order.wishes

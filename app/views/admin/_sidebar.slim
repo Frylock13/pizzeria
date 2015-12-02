@@ -6,6 +6,8 @@
       li.navmenu-title Заявки
       = main_menu_link admin_path,
                        :dashboard, 'fa-area-chart', 'Сводка'
+      = main_menu_link admin_orders_path(status: :accepted),
+                       :orders, 'fa-shopping-cart', 'Заказы'
       = main_menu_link admin_call_requests_path,
                        :call_requests, 'fa-phone', CallRequest.model_name.human(count: 0)
     ul.nav.navmenu-nav

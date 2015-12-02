@@ -24,6 +24,8 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :ordering_profile
   accepts_nested_attributes_for :receiving_profile
+  delegate :first_name, :phone, to: :ordering_profile, allow_nil: true, prefix: :ordering
+  delegate :first_name, :phone, to: :receiving_profile, allow_nil: true, prefix: :receiving
 
   def empty?
     return false if ordered_pizzas.any?
