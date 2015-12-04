@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index, :show, :update] do
+      get :check_updates, on: :collection
+    end
     resources :call_requests, only: :index
     resources :doughs, except: [:show]
     resources :feature_values, only: [:edit, :create, :update, :destroy]
@@ -19,7 +21,9 @@ Rails.application.routes.draw do
   resources :call_requests, only: [:new, :create] do
     get :thanks, on: :collection
   end
-  resources :orders, only: [:index, :show, :new, :update]
+  resources :orders, only: [:index, :show, :new, :update] do
+    get :check_updates, on: :collection
+  end
   resources :ordered_pizzas, only: [:create] do
     get :decrease
     get :increase

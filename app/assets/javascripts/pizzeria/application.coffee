@@ -14,6 +14,7 @@
 #= require jquery.inputmask/dist/inputmask/jquery.inputmask
 #= require jasny-bootstrap
 #= require jquery.slick
+#= require js-routes
 #= require ladda/spin.min
 #= require ladda/ladda.min
 #= require ladda/ladda.jquery.min

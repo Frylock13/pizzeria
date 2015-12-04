@@ -43,3 +43,10 @@ section.page id='orders'
                   ul.dropdown-menu.dropdown-menu-right
                     - OrderEnums.status.options.each do |status|
                       li = link_to status[0], 'javascript:;'
+a { class = 'block polling'
+    data-date = Order.with_status(:accepted).maximum(:updated_at)
+    id = 'polling_orders'
+    href = admin_orders_path(status: :accepted)
+  }
+  .block-title Новый заказ!
+  .block-subtitle Кликните, чтобы перейти
