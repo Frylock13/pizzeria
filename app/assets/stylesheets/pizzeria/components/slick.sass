@@ -10,45 +10,52 @@
   white-space: nowrap
   .item
     display: inline-block
-    .container-fluid
-      padding: 0
-      +breakpoint($screen-md-min)
-        padding: 0 50px
+    overflow: hidden
     a
+      background-size: cover
+      display: block
+      height: 500px
       position: relative
-      img
-        +breakpoint($screen-md-min)
-          padding: 0 35px
-      &:hover
-        &:before
-          background-color: rgba(#000, 0.03)
-          content: ''
-          height: 100%
-          left: 0
-          position: absolute
-          top: 0
-          width: 100%
-          z-index: 1
   .slick-prev, .slick-next
     +transition(background-color 0.5s)
     background-color: transparent
     height: 100%
     margin: 0
+    padding: 10px
     top: 0
-    width: 30px
+    width: 70px
     z-index: 1
     &:before
-      box-shadow: 0 0 3px rgba(#000, 0.2)
+      +transition(all 0.25s)
       background-color: #FFF
       border-radius: 50%
+      box-shadow: 0 0 3px rgba(#000, 0.2)
       color: $link-color
+      display: inline-block
+      font-size: 34px
       opacity: 1
-      padding: 5px
-      font-size: 16px
+      padding: 3px
+      vertical-align: middle
       z-index: 1
-    &:hover, &:focus
-      background-color: rgba(#000, 0.025)
+    &:hover
+      background-color: rgba(#000, 0.25)
   .slick-prev
-    left: -15px
+    left: 0
+    &:before
+      +transform(translateX(5px))
+    &:hover
+      &:before
+        +transform(translateX(0))
+    &:active
+      &:before
+        +transform(translateX(-5px))
   .slick-next
-    right: -15px
+    right: 0
+    &:before
+      +transform(translateX(-5px))
+    &:hover
+      &:before
+        +transform(translateX(0))
+    &:active
+      &:before
+        +transform(translateX(5px))

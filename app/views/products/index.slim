@@ -1,33 +1,78 @@
 - title 'Закажите пиццу в 3 шага'
-section.products id='top'
-  .container-masonry
-    .panel.panel-default.panel-slider
-      .panel-body
-        .slick-slider.slick-main data-no-transition-cache=''
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-constructor.jpg', class: 'img-responsive'
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-three.jpg', class: 'img-responsive'
-          .item = link_to 'javascript:;', 'data-scroll' => '' do
-            = image_tag 'banner-birthday.jpg', class: 'img-responsive'
+section id='top'
+  .slick-slider.slick-main data-no-transition-cache=''
+    .item = link_to '', 'javascript:;', style: "background-image: url(#{image_path('http://www.pizzacottagepk.com/images/home-banner-1.jpg')}); background-position: 50% 50%; background-color: #fff;"
+    .item = link_to '', 'javascript:;', style: "background-image: url(#{image_path('http://www.zonealarm.com/blog/wp-content/uploads/2015/06/Pizza-and-Toppings.jpg')}); background-position: 50% 50%; background-color: #fff;"
+    .item = link_to '', 'javascript:;', style: "background-image: url(#{image_path('http://www.tradingpostmotel.com/restaurant/templates/default/images/banner1.jpg')}); background-position: 50% 50%; background-color: #fff;"
 .navbar.navbar-inverse.hidden-print id='menu'
   .container-fluid
     .navbar-header
       = link_to 'Составьте заказ:', '#menu', class: 'navbar-brand', 'data-scroll' => ''
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li = link_to 'Пицца', '#pizza', 'data-scroll' => ''
-        - if user_pizzas.any?
-          li = link_to 'Мои рецепты', '#user_pizza', 'data-scroll' => ''
+        li = link_to 'Ваша пицца', '#user_pizza', 'data-scroll' => ''
+        li = link_to 'Пицца в меню', '#menu_pizza', 'data-scroll' => ''
         - product_categories.each do |product_category|
           li = link_to product_category.name, "\#product_category_#{product_category.id}", 'data-scroll' => ''
-section.products id='pizza'
+section.products id='user_pizza'
   .container-masonry
-    .section-title Пицца
+    .section-title
+      span Ваша пицца
+    .masonry-grid.row
+      - user_pizzas.each do |pizza|
+        .masonry-item.col-xs-6.col-md-4.col-lg-3
+          .panel.panel-default.panel-product
+            .panel-body
+              .product-image = image_tag pizza.image.url(:thumb)
+              .product-title = pizza.name
+              .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
+            .panel-footer
+              .list-group
+                - pizza.pizza_attributes.each do |pizza_attribute|
+                  = link_to ordered_pizzas_path(pizza_id: pizza.id,
+                                                pizza_size: pizza_attribute.pizza_size),
+                            method: :post, remote: true, class: 'list-group-item ladda-button',
+                            data: { spinner_color: '#959286',
+                                    spinner_size: '20',
+                                    style: 'expand-right' } do
+                    .pull-right В корзину
+                    span = pizza_attribute.pizza_size.text
+                    span.b = number_to_currency pizza_attribute.price, precision: 0
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
+        = link_to new_pizza_path,
+                  class: 'panel panel-default panel-dummy dummy-constructor ladda-button',
+                  data: { spinner_color: '#959286',
+                          spinner_size: '50',
+                          style: 'zoom-in' } do
+          .panel-body
+            .panel-title Создайте свою<br/>собственную пиццу
+            .panel-subtitle в нашем конструкторе
+            .btn.btn-primary Перейти
+      .masonry-item.col-xs-6.col-md-4.col-lg-3
+        = link_to '#menu_pizza', 'data-scroll' => '', class: 'panel panel-default panel-dummy dummy-specifier' do
+          .panel-body
+            .panel-title Или подберите<br/>пиццу в меню
+            .panel-subtitle по вашему вкусу
+            .btn.btn-primary Перейти
+      - unless current_user.present?
+        .masonry-item.col-xs-6.col-md-4.col-lg-3
+          = link_to login_path,
+                    class: 'panel panel-default panel-dummy dummy-auth ladda-button',
+                    data: { spinner_color: '#959286',
+                            spinner_size: '50',
+                            style: 'zoom-in' } do
+            .panel-body
+              .panel-title Были на сайте<br/>раньше?
+              .panel-subtitle Получите доступ к своей пицце и бонусным баллам
+              .btn.btn-primary Перейти
+section.products id='menu_pizza'
+  .container-masonry
+    .section-title
+      span Пицца в меню
     .masonry-grid.row
       - pizzas.each do |pizza|
         .masonry-item.col-xs-6.col-md-4.col-lg-3
-          .panel.panel-default.panel-product id="pizza-#{pizza.id}"
+          .panel.panel-default.panel-product
             .panel-body
               .product-image = image_tag pizza.image.url(:thumb)
               .product-title = pizza.name
@@ -50,34 +95,11 @@ section.products id='pizza'
                     .pull-right В корзину
                     span = pizza_attribute.pizza_size.text
                     span.b = number_to_currency pizza_attribute.price, precision: 0
-- if user_pizzas.any?
-  section.products id='user_pizza'
-    .container-masonry
-      .section-title Мои рецепты
-      .masonry-grid.row
-        - user_pizzas.each do |pizza|
-          .masonry-item.col-xs-6.col-md-4.col-lg-3
-            .panel.panel-default.panel-product id="pizza-#{pizza.id}"
-              .panel-body
-                .product-image = image_tag pizza.image.url(:thumb)
-                .product-title = pizza.name
-                .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
-              .panel-footer
-                .list-group
-                  - pizza.pizza_attributes.each do |pizza_attribute|
-                    = link_to ordered_pizzas_path(pizza_id: pizza.id,
-                                                  pizza_size: pizza_attribute.pizza_size),
-                              method: :post, remote: true, class: 'list-group-item ladda-button',
-                              data: { spinner_color: '#959286',
-                                      spinner_size: '20',
-                                      style: 'expand-right' } do
-                      .pull-right В корзину
-                      span = pizza_attribute.pizza_size.text
-                      span.b = number_to_currency pizza_attribute.price, precision: 0
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry
-      .section-title = product_category.name
+      .section-title
+        span = product_category.name
       .masonry-grid.row
         - product_category.products.with_visibility(:for_all).each do |product|
           .masonry-item.col-xs-6.col-md-4.col-lg-3

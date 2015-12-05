@@ -22,6 +22,64 @@
       .list-group-item
         border: none
         position: relative
+  &.panel-dummy
+    +transition(box-shadow 0.25s)
+    background-color: #fff
+    border-radius: 6px
+    display: block
+    height: 411px
+    margin-bottom: 18px
+    overflow: hidden
+    background-size: cover
+    .ladda-label
+      height: 100%
+      width: 100%
+    .panel-body
+      +transition(all 0.25s)
+      height: 100%
+      padding: 10px
+      text-align: center
+      .panel-title
+        font-size: 30px
+        font-weight: 700
+        line-height: 40px
+        margin: 155px 0 10px
+        min-height: 40px*2
+        text-shadow: 0 0 3px rgba(#000, 0.5)
+      .panel-subtitle
+        font-size: 20px
+        font-weight: 700
+        line-height: 30px
+        margin-bottom: 20px
+        min-height: 30px*2
+        text-shadow: 0 0 3px rgba(#000, 0.5)
+      .btn-primary
+        border-color: darken($brand-primary, 10%)
+        padding: 5px 20px
+    &.dummy-auth
+      background-color: #322a29
+      background-image: image_url('auth@2x.jpg')
+      border-color: #322a29
+      color: #fff
+    &.dummy-constructor
+      background-color: #7b380d
+      background-image: image_url('oven@2x.jpg')
+      border-color: #7b380d
+      color: #fff
+    &.dummy-specifier
+      background-color: #975e40
+      background-image: image_url('menu@2x.jpg')
+      border-color: #975e40
+      color: #fff
+    &:hover
+      box-shadow: 0 2px 7px rgba(#000, 0.6)
+      .panel-body
+        background-color: rgba(#fff, 0.02)
+    &:active
+      box-shadow: 0 2px 7px rgba(#000, 0.4) inset
+      .panel-body
+        background-color: rgba(#000, 0.1)
+        color: darken(#fff, 5%)
   &.panel-item
     > .panel-body
       min-height: $input-height-base - 2px
@@ -172,7 +230,9 @@
       &:after
         clear: both
   &.panel-product
+    border-radius: 6px
     margin-bottom: 18px
+    overflow: hidden
     .panel-body
       background-position: 100% 0
       .product-image

@@ -10,7 +10,7 @@ html
   body
     = render 'admin/sidebar'
     .body class=('body-padded' if content_for?(:header)) id='body'
-      = render 'shared/header'
+      = render 'admin/header'
       = render 'shared/flashes'
       = yield
       = render 'shared/sounds'
