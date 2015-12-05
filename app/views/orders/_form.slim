@@ -75,6 +75,11 @@
                    options_for_select(payment_methods),
                    { prompt: 'Выберите один из вариантов' },
                    class: 'form-control selectize-order-payment', required: true
+      .form-group.hide id='payment_cash'
+        ' На ваш бонусный счет будет начислено
+        = number_to_currency current_order.price*0.1, precision: 0
+        br
+        | Накапливайте бонусные баллы и оплачивайте ими заказы!
       .form-group.hide id='payment_bonus_points'
         - unless current_user.present?
           | Чтобы получить доступ к своим бонусным баллам, введите ваш e-mail ниже.

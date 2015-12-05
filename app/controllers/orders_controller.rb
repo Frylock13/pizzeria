@@ -25,9 +25,7 @@ class OrdersController < ApplicationController
 
   def update
     if current_order.update(order_params)
-      current_order.update(booked_on: Time.zone.now) unless current_order.booked_on.present?
-      User.where(email: current_order.ordering_profile.email)
-          .first_or_create!(password: SecureRandom.hex(16))
+      OrderCreatingService.new(current_order).submit
       redirect_to current_order, success: 'Заказ успешно оформлен'
     else
       render :new

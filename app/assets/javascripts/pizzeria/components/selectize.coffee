@@ -89,11 +89,14 @@ initSelectize = ->
 
   changeOrderPayment = (value) ->
     block = $('#payment_bonus_points').first()
+    block_cash = $('#payment_cash').first()
     switch value
       when 'bonus_points'
         block.removeClass('hide')
+        block_cash.addClass('hide')
       else
         block.addClass('hide')
+        block_cash.removeClass('hide')
 
   $('select.selectize-order-payment:not(.selectized)').selectize
     labelField: 'title'

@@ -13,6 +13,7 @@ class CallRequestsController < ApplicationController
     @call_request = CallRequestForm.new(call_request_params)
     if @call_request.save
       session[:profile_id] = @call_request.ordering_profile.id
+      SmsWorker.perform_async(ENV['SMSAERO_PHONE'], "Заявка на обратный звонок: #{@call_request.call_request.receiving_phone}, #{@call_request.call_request.receiving_first_name}")
       respond_to do |format|
         format.html { redirect_to thanks_call_requests_path, success: 'Ваша заявка успешно отправлена' }
         format.js { render :thanks, layout: false }
