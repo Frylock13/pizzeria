@@ -22,13 +22,10 @@ class Profile < ActiveRecord::Base
   scope :owned_by_user, -> (user_id) { where(owner_id: user_id) }
 
   def to_s
-    str = first_name || 'Без имени'
-    str += " #{phone}" if phone.present?
-    str += " (#{email})" if email.present?
-    str
+    a = []
+    a << first_name if first_name.present?
+    a << phone if phone.present?
+    a << email if email.present?
+    a.join(', ')
   end
-
-  # def orders
-  #   ordering_orders | receiving_orders
-  # end
 end

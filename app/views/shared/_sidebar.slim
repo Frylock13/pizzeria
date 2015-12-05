@@ -22,19 +22,14 @@
             span.fa.fa-clock-o.fa-lg
             span Шаг 3. Примите заказ
           ul.dropdown-menu.navmenu-nav
-            li
-              = link_to orders_path(anchor: 'order1') do
-                .nav-item-title В пути
-                .nav-item-subtitle
-                  .pull-right
-                    span 1650 р.
-                  span 6 октября
-              = link_to orders_path(anchor: 'order1') do
-                .nav-item-title Забронирован
-                .nav-item-subtitle
-                  .pull-right
-                    span 8150 р.
-                  span Бронь на 14 октября
+            - current_user.orders.each do |order|
+              li
+                = link_to order do
+                  .nav-item-title = order.status.text
+                  .nav-item-subtitle
+                    .pull-right = number_to_currency order.price, precision: 0
+                    = 'Бронь на ' if order.status == :booked
+                    span.date-moment = order.booked_on
       - else
         - if current_user.present?
           li = link_to orders_path do

@@ -1,3 +1,11 @@
+polling_order = ->
+  polling_div = $('#polling_order').first()
+  if polling_div.length
+    setTimeout (=>
+      Turbolinks.visit(window.location.href, { change: ['polling_order'] })
+      return
+    ), 5000
+
 polling_orders = ->
   polling_div = $('#polling_orders').first()
   if polling_div.length
@@ -18,4 +26,5 @@ polling_orders = ->
       ), 5000
       polling_div.addClass('enabled')
 
+$(document).on 'ready page:load page:partial-load', polling_order
 $(document).on 'ready page:load page:partial-load', polling_orders

@@ -1,6 +1,78 @@
-- title 'Отслеживание заказа'
-section.heading
+- title order.to_s
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ваши заказы', orders_path
+    li.active = order.to_s
+section.order id='polling_order'
   .container-fluid
-    h1.section-title Отслеживание заказа #42
-section.page
-  .container-fluid
+    .section-title Заказ #{order.status.text}
+    = render "orders/messages/#{order.status}"
+    .panel.panel-default.panel-order-info
+      .panel-heading
+        .panel-title Детали заказа
+      .panel-body
+        .row
+          .col-side
+            - if order.ordering_profile.present?
+              dl
+                dt Заказ оформил(а):
+                dd = order.ordering_profile.to_s
+            - if order.booked_on.present?
+              dl
+                dt Забронирован на:
+                dd.date-moment = order.booked_on
+            - if order.payment_method.present?
+              dl
+                dt Метод оплаты:
+                dd = order.payment_method.text
+            - if order.address.present?
+              dl
+                dt Куда доставить:
+                dd = order.address.to_s
+            - if order.receiving_profile.present?
+              dl
+                dt Кому доставить:
+                dd = order.receiving_profile.to_s
+            - if order.wishes.present?
+              dl
+                dt Пожелания:
+                dd = order.wishes
+          .col-main
+            - if order.ordered_pizzas.any?
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th Название
+                      th Ингредиенты
+                      th Размер
+                      th.text-right Количество
+                      th.text-right Стоимость
+                  tbody
+                    - order.ordered_pizzas.each do |ordered_pizza|
+                      tr
+                        td = ordered_pizza.name
+                        td
+                          - ordered_pizza.pizza_ingredients.each do |pizza_ingredient|
+                            div
+                              .pull-right = pizza_ingredient.quantity
+                              span = pizza_ingredient.name
+                        td = ordered_pizza.pizza_size.text
+                        td.text-right = ordered_pizza.quantity
+                        td.text-right = number_to_currency ordered_pizza.price, precision: 0
+            - if order.ordered_products.any?
+              .table-responsive
+                table.table
+                  thead
+                    tr
+                      th Название
+                      th Атрибуты
+                      th.text-right Количество
+                      th.text-right Стоимость
+                  tbody
+                    - order.ordered_products.each do |ordered_product|
+                      tr
+                        td = ordered_product.product_name
+                        td = ordered_product.feature_names
+                        td.text-right = ordered_product.quantity
+                        td.text-right = number_to_currency ordered_product.price, precision: 0
