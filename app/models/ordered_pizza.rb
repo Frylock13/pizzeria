@@ -15,6 +15,7 @@ class OrderedPizza < ActiveRecord::Base
   include PizzaSizes
   belongs_to :order
   belongs_to :pizza
+  delegate :name, :pizza_ingredients, to: :pizza, allow_nil: true
 
   scope :for_pizza, -> (pizza_id) { where(pizza_id: pizza_id) }
 

@@ -16,6 +16,7 @@ class OrderedProduct < ActiveRecord::Base
   has_many :ordered_product_features, dependent: :destroy
   has_many :product_features, through: :ordered_product_features, source: :product_feature
   accepts_nested_attributes_for :ordered_product_features
+  delegate :name, to: :product, allow_nil: true, prefix: :product
 
   def feature_names
     return '' unless ordered_product_features.any?

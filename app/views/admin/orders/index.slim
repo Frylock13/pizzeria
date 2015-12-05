@@ -14,37 +14,93 @@ section.tabs
                    disabled: Order.with_status(status[1]).count == 0
 section.page id='orders'
   .container-fluid
-    .table-responsive
-      table.table
-        thead
-          tr
-            th.col-date Дата оформления заказа
-            th Кто оформил заказ
-            th Кто примет заказ
-            th Пожелания
-            th Действия
-        tbody
-          - @orders.each do |order|
-            tr
-              td.col-date.date-moment = order.created_at
-              td
-                p = order.ordering_first_name
-                p = order.ordering_phone
-              td
-                p = order.receiving_first_name
-                p = order.receiving_phone
-              td = order.wishes
-              td
-                .btn-group
-                  = link_to 'Перевести на след. этап', 'javascript:;', class: 'btn btn-default'
-                  = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
-                            data: { toggle: 'dropdown' } do
-                    span.caret
-                  ul.dropdown-menu.dropdown-menu-right
-                    - OrderEnums.status.options.each do |status|
-                      li = link_to status[0], 'javascript:;'
+    - @orders.each do |order|
+      .panel.panel-default.panel-order-info
+        .panel-heading
+          .pull-right
+            span Заказ #{order.status.text}
+            .btn-group
+              = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
+                        data: { toggle: 'dropdown' } do
+                span Изменить статус
+                span.caret
+              ul.dropdown-menu.dropdown-menu-right
+                - OrderEnums.status.options.each do |status|
+                  li = link_to "Заказ #{status[0]}", [:admin, order], remote: true,
+                               data: { method: :patch, params: { status: status[1] }.to_param }
+          .panel-title
+            span = order.to_s
+            small
+              ' от
+              span.date-moment #{order.created_at}
+        .panel-body
+          .row
+            .col-side
+              - if order.ordering_profile.present?
+                dl
+                  dt Заказ оформил(а):
+                  dd = order.ordering_profile.to_s
+              - if order.booked_on.present?
+                dl
+                  dt Забронирован на:
+                  dd.date-moment = order.booked_on
+              - if order.payment_method.present?
+                dl
+                  dt Метод оплаты:
+                  dd = order.payment_method.text
+              - if order.address.present?
+                dl
+                  dt Куда доставить:
+                  dd = order.address.to_s
+              - if order.receiving_profile.present?
+                dl
+                  dt Кому доставить:
+                  dd = order.receiving_profile.to_s
+              - if order.wishes.present?
+                dl
+                  dt Пожелания:
+                  dd = order.wishes
+            .col-main
+              - if order.ordered_pizzas.any?
+                .table-responsive
+                  table.table
+                    thead
+                      tr
+                        th Название
+                        th Ингредиенты
+                        th Размер
+                        th.text-right Количество
+                        th.text-right Стоимость
+                    tbody
+                      - order.ordered_pizzas.each do |ordered_pizza|
+                        tr
+                          td = ordered_pizza.name
+                          td
+                            - ordered_pizza.pizza_ingredients.each do |pizza_ingredient|
+                              div
+                                .pull-right = pizza_ingredient.quantity
+                                span = pizza_ingredient.name
+                          td = ordered_pizza.pizza_size.text
+                          td.text-right = ordered_pizza.quantity
+                          td.text-right = number_to_currency ordered_pizza.price, precision: 0
+              - if order.ordered_products.any?
+                .table-responsive
+                  table.table
+                    thead
+                      tr
+                        th Название
+                        th Атрибуты
+                        th.text-right Количество
+                        th.text-right Стоимость
+                    tbody
+                      - order.ordered_products.each do |ordered_product|
+                        tr
+                          td = ordered_product.product_name
+                          td = ordered_product.feature_names
+                          td.text-right = ordered_product.quantity
+                          td.text-right = number_to_currency ordered_product.price, precision: 0
 a { class = 'block polling'
-    data-date = Order.with_status(:accepted).maximum(:updated_at)
+    data-date = Order.with_status(:accepted).maximum(:updated_at).to_i
     id = 'polling_orders'
     href = admin_orders_path(status: :accepted)
   }

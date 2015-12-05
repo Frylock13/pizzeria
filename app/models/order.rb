@@ -36,4 +36,8 @@ class Order < ActiveRecord::Base
   def price
     ordered_pizzas.map{ |item| item.price }.sum + ordered_products.map{ |item| item.price }.sum
   end
+
+  def to_s
+    "Заказ на сумму #{ActionController::Base.helpers.number_to_currency price, precision: 0}"
+  end
 end

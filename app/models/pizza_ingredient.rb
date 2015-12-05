@@ -14,6 +14,7 @@
 class PizzaIngredient < ActiveRecord::Base
   belongs_to :pizza
   belongs_to :ingredient
+  delegate :name, to: :ingredient, allow_nil: true
 
   scope :based, -> { where(base: true) }
 

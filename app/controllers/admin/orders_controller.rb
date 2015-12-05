@@ -11,13 +11,26 @@ module Admin
       # render :index if stale? @orders | layout_resources
     end
 
+    def update
+      order = Order.find(params[:id])
+      if order.update(order_params)
+        redirect_to admin_orders_path(status: order.status), success: 'Заказ успешно обновлен'
+      end
+    end
+
     def check_updates
-      date = Order.with_status(:accepted).maximum(:updated_at).to_s
-      if date != params[:date]
+      date = Order.with_status(:accepted).maximum(:updated_at).to_i
+      if date > params[:date].to_i
         render json: { status: 'updated', date: date }
       else
         render json: { status: 'not-updated' }
       end
+    end
+
+    private
+
+    def order_params
+      params.permit(:status)
     end
   end
 end
