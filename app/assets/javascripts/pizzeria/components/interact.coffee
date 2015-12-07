@@ -4,8 +4,8 @@ interact('.pizza-frame').draggable
   onmove: (event) ->
     target = event.target
     center = $(target).parent().offset()
-    center.left += 250
-    center.top += 250
+    center.left += 466
+    center.top += 300
     dy = (center.left - event.pageX) / 500
     dx = (center.top - event.pageY) / 500
     angle = (parseFloat(target.getAttribute('data-angle')) or 0) + event.dx * dx - event.dy * dy
