@@ -215,17 +215,30 @@
           position: relative
           width: 922px
           .pizza-frame
-            -webkit-transform: rotate(0deg)
-            background-image: image_url('pizza.png')
-            background-size: 100%
+            +prefixer(transform, rotate(0deg), spec webkit)
             border-radius: 50%
             height: 500px
             left: 50%
             margin: -250px
             position: absolute
             top: 50%
-            transform: rotate(0deg)
             width: 500px
+            img
+              height: 100%
+              vertical-align: top
+              width: 100%
+            .frame-layer
+              left: 0
+              position: absolute
+              top: 0
+              &.layer-korg
+                +retina-image('constructor/korg.png', 'constructor/korg.png', 500px, 500px)
+              &.layer-kechu
+                +retina-image('constructor/kechu.png', 'constructor/kechu.png', 500px, 500px)
+              &.layer-kurica
+                +retina-image('constructor/kurica.png', 'constructor/kurica.png', 500px, 500px)
+              &.layer-sir2
+                +retina-image('constructor/sir2.png', 'constructor/sir2.png', 500px, 500px)
       &:before, &:after
         content: " "
         display: table
@@ -286,18 +299,6 @@
           &:hover
             .pull-right
               background-color: $brand-primary
-    &.pizza-derevenskaya
-      .panel-body
-        +retina-bg('pizza/derevenskaya.jpg', 'pizza/derevenskaya@2x.jpg', no-repeat, 300px, 200px)
-    &.pizza-domashyaya
-      .panel-body
-        +retina-bg('pizza/domashyaya.jpg', 'pizza/domashyaya@2x.jpg', no-repeat, 300px, 200px)
-    &.pizza-kurica
-      .panel-body
-        +retina-bg('pizza/kurica.jpg', 'pizza/kurica@2x.jpg', no-repeat, 300px, 200px)
-    &.pizza-objora
-      .panel-body
-        +retina-bg('pizza/objora.jpg', 'pizza/objora@2x.jpg', no-repeat, 300px, 200px)
 
 .panel-slider
   .panel-body

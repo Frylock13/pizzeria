@@ -20,13 +20,13 @@ class PizzaForm < ActiveForm
   def build
     build_parent
     build_pizza
-    build_image
     build_name
     build_owner
     build_visibility
     build_dough_id
     build_pizza_attributes
     build_pizza_ingredients
+    build_image
     recalculate
     self
   end
@@ -42,10 +42,6 @@ class PizzaForm < ActiveForm
     else
       self.pizza = Pizza.new
     end
-  end
-
-  def build_image
-    self.image = pizza.image
   end
 
   def build_name
@@ -82,6 +78,11 @@ class PizzaForm < ActiveForm
       pizza_ingredients_attributes.each { |key, value| pizza.pizza_ingredients.build(value) }
     end
     self.pizza_ingredients = pizza.pizza_ingredients
+  end
+
+  def build_image
+    PizzaImageGenerateService.new(pizza).generate unless pizza.image?
+    self.image = pizza.image
   end
 
   def recalculate
