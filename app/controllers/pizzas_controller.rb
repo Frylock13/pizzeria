@@ -1,6 +1,6 @@
 class PizzasController < ApplicationController
   before_action :main_menu_key
-  helper_method :doughs, :pizzas
+  helper_method :doughs, :pizzas, :ingredients
 
   def new
     @pizza = PizzaForm.new(parent_id: params[:parent_id]).build
@@ -61,6 +61,10 @@ class PizzasController < ApplicationController
       IngredientCategory.includes(:ingredients).all.order(:position),
       each_serializer: IngredientCategorySerializer
     )
+  end
+
+  def ingredients
+    @ingredients ||= Ingredient.all.order(layer: :asc)
   end
 
   def main_menu_key

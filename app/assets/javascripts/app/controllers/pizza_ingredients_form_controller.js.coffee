@@ -1,39 +1,14 @@
 ### @ngInject ###
-PizzaIngredientsFormController = ($timeout) ->
-
-  submitToRecalculate = =>
-    form = $('#ingredients_fields').closest('form')
-    action = form.attr('action')
-    form.attr('action', "#{action}/recalculate").submit().attr('action', action) if action == '/pizzas'
-
-  runSubmitToRecalculate = =>
-    $('#pizza_attributes').ladda().ladda('start')
-    $timeout.cancel(@submit_to_recalculate_timer)
-    @submit_to_recalculate_timer = $timeout submitToRecalculate, 500
+PizzaIngredientsFormController = (pizzaIngredientsService) ->
 
   decreaseIngredient = (ingredient_id) =>
-    pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
-    return false unless pizza_ingredient
-    return false if pizza_ingredient.quantity == 0
-    pizza_ingredient.quantity -= 1
-    runSubmitToRecalculate()
+    pizzaIngredientsService.decreaseIngredient(ingredient_id)
 
   increaseIngredient = (ingredient_id) =>
-    pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
-    if pizza_ingredient
-      pizza_ingredient.quantity += 1
-    else
-      pizza_ingredient =
-        ingredient_id: ingredient_id
-        quantity: 1
-        base: false
-      @pizza_ingredients.push pizza_ingredient
-    runSubmitToRecalculate()
+    pizzaIngredientsService.increaseIngredient(ingredient_id)
 
   ingredientQuantity = (ingredient_id) =>
-    pizza_ingredient = _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
-    return 0 unless pizza_ingredient
-    pizza_ingredient.quantity
+    pizzaIngredientsService.ingredientQuantity(ingredient_id)
 
   isBaseControlVisible = (ingredient_id, hide_control = false) =>
     return false unless pizzaIngredient(ingredient_id)
@@ -42,17 +17,14 @@ PizzaIngredientsFormController = ($timeout) ->
     true
 
   pizzaIngredient = (ingredient_id) =>
-    _.findWhere( @pizza_ingredients, { ingredient_id: ingredient_id } )
+    pizzaIngredientsService.pizzaIngredient(ingredient_id)
 
   init = =>
     @ingredient_categories = gon.ingredient_categories
-    @pizza_ingredients = gon.pizza_ingredients
 
   # # # # # # # # # # # # # # # # # # #
 
-  @submit_to_recalculate_timer = null
   @ingredient_categories = null
-  @pizza_ingredients = null
   @decreaseIngredient = decreaseIngredient
   @increaseIngredient = increaseIngredient
   @ingredientQuantity = ingredientQuantity

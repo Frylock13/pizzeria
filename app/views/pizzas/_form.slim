@@ -4,11 +4,12 @@
       = image_tag item.image.url if item.image.present?
     - else
       .pizza-plate
-        .pizza-frame
+        .pizza-frame ng-controller='PizzaIngredientsImagesController as vm'
           = image_tag 'constructor/korg.png'
-          = image_tag 'constructor/kechu.png'
-          = image_tag 'constructor/kurica.png'
-          = image_tag 'constructor/sir2.png'
+          - ingredients.each do |ingredient|
+            - if ingredient.image.present?
+              = image_tag ingredient.image, class: 'ng-hide',
+                          ng_show: "vm.ingredientEnabled(#{ingredient.id})"
           = image_tag 'constructor/korg_t.png', id: 'korg_t', style: 'display: none;'
   .pizza-controls
     = f.hidden_field :parent_id
