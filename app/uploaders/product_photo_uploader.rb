@@ -1,10 +1,10 @@
 class ProductPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [1400, 800]
+  process resize_to_fit: [1400, 1000]
 
   version :thumb do
-    process resize_to_fit: [700, 400]
+    process resize_to_fit: [700, 500]
   end
 
   def default_url

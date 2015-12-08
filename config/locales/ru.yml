@@ -12,6 +12,8 @@ ru:
         ingredient_attribute_attributes: Атрибуты
         ingredient_category_id: Категория
         name: Название
+        image: Фото для конструктора
+        layer: Слой
       ingredient_category:
         name: Название
       order:

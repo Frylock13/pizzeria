@@ -7,6 +7,8 @@
 #  ingredient_category_id :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  image                  :string
+#  layer                  :integer
 #
 
 class Ingredient < ActiveRecord::Base
@@ -14,6 +16,7 @@ class Ingredient < ActiveRecord::Base
   has_many :ingredient_attributes, dependent: :destroy
   has_many :pizza_ingredients, dependent: :destroy
   has_many :pizzas, through: :pizza_ingredients, source: :pizza
+  mount_uploader :image, ProductPhotoUploader
 
   validates :name, :ingredient_category_id, presence: true
 
