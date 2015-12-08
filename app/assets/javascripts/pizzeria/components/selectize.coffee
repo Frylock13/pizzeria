@@ -35,9 +35,9 @@ initSelectize = ->
     valueField: 'id'
     onChange: (value) ->
       if value == '2'
-        $('#korg_t').show()
+        $('#dough_border').show()
       else
-        $('#korg_t').hide()
+        $('#dough_border').hide()
       $('#pizza_attributes').ladda().ladda('start')
       form = $(this.$control[0]).closest('form')
       action = form.attr('action')
