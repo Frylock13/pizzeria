@@ -229,6 +229,13 @@
               position: absolute
               top: 0
               width: 100%
+              &.ng-hide-add, &.ng-hide-remove
+                +transition(all, 0.25s)
+                display: block !important
+              &.ng-hide-add.ng-hide-add-active, &.ng-hide-remove
+                opacity: 0
+              &.ng-hide-add, &.ng-hide-remove.ng-hide-remove-active
+                opacity: 1
       &:before, &:after
         content: " "
         display: table

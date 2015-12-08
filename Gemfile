@@ -77,6 +77,7 @@ end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
+  gem 'rails-assets-angular-animate'
   gem 'rails-assets-breakpoint-sass'
   gem 'rails-assets-cferdinandi--smooth-scroll'
   gem 'rails-assets-ink'

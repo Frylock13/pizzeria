@@ -323,6 +323,8 @@ GEM
       sprockets-rails
     rails-assets-Sortable (1.4.2)
     rails-assets-angular (1.4.8)
+    rails-assets-angular-animate (1.4.8)
+      rails-assets-angular (= 1.4.8)
     rails-assets-bootstrap (3.3.6)
       rails-assets-jquery (>= 1.9.1, < 3)
     rails-assets-breakpoint-sass (2.6.1)
@@ -575,6 +577,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-assets-Sortable!
   rails-assets-angular!
+  rails-assets-angular-animate!
   rails-assets-breakpoint-sass!
   rails-assets-cferdinandi--smooth-scroll!
   rails-assets-ink!

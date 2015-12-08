@@ -1,11 +1,14 @@
 //= require underscore
 //= require angular
+//= require angular-animate
 
 //= require_self
 //= require_tree ./services
 //= require_tree ./controllers
 
-angular.module('app', [])
+angular.module('app', [
+    'ngAnimate'
+  ])
 
 # $(document).on 'page:before-change page:before-unload', ->
 #   angular.element('body').scope().$broadcast('$destroy') if angular.element('body').scope()
