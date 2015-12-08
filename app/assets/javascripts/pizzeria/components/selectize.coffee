@@ -34,6 +34,10 @@ initSelectize = ->
     labelField: 'name'
     valueField: 'id'
     onChange: (value) ->
+      if value == '2'
+        $('#korg_t').show()
+      else
+        $('#korg_t').hide()
       $('#pizza_attributes').ladda().ladda('start')
       form = $(this.$control[0]).closest('form')
       action = form.attr('action')

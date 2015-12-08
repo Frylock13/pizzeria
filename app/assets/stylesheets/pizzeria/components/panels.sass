@@ -225,20 +225,10 @@
             width: 500px
             img
               height: 100%
-              vertical-align: top
-              width: 100%
-            .frame-layer
               left: 0
               position: absolute
               top: 0
-              &.layer-korg
-                +retina-image('constructor/korg.png', 'constructor/korg.png', 500px, 500px)
-              &.layer-kechu
-                +retina-image('constructor/kechu.png', 'constructor/kechu.png', 500px, 500px)
-              &.layer-kurica
-                +retina-image('constructor/kurica.png', 'constructor/kurica.png', 500px, 500px)
-              &.layer-sir2
-                +retina-image('constructor/sir2.png', 'constructor/sir2.png', 500px, 500px)
+              width: 100%
       &:before, &:after
         content: " "
         display: table
@@ -262,6 +252,10 @@
           position: absolute
           top: 0
           width: 100%
+        &.image-unique
+          img
+            left: 45px
+            top: -65px
       .product-title
         font-size: 16px
         font-weight: bold

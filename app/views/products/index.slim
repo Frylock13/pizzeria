@@ -23,7 +23,8 @@ section.products id='user_pizza'
         .masonry-item.col-xs-6.col-md-4.col-lg-3
           .panel.panel-default.panel-product
             .panel-body
-              .product-image = image_tag pizza.image.url(:thumb)
+              .product-image class=('image-unique' unless pizza.parent.present?)
+                = image_tag pizza.image.url(:thumb)
               .product-title = pizza.name
               .pizza-ingredients = pizza.ingredients.pluck(:name).join(', ')
             .panel-footer

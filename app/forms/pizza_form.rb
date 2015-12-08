@@ -81,7 +81,6 @@ class PizzaForm < ActiveForm
   end
 
   def build_image
-    PizzaImageGenerateService.new(pizza).generate unless pizza.image?
     self.image = pizza.image
   end
 
@@ -93,6 +92,7 @@ class PizzaForm < ActiveForm
   private
 
   def persist_data
+    PizzaImageGenerateService.new(pizza).generate unless pizza.image?
     pizza.save
   end
 end
