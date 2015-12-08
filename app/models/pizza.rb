@@ -19,6 +19,7 @@ class Pizza < ActiveRecord::Base
   belongs_to :parent, class_name: 'Pizza'
   belongs_to :owner, class_name: 'Profile'
   has_many :ingredients, through: :pizza_ingredients, source: :ingredient
+  has_many :ordered_pizzas, dependent: :destroy
   has_many :pizza_attributes, dependent: :destroy
   has_many :pizza_ingredients, dependent: :destroy
   mount_uploader :image, ProductPhotoUploader

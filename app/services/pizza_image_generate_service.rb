@@ -7,11 +7,12 @@ class PizzaImageGenerateService
 
   def generate
     MiniMagick::Tool::Convert.new do |convert|
-      convert.resize '500x500'
+      # convert.resize '1000x1000'
       convert << 'app/assets/images/constructor/korg.png'
-      convert << 'app/assets/images/constructor/kechu.png'
-      convert << 'app/assets/images/constructor/kurica.png'
-      convert << 'app/assets/images/constructor/sir2.png'
+      pizza.ingredients.order(:layer).each do |ingredient|
+        convert << "public#{ingredient.image.url}" if ingredient.image.present?
+      end
+      convert << 'app/assets/images/constructor/korg_t.png' if pizza.dough_id == 2
       convert.set 'page'
       convert << '+0+0'
       convert.background 'none'
@@ -19,18 +20,6 @@ class PizzaImageGenerateService
       convert << '+repage'
       convert << 'tmp/output.png'
     end
-
-    # korg = MiniMagick::Image.new 'app/assets/images/constructor/korg.png'
-    # image = korg
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/kechu.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/kurica.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image = image.composite MiniMagick::Image.new 'app/assets/images/constructor/sir2.png'
-    # image.write 'tmp/output.png'
     pizza.image = Rails.root.join('tmp/output.png').open
   end
 end

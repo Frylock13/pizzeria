@@ -92,6 +92,7 @@ class PizzaForm < ActiveForm
   private
 
   def persist_data
+    pizza.save
     PizzaImageGenerateService.new(pizza).generate unless pizza.image?
     pizza.save
   end
