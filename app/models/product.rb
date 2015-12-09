@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   include Visibilities
   belongs_to :product_category, touch: true
   has_many :features, through: :product_features, source: :feature
-  has_many :product_features
+  has_many :product_features, dependent: :destroy
   mount_uploader :image, ProductPhotoUploader
 
   validates :name, :product_category_id, presence: true

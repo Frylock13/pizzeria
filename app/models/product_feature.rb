@@ -16,6 +16,7 @@ class ProductFeature < ActiveRecord::Base
   belongs_to :product
   belongs_to :feature
   belongs_to :feature_value
+  has_many :ordered_product_features, dependent: :destroy
 
   validates :product_id, :feature_id, :feature_value_id,
             presence: true,
