@@ -109,6 +109,7 @@ ru:
         assembled: Собран
         delivered: Доставлен
         closed: Выполнен
+        canceled: Отменен
   helpers:
     label:
       call_request:
