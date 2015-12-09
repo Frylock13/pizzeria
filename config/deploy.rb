@@ -1,5 +1,4 @@
 set :application, 'pizzeria'
-set :branch, 've-redesign'
 set :deploy_to, "/home/deployer/apps/#{fetch(:application)}"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/assets public/sitemaps}
 set :linked_files, %w{config/application.yml}
