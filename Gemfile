@@ -63,7 +63,7 @@ group :development do
   gem 'guard', require: false
   gem 'guard-bundler', require: false
   gem 'guard-livereload', require: false
-  gem 'guard-passenger', github: 'beverlyguillermo/guard-passenger', require: false
+  gem 'guard-passenger'
   gem 'guard-rspec', require: false
   gem 'letter_opener'
   gem 'meta_request'
