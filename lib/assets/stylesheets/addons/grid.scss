@@ -1,4 +1,4 @@
-@function gg($width: 1, $qwazi: true, $width-base: $gg) {
+@function gg($width: 1, $qwazi: true, $width-base: $grid-gutter-width) {
   @if (unitless($width)) {
     $gutter-width: $width-base;
     @return $width*$gutter-width;

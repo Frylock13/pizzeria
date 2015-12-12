@@ -1,4 +1,4 @@
-@function rh($height: 1, $qwazi: true, $line-height-base: $rh) {
+@function rh($height: 1, $qwazi: true, $line-height-base: $line-height-computed) {
   @if (unitless($height)) {
     $line-height: $line-height-base;
     @return $height*$line-height;
@@ -8,6 +8,6 @@
   }
 }
 
-@function rhythm-margin($height, $qwazi: true, $line-height-base: $rh) {
+@function rhythm-margin($height, $qwazi: true, $line-height-base: $line-height-computed) {
   @return rh($height, $qwazi, $line-height-base) - $height;
 }
