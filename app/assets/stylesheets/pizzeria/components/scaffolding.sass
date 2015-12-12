@@ -1,11 +1,11 @@
 @import 'variables'
 @import 'breakpoint-sass'
-@import 'css3/calc'
-@import 'mixins'
-@import 'bootstrap/_mixins-plus'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
+@import 'addons/retina'
 @import 'addons/rhythm'
+@import 'addons/scrollbar'
+@import 'css3/calc'
 @import 'css3/transition'
 
 *:focus
@@ -112,10 +112,6 @@ body
               float: right
               line-height: 20px
               width: auto
-          .badge
-            font-size: 11px
-            padding: 2px 5px 2px 4px
-            margin-top: 2px
           .text-muted
             margin: 0 3px
         &.active

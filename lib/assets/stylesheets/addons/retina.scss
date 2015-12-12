@@ -82,21 +82,3 @@
     }
   }
 }
-
-@mixin clear-margins() {
-  margin: 0;
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6,
-  .lead, .alert, .navbar {
-    margin: 0;
-  }
-}
-
-@function rhythm-height($height, $qwazi: true, $line-height-base: $line-height-computed) {
-  $line-height: if($qwazi, $line-height-base/2, $line-height-base);
-  @return ceil($height/$line-height)*$line-height;
-}
-
-@function rhythm-margin($height, $qwazi: true, $line-height-base: $line-height-computed) {
-  @return rhythm-height($height, $qwazi, $line-height-base) - $height;
-}
