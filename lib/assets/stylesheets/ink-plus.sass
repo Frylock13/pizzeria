@@ -1,3 +1,39 @@
+body, table.body, h5, h6, p, td
+  line-height: 24px
+h1
+  line-height: 48px
+h2, h3, h4
+  line-height: 36px
+small
+  line-height: 12px
+p
+  margin-bottom: 12px
+  &.last
+    margin-bottom: 0
+  &.lead
+    line-height: 24px
+dl
+  margin: 0 0 12px
+  dt
+    font-weight: bold
+  &.dl-inline
+    dt
+      display: inline
+    dd
+      display: inline
+      margin-left: 0
+
+table.button,
+table.tiny-button,
+table.small-button,
+table.medium-button,
+table.large-button
+  td
+    a
+      display: block
+      height: 100%
+      width: 100%
+
 .text-right
   text-align: right
 .wrapper
@@ -32,3 +68,7 @@
     text-align: right
     img
       float: right
+
+.header
+  .wrapper, .sub-columns
+    vertical-align: middle
