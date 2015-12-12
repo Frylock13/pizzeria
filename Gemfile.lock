@@ -478,7 +478,7 @@ GEM
     sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    summernote-rails (0.7.0.0)
+    summernote-rails (0.6.16.0)
       railties (>= 3.1)
     temple (0.7.6)
     thor (0.19.1)
@@ -593,7 +593,7 @@ DEPENDENCIES
   sorcery
   spring
   spring-commands-rspec
-  summernote-rails
+  summernote-rails (~> 0.6.16)
   traceroute
   turbolinks!
   uglifier
