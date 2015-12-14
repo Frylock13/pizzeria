@@ -1,6 +1,7 @@
 @import 'variables'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
+@import 'addons/retina'
 @import 'css3/transform'
 @import 'css3/transition'
 
@@ -99,6 +100,10 @@
       & +
         a, small
           margin-left: 10px
+  &.logo
+    +retina-image('logo-old.png', 'logo-old@2x.png', 268px, 80px)
+    display: inline-block
+    vertical-align: middle
   &.polling
     +transition(all 0.25s)
     +transform(translateY(-20px))
