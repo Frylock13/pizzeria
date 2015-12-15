@@ -10,7 +10,7 @@ html
     = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
   body
-    = render 'shared/sidebar', main_menu_key: @main_menu_key
+    = render 'shared/sidebar', menu_key: @menu_key
     .body class=('body-padded' if content_for?(:header)) id='body'
       = render 'shared/header'
       = render 'shared/flashes'

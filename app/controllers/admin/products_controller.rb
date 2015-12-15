@@ -1,6 +1,6 @@
 module Admin
   class ProductsController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :product_categories
 
     def index
@@ -47,8 +47,8 @@ module Admin
 
     private
 
-    def main_menu_key
-      @main_menu_key = :products
+    def menu_key
+      @menu_key = :products
     end
 
     def product_categories

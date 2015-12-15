@@ -3,20 +3,20 @@
     .block.logo
   .navmenu-scroll-area
     ul.nav.navmenu-nav
-      li.navmenu-title.title-special Закажите пиццу в 3 шага
-      - if main_menu_key == :products
+      li.navmenu-title Закажите пиццу в 3 шага
+      - if menu_key == :products
         = render 'shared/cart'
       - else
         li = link_to root_path do
           = render 'shared/sidebar_step_1_title'
-      - if main_menu_key == :new_order
+      - if menu_key == :new_order
         = render 'shared/order'
       - else
         li.disabled
           div
             span.fa.fa-circle-o.fa-lg
             span Шаг 2. Оформите доставку
-      - if main_menu_key == :orders
+      - if menu_key == :orders
         li.dropdown.open
           = link_to 'javascript:;', class: 'dropdown-toggle' do
             span.fa.fa-clock-o.fa-lg
@@ -41,6 +41,30 @@
               span.fa.fa-lg.fa-circle-o
               span Шаг 3. Примите заказ
     ul.navmenu-divider
+    ul.navmenu-divider
+    ul.nav.navmenu-nav
+      li.navmenu-title Связь с нами
+      = menu_link_to :new_call_request, new_call_request_path, remote: true do
+        span.fa.fa-phone-square
+        | Подать заявку на обратный звонок
+      = menu_link_to :phone, 'tel:74951234567' do
+        span.fa.fa-phone
+        | +7 (495) 123-45-67
+      = menu_link_to :email, 'mailto:help@vpzven.ru', target: '_blank' do
+        span.fa.fa-envelope
+        | help@vpzven.ru
+      = menu_link_to :vk, 'http://vk.com/vashapizza', target: '_blank' do
+        span.fa.fa-vk
+        | Группа ВКонтакте
+    ul.navmenu-divider
+    ul.navmenu-divider
+    ul.nav.navmenu-nav
+      li.navmenu-title Информация
+      - pages.each do |page|
+        = menu_link_to "page-#{page.slug}", page do
+          span.fa.fa-fw
+          = page.anchor
+    ul.navmenu-divider
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'
@@ -49,8 +73,13 @@
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
-            = main_menu_link admin_path, :admin, 'fa-cogs fa-fw', 'В админку' if current_user.role.admin?
-            = main_menu_link logout_path, :logout, 'fa-sign-out fa-fw', 'Выйти'
+            - if current_user.role.admin?
+              = menu_link_to :admin, admin_path do
+                span.fa.fa-cogs
+                | В админку
+            = menu_link_to :logout, logout_path do
+              span.fa.fa-sign-out
+              | Выйти
             li
               div
                 .nav-item-title = current_user.email
@@ -63,31 +92,7 @@
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
           - else
-            li class=('active' if main_menu_key == :auth)
-              = link_to login_path do
-                .nav-item-title Войти / Зарегистрироваться
-                .nav-item-subtitle
-                  span Получите доступ к бонусным баллам и особой пицце в меню
-    ul.nav.navmenu-nav
-      li.dropdown.dropdown-collapse
-        a.dropdown-toggle href='javascript:;'
-          span.fa.fa-info-circle.fa-lg
-          span Информация
-          span.fa.fa-chevron-down
-        ul.dropdown-menu.navmenu-nav
-          - pages.each do |page|
-            = main_menu_link page, "page-#{page.slug}", 'fa-fw', page.anchor
-    ul.nav.navmenu-nav
-      li.dropdown.dropdown-collapse
-        a.dropdown-toggle href='javascript:;'
-          span.fa.fa-life-ring.fa-lg
-          span Связь с нами
-          span.fa.fa-chevron-down
-        ul.dropdown-menu.navmenu-nav
-          = main_menu_link 'mailto:help@vpzven.ru',
-                           'email', 'fa-envelope', 'help@vpzven.ru'
-          = main_menu_link '+7 (495) 123-45-67',
-                           'phone', 'fa-phone', '+7 (495) 123-45-67'
-          li class=('active' if main_menu_key == :new_call_request)
-            .text-center
-              = link_to 'Заказать обратный звонок', new_call_request_path, class: 'btn btn-default btn-block', remote: true
+            = menu_link_to :auth, login_path do
+              .nav-item-title Войти / Зарегистрироваться
+              .nav-item-subtitle
+                span Получите доступ к бонусным баллам и особой пицце в меню

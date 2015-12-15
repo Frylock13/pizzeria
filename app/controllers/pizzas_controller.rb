@@ -1,5 +1,5 @@
 class PizzasController < ApplicationController
-  before_action :main_menu_key
+  before_action :menu_key
   helper_method :doughs, :pizzas, :ingredients
 
   def new
@@ -67,8 +67,8 @@ class PizzasController < ApplicationController
     @ingredients ||= Ingredient.all.order(layer: :asc)
   end
 
-  def main_menu_key
-    @main_menu_key = :products
+  def menu_key
+    @menu_key = :products
   end
 
   def pizza_params

@@ -1,6 +1,6 @@
 module Admin
   class FeaturesController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :feature, :features, :feature_values
 
     def index
@@ -45,8 +45,8 @@ module Admin
 
     private
 
-    def main_menu_key
-      @main_menu_key = :features
+    def menu_key
+      @menu_key = :features
     end
 
     def feature

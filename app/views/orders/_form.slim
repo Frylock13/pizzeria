@@ -26,24 +26,27 @@
       .form-group.hide id='address_attributes'
         = f.fields_for :address, address do |ff|
           .row
-            .col-xs-8
+            .col-xs-9
               = form_field_group :street, item do
                 = ff.text_field :street, class: 'form-control', placeholder: 'Улица',
                                 required: true, disabled: true
                 = form_field_error :street, item
-            .col-xs-4
+            .col-xs-3
               = form_field_group :house, item do
                 = ff.text_field :house, class: 'form-control', placeholder: 'Дом',
                                 required: true, disabled: true
                 = form_field_error :house, item
           .row
-            .col-xs-4
+            .col-xs-3
+              = ff.text_field :entrance, class: 'form-control', placeholder: 'Подъезд',
+                              required: false, disabled: true
+            .col-xs-3
               = ff.text_field :flat, class: 'form-control', placeholder: 'Квартира',
                               required: false, disabled: true
-            .col-xs-4
+            .col-xs-3
               = ff.text_field :floor, class: 'form-control', placeholder: 'Этаж',
                               required: false, disabled: true
-            .col-xs-4
+            .col-xs-3
               = ff.text_field :intercom_code, class: 'form-control', placeholder: 'Домофон',
                               required: false, disabled: true
   .row.row-order

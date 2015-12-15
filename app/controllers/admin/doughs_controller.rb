@@ -1,6 +1,6 @@
 module Admin
   class DoughsController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :doughs
 
     def index
@@ -48,8 +48,8 @@ module Admin
 
     private
 
-    def main_menu_key
-      @main_menu_key = :doughs
+    def menu_key
+      @menu_key = :doughs
     end
 
     def doughs

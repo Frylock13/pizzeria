@@ -1,7 +1,7 @@
 module Admin
   class OrdersController < AdminController
     def index
-      @main_menu_key = :orders
+      @menu_key = :orders
       if params[:status].present?
         @orders = Order.with_status(params[:status])
       else

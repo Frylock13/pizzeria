@@ -11,6 +11,7 @@
 #  intercom_code :string(10)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  entrance      :string(10)
 #
 
 class Address < ActiveRecord::Base
@@ -19,7 +20,8 @@ class Address < ActiveRecord::Base
 
   def to_s
     str = "#{street} #{house}"
-    str += ", кв #{flat}" if flat.present?
+    str += ", подъезд #{entrance}" if entrance.present?
+    str += ", квартира #{flat}" if flat.present?
     str += ", #{floor}-й этаж" if floor.present?
     str += ", домофон #{intercom_code}" if intercom_code.present?
     str

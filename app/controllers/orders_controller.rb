@@ -5,12 +5,12 @@ class OrdersController < ApplicationController
                 :payment_methods, :receiving_profile
 
   def index
-    @main_menu_key = :orders
+    @menu_key = :orders
     # render :index if stale? [:orders] | layout_resources
   end
 
   def show
-    @main_menu_key = :orders
+    @menu_key = :orders
     if current_user != order.ordering_profile.user && current_user != order.receiving_profile.user
       redirect_to orders_path, success: 'У вас нет доступа к данному заказу'
     end
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @main_menu_key = :new_order
+    @menu_key = :new_order
     current_order.booked_on = Time.zone.now unless current_order.booked_on.present?
     # render :new if stale? [:new_order] | layout_resources
   end
@@ -70,7 +70,8 @@ class OrdersController < ApplicationController
     params.require(:order)
           .permit(:status, :booked_on, :payment_method, :wishes,
                   :address_id,
-                  { address_attributes: [:street, :house, :flat, :floor, :intercom_code, :owner_id] },
+                  { address_attributes: [:street, :house, :entrance, :flat,
+                                         :floor, :intercom_code, :owner_id] },
                   :receiving_profile_id,
                   { receiving_profile_attributes: [:first_name, :phone] },
                   :ordering_profile_id,

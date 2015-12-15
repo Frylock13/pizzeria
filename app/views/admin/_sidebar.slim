@@ -4,29 +4,39 @@
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       li.navmenu-title Заявки
-      = main_menu_link admin_path,
-                       :dashboard, 'fa-area-chart', 'Сводка'
-      = main_menu_link admin_orders_path(status: :accepted),
-                       :orders, 'fa-shopping-cart', 'Заказы'
-      = main_menu_link admin_call_requests_path,
-                       :call_requests, 'fa-phone', CallRequest.model_name.human(count: 0)
+      = menu_link_to :dashboard, admin_path do
+        span.fa.fa-area-chart
+        | Сводка
+      = menu_link_to :orders, admin_orders_path(status: :accepted) do
+        span.fa.fa-shopping-cart
+        | Заказы
+      = menu_link_to :call_requests, admin_call_requests_path do
+        span.fa.fa-phone
+        = CallRequest.model_name.human(count: 0)
+    ul.navmenu-divider
     ul.nav.navmenu-nav
       li.navmenu-title Данные на сайте
-      = main_menu_link admin_pages_path,
-                       :pages, 'fa-file', Page.model_name.human(count: 0)
+      = menu_link_to :pages, admin_pages_path do
+        span.fa.fa-file
+        = Page.model_name.human(count: 0)
       li.dropdown.dropdown-collapse
         a.dropdown-toggle href='javascript:;'
           span.fa.fa-tags.fa-lg
           span Товары
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
-          = main_menu_link admin_pizzas_path,
-                           :pizzas, 'fa-fw', Pizza.model_name.human(count: 0)
-          = main_menu_link admin_products_path,
-                           :products, 'fa-fw', Product.model_name.human(count: 0)
-          = main_menu_link admin_ingredients_path,
-                           :ingredients, 'fa-fw', Ingredient.model_name.human(count: 0)
-          = main_menu_link admin_doughs_path,
-                           :doughs, 'fa-fw', Dough.model_name.human(count: 0)
-          = main_menu_link admin_features_path,
-                           :features, 'fa-fw', Feature.model_name.human(count: 0)
+          = menu_link_to :pizzas, admin_pizzas_path do
+            span.fa.fa-fw
+            = Pizza.model_name.human(count: 0)
+          = menu_link_to :products, admin_products_path do
+            span.fa.fa-fw
+            = Product.model_name.human(count: 0)
+          = menu_link_to :ingredients, admin_ingredients_path do
+            span.fa.fa-fw
+            = Ingredient.model_name.human(count: 0)
+          = menu_link_to :doughs, admin_doughs_path do
+            span.fa.fa-fw
+            = Dough.model_name.human(count: 0)
+          = menu_link_to :features, admin_features_path do
+            span.fa.fa-fw
+            = Feature.model_name.human(count: 0)

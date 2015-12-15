@@ -1,6 +1,6 @@
 module Admin
   class IngredientsController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :ingredient_categories
 
     def index
@@ -52,8 +52,8 @@ module Admin
       @ingredient_categories ||= IngredientCategory.includes(:ingredients).all.order(:position)
     end
 
-    def main_menu_key
-      @main_menu_key = :ingredients
+    def menu_key
+      @menu_key = :ingredients
     end
 
     def ingredient_params

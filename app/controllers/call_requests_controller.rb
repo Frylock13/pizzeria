@@ -1,6 +1,6 @@
 class CallRequestsController < ApplicationController
   def new
-    @main_menu_key = :new_call_request
+    @menu_key = :new_call_request
     @call_request = CallRequestForm.new(ordering_profile: current_profile).build
     respond_to do |format|
       format.html

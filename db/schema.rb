@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208003752) do
+ActiveRecord::Schema.define(version: 20151215110123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151208003752) do
     t.string   "intercom_code", limit: 10
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "entrance",      limit: 10
   end
 
   add_index "addresses", ["owner_id"], name: "index_addresses_on_owner_id", using: :btree

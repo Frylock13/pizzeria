@@ -1,7 +1,7 @@
 module Admin
   module Products
     class ProductFeaturesController < AdminController
-      before_action :main_menu_key
+      before_action :menu_key
       helper_method :feature_values, :features, :product, :product_features
 
       def index
@@ -46,8 +46,8 @@ module Admin
 
       private
 
-      def main_menu_key
-        @main_menu_key = :products
+      def menu_key
+        @menu_key = :products
       end
 
       def feature_values

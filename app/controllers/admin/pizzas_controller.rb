@@ -1,6 +1,6 @@
 module Admin
   class PizzasController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :doughs, :pizzas
 
     def index
@@ -81,8 +81,8 @@ module Admin
       )
     end
 
-    def main_menu_key
-      @main_menu_key = :pizzas
+    def menu_key
+      @menu_key = :pizzas
     end
 
     def pizza_params

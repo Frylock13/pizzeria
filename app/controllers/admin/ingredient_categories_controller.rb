@@ -1,6 +1,6 @@
 module Admin
   class IngredientCategoriesController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :ingredient_category, :ingredient_categories
 
     def edit
@@ -49,8 +49,8 @@ module Admin
 
     private
 
-    def main_menu_key
-      @main_menu_key = :ingredients
+    def menu_key
+      @menu_key = :ingredients
     end
 
     def update_by_reason

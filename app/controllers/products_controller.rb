@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   helper_method :pizzas, :user_pizzas, :product_categories
 
   def index
-    @main_menu_key = :products
+    @menu_key = :products
     # render :index if stale? pizzas | layout_resources
   end
 

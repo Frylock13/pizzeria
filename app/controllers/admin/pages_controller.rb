@@ -1,6 +1,6 @@
 module Admin
   class PagesController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :pages
 
     def index
@@ -46,14 +46,14 @@ module Admin
     end
 
     def dashboard
-      @main_menu_key = :dashboard
+      @menu_key = :dashboard
       # render :dashboard if stale? [:admin_dashboard] | layout_resources
     end
 
     private
 
-    def main_menu_key
-      @main_menu_key = :pages
+    def menu_key
+      @menu_key = :pages
     end
 
     def pages

@@ -1,6 +1,6 @@
 module Admin
   class ProductCategoriesController < AdminController
-    before_action :main_menu_key
+    before_action :menu_key
     helper_method :product_category, :product_categories
 
     def edit
@@ -49,8 +49,8 @@ module Admin
 
     private
 
-    def main_menu_key
-      @main_menu_key = :products
+    def menu_key
+      @menu_key = :products
     end
 
     def update_by_reason
