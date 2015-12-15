@@ -11,11 +11,21 @@
   .item
     display: inline-block
     overflow: hidden
-    a
+    .item-banner
+      background-color: #250702
+      background-position: 5% 0
       background-size: cover
       display: block
       height: 500px
       position: relative
+      &.banner-1
+        background-image: image_url('banner-1.jpg')
+      &.banner-2
+        background-image: image_url('banner-2.jpg')
+      &.banner-3
+        background-image: image_url('banner-3.jpg')
+      +breakpoint(1500px)
+        height: 650px
   .slick-prev, .slick-next
     +transition(background-color 0.5s)
     background-color: transparent
