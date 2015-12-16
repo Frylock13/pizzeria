@@ -22,5 +22,9 @@ class PizzaRecalculatingService
              .assign_attributes(price: pizza.price(pizza_size, fair: true))
       end
     end
+    PizzaSizes.pizza_size.values.each do |pizza_size|
+      pizza.pizza_attributes.select{ |r| r.pizza_size == pizza_size }.first
+           .assign_attributes(weight: pizza.weight(pizza_size, fair: true))
+    end
   end
 end

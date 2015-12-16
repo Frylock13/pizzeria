@@ -4,8 +4,11 @@ div { class = 'pizza-attributes ladda-button'
       data-spinner-size = '20'
       data-style = 'expand-right'
     }
-  - item.pizza_attributes.each do |pizza_attribute|
-    .pizza-attribute
-      span.pizza-size = pizza_attribute.pizza_size.text
-      span.pizza-price = number_to_currency pizza_attribute.price, precision: 0
-      / span.pizza-weight = pizza_attribute.weight
+  - if item.pizza.dough.present?
+    - item.pizza_attributes.each do |pizza_attribute|
+      .pizza-attribute
+        span.pizza-size = pizza_attribute.pizza_size.text
+        span.pizza-price = number_to_currency pizza_attribute.price, precision: 0
+        span.pizza-weight #{pizza_attribute.weight} гр.
+  - else
+    .pizza-error.text-danger Выберите тесто
