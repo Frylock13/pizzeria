@@ -339,6 +339,8 @@ GEM
       rails-assets-bootstrap (>= 3.1.0)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-jquery (2.1.4)
+    rails-assets-jquery.are-you-sure (1.9.0)
+      rails-assets-jquery (>= 1.4.2)
     rails-assets-jquery.inputmask (3.2.2)
       rails-assets-jquery (>= 1.7)
     rails-assets-ladda (0.9.8)
@@ -575,6 +577,7 @@ DEPENDENCIES
   rails-assets-ink!
   rails-assets-interact!
   rails-assets-jasny-bootstrap!
+  rails-assets-jquery.are-you-sure!
   rails-assets-jquery.inputmask (= 3.2.2)!
   rails-assets-ladda!
   rails-assets-masonry!
