@@ -76,6 +76,9 @@ section.page id='orders'
                         tr
                           td = ordered_pizza.name
                           td
+                            div
+                              .pull-right = ordered_pizza.pizza.dough.name
+                              span Тесто
                             - ordered_pizza.pizza_ingredients.each do |pizza_ingredient|
                               div
                                 .pull-right = pizza_ingredient.quantity
