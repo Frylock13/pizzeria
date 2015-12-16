@@ -1,0 +1,16 @@
+div
+  .pull-right class=('text-danger' if pizza.dough_id != parent.dough_id)
+    = pizza.dough.name
+  span Тесто
+- pizza.pizza_ingredients.each do |pizza_ingredient|
+  - if parent.pizza_ingredients.pluck(:ingredient_id).include?(pizza_ingredient.ingredient_id)
+    div
+      .pull-right class=('text-danger' if pizza_ingredient.quantity != parent.pizza_ingredients.find_by(ingredient_id: pizza_ingredient.ingredient_id).quantity)
+         = pizza_ingredient.quantity
+      span = pizza_ingredient.name
+  - else
+    div.text-success
+      .pull-right = pizza_ingredient.quantity
+      span = pizza_ingredient.name
+- parent.pizza_ingredients.where.not(ingredient_id: pizza.pizza_ingredients.map{ |item| item.ingredient_id }).each do |pizza_ingredient|
+  s.text-danger.strike = pizza_ingredient.name

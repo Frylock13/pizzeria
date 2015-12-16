@@ -1,0 +1,10 @@
+- if pizza.visibility.for_all?
+  div Стандартные
+- else
+  div
+    .pull-right = pizza.dough.name
+    span Тесто
+  - pizza.pizza_ingredients.each do |pizza_ingredient|
+    div
+      .pull-right = pizza_ingredient.quantity
+      span = pizza_ingredient.name
