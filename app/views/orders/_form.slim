@@ -49,6 +49,10 @@
             .col-xs-3
               = ff.text_field :intercom_code, class: 'form-control', placeholder: 'Домофон',
                               required: false, disabled: true
+          .help-block
+            ' *Доставка по Звенигороду бесплатная.
+            = link_to 'Узнать, сколько стоит доставка в пригородах', page_path('dostavka'),
+                      target: '_blank'
   .row.row-order
     .order-step
       .step-title Кто примет доставку?
