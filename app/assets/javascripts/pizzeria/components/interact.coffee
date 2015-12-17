@@ -11,6 +11,6 @@ interact('.pizza-frame').draggable
     angle = (parseFloat(target.getAttribute('data-angle')) or 0) + event.dx * dx - event.dy * dy
     angle -= 360 if angle >= 360
     angle += 360 if angle <= -360
-    target.style.webkitTransform = target.style.transform = "rotate(#{angle}deg)"
+    target.style.webkitTransform = target.style.transform = "rotate(#{angle}deg) translateZ(0)"
     target.setAttribute 'data-angle', angle
     return
