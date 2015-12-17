@@ -1,0 +1,20 @@
+@import 'variables'
+
+select[multiple], select[size]
+  &.selectized
+    display: block !important
+    height: $input-height-base
+    position: absolute
+    width: 100px
+.selectize-input
+  background-color: $input-bg
+  border-radius: $input-border-radius
+  border-color: $input-border
+  min-height: $input-height-base
+  padding: $padding-base-vertical $padding-base-horizontal
+  z-index: 0
+  &.focus
+    border-color: $input-border-focus
+    box-shadow: none
+.selectize-dropdown [data-selectable].active
+  background: rgba($brand-primary, 0.2)

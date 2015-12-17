@@ -1,45 +1,41 @@
 @import 'variables'
 @import 'breakpoint-sass'
+@import 'settings/prefixer'
+@import 'addons/prefixer'
 @import 'addons/retina'
 @import 'addons/rhythm'
 
-.form-control
-  box-shadow: none
-  line-height: rh()
-  &:focus
-    box-shadow: none
-
 input[type="checkbox"]
-  -moz-appearance: none
-  -ms-appearance: none
-  -o-appearance: none
-  -webkit-appearance: none
-  appearance: none
+  +prefixer(appearance, none, spec moz ms o webkit)
   background-color: $input-bg
   border-radius: $border-radius-base
   border: 1px solid $input-border
   box-shadow: 0px 1px 2px rgba(#000, 0.06)
   display: inline-block
-  height: 20px
+  height: rh()
   left: 0
-  line-height: 20px
+  line-height: rh()
   margin: 0
   vertical-align: top
-  width: 20px
+  width: rh()
   & + label
     font-weight: normal
-    line-height: 20px
+    line-height: rh()
     padding: 0 0 0 8px
   &:checked
     +svg-cover('check.png', 'check.svg')
 
+.form-control
+  line-height: rh()
+  &.selectize-control
+    height: $input-height-base
+  &, &:focus
+    box-shadow: none
+
 .form-group
   margin: 0
-  .table
-    margin: 0
   .btn + .btn
     margin-left: 15px
-
 .help-block
   margin: 0
 
@@ -50,85 +46,3 @@ form
         margin-top: 20px
       .help-block
         margin-top: 10px
-
-.form-control.selectize-control
-  height: $input-height-base
-
-.selectize-input
-  background-color: $input-bg
-  border-radius: $input-border-radius
-  border-color: $input-border
-  min-height: $input-height-base
-  padding: $padding-base-vertical $padding-base-horizontal
-  z-index: 0
-  &.focus
-    border-color: $input-border-focus
-    box-shadow: none
-.selectize-dropdown [data-selectable].active
-  background: rgba($brand-primary, 0.2)
-
-.summernote
-  bottom: 0
-  left: 0
-  opacity: 0
-  pointer-events: none
-  position: absolute
-  width: 100%
-.note-editor
-  margin: 0
-  overflow: visible
-  .btn + .btn
-    border-left: none
-    margin-left: 0
-  .note-toolbar
-    padding: 6px 12px
-
-select[multiple], select[size]
-  &.selectized
-    display: block !important
-    height: $input-height-base
-    position: absolute
-    width: 100px
-
-.fileinput
-  max-width: 300px
-  text-align: center
-  .thumbnail
-    display: block
-    img
-      max-height: none
-  .fileinput-body
-    background-color: $input-bg
-    border: 1px solid $input-border
-    padding: 25px 30px
-    label
-      color: $text-color
-      display: block
-      font-weight: normal
-      margin-bottom: 10px
-      text-align: center
-    .thumbnail
-      background: none
-      border-radius: 0
-      border: none
-      margin: -25px -30px 25px
-      padding: 0
-      .img-dummy
-        background-color: #f5f5f5
-        height: 160px
-        padding: 60px 0 0
-        .dummy-icon
-          +svg-image('dummy-image.png', 'dummy-image.svg', 64px, 48px)
-          margin: 0 auto
-      p
-        color: $text-color
-        font-size: 12px
-        line-height: 20px
-  .help-block
-    color: $text-color
-    font-size: 12px
-    margin-bottom: 0
-    padding: 0 30px
-.fileinput-exists .fileinput-new,
-.fileinput-new .fileinput-exists
-  display: none

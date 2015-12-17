@@ -1,8 +1,9 @@
 - title @page.meta_title
 - description @page.page_annotation
 - keywords @page.meta_keywords
-section.heading
-  .container-fluid
-    h1.section-title = @page.page_title
-section.page.post
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Ваша пицца', root_path
+    li.active = @page.page_title
+section.post
   .container-fluid = @page.page_description.html_safe

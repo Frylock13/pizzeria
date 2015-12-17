@@ -12,7 +12,7 @@ section.tabs
                    params.merge(status: status[1]),
                    active: params[:status] == status[1],
                    disabled: Order.with_status(status[1]).count == 0
-section.page id='orders'
+section.padded id='orders'
   .container-fluid
     - @orders.each do |order|
       .panel.panel-default.panel-order-info

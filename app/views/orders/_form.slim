@@ -1,8 +1,8 @@
 = form_for item, remote: false, authenticity_token: true do |f|
-  .row.row-order
-    .order-step
-      .step-title Когда выполнить заказ?
-    .order-form
+  .row
+    .col-side
+      .row-title Когда выполнить заказ?
+    .col-main
       = form_field_group :status, item do
         = f.select :status,
                    options_for_select([['В ближайшее время', :accepted],
@@ -13,10 +13,10 @@
       = form_field_group :booked_on, item, div_class: 'hide', div_id: 'booked_attributes' do
         = f.datetime_local_field :booked_on, class: 'form-control', required: true, disabled: true
         = form_field_error :booked_on, item
-  .row.row-order
-    .order-step
-      .step-title Куда привезти?
-    .order-form
+  .row
+    .col-side
+      .row-title Куда привезти?
+    .col-main
       = form_field_group :address_id, item do
         = f.select :address_id,
                    options_for_select(owned_addresses.push(['Введу адрес вручную', :attributes])),
@@ -53,10 +53,10 @@
             ' *Доставка по Звенигороду бесплатная.
             = link_to 'Узнать, сколько стоит доставка в пригородах', page_path('dostavka'),
                       target: '_blank'
-  .row.row-order
-    .order-step
-      .step-title Кто примет доставку?
-    .order-form
+  .row
+    .col-side
+      .row-title Кто примет доставку?
+    .col-main
       = form_field_group :receiving_profile_id, item do
         = f.select :receiving_profile_id,
                    options_for_select(owned_profiles.push(['Введу контакты вручную', :attributes])),
@@ -73,10 +73,10 @@
             = ff.text_field :phone, class: 'form-control', placeholder: 'Телефон',
                             required: true, disabled: true
             = form_field_error :phone, item
-  .row.row-order
-    .order-step
-      .step-title Как лучше оплатить заказ?
-    .order-form
+  .row
+    .col-side
+      .row-title Как лучше оплатить заказ?
+    .col-main
       .form-group
         = f.select :payment_method,
                    options_for_select(payment_methods),
@@ -99,10 +99,10 @@
             | Заказывайте пиццу у нас, копите бонусные баллы и оплачивайте ими заказы.
           - else
             | Отлично, вы можете оплатить заказ бонусными баллами!
-  .row.row-order
-    .order-step
-      .step-title Последние штрихи
-    .order-form
+  .row
+    .col-side
+      .row-title Последние штрихи
+    .col-main
       = form_field_group :wishes, item do
         = f.text_area :wishes, class: 'form-control', rows: 3, placeholder: 'Особые пожелания'
       - if current_user.present?

@@ -10,14 +10,13 @@
       color: #aaa
       float: none
       height: 40px
-      opacity: 1
       padding: 10px
       position: absolute
       right: -10px
       top: -10px
       width: 40px
       z-index: 1
-      &:hover, &:focus
+      &, &:hover, &:focus
         opacity: 1
 
 .modal-open
@@ -27,43 +26,3 @@
     +scrollbar
     overflow-x: auto
     overflow-x: overlay
-
-.modal-dialog
-  &.modal-product
-    .modal-body
-      padding: 0 $modal-inner-padding
-      .row
-        .modal-col
-          min-height: 450px
-          padding: $modal-inner-padding $grid-gutter-width/2
-          img
-            margin-left: -60px
-          small
-            color: #aaa
-            font-weight: normal
-            margin-left: 7px
-          .product-price
-            float: left
-            font-size: 26px
-            font-weight: bold
-            line-height: 33px
-            small
-              font-size: 22px
-          .product-title
-            font-size: 20px
-            font-weight: bold
-            line-height: 30px
-            margin-bottom: 5px
-            text-shadow: 0 0 4px #fff
-            small
-              font-size: 14px
-          .product-items
-            .pull-right
-              line-height: 60px
-          &.col-image
-            overflow: hidden
-          &.col-info
-            background-color: #f5f5f5
-          & + .modal-col
-            border-left: 1px solid #e5e5e5
-            padding-left: $grid-gutter-width/2 - 1px

@@ -3,7 +3,7 @@
   ol.breadcrumb
     li = link_to 'Ваши заказы', orders_path
     li.active = order.to_s
-section.order id='polling_order'
+section.order-info id='polling_order'
   .container-fluid
     .section-title Заказ #{order.status.text}
     = render "orders/messages/#{order.status}"

@@ -1,15 +1,16 @@
 - title 'Вход в систему'
-.container-fluid.container-centered
-  .row
-    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
-      .panel.panel-default
-        .panel-heading
-          .b Уже были у нас?
-          span Представьтесь, пожалуйста:
-        .panel-body
-          = render 'form', item: @user_session
-          .row
-            .elems.col-xs-12.col-sm-6
-              .text-center = link_to 'Я хочу зарегистрироваться', register_path, class: 'btn btn-link'
-            .elems.col-xs-12.col-sm-6
-              .text-center = link_to 'Я не помню пароль', new_password_reset_path, class: 'btn btn-link'
+section.centered
+  .container-fluid
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+        .panel.panel-default
+          .panel-heading
+            .b Уже были у нас?
+            span Представьтесь, пожалуйста:
+          .panel-body
+            = render 'form', item: @user_session
+            .row
+              .elems.col-xs-12.col-sm-6
+                .text-center = link_to 'Я хочу зарегистрироваться', register_path, class: 'btn btn-link'
+              .elems.col-xs-12.col-sm-6
+                .text-center = link_to 'Я не помню пароль', new_password_reset_path, class: 'btn btn-link'

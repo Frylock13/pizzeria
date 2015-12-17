@@ -2,52 +2,34 @@
 @import 'bootstrap/mixins/_nav-vertical-align'
 @import 'addons/scrollbar'
 
-.navbar-toggle
-  +navbar-vertical-align($navbar-height)
-  cursor: pointer
-  height: $navbar-height
-  line-height: 20px
-  margin-right: 0
-  text-align: center
-  width: $navbar-height
-  .icon-bar
-    margin: 0 auto
-    width: 18px
-  .fa
-    color: #777
-
-.navbar-brand
-  display: inline-block
-  float: none
-  font-weight: 700
-  line-height: $navbar-height
-  padding: 0 15px
-  text-align: center
-  &:hover
-    text-decoration: none
-  img
-    vertical-align: middle
-
 .navbar
   .breadcrumb
     +scrollbar($navbar-default-bg)
     background-color: transparent
-    line-height: 50px
+    line-height: $navbar-height
     margin: 0 20px
     overflow: auto
     overflow: overlay
     padding: 0
     white-space: nowrap
   .navbar-toggle
+    +navbar-vertical-align($navbar-height)
     border-color: transparent
     border-radius: 0
+    cursor: pointer
+    height: $navbar-height
+    line-height: 20px
     margin-right: 10px
-
-.navbar-inverse
-  border: none
-  .breadcrumb
-    color: $navbar-inverse-color
-    a
-      color: $navbar-inverse-link-color
-    > .active
-      color: darken($navbar-inverse-link-color, 15%)
+    text-align: center
+    width: $navbar-height
+    .icon-bar
+      margin: 4px auto
+      width: 18px
+  &.navbar-inverse
+    border: none
+    .breadcrumb
+      color: $navbar-inverse-color
+      a
+        color: $navbar-inverse-link-color
+      > .active
+        color: darken($navbar-inverse-link-color, 15%)

@@ -51,13 +51,12 @@
       z-index: 1
     &:hover
       background-color: rgba(#000, 0.25)
+      &:before
+        +transform(translateX(0))
   .slick-prev
     left: 0
     &:before
       +transform(translateX(5px))
-    &:hover
-      &:before
-        +transform(translateX(0))
     &:active
       &:before
         +transform(translateX(-5px))
@@ -65,9 +64,6 @@
     right: 0
     &:before
       +transform(translateX(-5px))
-    &:hover
-      &:before
-        +transform(translateX(0))
     &:active
       &:before
         +transform(translateX(5px))

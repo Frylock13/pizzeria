@@ -5,7 +5,7 @@
     li.active = @product.name
 section.submenu id='products'
   = render 'products'
-section.page
+section.padded
   .container-fluid
     = render 'menu', active: :edit, product: @product
     .panel.panel-default

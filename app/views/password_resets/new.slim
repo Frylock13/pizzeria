@@ -1,15 +1,16 @@
 - title 'Восстановление пароля'
-.container-fluid.container-centered
-  .row
-    .col-xs-12.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
-      .panel.panel-default
-        .panel-heading
-          .b Не помните пароль?
-          span Напишите почту, под которой регистрировались
-        .panel-body
-          = render 'form_new', item: @password_reset
-          .row
-            .elems.col-xs-12.col-sm-6
-              .text-center = link_to 'Попробовать войти', login_path, class: 'btn btn-link'
-            .elems.col-xs-12.col-sm-6
-              .text-center = link_to 'Или зарегистрироваться', register_path, class: 'btn btn-link'
+section.centered
+  .container-fluid
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+        .panel.panel-default
+          .panel-heading
+            .b Не помните пароль?
+            span Напишите почту, под которой регистрировались
+          .panel-body
+            = render 'form_new', item: @password_reset
+            .row
+              .elems.col-xs-12.col-sm-6
+                .text-center = link_to 'Попробовать войти', login_path, class: 'btn btn-link'
+              .elems.col-xs-12.col-sm-6
+                .text-center = link_to 'Или зарегистрироваться', register_path, class: 'btn btn-link'

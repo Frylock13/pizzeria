@@ -5,8 +5,8 @@
         - if item.image?
           = image_tag item.image.url(:thumb)
         - else
-          .img-dummy
-            .dummy-icon
+          .thumbnail-dummy
+            .dummy-image
       .fileinput-preview.fileinput-exists.thumbnail
       = f.label :image, class: 'control-label'
       div

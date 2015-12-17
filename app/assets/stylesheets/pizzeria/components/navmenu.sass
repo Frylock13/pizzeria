@@ -9,189 +9,196 @@
 @import 'css3/transition'
 
 .navmenu
-  &, & .navbar-offcanvas
-    overflow: hidden
-    width: $navmenu-width
-    .navmenu-brand
-      font-size: 0
-      line-height: $navbar-height
-      margin: 0
-      padding: 5px 15px
-      text-align: center
-      &:hover, &:focus
-        background-color: rgba(#f0f0f0, 0.1)
-    .navmenu-divider
-      height: 20px
-    .navmenu-scroll-area
-      +calc(height, '100% - 70px')
-      overflow: auto
-      overflow: overlay
-      padding-bottom: 60px
-    .navmenu-nav
-      >
-        .navmenu-title
-          color: #FAC217
-          font-size: 20px
-          font-weight: 700
+  overflow: hidden
+  width: $navmenu-width
+  .navmenu-brand
+    font-size: 0
+    height: 90px
+    line-height: $navbar-height
+    margin: 0
+    padding: 5px 15px
+    text-align: center
+    &:hover, &:focus
+      background-color: rgba(#f0f0f0, 0.1)
+  .navmenu-divider
+    height: 20px
+  .navmenu-scroll-area
+    +calc(height, '100% - 90px')
+    overflow: auto
+    overflow: overlay
+    padding-bottom: 30px
+  .navmenu-nav
+    > li
+      > a, > div
+        border-left: 3px solid transparent
+        font-weight: 700
+        padding: 10px 15px
+        padding-left: 12px
+        > .fa
+          margin-right: 5px
+          text-align: center
+          width: 19px
+          &.fa-chevron-down,
+          &.fa-chevron-up
+            float: right
+            line-height: 20px
+            width: auto
+        .nav-item-title, .nav-item-subtitle
+          position: relative
+        .nav-item-title
+          font-size: 15px
+          font-weight: bold
+          .btn-sm
+            margin: -6px 0
+          .pull-right
+            height: 20px
+        .nav-item-subtitle
+          font-size: 14px
+          min-height: 20px
+      > div
+        a.ladda-button
+          border-radius: 3px
+          border: none
+          display: block
+          height: 20px
+          left: -27px
           line-height: 20px
-          padding: 15px 15px
-          text-transform: uppercase
-        li > a, li > div
-          border-left: 3px solid transparent
-          font-weight: 700
-          padding: 10px 15px
-          padding-left: 12px
-          .nav-item-title, .nav-item-subtitle
-            position: relative
-            a.ladda-button
-              border-radius: 3px
-              border: none
-              display: block
-              height: 20px
-              left: -27px
-              line-height: 20px
-              padding: 1px 4px
-              position: absolute
-              text-align: center
-              top: 0
-              width: 24px
-          .nav-item-title
-            font-size: 15px
-            font-weight: bold
-            .btn-sm
-              margin: -6px 0
-            .pull-right
-              height: 20px
-          .nav-item-subtitle
-            font-size: 14px
-            min-height: 20px
-          >
-            .fa
-              margin-right: 5px
-              text-align: center
-              width: 19px
-              &.fa-chevron-down,
-              &.fa-chevron-up
-                float: right
-                line-height: 20px
-                width: auto
-            .text-muted
-              margin: 0 3px
-        .open > a
+          padding: 1px 4px
+          position: absolute
+          text-align: center
+          top: 0
+          width: 24px
+      &.open
+        > a
           .fa-chevron-down:before
             content: "\f077"
-      &.dropdown-menu
-        >
-          li > a, li > div
-            border-left: 3px solid transparent
-            font-weight: 400
-            padding: 10px 15px 10px 12px
-            white-space: initial
-            span, small
-              & +
-                span, small
-                  margin-left: 7px
-            small
-              font-weight: normal
-            .nav-item-title
-              margin: 0 0 0 24px
-            .nav-item-subtitle
-              margin: 0 0 0 24px
-.navmenu-default
-  &, & .navbar-offcanvas
+      &.navmenu-title
+        color: #FAC217
+        font-size: 20px
+        font-weight: 700
+        line-height: 20px
+        padding: 15px 15px
+        text-transform: uppercase
+    &.dropdown-menu
+      > li
+        > a, > div
+          border-left: 3px solid transparent
+          font-weight: 400
+          padding: 10px 15px 10px 12px
+          white-space: initial
+          span, small
+            & +
+              span, small
+                margin-left: 7px
+          small
+            font-weight: normal
+          .nav-item-title
+            margin: 0 0 0 24px
+          .nav-item-subtitle
+            margin: 0 0 0 24px
+  &.navmenu-default
     background-color: $navbar-default-bg
     border-color: $navbar-default-border
     color: $navbar-default-color
     .navmenu-scroll-area
       +scrollbar($navbar-default-color)
     .navmenu-nav
-      >
-        li > a
+      > li
+        > a
           color: $navbar-default-link-color
           &:hover, &:focus
             background-color: $navbar-default-link-hover-bg
             color: $navbar-default-link-hover-color
-        .active > a
-          &, &:hover, &:focus
+        &.active
+          > a
+            &, &:hover, &:focus
+              background-color: $navbar-default-link-active-bg
+              color: $navbar-default-link-active-color
+        &.disabled
+          > a
+            &, &:hover, &:focus
+              background-color: $navbar-default-link-disabled-bg
+              color: $navbar-default-link-disabled-color
+        &.open
+          > a
             background-color: $navbar-default-link-active-bg
             color: $navbar-default-link-active-color
-        .disabled > a
-          &, &:hover, &:focus
-            background-color: $navbar-default-link-disabled-bg
-            color: $navbar-default-link-disabled-color
-        .open > a
-          &
-            background-color: $navbar-default-link-active-bg
-            color: $navbar-default-link-active-color
-          &:hover, &:focus
-            background-color: $navbar-default-link-hover-bg
-            color: $navbar-default-link-hover-color
+            &:hover, &:focus
+              background-color: $navbar-default-link-hover-bg
+              color: $navbar-default-link-hover-color
       &.dropdown-menu
         background-color: rgba(#000, 0.04)
         border-top: 1px solid darken($navbar-default-bg, 15%)
         border-bottom: 1px solid darken($navbar-default-bg, 18%)
-        >
-          li > a
+        > li
+          > a
             color: $navbar-default-link-color
             &:hover, &:focus
               color: $navbar-default-link-hover-color
-.navmenu-inverse
-  &, & .navbar-offcanvas
+  &.navmenu-inverse
     +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
     background-color: $navbar-inverse-bg
     border-color: $navbar-inverse-bg
     border: none
     color: $navbar-inverse-color
+    .text-success
+      color: $state-success-bg
     .navmenu-scroll-area
       +scrollbar($navbar-inverse-color)
     .navmenu-nav
-      >
-        li > a
+      > li
+        > a
           color: $navbar-inverse-link-color
           &:hover, &:focus
             background-color: $navbar-inverse-link-hover-bg
             color: $navbar-inverse-link-hover-color
-        li > div
+        > div
           a.ladda-button
             +transition(background-color 0.2s, color 0.2s)
             background-color: transparent
             color: $navbar-inverse-link-color
             &:hover, &:focus
               background-color: rgba($btn-primary-bg, 0.75)
-        .active > a
-          &, &:hover, &:focus
-            background-color: $navbar-inverse-link-active-bg
-            border-color: $brand-primary
-            color: $navbar-inverse-link-active-color
-        .disabled > a, .disabled > div
-          &, &:hover, &:focus
-            background-color: $navbar-inverse-link-disabled-bg
-            color: $navbar-inverse-link-disabled-color
-        .open > a
-          &
-            background-color: $navbar-inverse-link-open-bg
-            color: $navbar-inverse-link-open-color
-          &:hover, &:focus
-            background-color: $navbar-inverse-link-hover-bg
-            color: $navbar-inverse-link-hover-color
-      &.dropdown-menu
-        background-color: rgba(#000, 0.2)
-        border-top: 1px solid darken($navbar-inverse-bg, 2%)
-        border-bottom: 1px solid darken($navbar-inverse-bg, 3%)
-        >
-          li > a
-            color: $navbar-inverse-link-color
-            &:hover, &:focus
-              color: $navbar-inverse-link-hover-color
-          .active > a
+        &.active
+          > a
             &, &:hover, &:focus
               background-color: $navbar-inverse-link-active-bg
               border-color: $brand-primary
               color: $navbar-inverse-link-active-color
-          .disabled > a, .disabled > div
+        &.disabled
+          > a, > div
             &, &:hover, &:focus
               background-color: $navbar-inverse-link-disabled-bg
               color: $navbar-inverse-link-disabled-color
+        &.open
+          > a
+            background-color: $navbar-inverse-link-open-bg
+            color: $navbar-inverse-link-open-color
+            &:hover, &:focus
+              background-color: $navbar-inverse-link-hover-bg
+              color: $navbar-inverse-link-hover-color
+      &.dropdown-menu
+        background-color: rgba(#000, 0.2)
+        border-top: 1px solid darken($navbar-inverse-bg, 2%)
+        border-bottom: 1px solid darken($navbar-inverse-bg, 3%)
+        > li
+          > a
+            color: $navbar-inverse-link-color
+            &:hover, &:focus
+              color: $navbar-inverse-link-hover-color
+          &.active
+            > a
+              &, &:hover, &:focus
+                background-color: $navbar-inverse-link-active-bg
+                border-color: $brand-primary
+                color: $navbar-inverse-link-active-color
+          &.disabled
+            > a, > div
+              &, &:hover, &:focus
+                background-color: $navbar-inverse-link-disabled-bg
+                color: $navbar-inverse-link-disabled-color
+  &.navmenu-fixed-left, &.navmenu-fixed-right
+    z-index: 0
 
 .body
   background-color: $body-bg
@@ -231,6 +238,3 @@
       box-shadow: 4px 0 10px rgba(#000, 0.5)
       &, .navbar-fixed-top
         margin-right: $navmenu-width
-
-.navmenu-fixed-left, .navmenu-fixed-right, .navbar-offcanvas
-  z-index: 0

@@ -11,12 +11,12 @@
 
 .panel
   margin-bottom: 8px
-  > .panel-heading
+  .panel-heading
     min-height: 40px
     position: relative
     > .block.item-actions
       padding: $panel-heading-padding
-  > .panel-body
+  .panel-body
     > .list-group
       margin: -10px -15px
       .list-group-item
@@ -25,12 +25,12 @@
   &.panel-dummy
     +transition(box-shadow 0.25s)
     background-color: #fff
+    background-size: cover
     border-radius: 6px
     display: block
     height: 411px
     margin-bottom: 18px
     overflow: hidden
-    background-size: cover
     .ladda-label
       height: 100%
       width: 100%
@@ -53,9 +53,19 @@
         margin-bottom: 20px
         min-height: 30px*2
         text-shadow: 0 0 3px rgba(#000, 0.5)
-      .btn-primary
-        border-color: darken($brand-primary, 10%)
+      .btn
         padding: 5px 20px
+        &.btn-primary
+          border-color: darken($brand-primary, 10%)
+    &:hover
+      box-shadow: 0 2px 7px rgba(#000, 0.6)
+      .panel-body
+        background-color: rgba(#fff, 0.02)
+    &:active
+      box-shadow: 0 2px 7px rgba(#000, 0.4) inset
+      .panel-body
+        background-color: rgba(#000, 0.1)
+        color: darken(#fff, 5%)
     &.dummy-auth
       background-color: #322a29
       background-image: image_url('auth@2x.jpg')
@@ -71,17 +81,8 @@
       background-image: image_url('menu@2x.jpg')
       border-color: #975e40
       color: #fff
-    &:hover
-      box-shadow: 0 2px 7px rgba(#000, 0.6)
-      .panel-body
-        background-color: rgba(#fff, 0.02)
-    &:active
-      box-shadow: 0 2px 7px rgba(#000, 0.4) inset
-      .panel-body
-        background-color: rgba(#000, 0.1)
-        color: darken(#fff, 5%)
   &.panel-item
-    > .panel-body
+    .panel-body
       min-height: $input-height-base - 2px
       padding: $padding-base-vertical $padding-base-horizontal $padding-base-vertical - 1px
       position: relative
@@ -92,30 +93,32 @@
     .panel-body
       background-color: #f5f5f5
       padding: 0 10px
-      .row-order
-        .order-step, .order-form
+      .row
+        .row-title
+          font-weight: bold
+          line-height: 35px
+        .col-side, .col-main
           float: left
           min-height: 1px
           padding: 20px 15px
           position: relative
-        .order-step
+        .col-side
           width: 200px
-          .step-title
-            font-weight: bold
-            line-height: 35px
           +breakpoint($screen-lg-min)
             width: 300px
-        .order-form
+        .col-main
           +calc(width, '100% - 200px')
-          border-left: 1px solid #ccc
           background-color: #fff
+          border-left: 1px solid #ccc
+          .row + .row
+            margin-top: 20px
           +breakpoint($screen-lg-min)
             +calc(width, '100% - 300px')
-        + .row-order
+        + .row
           margin-top: 0
-          .order-step
+          .col-side
             border-top: 1px dashed #ccc
-          .order-form
+          .col-main
             border-top: 1px dashed #eee
   &.panel-order-info
     max-width: 1000px
@@ -127,9 +130,8 @@
             margin-left: 5px
       small
         color: lighten($text-color, 45%)
-      .pull-right
-        .btn-group
-          margin: -7px -12px 0 10px
+      .btn-group
+        margin: -7px -12px 0 10px
     .panel-body
       background-color: #f5f5f5
       padding: 0 10px
@@ -160,100 +162,95 @@
           color: #959286
           font-size: 16px
     .panel-body
-      padding: 0
-      .pizza-controls, .pizza-image
-        float: left
-        min-height: 1px
-        position: relative
-      .pizza-controls
-        background-color: #f5f5f5
-        border-left: 1px solid #ccc
-        padding: 10px 15px
-        width: 400px
-        .block.group-ingredients
-          +scrollbar
-          height: 600px - 200px
-          overflow: auto
-        .pizza-attributes
-          +transition(color 1.5s)
-          display: inline-block
-          height: rh(3)
-          margin-right: -30px
+      padding: 0 10px
+      .row
+        .col-side, .col-main
+          float: left
+          min-height: 1px
           position: relative
-          .pizza-attribute
-            display: block
-            height: rh()
-            .pizza-size, .pizza-price, .pizza-weight
-              display: inline-block
-            .pizza-size
-            .pizza-price
-              font-size: 16px
-              font-weight: bold
-              margin: 0 7px
-            .pizza-weight
-              font-size: 12px
-          .pizza-error
-            padding: rh() 0
-          &.ladda-button[data-loading]
-            color: #959286
-        .pizza-submit
-          float: right
-          padding: 15px 0
-      .pizza-image
-        +calc(width, '100% - 400px')
-        line-height: 600px
-        min-height: 600px
-        overflow: hidden
-        text-align: right
-        img
-          max-width: 100%
-          vertical-align: middle
-        .pizza-plate
-          background: #fff image_url('grill-plate-rect.jpg')
-          background-position: 50% 50%
-          background-size: 922px 600px
-          height: 600px
-          left: 50%
-          margin: 10px 0 0 -466px
-          position: relative
-          width: 922px
-          .pizza-frame
-            +prefixer(transform, rotate(0deg), spec webkit)
-            border-radius: 50%
-            height: 500px
+        .col-side
+          background-color: #f5f5f5
+          border-left: 1px solid #ccc
+          padding: 10px 15px
+          width: 400px
+          .block.group-ingredients
+            +scrollbar
+            height: 600px - 200px
+            overflow: auto
+          .pizza-attributes
+            +transition(color 1.5s)
+            display: inline-block
+            height: rh(3)
+            margin-right: -30px
+            position: relative
+            .pizza-attribute
+              display: block
+              height: rh()
+              .pizza-size, .pizza-price, .pizza-weight
+                display: inline-block
+              .pizza-price
+                font-size: 16px
+                font-weight: bold
+                margin: 0 7px
+              .pizza-weight
+                font-size: 12px
+            .pizza-error
+              padding: rh() 0
+            &.ladda-button[data-loading]
+              color: #959286
+          .pizza-submit
+            float: right
+            padding: 15px 0
+        .col-main
+          +calc(width, '100% - 400px')
+          line-height: 600px
+          min-height: 600px
+          overflow: hidden
+          text-align: right
+          img
+            max-width: 100%
+            vertical-align: middle
+          .pizza-plate
+            background: #fff image_url('grill-plate-rect.jpg')
+            background-position: 50% 50%
+            background-size: 922px 600px
+            height: 600px
             left: 50%
-            margin: -250px
-            position: absolute
-            top: 50%
-            width: 500px
-            img
-              height: 100%
-              left: 0
+            margin: 10px 0 0 -466px
+            position: relative
+            width: 922px
+            .pizza-frame
+              +prefixer(transform, rotate(0deg), spec webkit)
+              border-radius: 50%
+              height: 500px
+              left: 50%
+              margin: -250px
               position: absolute
-              top: 0
-              width: 100%
-              &.ng-hide-add, &.ng-hide-remove
-                +transition(all, 0.25s)
-                display: block !important
-              &.ng-hide-add.ng-hide-add-active, &.ng-hide-remove
-                opacity: 0
-              &.ng-hide-add, &.ng-hide-remove.ng-hide-remove-active
-                opacity: 1
-      &:before, &:after
-        content: " "
-        display: table
-      &:after
-        clear: both
+              top: 50%
+              width: 500px
+              img
+                height: 100%
+                left: 0
+                position: absolute
+                top: 0
+                width: 100%
+                &.ng-hide-add, &.ng-hide-remove
+                  +transition(all, 0.25s)
+                  display: block !important
+                &.ng-hide-add.ng-hide-add-active, &.ng-hide-remove
+                  opacity: 0
+                &.ng-hide-add, &.ng-hide-remove.ng-hide-remove-active
+                  opacity: 1
   &.panel-product
     border-radius: 6px
     margin-bottom: 18px
     overflow: hidden
     .panel-body
       background-position: 100% 0
+      padding: 0 0 10px
       .product-image
-        +border-top-radius($panel-border-radius)
-        margin: -10px -15px -25px
         height: 215px
+        margin-bottom: -25px
         overflow: hidden
         position: relative
         img
@@ -271,17 +268,22 @@
       .product-title
         font-size: 16px
         font-weight: bold
-        line-height: 20px
-        margin-bottom: 5px
+        line-height: rh()
+        padding: 0 15px
         position: relative
         text-shadow: 0 0 4px #fff
       .pizza-ingredients
-        height: 60px
-        line-height: 20px
-        margin-bottom: 5px
-        overflow: hidden
+        +scrollbar
+        height: rh(3)
+        line-height: rh()
+        margin-top: 5px
+        padding: 0 15px
+        overflow: auto
+        overflow: overlay
       .pizza-edit-ingredients
-        line-height: 20px
+        line-height: rh()
+        margin-top: 5px
+        padding: 0 15px
     .panel-footer
       padding: 0
       .list-group
@@ -299,20 +301,9 @@
             font-size: 12px
             margin: -10px -15px
             padding: 10px 15px
-          &.ladda-button
-            .ladda-spinner
-              right: -19px
           &:hover
             .pull-right
               background-color: $brand-primary
-
-.panel-slider
-  .panel-body
-    padding: 0
-    .item
-      +transition(opacity 0.5s)
-      opacity: 0.2
-      &.slick-center
-        opacity: 1
-    img
-      margin: 0 auto
+          &.ladda-button
+            .ladda-spinner
+              right: -19px

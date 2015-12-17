@@ -5,7 +5,6 @@
 #= require bootstrap/dropdown
 #= require bootstrap/modal
 #= require bootstrap/scrollspy
-#= require bootstrap/tooltip
 #= require bootstrap/transition
 #= require interact
 #= require jquery.are-you-sure
