@@ -32,7 +32,7 @@ section.padded id='orders'
             span = order.to_s
             small
               ' от
-              span.date-moment #{order.booked_on}
+              span.moment-date #{order.booked_on}
         .panel-body
           .row
             .col-side
@@ -43,7 +43,7 @@ section.padded id='orders'
               - if order.booked_on.present?
                 dl
                   dt Забронирован на:
-                  dd.date-moment = order.booked_on
+                  dd.moment-date = order.booked_on
               - if order.payment_method.present?
                 dl
                   dt Метод оплаты:

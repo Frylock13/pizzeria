@@ -11,6 +11,6 @@ html
     = render 'admin/sidebar'
     .body class=('body-padded' if content_for?(:header)) id='body'
       = render 'admin/header'
-      = render 'shared/flashes'
+      = render 'shared/flash_messages'
       = yield
       = render 'shared/sounds'

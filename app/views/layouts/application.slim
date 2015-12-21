@@ -13,7 +13,7 @@ html
     = render 'shared/sidebar', menu_key: @menu_key
     .body class=('body-padded' if content_for?(:header)) id='body'
       = render 'shared/header'
-      = render 'shared/flashes'
+      = render 'shared/flash_messages'
       = yield
       = render 'shared/modal'
       = render 'shared/sounds'
