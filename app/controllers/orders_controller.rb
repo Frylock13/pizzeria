@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_filter :check_order_price, only: [:new, :create]
   before_filter :require_login, only: [:index, :show]
-  helper_method :address, :order, :owned_addresses, :owned_profiles,
+  helper_method :address, :order, :addresses, :owned_profiles,
                 :payment_methods, :receiving_profile
 
   def index
@@ -44,9 +44,10 @@ class OrdersController < ApplicationController
     @address ||= current_order.address || Address.new(owner: current_user)
   end
 
-  def owned_addresses
+  def addresses
     return [] unless current_user.present?
-    @owned_addresses ||= current_user.owned_addresses.map{ |item| [item.to_s, item.id] }
+    @addresses ||= current_user.owned_addresses.map{ |item| [item.to_s, item.id] }
+    @addresses += Address.where(pickup: true).map{ |item| [item.to_s, item.id] }
   end
 
   def owned_profiles
@@ -70,7 +71,7 @@ class OrdersController < ApplicationController
     params.require(:order)
           .permit(:status, :booked_on, :payment_method, :wishes,
                   :address_id,
-                  { address_attributes: [:street, :house, :entrance, :flat,
+                  { address_attributes: [:city, :street, :house, :entrance, :flat,
                                          :floor, :intercom_code, :owner_id] },
                   :receiving_profile_id,
                   { receiving_profile_attributes: [:first_name, :phone] },

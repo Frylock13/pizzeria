@@ -19,14 +19,17 @@
     .col-main
       = form_field_group :address_id, item do
         = f.select :address_id,
-                   options_for_select(owned_addresses.push(['Введу адрес вручную', :attributes])),
+                   options_for_select(addresses.push(['Введу адрес вручную', :attributes])),
                    { prompt: 'Выберите один из вариантов' },
                    class: 'form-control selectize-order-address', required: true
         = form_field_error :address_id, item
       .form-group.hide id='address_attributes'
         = f.fields_for :address, address do |ff|
           .row
-            .col-xs-9
+            .col-xs-4
+              = ff.text_field :city, class: 'form-control', placeholder: 'Населенный пункт',
+                              required: false, disabled: true
+            .col-xs-5
               = form_field_group :street, item do
                 = ff.text_field :street, class: 'form-control', placeholder: 'Улица',
                                 required: true, disabled: true

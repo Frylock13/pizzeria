@@ -12,6 +12,8 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  entrance      :string(10)
+#  pickup        :boolean
+#  city          :string(50)
 #
 
 class Address < ActiveRecord::Base
@@ -19,7 +21,9 @@ class Address < ActiveRecord::Base
   has_many :orders
 
   def to_s
-    str = "#{street} #{house}"
+    str = (pickup == true ? 'Самовывоз: ' : '')
+    str += "#{city}, " if city.present?
+    str += "#{street} #{house}"
     str += ", подъезд #{entrance}" if entrance.present?
     str += ", квартира #{flat}" if flat.present?
     str += ", #{floor}-й этаж" if floor.present?
