@@ -9,6 +9,7 @@ html
     = render 'shared/favicons'
     = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
+    = render 'shared/chatra'
   body
     = render 'shared/sidebar', menu_key: @menu_key
     .body class=('body-padded' if content_for?(:header)) id='body'
