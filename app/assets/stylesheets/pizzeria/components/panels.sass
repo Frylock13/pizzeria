@@ -248,6 +248,7 @@
     .panel-body
       background-position: 100% 0
       padding: 0 0 10px
+      position: relative
       .product-image
         height: 215px
         margin-bottom: -25px
@@ -265,6 +266,12 @@
             right: -60px
             top: -85px
             width: 300px
+      .product-badge
+        left: 0
+        position: absolute
+        top: 0
+        &.badge-hot
+          +svg-image('hot.png', 'hot.svg', 65px, 65px)
       .product-title
         font-size: 16px
         font-weight: bold

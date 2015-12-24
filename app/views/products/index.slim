@@ -76,6 +76,8 @@ section.products id='menu_pizza'
           .panel.panel-default.panel-product
             .panel-body
               .product-image = image_tag pizza.image.url(:thumb)
+              - if pizza.hot == true
+                .product-badge.badge-hot
               .product-title = pizza.name
               .pizza-ingredients
                 ' #{pizza.dough.name} тесто,

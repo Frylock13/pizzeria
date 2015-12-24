@@ -11,6 +11,7 @@
 #  parent_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  hot        :boolean
 #
 
 class Pizza < ActiveRecord::Base

@@ -87,7 +87,7 @@ module Admin
 
     def pizza_params
       params.require(:pizza).permit(
-        :name, :image, :visibility, :dough_id, :parent_id,
+        :name, :image, :visibility, :dough_id, :parent_id, :hot,
         { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
         { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :base, :_destroy] }
       )
