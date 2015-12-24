@@ -60,3 +60,11 @@ li.dropdown.open.active id='cart'
               = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary btn-sm'
             - else
               small.text-muted мин. заказ от 500 руб.
+      li
+        = link_to [current_order, :clear],
+                  remote: true, class: 'ladda-button',
+                  data: { spinner_color: '#f5f5f5',
+                          spinner_size: '16',
+                          style: 'expand-right' } do
+          span.fa.fa-fw
+          span Очистить корзину

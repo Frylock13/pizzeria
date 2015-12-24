@@ -32,6 +32,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def clear
+    current_order.ordered_pizzas.destroy_all
+    current_order.ordered_products.destroy_all
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { render 'shared/cart', layout: false }
+    end
+  end
+
   private
 
   def check_order_price

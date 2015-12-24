@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :show, :new, :update] do
     get :check_updates, on: :collection
+    get :clear
   end
   resources :ordered_pizzas, only: [:create] do
     get :decrease
