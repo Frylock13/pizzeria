@@ -14,7 +14,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="hot.svg">
+   sodipodi:docname="hot.svg"
+   inkscape:export-filename="/home/gambala/git/pizzeria/app/assets/images/hot.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
      inkscape:cx="22.172876"
-     inkscape:cy="24.462524"
+     inkscape:cy="33.364493"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -47,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -64,18 +67,22 @@
        inkscape:export-filename="/home/gambala/git/pizzeria/app/assets/images/hot.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
-    <text
-       xml:space="preserve"
+    <g
+       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
        style="font-size:44.93863297px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
-       x="-716.66956"
-       y="738.98956"
-       id="text3755"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"><tspan
-         sodipodi:role="line"
-         id="tspan3757"
-         x="-716.66956"
-         y="738.98956"
-         style="font-size:22.46931648px;font-weight:bold;letter-spacing:1.49000001px">хит</tspan></text>
+       id="text3755">
+      <path
+         d="m -710.97543,730.89271 0.0658,0 1.82124,-3.77414 3.62055,0 -3.57666,5.86967 3.69734,6.00132 -3.60957,0 -1.94193,-3.93871 -1.94193,3.93871 -3.62054,0 3.69734,-6.00132 -3.58763,-5.86967 3.5986,0 1.77736,3.77414"
+         style="font-size:22.46931648px;font-weight:bold;letter-spacing:1.49000001px"
+         id="path2986" />
+      <path
+         d="m -695.36531,727.11857 3.19267,0 0,11.87099 -3.19267,0 0,-7.24109 -0.0658,-0.011 -3.87289,7.25206 -3.20363,0 0,-11.87099 3.20363,0 0,7.21914 0.0658,0.011 3.87288,-7.23011"
+         style="font-size:22.46931648px;font-weight:bold;letter-spacing:1.49000001px"
+         id="path2988" />
+      <path
+         d="m -678.23017,729.56518 -3.79608,0 0,9.42438 -3.21461,0 0,-9.42438 -3.74122,0 0,-2.44661 10.75191,0 0,2.44661"
+         style="font-size:22.46931648px;font-weight:bold;letter-spacing:1.49000001px"
+         id="path2990" />
+    </g>
   </g>
 </svg>
