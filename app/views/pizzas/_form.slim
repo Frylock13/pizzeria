@@ -3,6 +3,11 @@
     .col-main
       - if item.parent.present?
         = image_tag item.image.url if item.image.present?
+        .pizza-info
+          .info-title = item.parent.name
+          .info-text
+            ' #{item.parent.dough.name} тесто,
+            = item.parent.ingredients.pluck(:name).join(', ')
       - else
         .pizza-plate
           .pizza-frame ng-controller='PizzaIngredientsImagesController as vm'
