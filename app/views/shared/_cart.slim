@@ -1,5 +1,5 @@
 li.dropdown.open.active id='cart'
-  = link_to root_path(anchor: 'menu'), class: 'dropdown-toggle' do
+  = link_to root_path, class: 'dropdown-toggle' do
     = render 'shared/sidebar_step_1_title'
   - unless current_order.empty?
     ul.dropdown-menu.navmenu-nav

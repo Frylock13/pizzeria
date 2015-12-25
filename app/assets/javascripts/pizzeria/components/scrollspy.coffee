@@ -1,5 +1,5 @@
-$ ->
-  if $('#navProducts').length
+$(document).on 'ready page:load page:partial-load', ->
+  if $('.affix-products').length
     $('body').scrollspy
-      offset: 80
-      target: '#navProducts'
+      offset: 120
+      target: ''

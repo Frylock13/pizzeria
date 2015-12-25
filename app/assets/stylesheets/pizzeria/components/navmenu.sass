@@ -207,6 +207,11 @@
   position: relative
   .navbar-fixed-top
     display: none
+  .affix
+    &.affix-products
+      top: 0
+    &.affix-pizza-categories
+        top: $navbar-height
   &:before
     content: ''
     height: 100%
@@ -225,15 +230,28 @@
     padding-top: $navbar-height
     .navbar-fixed-top
       display: block
+    .affix
+      &.affix-products
+        top: $navbar-height
+      &.affix-pizza-categories
+        top: $navbar-height+$navbar-height
   +breakpoint(max-width $screen-sm-max)
     padding-top: $navbar-height
     .navbar-fixed-top
       display: block
+    .affix
+      &.affix-products
+        top: $navbar-height
+      &.affix-pizza-categories
+        top: $navbar-height+$navbar-height
   +breakpoint($screen-md-min)
     .navmenu-fixed-left + &
       box-shadow: -4px 0 10px rgba(#000, 0.5)
       &, .navbar-fixed-top
         margin-left: $navmenu-width
+      .affix
+        +calc(width, "100% - #{$navmenu-width}")
+        left: $navmenu-width
     .navmenu-fixed-right + &
       box-shadow: 4px 0 10px rgba(#000, 0.5)
       &, .navbar-fixed-top

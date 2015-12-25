@@ -4,14 +4,15 @@ section id='top'
     .item = link_to '', page_path('dostavka'), class: 'item-banner banner-delivery'
     .item = link_to '', page_path('oplata-i-bonusnie-balli'), class: 'item-banner banner-bonus'
     .item = link_to '', page_path('pdf-menu'), class: 'item-banner banner-pdf'
-.navbar.navbar-inverse.hidden-print id='menu'
+.navbar.navbar-inverse.hidden-print.affix-products
   .container-fluid
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li = link_to 'Ваша пицца', '#user_pizza', 'data-scroll' => ''
-        li = link_to 'Пицца в меню', '#menu_pizza', 'data-scroll' => ''
+        li = link_to 'Ваша пицца', '#user_pizza', data: { scroll: '', options: '{ "offset": 70 }' }
+        li = link_to 'Пицца в меню', '#menu_pizza', data: { scroll: '', options: '{ "offset": 70 }' }
         - product_categories.each do |product_category|
-          li = link_to product_category.name, "\#product_category_#{product_category.id}", 'data-scroll' => ''
+          li = link_to product_category.name, "\#product_category_#{product_category.id}",
+                       data: { scroll: '', options: '{ "offset": 70 }' }
 section.products id='user_pizza'
   .container-masonry
     .section-title
@@ -70,7 +71,15 @@ section.products id='menu_pizza'
   .container-masonry
     .section-title
       span Пицца в меню
-    - pizza_categories.each do |pizza_category, pizzas|
+  .navbar.navbar-default.hidden-print.affix-pizza-categories
+    .container-fluid
+      .collapse.navbar-collapse
+        ul.nav.navbar-nav
+          - pizza_categories.each do |pizza_category, pizzas|
+            li = link_to pizza_category.name, "\#pizza_category_#{pizza_category.id}",
+                         data: { scroll: '', options: '{ "offset": 120 }' }
+  - pizza_categories.each do |pizza_category, pizzas|
+    .container-masonry id="pizza_category_#{pizza_category.id}"
       .section-subtitle
         span = pizza_category.name
       .masonry-grid.row

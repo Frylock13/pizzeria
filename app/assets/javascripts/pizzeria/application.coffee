@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
+#= require bootstrap/affix
 #= require bootstrap/alert
 #= require bootstrap/dropdown
 #= require bootstrap/modal
