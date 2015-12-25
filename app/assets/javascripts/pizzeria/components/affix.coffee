@@ -3,7 +3,8 @@ $(document).on 'ready page:load page:partial-load', ->
   if affixes.length
     affixes.each ->
       $(this).affix offset:
-        top: $(this).offset().top - 0
+        top: =>
+          @top = $(this).prev().offset().top + $(this).prev().outerHeight(true) - 0
   affixes = $('.affix-pizza-categories')
   if affixes.length
     affixes.each ->
