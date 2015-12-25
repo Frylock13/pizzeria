@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :ingredient_categories, only: [:edit, :create, :update, :destroy]
     resources :ingredients, except: [:show]
     resources :pages, except: [:show]
+    resources :pizza_categories, only: [:edit, :create, :update, :destroy]
     resources :pizzas, except: [:show] do
       get :recalculate
     end

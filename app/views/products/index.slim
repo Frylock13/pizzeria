@@ -70,36 +70,39 @@ section.products id='menu_pizza'
   .container-masonry
     .section-title
       span Пицца в меню
-    .masonry-grid.row
-      - pizzas.each do |pizza|
-        .masonry-item.col-xs-6.col-md-4.col-lg-3
-          .panel.panel-default.panel-product
-            .panel-body
-              .product-image = image_tag pizza.image.url(:thumb)
-              - if pizza.hot == true
-                .product-badge.badge-hot
-              .product-title = pizza.name
-              .pizza-ingredients
-                ' #{pizza.dough.name} тесто,
-                = pizza.ingredients.pluck(:name).join(', ')
-              .pizza-edit-ingredients
-                = link_to 'Подобрать ингредиенты и тесто', new_pizza_path(parent_id: pizza.id),
-                          remote: true, class: 'ladda-button',
-                          data: { spinner_color: '#383783',
-                                  spinner_size: '20',
-                                  style: 'expand-right' }
-            .panel-footer
-              .list-group
-                - pizza.pizza_attributes.each do |pizza_attribute|
-                  = link_to ordered_pizzas_path(pizza_id: pizza.id,
-                                                pizza_size: pizza_attribute.pizza_size),
-                            method: :post, remote: true, class: 'list-group-item ladda-button',
-                            data: { spinner_color: '#959286',
+    - pizza_categories.each do |pizza_category, pizzas|
+      .section-subtitle
+        span = pizza_category.name
+      .masonry-grid.row
+        - pizzas.each do |pizza|
+          .masonry-item.col-xs-6.col-md-4.col-lg-3
+            .panel.panel-default.panel-product
+              .panel-body
+                .product-image = image_tag pizza.image.url(:thumb)
+                - if pizza.hot == true
+                  .product-badge.badge-hot
+                .product-title = pizza.name
+                .pizza-ingredients
+                  ' #{pizza.dough.name} тесто,
+                  = pizza.ingredients.pluck(:name).join(', ')
+                .pizza-edit-ingredients
+                  = link_to 'Подобрать ингредиенты и тесто', new_pizza_path(parent_id: pizza.id),
+                            remote: true, class: 'ladda-button',
+                            data: { spinner_color: '#383783',
                                     spinner_size: '20',
-                                    style: 'expand-right' } do
-                    .pull-right В корзину
-                    span = pizza_attribute.pizza_size.text
-                    span.b = number_to_currency pizza_attribute.price, precision: 0
+                                    style: 'expand-right' }
+              .panel-footer
+                .list-group
+                  - pizza.pizza_attributes.each do |pizza_attribute|
+                    = link_to ordered_pizzas_path(pizza_id: pizza.id,
+                                                  pizza_size: pizza_attribute.pizza_size),
+                              method: :post, remote: true, class: 'list-group-item ladda-button',
+                              data: { spinner_color: '#959286',
+                                      spinner_size: '20',
+                                      style: 'expand-right' } do
+                      .pull-right В корзину
+                      span = pizza_attribute.pizza_size.text
+                      span.b = number_to_currency pizza_attribute.price, precision: 0
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry

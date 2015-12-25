@@ -5,6 +5,12 @@
         = f.label :name, class: 'control-label'
         = f.text_field :name, class: 'form-control', required: false
         = form_field_error :name, item
+      = form_field_group :pizza_category_id, item do
+        = f.label :pizza_category_id, class: 'control-label'
+        = f.collection_select :pizza_category_id, pizza_categories,
+          :id, :name, { prompt: 'Выберите категорию' },
+                      { class: 'form-control selectize-pizza-categories' }
+        = form_field_error :pizza_category_id, item
       .form-group
         = f.label :visibility, class: 'control-label'
         = f.select :visibility, Visibilities.visibility.options,

@@ -1,12 +1,29 @@
 = link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary btn-block'
-hr
-- pizzas.each do |pizza|
-  .panel.panel-default.panel-item
-    .panel-body
-      .block.item-actions
-        = link_to [:edit, :admin, pizza], title: 'Изменить тесто' do
-          span.fa.fa-pencil
-        = link_to [:admin, pizza], title: 'Удалить тесто',
-                  method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
-          span.fa.fa-trash
-      = link_to pizza.name, [:edit, :admin, pizza]
+- if pizza_categories.any?
+  hr
+  .sortable-list
+    - pizza_categories.each do |pizza_category|
+      div { class = 'panel panel-default'
+            data-model = 'pizza_category'
+            data-url = url_for([:admin, pizza_category])
+          }
+        .panel-heading.draggable-zone
+          .block.item-actions
+            = link_to [:edit, :admin, pizza_category], title: 'Изменить категорию' do
+              span.fa.fa-pencil
+            = link_to [:admin, pizza_category], title: 'Удалить всю категорию',
+                      method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+              span.fa.fa-trash
+          .panel-title = pizza_category.name
+        - if pizza_category.pizzas.any?
+          .panel-body
+            ul.list-group
+              - pizza_category.pizzas.each do |pizza|
+                li.list-group-item
+                  .block.item-actions
+                    = link_to [:edit, :admin, pizza], title: 'Изменить пиццу' do
+                      span.fa.fa-pencil
+                    = link_to [:admin, pizza], title: 'Удалить пиццу',
+                              method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do
+                      span.fa.fa-trash
+                  = link_to pizza.name, [:edit, :admin, pizza]

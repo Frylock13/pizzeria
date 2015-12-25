@@ -4,8 +4,8 @@
   .sortable-list
     - product_categories.each do |product_category|
       div { class = 'panel panel-default'
-           data-model = 'product_category'
-           data-url = url_for([:admin, product_category])
+            data-model = 'product_category'
+            data-url = url_for([:admin, product_category])
           }
         .panel-heading.draggable-zone
           .block.item-actions

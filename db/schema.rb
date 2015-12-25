@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224100338) do
+ActiveRecord::Schema.define(version: 20151225000532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,6 +182,13 @@ ActiveRecord::Schema.define(version: 20151224100338) do
 
   add_index "pizza_attributes", ["pizza_id"], name: "index_pizza_attributes_on_pizza_id", using: :btree
 
+  create_table "pizza_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pizza_ingredients", force: :cascade do |t|
     t.integer  "pizza_id"
     t.integer  "ingredient_id"
@@ -197,18 +204,20 @@ ActiveRecord::Schema.define(version: 20151224100338) do
   create_table "pizzas", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
-    t.integer  "visibility", default: 0
+    t.integer  "visibility",        default: 0
     t.integer  "owner_id"
     t.integer  "dough_id"
     t.integer  "parent_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.boolean  "hot"
+    t.integer  "pizza_category_id"
   end
 
   add_index "pizzas", ["dough_id"], name: "index_pizzas_on_dough_id", using: :btree
   add_index "pizzas", ["owner_id"], name: "index_pizzas_on_owner_id", using: :btree
   add_index "pizzas", ["parent_id"], name: "index_pizzas_on_parent_id", using: :btree
+  add_index "pizzas", ["pizza_category_id"], name: "index_pizzas_on_pizza_category_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
@@ -307,6 +316,7 @@ ActiveRecord::Schema.define(version: 20151224100338) do
   add_foreign_key "pizza_ingredients", "ingredients"
   add_foreign_key "pizza_ingredients", "pizzas"
   add_foreign_key "pizzas", "doughs"
+  add_foreign_key "pizzas", "pizza_categories"
   add_foreign_key "pizzas", "profiles", column: "owner_id"
   add_foreign_key "product_features", "feature_values"
   add_foreign_key "product_features", "features"

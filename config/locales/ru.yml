@@ -28,8 +28,11 @@ ru:
         name: Название
         parent_id: Пицца-основа
         pizza_attribute_attributes: Атрибуты
+        pizza_category_id: Категория
         pizza_ingredient_attributes: Ингредиенты
         visibility: Видимость
+      pizza_category:
+        name: Название
       product:
         description: Описание
         image: Фото в каталоге

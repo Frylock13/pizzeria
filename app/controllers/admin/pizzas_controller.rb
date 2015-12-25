@@ -1,7 +1,7 @@
 module Admin
   class PizzasController < AdminController
     before_action :menu_key
-    helper_method :doughs, :pizzas
+    helper_method :doughs, :pizza_categories, :pizzas
 
     def index
       # render :index if stale? @pizzas | layout_resources
@@ -70,8 +70,12 @@ module Admin
       )
     end
 
+    def pizza_categories
+      @pizza_categories ||= PizzaCategory.includes(:pizzas).all.order(:position)
+    end
+
     def pizzas
-      @pizzas ||= Pizza.all.order(:name)
+      @pizzas ||= Pizza.without_visibility(:for_user).order(:name)
     end
 
     def ingredient_categories
@@ -87,7 +91,7 @@ module Admin
 
     def pizza_params
       params.require(:pizza).permit(
-        :name, :image, :visibility, :dough_id, :parent_id, :hot,
+        :name, :pizza_category_id, :image, :visibility, :dough_id, :parent_id, :hot,
         { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
         { pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :base, :_destroy] }
       )

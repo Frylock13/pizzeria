@@ -128,6 +128,10 @@ initSelectize = ->
     onInitialize: (data) ->
       changeOrderProfile(this.$input[0].value)
 
+  $('select.selectize-pizza-categories:not(.selectized)').selectize(
+    creatableElements('pizza_category', 'pizza_categories', 'Создать категорию')
+  )
+
   $('select.selectize-pizzas:not(.selectized)').selectize
     labelField: 'name'
     valueField: 'id'

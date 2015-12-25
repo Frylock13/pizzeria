@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  helper_method :pizzas, :user_pizzas, :product_categories
+  helper_method :pizza_categories, :product_categories, :user_pizzas
 
   def index
     @menu_key = :products
@@ -8,8 +8,16 @@ class ProductsController < ApplicationController
 
   private
 
-  def pizzas
-    @pizzas ||= Pizza.with_visibility(:for_all).includes(:pizza_attributes).order(:name)
+  def pizza_categories
+    @pizza_categories ||= Pizza.with_visibility(:for_all)
+                               .includes(:pizza_attributes).order(:name)
+                               .group_by { |item| item.pizza_category }
+  end
+
+  def product_categories
+    @product_categories ||= ProductCategory.all
+      .includes({ products: [:features, { product_features: [:feature, :feature_value] }] })
+      .order(:position).order('features.name', 'feature_values.name')
   end
 
   def user_pizzas
@@ -20,11 +28,5 @@ class ProductsController < ApplicationController
                        current_profile.owned_pizzas.with_visibility(:for_user)
                                       .includes(:pizza_attributes).order(:name)
                      end
-  end
-
-  def product_categories
-    @product_categories ||= ProductCategory.all
-      .includes({ products: [:features, { product_features: [:feature, :feature_value] }] })
-      .order(:position).order('features.name', 'feature_values.name')
   end
 end
