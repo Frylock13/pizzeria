@@ -1,6 +1,26 @@
 @import 'variables'
+@import 'bootstrap/mixins/buttons'
 @import 'breakpoint-sass'
 @import 'addons/rhythm'
 
 .btn
   line-height: rh()
+  &.btn-social
+    height: 40px
+    line-height: 40px
+    padding: 0
+    width: 40px
+  &.btn-vk
+    @extend .btn-social
+    +button-variant(#fff, #45668e, #45668e)
+  &.btn-facebook
+    @extend .btn-social
+    +button-variant(#fff, #3b5998, #3b5998)
+  &.btn-google
+    @extend .btn-social
+    +button-variant(#fff, #dc4e41, #dc4e41)
+  &.btn-twitter
+    @extend .btn-social
+    +button-variant(#fff, #55acee, #55acee)
+  + .btn
+    margin-left: 5px
