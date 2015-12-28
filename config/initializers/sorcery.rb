@@ -9,12 +9,16 @@ Rails.application.config.sorcery.configure do |config|
     user.username_attribute_names = [:email]
   end
   config.user_class = 'User'
+  config.facebook.callback_url = 'http://www.vpzven.ru/oauth/callback?provider=facebook'
   config.facebook.key = ENV['AUTH_FACEBOOK_KEY']
   config.facebook.secret = ENV['AUTH_FACEBOOK_SECRET']
+  config.google.callback_url = 'http://www.vpzven.ru/oauth/callback?provider=google'
   config.google.key = ENV['AUTH_GOOGLE_KEY']
   config.google.secret = ENV['AUTH_GOOGLE_SECRET']
+  config.twitter.callback_url = 'http://www.vpzven.ru/oauth/callback?provider=twitter'
   config.twitter.key = ENV['AUTH_TWITTER_KEY']
   config.twitter.secret = ENV['AUTH_TWITTER_SECRET']
+  config.vk.callback_url = 'http://www.vpzven.ru/oauth/callback?provider=vk'
   config.vk.key = ENV['AUTH_VK_KEY']
   config.vk.secret = ENV['AUTH_VK_SECRET']
 end
