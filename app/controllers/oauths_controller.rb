@@ -10,7 +10,12 @@ class OauthsController < ApplicationController
     if user = login_from(provider)
       redirect_to root_path, notice: "Успешно зашли через #{provider.titleize}"
     else
-      redirect_to register_path, notice: 'Для входа через соцсети вам нужно зарегистрироваться'
+      if current_user.present?
+        add_provider_to_user(provider)
+        redirect_to root_path, notice: "Успешно подключили #{provider.titleize} к вашему аккаунту"
+      else
+        redirect_to register_path, notice: 'Для входа через соцсети вам нужно зарегистрироваться'
+      end
     end
   end
 
