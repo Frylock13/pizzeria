@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225000532) do
+ActiveRecord::Schema.define(version: 20151227233215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20151225000532) do
   end
 
   add_index "addresses", ["owner_id"], name: "index_addresses_on_owner_id", using: :btree
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
 
   create_table "call_requests", force: :cascade do |t|
     t.integer  "ordering_profile_id"
