@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   resource :oauth, only: [] do
-    get ':provider', action: :run, as: :run
     match :callback, via: [:get, :post]
+    get ':provider', action: :run, as: :run
   end
   get :admin, to: 'admin/pages#dashboard'
   get :login, to: 'user_sessions#new'
