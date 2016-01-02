@@ -51,7 +51,9 @@ section.products id='user_pizza'
             .panel-subtitle в нашем конструкторе
             .btn.btn-primary Перейти
       .masonry-item.col-xs-6.col-md-4.col-lg-3
-        = link_to '#menu_pizza', 'data-scroll' => '', class: 'panel panel-default panel-dummy dummy-specifier' do
+        = link_to '#menu_pizza',
+                  class: 'panel panel-default panel-dummy dummy-specifier',
+                  data: { scroll: '' } do
           .panel-body
             .panel-title Или подберите<br/>пиццу в меню
             .panel-subtitle по вашему вкусу
