@@ -1,3 +1,5 @@
+@import 'variables'
+
 .summernote
   bottom: 0
   left: 0
@@ -11,5 +13,10 @@
   .btn + .btn
     border-left: none
     margin-left: 0
-  .note-toolbar
-    padding: 6px 12px
+  &.note-frame
+    border-color: $input-border
+.note-popover .popover-content, .panel-heading.note-toolbar
+  .note-para .dropdown-menu
+    min-width: 241px
+.note-popover
+  display: none

@@ -12,7 +12,3 @@ $(document).on 'ready page:load page:partial-load', ->
           ['misc', ['undo', 'redo', 'fullscreen', 'codeview']],
           ['help', ['help']]
         ]
-      $(this).code $(this).val()
-      $(this).closest('form').submit =>
-        $(this).val $(this).code()
-        true

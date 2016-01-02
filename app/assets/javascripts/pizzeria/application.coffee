@@ -10,9 +10,9 @@
 #= require bootstrap/transition
 #= require interact
 #= require jquery.are-you-sure
-#= require jquery.inputmask/dist/inputmask/inputmask
-#= require jquery.inputmask/dist/inputmask/inputmask.numeric.extensions
-#= require jquery.inputmask/dist/inputmask/jquery.inputmask
+#= require jquery.inputmask/inputmask
+#= require jquery.inputmask/inputmask.numeric.extensions
+#= require jquery.inputmask/jquery.inputmask
 #= require jasny-bootstrap
 #= require jquery.slick
 #= require js-routes
@@ -27,7 +27,6 @@
 #= require Sortable/jquery.binding
 #= require summernote
 #= require summernote/locales/ru-RU
-#= require summernote/plugin/summernote-ext-video
 #= require_tree ./components
 #= require app/module
 #= require turbolinks
