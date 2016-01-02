@@ -10,4 +10,9 @@ module ApplicationHelper
       end
     end
   end
+
+  def number_to_weight(weight)
+    return unless weight.present?
+    "#{weight} гр."
+  end
 end

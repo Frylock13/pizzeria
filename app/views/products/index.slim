@@ -31,15 +31,19 @@ section.products id='user_pizza'
             .panel-footer
               .list-group
                 - pizza.pizza_attributes.each do |pizza_attribute|
-                  = link_to ordered_pizzas_path(pizza_id: pizza.id,
-                                                pizza_size: pizza_attribute.pizza_size),
-                            method: :post, remote: true, class: 'list-group-item ladda-button',
-                            data: { spinner_color: '#959286',
-                                    spinner_size: '20',
-                                    style: 'expand-right' } do
-                    .pull-right В корзину
-                    span = pizza_attribute.pizza_size.text
-                    span.b = number_to_currency pizza_attribute.price, precision: 0
+                  - if pizza_attribute.price.present?
+                    = link_to ordered_pizzas_path(pizza_id: pizza.id,
+                                                  pizza_size: pizza_attribute.pizza_size),
+                              method: :post, remote: true, class: 'list-group-item ladda-button',
+                              data: { spinner_color: '#959286',
+                                      spinner_size: '20',
+                                      style: 'expand-right' } do
+                      .pull-right В корзину
+                      span = pizza_attribute.pizza_size.text
+                      span.b = number_to_currency pizza_attribute.price, precision: 0
+                  - else
+                    .list-group-item
+                      span.text-muted = pizza_attribute.pizza_size.text
       .masonry-item.col-xs-6.col-md-4.col-lg-3
         = link_to new_pizza_path,
                   class: 'panel panel-default panel-dummy dummy-constructor ladda-button',
@@ -105,15 +109,19 @@ section.products id='menu_pizza'
               .panel-footer
                 .list-group
                   - pizza.pizza_attributes.each do |pizza_attribute|
-                    = link_to ordered_pizzas_path(pizza_id: pizza.id,
-                                                  pizza_size: pizza_attribute.pizza_size),
-                              method: :post, remote: true, class: 'list-group-item ladda-button',
-                              data: { spinner_color: '#959286',
-                                      spinner_size: '20',
-                                      style: 'expand-right' } do
-                      .pull-right В корзину
-                      span = pizza_attribute.pizza_size.text
-                      span.b = number_to_currency pizza_attribute.price, precision: 0
+                    - if pizza_attribute.price.present?
+                      = link_to ordered_pizzas_path(pizza_id: pizza.id,
+                                                    pizza_size: pizza_attribute.pizza_size),
+                                method: :post, remote: true, class: 'list-group-item ladda-button',
+                                data: { spinner_color: '#959286',
+                                        spinner_size: '20',
+                                        style: 'expand-right' } do
+                        .pull-right В корзину
+                        span = pizza_attribute.pizza_size.text
+                        span.b = number_to_currency pizza_attribute.price, precision: 0
+                    - else
+                      .list-group-item
+                        span.text-muted = pizza_attribute.pizza_size.text
 - product_categories.each do |product_category|
   section.products id="product_category_#{product_category.id}"
     .container-masonry

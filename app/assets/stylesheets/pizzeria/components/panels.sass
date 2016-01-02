@@ -186,6 +186,8 @@
             .pizza-attribute
               display: block
               height: rh()
+              .text-muted
+                color: #d2dae1
               .pizza-size, .pizza-price, .pizza-weight
                 display: inline-block
               .pizza-price
@@ -307,11 +309,13 @@
       padding: 0
       .list-group
         margin: 0
-        a.list-group-item
+        .list-group-item
           border: none
           height: rh(2)
           overflow: hidden
           position: relative
+          .text-muted
+            color: #d2dae1
           span + span
             margin-left: 7px
           .pull-right
@@ -320,6 +324,7 @@
             font-size: 12px
             margin: -10px -15px
             padding: 10px 15px
+        a.list-group-item
           &:hover
             .pull-right
               background-color: $brand-primary

@@ -7,8 +7,11 @@ div { class = 'pizza-attributes ladda-button'
   - if item.pizza.dough.present?
     - item.pizza_attributes.each do |pizza_attribute|
       .pizza-attribute
-        span.pizza-size = pizza_attribute.pizza_size.text
-        span.pizza-price = number_to_currency pizza_attribute.price, precision: 0
-        span.pizza-weight #{pizza_attribute.weight} гр.
+        - if pizza_attribute.price.present?
+          span.pizza-size = pizza_attribute.pizza_size.text
+          span.pizza-price = number_to_currency pizza_attribute.price, precision: 0
+          span.pizza-weight = number_to_weight pizza_attribute.weight
+        - else
+          span.pizza-size.text-muted = pizza_attribute.pizza_size.text
   - else
     .pizza-error.text-danger Выберите тесто
