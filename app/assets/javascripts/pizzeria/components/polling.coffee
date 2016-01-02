@@ -21,7 +21,6 @@ pollingOrders = (item) ->
         date: item.attr('data-date')
       dataType: 'json'
       success: (response) =>
-        console.log response
         if response.status == 'updated'
           item.attr('data-date', response.date)
           item.addClass('updated')

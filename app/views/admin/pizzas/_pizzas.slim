@@ -21,7 +21,8 @@
               - pizza_category.pizzas.each do |pizza|
                 li.list-group-item
                   .block.item-actions
-                    = link_to [:edit, :admin, pizza], title: 'Изменить пиццу' do
+                    = link_to [:edit, :admin, pizza], data: { change: 'pizza' },
+                              title: 'Изменить пиццу' do
                       span.fa.fa-pencil
                     = link_to [:admin, pizza], title: 'Удалить пиццу',
                               method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do

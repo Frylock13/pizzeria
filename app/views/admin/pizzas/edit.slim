@@ -1,11 +1,11 @@
 - title @pizza.name
 - content_for :header do
-  ol.breadcrumb
+  ol.breadcrumb data-turbolinks-temporary='' id='breadcrumb'
     li = link_to 'Пицца', admin_pizzas_path
     li.active = @pizza.name
 section.submenu id='pizzas'
   = render 'pizzas'
-section.padded
+section.padded id='pizza'
   .container-fluid
     .panel.panel-default
       .panel-heading
