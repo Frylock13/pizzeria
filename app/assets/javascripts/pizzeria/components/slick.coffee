@@ -1,5 +1,5 @@
-$(document).ready ->
-  $('.slick-main').slick
+$(document).on 'ready page:load page:partial-load', ->
+  $('.slick-main:not(.slick-initialized)').slick
     accessibility: false
     arrows: true
     autoplay: true
