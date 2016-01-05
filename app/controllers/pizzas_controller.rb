@@ -74,7 +74,7 @@ class PizzasController < ApplicationController
   def pizza_params
     params.require(:pizza).permit(
       :image, :dough_id, :parent_id,
-      { pizza_ingredients_attributes: [:ingredient_id, :quantity] }
+      pizza_ingredients_attributes: [:ingredient_id, :quantity]
     ).merge(owner: current_profile)
   end
 end

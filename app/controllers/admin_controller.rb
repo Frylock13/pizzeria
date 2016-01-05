@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_filter :require_admin
   layout 'admin'
 
-  private
+  # private
 
   # def layout_resources
   #   [revision]

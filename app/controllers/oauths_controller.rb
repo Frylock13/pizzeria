@@ -7,7 +7,7 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
-    if user = login_from(provider)
+    if login_from(provider)
       redirect_to root_path, notice: "Успешно зашли через #{provider.titleize}"
     else
       if current_user.present?

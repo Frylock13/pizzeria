@@ -10,7 +10,7 @@ class SmsService
   def send
     params = "?user=#{hash[:user]}&password=#{hash[:password]}&to=#{hash[:to]}&text=#{hash[:text]}&from=#{hash[:from]}"
     url = ENV['SMSAERO_LINK'] + params
-    puts URI.parse(url).read
+    URI.parse(url).read
   end
 
   def hash

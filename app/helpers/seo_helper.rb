@@ -8,9 +8,8 @@ module SeoHelper
   end
 
   def description_tag
-    if content_for?(:description)
-      content_tag :meta, nil, name: 'description', content: content_for(:description)
-    end
+    return unless content_for?(:description)
+    content_tag :meta, nil, name: 'description', content: content_for(:description)
   end
 
   def keywords(page_keywords)
@@ -18,8 +17,7 @@ module SeoHelper
   end
 
   def keywords_tag
-    if content_for?(:keywords)
-      content_tag :meta, nil, name: 'keywords', content: content_for(:keywords)
-    end
+    return unless content_for?(:keywords)
+    content_tag :meta, nil, name: 'keywords', content: content_for(:keywords)
   end
 end
