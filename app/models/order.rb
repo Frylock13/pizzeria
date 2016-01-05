@@ -34,7 +34,7 @@ class Order < ActiveRecord::Base
   end
 
   def price
-    ordered_pizzas.map{ |item| item.price }.sum + ordered_products.map{ |item| item.price }.sum
+    ordered_pizzas.map(&:price).sum + ordered_products.map(&:price).sum
   end
 
   def to_s

@@ -20,10 +20,10 @@ class OrderedProduct < ActiveRecord::Base
 
   def feature_names
     return '' unless ordered_product_features.any?
-    product_features.map{ |item| item.name }.join(', ')
+    product_features.map(&:name).join(', ')
   end
 
   def price
-    (product.safe_price + (product_features.map{ |item| item.price }.sum || 0)) * quantity
+    (product.safe_price + (product_features.map(&:price).sum || 0)) * quantity
   end
 end

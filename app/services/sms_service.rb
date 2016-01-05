@@ -3,7 +3,8 @@ class SmsService
   attr_accessor :phone, :text
 
   def initialize(phone, text)
-    @phone, @text = phone, text
+    @phone = phone
+    @text = text
   end
 
   def send

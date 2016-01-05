@@ -59,7 +59,7 @@ module Admin
     def ingredient_params
       params.require(:ingredient).permit(
         :name, :image, :layer, :ingredient_category_id,
-        { ingredient_attributes_attributes: [:id, :pizza_size, :price, :weight] }
+        ingredient_attributes_attributes: [:id, :pizza_size, :price, :weight]
       )
     end
   end

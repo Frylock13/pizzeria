@@ -55,13 +55,13 @@ class OrdersController < ApplicationController
 
   def addresses
     return [] unless current_user.present?
-    @addresses ||= current_user.owned_addresses.map{ |item| [item.to_s, item.id] }
-    @addresses += Address.where(pickup: true).map{ |item| [item.to_s, item.id] }
+    @addresses ||= current_user.owned_addresses.map { |item| [item.to_s, item.id] }
+    @addresses += Address.where(pickup: true).map { |item| [item.to_s, item.id] }
   end
 
   def owned_profiles
     return [] unless current_user.present?
-    @owned_profiles ||= current_user.owned_profiles.map{ |item| [item.to_s, item.id] }
+    @owned_profiles ||= current_user.owned_profiles.map { |item| [item.to_s, item.id] }
   end
 
   def order
@@ -85,6 +85,6 @@ class OrdersController < ApplicationController
                   :receiving_profile_id,
                   { receiving_profile_attributes: [:first_name, :phone] },
                   :ordering_profile_id,
-                  { ordering_profile_attributes: [:id, :email] })
+                  ordering_profile_attributes: [:id, :email])
   end
 end

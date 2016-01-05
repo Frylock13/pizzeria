@@ -9,7 +9,7 @@ module Admin
       end
 
       def new
-        @product_feature = ProductFeature.new()
+        @product_feature = ProductFeature.new
       end
 
       def edit

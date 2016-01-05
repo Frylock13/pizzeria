@@ -59,7 +59,7 @@ module Admin
     def dough_params
       params.require(:dough).permit(
         :name,
-        { dough_attributes_attributes: [:id, :pizza_size, :price, :weight] }
+        dough_attributes_attributes: [:id, :pizza_size, :price, :weight]
       )
     end
   end

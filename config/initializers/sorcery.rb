@@ -28,7 +28,7 @@ module Sorcery
     module InstanceMethods
       def generic_send_email(method, mailer)
         config = sorcery_config
-        mail = config.send(mailer).send(config.send(method),self).deliver_later
+        mail = config.send(mailer).send(config.send(method), self).deliver_later
       end
     end
   end

@@ -11,13 +11,13 @@ class ProductsController < ApplicationController
   def pizza_categories
     @pizza_categories ||= Pizza.with_visibility(:for_all)
                                .includes(:pizza_attributes).order(:name)
-                               .group_by{ |item| item.pizza_category }
-                               .sort{ |item| item[0].position }
+                               .group_by(&:pizza_category)
+                               .sort { |item| item[0].position }
   end
 
   def product_categories
     @product_categories ||= ProductCategory.all
-      .includes({ products: [:features, { product_features: [:feature, :feature_value] }] })
+      .includes(products: [:features, { product_features: [:feature, :feature_value] }])
       .order(:position).order('features.name', 'feature_values.name')
   end
 

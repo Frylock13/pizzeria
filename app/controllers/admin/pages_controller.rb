@@ -63,8 +63,8 @@ module Admin
     def page_params
       params.require(:page).permit(
         :slug,
-        { viewable_resource_attributes: [:id, :anchor, :meta_keywords, :meta_title,
-                                         :page_title, :page_annotation, :page_description] }
+        viewable_resource_attributes: [:id, :anchor, :meta_keywords, :meta_title,
+                                       :page_title, :page_annotation, :page_description]
       )
     end
   end

@@ -29,10 +29,10 @@ module Admin
         end
       else
         respond_to do |format|
-          format.html {
+          format.html do
             flash.now[:error] = 'Данные не сохранены'
             render :edit, change: "edit_pizza_category_#{pizza_category.id}", layout: !request.xhr?
-          }
+          end
           format.json { render json: { errors: pizza_category.errors }, status: 422 }
         end
       end

@@ -45,7 +45,7 @@ class PizzaForm < ActiveForm
   end
 
   def build_name
-    pizza.name = parent.present? ? "#{pizza.name} особая" : "Уникальная"
+    pizza.name = parent.present? ? "#{pizza.name} особая" : 'Уникальная'
     self.name = pizza.name
   end
 
@@ -58,8 +58,8 @@ class PizzaForm < ActiveForm
   end
 
   def build_dough_id
-    if self.dough_id.present?
-      pizza.dough_id = self.dough_id
+    if dough_id.present?
+      pizza.dough_id = dough_id
     else
       self.dough_id = pizza.dough_id
     end
@@ -75,7 +75,7 @@ class PizzaForm < ActiveForm
   def build_pizza_ingredients
     if pizza_ingredients_attributes.present?
       pizza.pizza_ingredients = []
-      pizza_ingredients_attributes.each { |key, value| pizza.pizza_ingredients.build(value) }
+      pizza_ingredients_attributes.each { |_key, value| pizza.pizza_ingredients.build(value) }
     end
     self.pizza_ingredients = pizza.pizza_ingredients
   end

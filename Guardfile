@@ -21,7 +21,7 @@ guard :passenger, cli: '--daemonize --engine=builtin' do
 end
 
 guard :rspec, cmd: 'spring rspec --color --format progress --fail-fast',
-      all_after_pass: false, all_on_start: false, parallel: true, failed_mode: :keep do
+              all_after_pass: false, all_on_start: false, parallel: true, failed_mode: :keep do
   watch(%r{^spec/.+_spec.rb$})
   watch(%r{^lib/(.+).rb$})                          { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')                      { 'spec' }
