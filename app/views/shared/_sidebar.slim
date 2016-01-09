@@ -1,9 +1,9 @@
 .navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
   = link_to root_path, class: 'navmenu-brand' do
     .block.logo
+    .brand-title Закажите пиццу в 3 шага
   .navmenu-scroll-area
     ul.nav.navmenu-nav
-      li.navmenu-title Закажите пиццу в 3 шага
       - if menu_key == :products
         = render 'shared/cart'
       - else
