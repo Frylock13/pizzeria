@@ -14,7 +14,7 @@
     that = this
     turbolinksSetInterval (=>
       that.request()
-    ), 2000
+    ), 5000
   init: (item) ->
     @item = item
     @poll()

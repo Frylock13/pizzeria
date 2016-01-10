@@ -64,7 +64,7 @@
     that = this
     turbolinksSetInterval (=>
       that.request()
-    ), 2000
+    ), 5000
   init: (order) ->
     @order = order
     @progress = order.find('.progress-bar')
