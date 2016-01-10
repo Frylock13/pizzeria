@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: call_requests
+#
+#  id                   :integer          not null, primary key
+#  ordering_profile_id  :integer
+#  wishes               :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  receiving_profile_id :integer
+#
+
 class CallRequestsController < ApplicationController
   def new
     @menu_key = :new_call_request

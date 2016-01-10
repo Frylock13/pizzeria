@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: ordered_products
+#
+#  id         :integer          not null, primary key
+#  order_id   :integer
+#  product_id :integer
+#  quantity   :integer          default(0)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class OrderedProductsController < ApplicationController
   def create
     ordered_product = current_order.ordered_products.includes(:ordered_product_features)

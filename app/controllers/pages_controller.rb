@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer          not null, primary key
+#  slug       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class PagesController < ApplicationController
   def show
     @menu_key = "page-#{params[:id]}"

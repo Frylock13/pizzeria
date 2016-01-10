@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  image               :string
+#  description         :text
+#  weight              :integer
+#  price               :decimal(15, 2)
+#  product_category_id :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  visibility          :integer          default(0)
+#
+
 class ProductsController < ApplicationController
   helper_method :pizza_categories, :product_categories, :user_pizzas
 

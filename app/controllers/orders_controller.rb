@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                   :integer          not null, primary key
+#  address_id           :integer
+#  status               :string
+#  wishes               :text
+#  receiving_profile_id :integer
+#  ordering_profile_id  :integer
+#  payment_method       :string
+#  booked_on            :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
 class OrdersController < ApplicationController
   before_filter :check_order_price, only: [:new, :create]
   before_filter :require_login, only: [:index, :show]

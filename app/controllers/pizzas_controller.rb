@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: pizzas
+#
+#  id                :integer          not null, primary key
+#  name              :string
+#  image             :string
+#  visibility        :integer          default(0)
+#  owner_id          :integer
+#  dough_id          :integer
+#  parent_id         :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  hot               :boolean
+#  pizza_category_id :integer
+#
+
 class PizzasController < ApplicationController
   before_action :menu_key
   helper_method :doughs, :pizzas, :ingredients
