@@ -154,6 +154,61 @@
           padding: 0
           +breakpoint($screen-lg-min)
             +calc(width, '100% - 300px')
+  &.panel-order-stats
+    max-width: 1000px
+    overflow: hidden
+    .panel-heading
+      padding: 0
+      .progress
+        +border-bottom-radius(0)
+        +border-top-radius($panel-border-radius)
+        +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
+        box-shadow: none
+        height: rh(2)
+        position: relative
+        .progress-bar
+          +transition(all 0.5s)
+          font-size: 18px
+          font-weight: bold
+          line-height: rh(2)
+    .panel-body
+      padding: 0 10px
+      .row
+        .col-side, .col-main
+          float: left
+          min-height: 1px
+          position: relative
+        .col-side
+          background-color: #f5f5f5
+          border-left: 1px solid #ccc
+          padding: 20px 15px
+          width: 200px
+          +breakpoint($screen-lg-min)
+            width: 300px
+        .col-main
+          +calc(width, '100% - 200px')
+          .slick-slider
+            .item
+              +transition(color 0.35s ease-out 0.35s)
+              color: $brand-danger
+              font-size: 18px
+              line-height: 25px
+              padding: 50px
+              text-align: center
+              white-space: initial
+              width: 100%
+              .fa
+                display: block
+                font-size: 140px
+                height: 140px
+                line-height: 140px
+                margin-bottom: rh()
+                &.fa-spin
+                  font-size: 70px
+              &.slick-active
+                color: $text-color
+          +breakpoint($screen-lg-min)
+            +calc(width, '100% - 300px')
   &.panel-pizza
     max-width: 1350px
     .panel-heading
