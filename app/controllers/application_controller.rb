@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     redirect_to login_path
-    # render 'user_sessions/new', layout: 'application'
-    # redirect_to auth_path(p: request.original_url), alert: I18n.t('sessions.not_authenticated')
   end
 
   def not_found
