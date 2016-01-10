@@ -1,4 +1,6 @@
 #= require jquery
+#= require jquery-ui/core
+#= require jquery-ui/effect
 #= require jquery.turbolinks
 #= require jquery_ujs
 #= require bootstrap/affix
