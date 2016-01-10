@@ -41,6 +41,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def status
+    @order = Order.find(params[:order_id])
+    render json: { status: @order.status }
+  end
+
   private
 
   def check_order_price
