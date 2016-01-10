@@ -4,9 +4,7 @@
       .row-title Когда выполнить заказ?
     .col-main
       = form_field_group :status, item do
-        = f.select :status,
-                   options_for_select([['В ближайшее время', :accepted],
-                                       ['В определенный день и час', :booked]]),
+        = f.select :status, options_for_order_status,
                    { prompt: 'Выберите один из вариантов' },
                    class: 'form-control selectize-order-booking', required: true
         = form_field_error :status, item

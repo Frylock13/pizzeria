@@ -15,4 +15,9 @@ module ApplicationHelper
     return unless weight.present?
     "#{weight} гр."
   end
+
+  def options_for_order_status
+    options_for_select([['В ближайшее время', :accepted],
+                        ['В определенный день и час', :booked]])
+  end
 end
