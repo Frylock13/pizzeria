@@ -72,7 +72,7 @@ group :development do
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
   gem 'rubycritic', require: false
-  gem 'traceroute', require: false
+  gem 'traceroute'
   gem 'web-console'
 end
 
