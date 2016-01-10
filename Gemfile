@@ -70,6 +70,7 @@ group :development do
   gem 'passenger'
   gem 'rack-livereload'
   gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false
   gem 'rubycritic', require: false
   gem 'traceroute', require: false
   gem 'web-console'
