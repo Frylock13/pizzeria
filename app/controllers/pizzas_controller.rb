@@ -54,10 +54,6 @@ class PizzasController < ApplicationController
 
   private
 
-  def parent
-    @parent ||= Pizza.standard.find(params[:parent_id]) if params[:parent_id]
-  end
-
   def doughs
     @doughs ||= Dough.all.order(name: :asc)
   end
