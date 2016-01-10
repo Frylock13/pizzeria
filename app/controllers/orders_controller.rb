@@ -27,9 +27,6 @@ class OrdersController < ApplicationController
 
   def show
     @menu_key = :orders
-    if current_user != order.ordering_profile.user && current_user != order.receiving_profile.user
-      redirect_to orders_path, success: 'У вас нет доступа к данному заказу'
-    end
     # render :show if stale? order | layout_resources
   end
 
@@ -86,7 +83,7 @@ class OrdersController < ApplicationController
   end
 
   def order
-    @order ||= Order.find(params[:id])
+    @order ||= current_user.orders.find(params[:id])
   end
 
   def payment_methods

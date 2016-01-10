@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 3 }, on: :create
 
   def orders
-    ordering_orders | receiving_orders
+    Order.with_user(id)
   end
 end

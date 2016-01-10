@@ -27,6 +27,10 @@ class Order < ActiveRecord::Base
   delegate :first_name, :phone, to: :ordering_profile, allow_nil: true, prefix: :ordering
   delegate :first_name, :phone, to: :receiving_profile, allow_nil: true, prefix: :receiving
 
+  scope :with_user, (lambda do |user_id|
+    where('receiving_profile_id = ? or ordering_profile_id = ?', user_id, user_id)
+  end)
+
   def empty?
     return false if ordered_pizzas.any?
     return false if ordered_products.any?
