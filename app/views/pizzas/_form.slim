@@ -13,7 +13,7 @@
           .pizza-frame ng-controller='PizzaIngredientsImagesController as vm'
             = image_tag 'dough.png'
             - ingredients.each do |ingredient|
-              - if ingredient.image.present?
+              - if ingredient.image?
                 = image_tag ingredient.image, class: 'ng-hide',
                             ng_show: "vm.ingredientEnabled(#{ingredient.id})"
             = image_tag 'dough_border.png', id: 'dough_border', style: 'display: none;'

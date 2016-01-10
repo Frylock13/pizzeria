@@ -40,11 +40,11 @@ section.padded id='orders'
                 dl
                   dt Заказ оформил(а):
                   dd = order.ordering_profile.to_s
-              - if order.booked_on.present?
+              - if order.booked_on?
                 dl
                   dt Забронирован на:
                   dd.moment-date = order.booked_on
-              - if order.payment_method.present?
+              - if order.payment_method?
                 dl
                   dt Метод оплаты:
                   dd = order.payment_method.text
@@ -56,7 +56,7 @@ section.padded id='orders'
                 dl
                   dt Кому доставить:
                   dd = order.receiving_profile.to_s
-              - if order.wishes.present?
+              - if order.wishes?
                 dl
                   dt Пожелания:
                   dd = order.wishes

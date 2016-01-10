@@ -10,7 +10,7 @@ class PizzaImageGenerateService
       # convert.resize '1000x1000'
       convert << 'app/assets/images/dough.png'
       pizza.ingredients.order(:layer).each do |ingredient|
-        convert << "public#{ingredient.image.url}" if ingredient.image.present?
+        convert << "public#{ingredient.image.url}" if ingredient.image?
       end
       convert << 'app/assets/images/dough_border.png' if pizza.dough_id == 2
       convert.set 'page'

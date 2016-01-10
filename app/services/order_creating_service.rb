@@ -6,7 +6,7 @@ class OrderCreatingService
   end
 
   def submit
-    order.update(booked_on: Time.zone.now) unless order.booked_on.present?
+    order.update(booked_on: Time.zone.now) unless order.booked_on?
     user = User.where(email: order.ordering_profile.email)
                .first_or_initialize(password: SecureRandom.hex(16))
     deliver_email = true if user.new_record?
