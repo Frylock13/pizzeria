@@ -17,8 +17,6 @@ class OrderedPizza < ActiveRecord::Base
   belongs_to :pizza
   delegate :name, :pizza_ingredients, to: :pizza, allow_nil: true
 
-  scope :for_pizza, -> (pizza_id) { where(pizza_id: pizza_id) }
-
   def price
     (pizza.price(pizza_size) || 0) * quantity
   end
