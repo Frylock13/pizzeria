@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :orders, only: [:index, :show, :update] do
+    resources :orders, only: [:index, :update] do
       get :check_updates, on: :collection
     end
     resources :call_requests, only: :index
