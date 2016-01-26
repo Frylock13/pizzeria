@@ -32,18 +32,17 @@ server {
     expires max;
     add_header Cache-Control public;
   }
-  location ^~ /browserconfig.xml {
-    return 404;
-  }
-  location ^~ /clientaccesspolicy.xml {
-    return 404;
-  }
   location @503 {
     error_page 405 = /system/maintenance.html;
     if (-f $document_root/system/maintenance.html) {
       rewrite ^(.*)$ /system/maintenance.html break;
     }
     rewrite ^(.*)$ /503.html break;
+  }
+  location ~ (<%= fetch(:forbidden_locations).join('|') %>) {
+    deny all;
+    access_log off;
+    error_log off;
   }
 
   if ($request_method !~ ^(GET|HEAD|PUT|POST|PATCH|DELETE|OPTIONS)$ ){
