@@ -16,17 +16,13 @@ class PizzaRecalculatingService
                         .map { |item| item.price(pizza_size) }.sum
         pizza.pizza_attributes.detect { |r| r.pizza_size == pizza_size }
              .assign_attributes(price: pizza.price(pizza_size, fair: true) + dprice)
+        pizza.pizza_attributes.detect { |r| r.pizza_size == pizza_size }
+             .assign_attributes(weight: pizza.weight(pizza_size, fair: true))
       end
     else
       PizzaSizes.pizza_size.values.each do |pizza_size|
         pizza.pizza_attributes.detect { |r| r.pizza_size == pizza_size }
              .assign_attributes(price: pizza.price(pizza_size, fair: true))
-      end
-    end
-    PizzaSizes.pizza_size.values.each do |pizza_size|
-      if parent.weight(pizza_size).present?
-        pizza.pizza_attributes.detect { |r| r.pizza_size == pizza_size }
-             .assign_attributes(weight: pizza.weight(pizza_size, fair: true))
       end
     end
   end
