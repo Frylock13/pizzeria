@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 3 }, on: :create
 
   def orders
-    Order.with_user(id)
+    Order.with_profiles(profiles.pluck(:id))
   end
 end

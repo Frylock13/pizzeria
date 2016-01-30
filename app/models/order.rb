@@ -27,8 +27,8 @@ class Order < ActiveRecord::Base
   delegate :first_name, :phone, to: :ordering_profile, allow_nil: true, prefix: :ordering
   delegate :first_name, :phone, to: :receiving_profile, allow_nil: true, prefix: :receiving
 
-  scope :with_user, (lambda do |user_id|
-    where('receiving_profile_id = ? or ordering_profile_id = ?', user_id, user_id)
+  scope :with_profiles, (lambda do |profile_ids|
+    where('receiving_profile_id IN (?) or ordering_profile_id IN (?)', profile_ids, profile_ids)
   end)
 
   def empty?
