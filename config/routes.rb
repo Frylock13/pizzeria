@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resource :oauth, only: [] do
     match :callback, via: [:get, :post]
+    get :index
     get ':provider', action: :run, as: :run
   end
   get :admin, to: 'admin/pages#dashboard'

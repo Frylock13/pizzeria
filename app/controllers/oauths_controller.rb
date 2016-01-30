@@ -1,5 +1,11 @@
 class OauthsController < ApplicationController
   skip_before_filter :require_login
+  before_filter :require_login, only: :index
+
+  def index
+    @menu_key = :oauth
+    @authentications = current_user.authentications
+  end
 
   def run
     login_at(auth_params[:provider])

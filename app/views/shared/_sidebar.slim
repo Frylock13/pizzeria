@@ -83,6 +83,9 @@
               = menu_link_to :admin, admin_path do
                 span.fa.fa-cogs
                 | В админку
+            = menu_link_to :oauth, oauth_path do
+              span.fa.fa-link
+              | Привязать соцсети
             = menu_link_to :logout, logout_path do
               span.fa.fa-sign-out
               | Выйти
