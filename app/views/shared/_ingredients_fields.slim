@@ -1,7 +1,7 @@
 = form_field_group :pizza_ingredients_attributes, item do
   = label_tag :pizza_ingredients_attributes, 'Ингредиенты', class: 'control-label'
   = include_gon
-  div { class = 'block group-ingredients ng-hide'
+  div { class = 'block-ingredients-fields ng-hide'
         ng-controller = 'PizzaIngredientsFormController as vm'
         ng-show = 'vm.ingredient_categories'
         id = 'ingredients_fields'

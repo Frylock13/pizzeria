@@ -1,0 +1,28 @@
+@import '../variables'
+@import 'settings/prefixer'
+@import 'addons/prefixer'
+@import 'css3/transform'
+@import 'css3/transition'
+
+.block-polling-alert
+  +transition(all 0.25s)
+  +transform(translateY(-20px))
+  background-color: $brand-primary
+  bottom: 0
+  margin: 10px 15px
+  padding: 10px 15px
+  position: fixed
+  right: 0
+  z-index: 1
+  opacity: 0
+  visibility: hidden
+  .block-title
+    font-size: 16px
+    font-weight: bold
+    margin-bottom: rh(0.5)
+  .block-subtitle
+    font-size: 14px
+  &.updated
+    +transform(translateY(0))
+    opacity: 1
+    visibility: visible

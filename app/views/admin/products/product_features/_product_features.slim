@@ -3,7 +3,7 @@ hr
 - product_features.each do |product_feature|
   .panel.panel-default.panel-item
     .panel-body
-      .block.item-actions
+      .block-side-actions
         = link_to [:edit, :admin, product, product_feature], title: 'Изменить атрибут продукта' do
           span.fa.fa-pencil
         = link_to [:admin, product, product_feature], title: 'Удалить атрибут продукта',

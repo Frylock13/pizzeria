@@ -8,7 +8,7 @@
             data-url = url_for([:admin, pizza_category])
           }
         .panel-heading.draggable-zone
-          .block.item-actions
+          .block-side-actions
             = link_to [:edit, :admin, pizza_category], title: 'Изменить категорию' do
               span.fa.fa-pencil
             = link_to [:admin, pizza_category], title: 'Удалить всю категорию',
@@ -20,7 +20,7 @@
             ul.list-group
               - pizza_category.pizzas.each do |pizza|
                 li.list-group-item
-                  .block.item-actions
+                  .block-side-actions
                     = link_to [:edit, :admin, pizza], data: { change: 'pizza' },
                               title: 'Изменить пиццу' do
                       span.fa.fa-pencil

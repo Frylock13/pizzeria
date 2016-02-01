@@ -1,18 +1,16 @@
 .form-group
   .fileinput.fileinput-new data-provides='fileinput'
-    .fileinput-body
-      .fileinput-new.thumbnail
-        - if item.image?
-          = image_tag item.image.url(:thumb)
-        - else
-          .thumbnail-dummy
-            .dummy-image
-      .fileinput-preview.fileinput-exists.thumbnail
-      = f.label :image, class: 'control-label'
-      div
-        span.btn.btn-default.btn-file
-          span.fileinput-new Выбрать фото
-          span.fileinput-exists Поменять
-          = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
-        a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
-    .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
+    .fileinput-new.thumbnail
+      - if item.image?
+        = image_tag item.image.url(:thumb)
+      - else
+        .icon-dummy
+    .fileinput-preview.fileinput-exists.thumbnail
+    = f.label :image, class: 'control-label'
+    div
+      span.btn.btn-default.btn-file
+        span.fileinput-new Выбрать фото
+        span.fileinput-exists Поменять
+        = f.file_field :image, accept: 'image/png,image/gif,image/jpeg'
+      a.btn.btn-default.fileinput-exists data-dismiss='fileinput' href='#' Убрать
+  .help-block Рекомендованный размер 700x400, формат: JPEG, GIF, PNG
