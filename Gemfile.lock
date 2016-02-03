@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/kvokka/rb-inotify.git
+  revision: 7789cb6260e91f8e94abb3f7c9a57e7874f7fbfb
+  specs:
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+
+GIT
   remote: git://github.com/rails/turbolinks.git
   revision: dd31f4b2996f2300631f89339ada82c65b95f4c2
   specs:
@@ -183,9 +190,9 @@ GEM
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
-    guard-passenger (0.6.2)
-      guard (>= 1.1.0)
-      guard-compat (~> 1.1)
+    guard-rails (0.7.2)
+      guard (~> 2.11)
+      guard-compat (~> 1.0)
     guard-rspec (4.6.4)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -270,9 +277,6 @@ GEM
       parallel
     parser (2.3.0.2)
       ast (~> 2.2)
-    passenger (5.0.23)
-      rack
-      rake (>= 0.8.1)
     pg (0.18.4)
     powerpack (0.1.1)
     premailer (1.8.6)
@@ -376,8 +380,6 @@ GEM
     raindrops (0.15.0)
     rake (10.5.0)
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.5)
-      ffi (>= 0.5.0)
     redis (3.2.2)
     reek (3.9.1)
       codeclimate-engine-rb (~> 0.1.0)
@@ -526,7 +528,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-livereload
-  guard-passenger
+  guard-rails
   guard-rspec
   jquery-rails
   jquery-slick-rails
@@ -541,7 +543,6 @@ DEPENDENCIES
   ngannotate-rails
   nokogiri
   parallel_tests
-  passenger
   pg
   premailer-rails
   pry
@@ -564,6 +565,7 @@ DEPENDENCIES
   rails-assets-normalize-css!
   rails-assets-selectize!
   rails_best_practices
+  rb-inotify!
   rollbar
   rspec-rails
   rubocop
