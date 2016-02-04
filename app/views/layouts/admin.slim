@@ -6,6 +6,7 @@ html
     title = content_for?(:title) ? yield(:title) : 'Админ-панель | VPZven'
     = render 'shared/favicons'
     = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'modernizr-custom'
     = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
   body
     = render 'admin/sidebar'
