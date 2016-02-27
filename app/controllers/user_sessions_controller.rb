@@ -3,21 +3,22 @@ class UserSessionsController < ApplicationController
   before_action :menu_key
 
   def new
-    @user_session = UserSession.new
-    # render :new if stale? [@user_session] | layout_resources
+    user_session = UserSession.new
+    render locals: { user_session: user_session }
   end
 
   def create
-    @user_session = UserSession.new(user_session_params)
-    unless @user_session.valid?
-      return render :new, change: :new_user_session, layout: !request.xhr?
+    user_session = UserSession.new(user_session_params)
+    unless user_session.valid?
+      return render :new, locals: { user_session: user_session },
+                    change: :new_user_session, layout: !request.xhr?
     end
-    if login(@user_session.email, @user_session.password, remember_me = true)
+    if login(user_session.email, user_session.password, remember_me = true)
       current_profile.update(email: current_user.email, owner_id: current_user.id)
       redirect_to root_path, success: 'Вы успешно вошли в систему'
     else
       flash[:error] = 'Не удалось войти в систему'
-      render :new, change: :new_user_session
+      render :new, locals: { user_session: user_session }, change: :new_user_session
     end
   end
 
