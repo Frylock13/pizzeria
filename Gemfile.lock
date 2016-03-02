@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gambala/bootstrap-sass.git
-  revision: 03d3e013bc19fed9c3e342b94afd9d251b310002
+  revision: fe283372f316bb338eb0162e5b002f56d00ae861
   specs:
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
