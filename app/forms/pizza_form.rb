@@ -2,6 +2,7 @@ class PizzaForm < ActiveForm
   attribute :dough_id, Integer
   attribute :image
   attribute :name, String
+  attribute :pizza_category, PizzaCategory
   attribute :owner, Profile
   attribute :parent, Pizza
   attribute :parent_id, Integer
@@ -21,6 +22,7 @@ class PizzaForm < ActiveForm
     build_parent
     build_pizza
     build_name
+    build_pizza_category
     build_owner
     build_visibility
     build_dough_id
@@ -47,6 +49,11 @@ class PizzaForm < ActiveForm
   def build_name
     pizza.name = parent.present? ? "#{pizza.name} особая" : 'Уникальная'
     self.name = pizza.name
+  end
+
+  def build_pizza_category
+    pizza.pizza_category = PizzaCategory.where(name: 'Пользовательская').first_or_create
+    self.pizza_category = pizza.pizza_category
   end
 
   def build_owner
