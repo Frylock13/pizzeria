@@ -38,7 +38,9 @@ class OrdersController < ApplicationController
 
   def update
     if current_order.update(order_params)
-      OrderCreatingService.new(current_order).submit
+      order_creating_service = OrderCreatingService.new(current_order)
+      order_creating_service.submit
+      auto_login(order_creating_service.user)
       redirect_to current_order, success: 'Заказ успешно оформлен'
     else
       render :new
