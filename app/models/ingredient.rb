@@ -9,9 +9,11 @@
 #  updated_at             :datetime         not null
 #  image                  :string
 #  layer                  :integer
+#  visibility             :integer          default(0)
 #
 
 class Ingredient < ActiveRecord::Base
+  include Visibilities
   belongs_to :ingredient_category, touch: true
   has_many :ingredient_attributes, dependent: :destroy
   has_many :pizza_ingredients, dependent: :destroy
