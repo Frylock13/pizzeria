@@ -10,7 +10,13 @@
 #
 
 class IngredientCategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :position
+  attributes :id, :name, :position, :ingredients
 
-  has_many :ingredients
+  def ingredients
+    if scope&.role&.admin?
+      object.ingredients
+    else
+      object.ingredients.with_visibility(:for_all)
+    end
+  end
 end

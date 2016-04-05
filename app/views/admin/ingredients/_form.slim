@@ -13,6 +13,11 @@
         = form_field_error :ingredient_category_id, item
       = render 'admin/attributes_fields', f: f, fields: :ingredient_attributes, items: item.ingredient_attributes
     .col-xs-6
+      .form-group
+        = f.label :visibility, class: 'control-label'
+        = f.select :visibility, Visibilities.visibility.options,
+                   { prompt: 'Укажите, где продукт будет видим' },
+                   { class: 'form-control selectize-visibility' }
       = form_field_group :layer, item do
         = f.label :layer, class: 'control-label'
         = f.text_field :layer, class: 'form-control', required: false
