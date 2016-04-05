@@ -9,6 +9,7 @@
 #  updated_at             :datetime         not null
 #  image                  :string
 #  layer                  :integer
+#  visibility             :integer          default(0)
 #
 
 class IngredientSerializer < ActiveModel::Serializer
