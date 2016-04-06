@@ -4,7 +4,7 @@ set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
                      public/uploads public/assets public/sitemaps)
 set :linked_files, %w(config/application.yml)
 set :log_level, :info
-set :repo_url, 'git@bitbucket.org:gambala/pizzeria.git'
+set :repo_url, 'git@gitlab.com:gambala/pizzeria.git'
 set :sidekiq_queue, %w(default mailers)
 set :unicorn_app_name, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
