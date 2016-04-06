@@ -1,0 +1,72 @@
+---
+- name: setup deploy user for server
+  hosts: pizzeria
+  remote_user: root
+
+  vars:
+    deploy_port: 3501
+    ansible_port: 22
+    deploy_user: deployer
+
+  tasks:
+    - name: change root password
+      user:
+        name: root
+        password: '{{ root_pass }}'
+
+    - name: add deploy user
+      user:
+        name: '{{ deploy_user }}'
+        password: '{{ deploy_pass }}'
+        shell: /bin/bash
+        generate_ssh_key: yes
+
+    - name: add authorized keys for deploy user
+      authorized_key:
+        user: '{{ deploy_user }}'
+        key: '{{ lookup("file", "~/.ssh/id_rsa.pub") }}'
+
+    - name: add deploy user to sudoers
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '{{ deploy_user }} ALL'
+        line: '{{ deploy_user }} ALL=(ALL:ALL) NOPASSWD:ALL'
+        state: present
+
+    - name: allow deploy user
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^AllowUsers'
+        line: 'AllowUsers {{ deploy_user }}'
+        state: present
+      notify: restart sshd
+
+    - name: change SSH port
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^Port'
+        line: 'Port {{ deploy_port }}'
+        state: present
+      notify: restart sshd
+
+    - name: disable DNS
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^UseDNS'
+        line: 'UseDNS no'
+        state: present
+      notify: restart sshd
+
+    - name: disallow root SSH access
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: restart sshd
+
+  handlers:
+    - name: restart sshd
+      service:
+        name: ssh
+        state: restarted

@@ -1,4 +1,4 @@
-listen "/tmp/unicorn.<%= fetch(:nginx_config_name) %>.sock"
+listen "/tmp/unicorn.<%= fetch(:unicorn_app_name) %>.sock"
 pid "<%= fetch(:unicorn_pid) %>"
 preload_app true
 stderr_path "<%= unicorn_error_log_file %>"

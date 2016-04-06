@@ -1,4 +1,4 @@
-server 'www.vpzven.ru', user: 'deployer', port: 3501, roles: %w(web app db)
+server '95.213.195.242', user: 'deployer', port: 3501, roles: %w(web app db)
 set :forbidden_locations, ['/88.php',
                            '/cms/',
                            '^/.bzr',
@@ -59,7 +59,8 @@ set :forbidden_locations, ['/88.php',
                            '^/xml/',
                            '^/xml1-wp2.php',
                            '^/xmlrpc.php']
-set :nginx_server_name, 'www.vpzven.ru'
+set :nginx_config_name, 'default'
+set :nginx_server_name, '95.213.195.242'
 set :ssh_options, keys: %w(/home/gambala/.ssh/id_rsa),
                   forward_agent: false,
                   auth_methods: %w(publickey)
