@@ -29,7 +29,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="7.9195959"
      inkscape:cx="22.172876"
-     inkscape:cy="33.364493"
+     inkscape:cy="32.164937"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,8 +65,8 @@
        id="path3759"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/gambala/git/pizzeria/app/assets/images/hot.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       inkscape:export-xdpi="180"
+       inkscape:export-ydpi="180" />
     <g
        transform="matrix(0.70710678,-0.70710678,0.70710678,0.70710678,0,0)"
        style="font-size:44.93863297px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
