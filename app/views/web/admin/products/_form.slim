@@ -1,0 +1,38 @@
+= form_for [:admin, item], remote: true, authenticity_token: true do |f|
+  .row
+    .col-xs-6
+      = form_field_group :name, item do
+        = f.label :name, class: 'control-label'
+        = f.text_field :name, class: 'form-control', required: false
+        = form_field_error :name, item
+    .col-xs-6
+      = form_field_group :product_category_id, item do
+        = f.label :product_category_id, class: 'control-label'
+        = f.collection_select :product_category_id, product_categories,
+          :id, :name, { prompt: 'Выберите категорию' },
+                      { class: 'form-control selectize-product-categories' }
+        = form_field_error :product_category_id, item
+  .well
+    .row
+      .col-xs-6
+        .form-group
+          = f.label :price, class: 'control-label'
+          = f.text_field :price, class: 'form-control mask-currency'
+      .col-xs-6
+        .form-group
+          = f.label :weight, class: 'control-label'
+          = f.text_field :weight, class: 'form-control mask-weight'
+  .row
+    .col-xs-6
+      .form-group
+        = f.label :visibility, class: 'control-label'
+        = f.select :visibility, Visibilities.visibility.options,
+                   { prompt: 'Укажите, где продукт будет видим' },
+                   { class: 'form-control selectize-visibility' }
+      .form-group
+        = f.label :description, class: 'control-label'
+        = f.text_area :description, class: 'form-control', rows: 3
+    .col-xs-6
+      = render 'web/admin/fileinput_field', f: f, item: item
+  .form-group
+    = f.button nil, class: 'btn btn-primary ladda-button'

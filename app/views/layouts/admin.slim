@@ -5,13 +5,13 @@ html
     = csrf_meta_tags
     title = content_for?(:title) ? yield(:title) : 'Админ-панель | VPZven'
     = render 'shared/favicons'
-    = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'web/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'modernizr-custom'
-    = javascript_include_tag 'pizzeria/application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
   body
-    = render 'admin/sidebar'
+    = render 'web/admin/sidebar'
     .body class=('body-padded' if content_for?(:header)) id='body'
-      = render 'admin/header'
+      = render 'web/admin/header'
       = render 'shared/flash_messages'
       = yield
       = render 'shared/sounds'
