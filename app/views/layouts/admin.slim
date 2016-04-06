@@ -5,7 +5,7 @@ html
     = csrf_meta_tags
     title = content_for?(:title) ? yield(:title) : 'Админ-панель | VPZven'
     = render 'shared/favicons'
-    = stylesheet_link_tag 'pizzeria/application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'web/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'modernizr-custom'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   body
