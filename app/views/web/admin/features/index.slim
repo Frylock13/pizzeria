@@ -1,0 +1,10 @@
+- title 'Атрибуты'
+- content_for :header do
+  ol.breadcrumb
+    li.active Атрибуты
+section.submenu.submenu-visible id='features'
+  = render 'features'
+  hr
+  = render 'web/admin/feature_values/feature_values'
+section.padded
+  .container-fluid

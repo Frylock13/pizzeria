@@ -1,0 +1,8 @@
+= form_for [:admin, item], remote: true, authenticity_token: true do |f|
+  = form_field_group :name, item do
+    = f.label :name, class: 'control-label'
+    = f.text_field :name, class: 'form-control', required: false
+    = form_field_error :name, item
+  = render 'web/admin/attributes_fields', f: f, fields: :dough_attributes, items: item.dough_attributes
+  .form-group
+    = f.button nil, class: 'btn btn-primary ladda-button'
