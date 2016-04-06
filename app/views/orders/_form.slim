@@ -114,7 +114,7 @@
           .form-group
             = ff.hidden_field :id
           = form_field_group :email, item do
-            = ff.text_field :email, class: 'form-control', placeholder: 'Ваш e-mail адрес',
+            = ff.email_field :email, class: 'form-control', placeholder: 'Ваш e-mail адрес',
                             required: true
             = form_field_error :email, item
       .form-group

@@ -1,6 +1,6 @@
 = form_for item, remote: true, authenticity_token: true do |f|
   = form_field_group :email, item do
-    = f.text_field :email, class: 'form-control', required: false, placeholder: true
+    = f.email_field :email, class: 'form-control', required: false, placeholder: true
     = form_field_error :email, item
   = form_field_group :password, item do
     = f.password_field :password, class: 'form-control', required: false, placeholder: true
