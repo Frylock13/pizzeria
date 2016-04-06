@@ -64,8 +64,9 @@ class OrdersController < ApplicationController
   private
 
   def check_order_price
-    if current_order.price < 500
-      redirect_to root_path, success: 'Пополните корзину минимум на 500 руб'
+    if current_order.price < ENV['APP_MINIMAL_ORDER_COST'].to_i
+      redirect_to root_path,
+                  success: "Пополните корзину минимум на #{ENV['APP_MINIMAL_ORDER_COST']} руб"
     end
   end
 
