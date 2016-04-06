@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       end
       resources :product_categories, only: [:edit, :create, :update, :destroy]
       resources :products, except: [:show] do
-        resources :product_features, except: [:show], controller: 'products/product_features'
+        scope module: :products do
+          resources :product_features, except: [:show]
+        end
       end
     end
     resources :call_requests, only: [:new, :create] do
