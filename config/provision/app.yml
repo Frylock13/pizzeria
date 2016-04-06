@@ -1,0 +1,51 @@
+---
+- name: test setup
+  hosts: pizzeria
+  remote_user: deployer
+  become: true
+
+  vars:
+    app_name: pizzeria
+    deploy_user: deployer
+    ruby_version: '2.3.0'
+    home_path: '/home/{{ deploy_user }}'
+    app_path: '{{ home_path }}/apps/{{ app_name }}'
+
+  roles:
+    - role: DavidWittman.redis
+      redis_bind: 127.0.0.1
+      redis_password: '{{ redis_pass }}'
+
+    - role: rvm_io.rvm1-ruby
+      rvm1_install_flags: '--auto-dotfiles --user-install'
+      rvm1_install_path: '/home/{{ deploy_user }}/.rvm'
+      rvm1_user: '{{ deploy_user }}'
+      rvm1_rubies:
+        - 'ruby-{{ ruby_version }}'
+
+    - role: ANXS.postgresql
+      postgresql_databases:
+        - name: '{{ app_name }}_production'
+          owner: '{{ deploy_user }}'
+      postgresql_users:
+        - name: '{{ deploy_user }}'
+          pass: '{{ pg_pass }}'
+          encrypted: no
+      postgresql_user_privileges:
+        - name: '{{ deploy_user }}'
+          db: '{{ app_name }}_production'
+          priv: 'ALL'
+          role_attr_flags: 'CREATEDB'
+
+    - role: geerlingguy.nginx
+
+    - role: hashbangcode.imagemagick
+
+    - role: kamaln7.swapfile
+
+  tasks:
+    - name: set deploy user owner for .rvm
+      file:
+        owner: '{{ deploy_user }}'
+        path: '/home/{{ deploy_user }}/.rvm'
+        recurse: yes

@@ -1,0 +1,30 @@
+---
+- name: test setup
+  hosts: pizzeria
+  remote_user: deployer
+  become: true
+
+  vars:
+    deploy_user: deployer
+    home_path: '/home/{{ deploy_user }}'
+
+  tasks:
+    - name: update apt
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: install dependencies
+      apt: pkg={{ item }}
+      with_items:
+        - build-essential
+        - curl
+        - git-core
+        - landscape-common
+        - nodejs
+        - python-software-properties
+        - postgresql
+        - postgresql-server-dev-9.3
+
+    - name: print ssh key
+      command: '/bin/cat {{ home_path }}/.ssh/id_rsa.pub'
+      register: cat
+    - debug: var=cat.stdout_lines
