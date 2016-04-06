@@ -9,9 +9,9 @@ html
     = javascript_include_tag 'modernizr-custom'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   body
-    = render 'admin/sidebar'
+    = render 'web/admin/sidebar'
     .body class=('body-padded' if content_for?(:header)) id='body'
-      = render 'admin/header'
+      = render 'web/admin/header'
       = render 'shared/flash_messages'
       = yield
       = render 'shared/sounds'
