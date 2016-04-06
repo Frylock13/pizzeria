@@ -60,7 +60,7 @@ set :forbidden_locations, ['/88.php',
                            '^/xml1-wp2.php',
                            '^/xmlrpc.php']
 set :nginx_config_name, 'default'
-set :nginx_server_name, '95.213.195.242'
+set :nginx_server_name, 'www.vpzven.ru'
 set :ssh_options, keys: %w(/home/gambala/.ssh/id_rsa),
                   forward_agent: false,
                   auth_methods: %w(publickey)
