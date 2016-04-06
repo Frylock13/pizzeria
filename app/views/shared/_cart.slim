@@ -56,10 +56,10 @@ li.dropdown.open.active id='cart'
               .pull-right
                 small Итого:
                 span = number_to_currency current_order.price, precision: 0
-            - if current_order.price >= 500
+            - if current_order.price >= ENV['APP_MINIMAL_ORDER_COST'].to_i
               = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary btn-sm'
             - else
-              small.text-muted мин. заказ от 500 руб.
+              small.text-muted мин. заказ от #{ENV['APP_MINIMAL_ORDER_COST']} руб.
       li
         = link_to [current_order, :clear],
                   remote: true, class: 'ladda-button',

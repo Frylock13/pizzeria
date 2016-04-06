@@ -1,2 +1,2 @@
-span.fa.fa-lg class=(current_order.price >= 500 ? 'fa-check-circle-o text-success' : 'fa-circle-o')
+span.fa.fa-lg class=(current_order.price >= ENV['APP_MINIMAL_ORDER_COST'].to_i ? 'fa-check-circle-o text-success' : 'fa-circle-o')
 span Шаг 1. Составьте заказ
