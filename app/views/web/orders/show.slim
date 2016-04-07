@@ -60,10 +60,16 @@ section.order-info id='polling_order' data-status=order.status data-order=order.
                   tr
                     td = ordered_pizza.name
                     td
-                      - ordered_pizza.pizza_ingredients.each do |pizza_ingredient|
+                      - if ordered_pizza.pizza.visibility.for_all?
+                        div Стандартные
+                      - else
                         div
-                          .pull-right = pizza_ingredient.quantity
-                          span = pizza_ingredient.name
+                          .pull-right = ordered_pizza.pizza.dough.name
+                          span Тесто
+                        - ordered_pizza.pizza_ingredients.each do |pizza_ingredient|
+                          div
+                            .pull-right = pizza_ingredient.quantity
+                            span = pizza_ingredient.name
                     td = ordered_pizza.pizza_size.text
                     td.text-right = ordered_pizza.quantity
                     td.text-right = number_to_currency ordered_pizza.price, precision: 0
