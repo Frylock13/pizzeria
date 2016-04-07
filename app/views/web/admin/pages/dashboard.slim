@@ -4,3 +4,28 @@
     li.active Сводка
 section.padded
   .container-fluid
+    .row
+      .col-xs-12.col-sm-6.col-md-5.col-md-offset-1.col-lg-4.col-lg-offset-2
+        - present @today_orders, OrdersPresenter do |orders_presenter|
+          .panel.panel-default
+            .panel-heading
+              .panel-title Заказов за день
+            .panel-body
+              dl.dl-inline
+                dt Количество заказов:
+                dd = orders_presenter.total_count
+              dl.dl-inline
+                dt На общую сумму:
+                dd = number_to_currency orders_presenter.total_sum, precision: 0
+      .col-xs-12.col-sm-6.col-md-5.col-lg-4
+        - present @week_orders, OrdersPresenter do |orders_presenter|
+          .panel.panel-default
+            .panel-heading
+              .panel-title Заказов за последние 7 дней
+            .panel-body
+              dl.dl-inline
+                dt Количество заказов:
+                dd = orders_presenter.total_count
+              dl.dl-inline
+                dt На общую сумму:
+                dd = number_to_currency orders_presenter.total_sum, precision: 0
