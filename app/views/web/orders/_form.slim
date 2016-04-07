@@ -58,21 +58,15 @@
     .col-side
       .row-title Кто примет доставку?
     .col-main
-      = form_field_group :receiving_profile_id, item do
-        = f.select :receiving_profile_id,
-                   options_for_select(owned_profiles.push(['Введу контакты вручную', :attributes])),
-                   { prompt: 'Выберите один из вариантов' },
-                   class: 'form-control selectize-order-profile', required: true
-        = form_field_error :receiving_profile_id, item
-      .form-group.hide id='receiving_profile_attributes'
+      .form-group id='receiving_profile_attributes'
         = f.fields_for :receiving_profile, receiving_profile do |ff|
           = form_field_group :first_name, item do
             = ff.text_field :first_name, class: 'form-control', placeholder: 'Имя',
-                            required: true, disabled: true
+                            required: true, disabled: false
             = form_field_error :first_name, item
           = form_field_group :phone, item do
             = ff.text_field :phone, class: 'form-control', placeholder: 'Телефон',
-                            required: true, disabled: true
+                            required: true, disabled: false
             = form_field_error :phone, item
   .row
     .col-side
