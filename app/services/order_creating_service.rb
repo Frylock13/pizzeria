@@ -14,6 +14,6 @@ class OrderCreatingService
     user.bonus_points -= order.price if order.payment_method == :bonus_points
     user.save!
     user.deliver_reset_password_instructions! if user.new_record?
-    SmsWorker.perform_async(ENV['SMSAERO_PHONE'], 'Оформлен заказ на vpzven.ru')
+    SmsWorker.perform_async(ENV['APP_PHONE'], 'Оформлен заказ на vpzven.ru')
   end
 end
