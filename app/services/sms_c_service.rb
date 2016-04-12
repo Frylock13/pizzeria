@@ -17,7 +17,7 @@ class SmsCService
       login: ENV['SMSC_LOGIN'],
       psw: Digest::MD5.hexdigest(ENV['SMSC_PASSWORD']),
       phones: phone,
-      mes: URI.encode(text)
+      mes: URI.encode(text),
       sender: ENV['SMSC_FROM']
     }
   end
