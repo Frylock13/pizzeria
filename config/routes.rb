@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
     resources :pages, only: [:show]
     resources :password_resets, only: [:new, :create, :edit, :update]
-    resources :pizzas, only: [:new, :create] do
+    resources :pizzas, only: [:new, :create, :destroy] do
       match :recalculate, via: :post, on: :collection
     end
     resources :user_sessions, only: [:new, :create, :destroy]

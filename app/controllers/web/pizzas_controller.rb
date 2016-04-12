@@ -44,6 +44,15 @@ class Web::PizzasController < Web::ApplicationController
     end
   end
 
+  def destroy
+    @pizza = Pizza.find(params[:id])
+    if @pizza.soft_destroy
+      redirect_to root_path, success: 'Пицца успешно удалена'
+    else
+      redirect_to root_path, error: 'Пицца не была удалена'
+    end
+  end
+
   def recalculate
     @pizza = PizzaForm.new(pizza_params).build
     gon.ingredient_categories = ingredient_categories
