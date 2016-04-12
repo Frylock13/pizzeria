@@ -108,12 +108,12 @@ ru:
         cash: Наличными курьеру
         bonus_points: Бонусными баллами
       status:
-        created: Оформляется
-        booked: Забронирован
+        created: Еще формируется
+        booked: С бронью на дату
         accepted: Принят
-        assembled: Собран
+        assembled: Отправлен
         delivered: Доставлен
-        closed: Выполнен
+        closed: Получен клиентом
         canceled: Отменен
   helpers:
     label:
