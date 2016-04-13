@@ -36,7 +36,7 @@ section.products id='user_pizza'
                 = pizza.ingredients.pluck(:name).join(', ')
             .panel-footer
               .list-group
-                - pizza.pizza_attributes.each do |pizza_attribute|
+                - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
                   - if pizza_attribute.price.present?
                     = link_to ordered_pizzas_path(pizza_id: pizza.id,
                                                   pizza_size: pizza_attribute.pizza_size),
@@ -114,7 +114,7 @@ section.products id='menu_pizza'
                                     style: 'expand-right' }
               .panel-footer
                 .list-group
-                  - pizza.pizza_attributes.each do |pizza_attribute|
+                  - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
                     - if pizza_attribute.price.present?
                       = link_to ordered_pizzas_path(pizza_id: pizza.id,
                                                     pizza_size: pizza_attribute.pizza_size),
