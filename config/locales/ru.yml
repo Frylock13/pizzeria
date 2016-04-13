@@ -108,9 +108,9 @@ ru:
         cash: Наличными курьеру
         bonus_points: Бонусными баллами
       status:
-        created: Еще формируется
+        created: Еще не сформирован
         booked: С бронью на дату
-        accepted: Принят
+        accepted: Обрабатывается
         assembled: Отправлен
         delivered: Доставлен
         closed: Получен клиентом

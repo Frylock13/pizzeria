@@ -7,11 +7,30 @@ section.tabs
     ul.nav.nav-tabs
       = tab_link "Все (#{Order.all.count})", params.merge(status: nil),
                  active: params[:status] == nil
-      - OrderEnums.status.options.each do |status|
-        = tab_link "#{status[0]} (#{Order.with_status(status[1]).count})",
-                   params.merge(status: status[1]),
-                   active: params[:status] == status[1],
-                   disabled: Order.with_status(status[1]).count == 0
+      = tab_link "Бронь (#{Order.with_status(:booked).count})",
+                 params.merge(status: :booked),
+                 active: params[:status] == 'booked',
+                 disabled: Order.with_status(:booked).count == 0
+      = tab_link "Новые (#{Order.with_status(:accepted).count})",
+                 params.merge(status: :accepted),
+                 active: params[:status] == 'accepted',
+                 disabled: Order.with_status(:accepted).count == 0
+      = tab_link "Отправлен (#{Order.with_status(:assembled).count})",
+                 params.merge(status: :assembled),
+                 active: params[:status] == 'assembled',
+                 disabled: Order.with_status(:assembled).count == 0
+      = tab_link "Доставлен (#{Order.with_status(:delivered).count})",
+                 params.merge(status: :delivered),
+                 active: params[:status] == 'delivered',
+                 disabled: Order.with_status(:delivered).count == 0
+      = tab_link "Выполнен (#{Order.with_status(:closed).count})",
+                 params.merge(status: :closed),
+                 active: params[:status] == 'closed',
+                 disabled: Order.with_status(:closed).count == 0
+      = tab_link "Отменен (#{Order.with_status(:canceled).count})",
+                 params.merge(status: :canceled),
+                 active: params[:status] == 'canceled',
+                 disabled: Order.with_status(:canceled).count == 0
 section.padded id='orders'
   .container-fluid
     - @orders.each do |order|
