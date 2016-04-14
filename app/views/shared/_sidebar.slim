@@ -31,7 +31,7 @@
                     = 'Бронь на ' if order.status == :booked
                     span.moment-date = order.booked_on
       - else
-        - if current_user.present?
+        - if current_user&.orders&.with_status(:booked, :accepted, :assembled, :delivered)&.any?
           li = link_to orders_path do
             span.fa.fa-lg.fa-clock-o
             span Шаг 3. Примите заказ
