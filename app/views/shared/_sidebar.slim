@@ -22,7 +22,7 @@
             span.fa.fa-clock-o.fa-lg
             span Шаг 3. Примите заказ
           ul.dropdown-menu.navmenu-nav
-            - current_user.orders.each do |order|
+            - current_user.orders.with_status(:booked, :accepted, :assembled, :delivered).order(status: :desc, updated_at: :desc).each do |order|
               li
                 = link_to order do
                   .nav-item-title = order.status.text
