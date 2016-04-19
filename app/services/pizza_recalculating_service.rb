@@ -24,6 +24,15 @@ class PizzaRecalculatingService
         pizza.pizza_attributes.detect { |r| r.pizza_size == pizza_size }
              .assign_attributes(price: pizza.price(pizza_size, fair: true))
       end
+      increase_22_pizza_price_by_box_price
     end
+  end
+
+  private
+
+  def increase_22_pizza_price_by_box_price
+    pizza_attribute = pizza.pizza_attributes.detect { |r| r.pizza_size == 22 }
+    return unless pizza_attribute.present?
+    pizza_attribute.assign_attributes(price: pizza_attribute.price + 15.0)
   end
 end

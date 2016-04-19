@@ -5,7 +5,7 @@ div { class = 'pizza-attributes ladda-button'
       data-style = 'expand-right'
     }
   - if item.pizza.dough.present?
-    - item.pizza_attributes.each do |pizza_attribute|
+    - item.pizza_attributes.sort_by(&:pizza_size).each do |pizza_attribute|
       .pizza-attribute
         - if pizza_attribute.price.present?
           span.pizza-size = pizza_attribute.pizza_size.text
