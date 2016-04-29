@@ -47,7 +47,7 @@ section.padded id='orders'
             span = order.to_s
             small
               ' от
-              span.moment-date = human_date order.booked_on
+              span = human_date order.booked_on
         .panel-body
           .row
             .col-side
