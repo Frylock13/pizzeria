@@ -19,10 +19,6 @@ section.tabs
                  params.merge(status: :assembled),
                  active: params[:status] == 'assembled',
                  disabled: Order.with_status(:assembled).count == 0
-      = tab_link "Доставлен (#{Order.with_status(:delivered).count})",
-                 params.merge(status: :delivered),
-                 active: params[:status] == 'delivered',
-                 disabled: Order.with_status(:delivered).count == 0
       = tab_link "Выполнен (#{Order.with_status(:closed).count})",
                  params.merge(status: :closed),
                  active: params[:status] == 'closed',
