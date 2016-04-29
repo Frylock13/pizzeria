@@ -27,4 +27,10 @@ module ApplicationHelper
     yield presenter if block_given?
     presenter
   end
+
+  def human_date(date)
+    return unless date.present?
+    date.in_time_zone(3)
+    # .strftime('%e.%m в %k:%M')
+  end
 end

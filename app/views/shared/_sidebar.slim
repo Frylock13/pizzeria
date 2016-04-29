@@ -29,7 +29,7 @@
                   .nav-item-subtitle
                     .pull-right = number_to_currency order.price, precision: 0
                     = 'Бронь на ' if order.status == :booked
-                    span.moment-date = order.booked_on
+                    span = human_date order.booked_on
       - else
         - if current_user&.orders&.with_status(:booked, :accepted, :assembled, :delivered)&.any?
           li = link_to orders_path do

@@ -26,7 +26,7 @@ section.order-info id='polling_order' data-status=order.status data-order=order.
             - if order.booked_on?
               dl
                 dt Забронирован на:
-                dd.moment-date = order.booked_on
+                dd = human_date order.booked_on
             - if order.payment_method?
               dl
                 dt Метод оплаты:
