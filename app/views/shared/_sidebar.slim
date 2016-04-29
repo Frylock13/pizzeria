@@ -73,6 +73,8 @@
         = menu_link_to "page-#{page.slug}", page do
           span.fa.fa-fw
           = page.anchor
+          - if page.anchor == 'Бонусные баллы' && current_user.present?
+            |  (у вас: #{number_to_currency current_user.bonus_points, precision: 0})
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
