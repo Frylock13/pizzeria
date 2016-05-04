@@ -1,0 +1,15 @@
+@import 'variables'
+@import 'bootstrap/mixins/vendor-prefixes'
+
+.tooltip
+  +transition(opacity 0.25s, transform 0.25s)
+  font-size: $font-size-base
+
+  &.right
+    +translate(-10px, 0)
+
+    &.in
+      +translate(-5px, 0)
+
+.tooltip-inner
+  border-radius: 5px

@@ -103,7 +103,11 @@ section.products id='menu_pizza'
                 - if pizza.hot == true
                   .product-badge.badge-hot
                 - if pizza.spicy == true
-                  .product-badge.badge-spicy
+                  div { class = 'product-badge badge-spicy'
+                        title = 'В этой пицце - острые перчики халапеньо'
+                        data-toggle = 'tooltip'
+                        data-placement = 'right'
+                      }
                 .product-title = pizza.name
                 .pizza-ingredients
                   ' #{pizza.dough.name} тесто,
