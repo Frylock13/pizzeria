@@ -102,6 +102,8 @@ section.products id='menu_pizza'
                 .product-image = image_tag pizza.image.url(:thumb)
                 - if pizza.hot == true
                   .product-badge.badge-hot
+                - if pizza.spicy == true
+                  .product-badge.badge-spicy
                 .product-title = pizza.name
                 .pizza-ingredients
                   ' #{pizza.dough.name} тесто,

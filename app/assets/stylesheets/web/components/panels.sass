@@ -343,11 +343,15 @@
           top: -85px
           width: 300px
     .product-badge
-      left: 0
       position: absolute
-      top: 0
       &.badge-hot
         +svg-image('hot.png', 'hot.svg', 130px, 130px)
+        left: 0
+        top: 0
+      &.badge-spicy
+        +svg-image('spicy.png', 'spicy.svg', 50px, 50px)
+        left: 10px
+        top: 130px
     .product-title
       font-size: 16px
       font-weight: bold

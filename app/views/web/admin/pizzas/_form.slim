@@ -19,6 +19,9 @@
       .form-group
         = f.check_box :hot, class: 'form-control'
         = f.label :hot, class: 'control-label'
+      .form-group
+        = f.check_box :spicy, class: 'form-control'
+        = f.label :spicy, class: 'control-label'
       = form_field_group :parent_id, item do
         = f.label :parent_id, class: 'control-label'
         = f.collection_select :parent_id, pizzas,

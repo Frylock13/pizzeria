@@ -14,6 +14,7 @@
 #  hot               :boolean
 #  pizza_category_id :integer
 #  deleted_at        :datetime
+#  spicy             :boolean
 #
 
 class Pizza < ActiveRecord::Base

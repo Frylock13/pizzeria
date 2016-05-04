@@ -31,6 +31,7 @@ ru:
         pizza_attribute_attributes: Атрибуты
         pizza_category_id: Категория
         pizza_ingredient_attributes: Ингредиенты
+        spicy: Выделить как Острую
         visibility: Видимость
       pizza_category:
         name: Название
