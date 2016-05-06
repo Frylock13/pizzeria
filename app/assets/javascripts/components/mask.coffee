@@ -6,7 +6,7 @@ $(document).on 'ready page:load page:partial-load', ->
     digits: 2
     digitsOptional: false
     groupSeparator: ''
-    placeholder: '0'
+    placeholder: ''
     suffix: ' руб.'
   $('.mask-weight').inputmask
     alias: 'integer'
