@@ -4,7 +4,7 @@
     li = link_to 'Продукты', admin_products_path
     li = link_to product.name, [:edit, :admin, product]
     li.active Атрибуты продукта
-section.submenu.submenu-visible id='product_features'
+section.section-submenu.submenu-visible id='product_features'
   = render 'product_features'
-section.padded
+section.section-padded
   .container-fluid

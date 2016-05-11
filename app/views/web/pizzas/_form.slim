@@ -1,32 +1,33 @@
 = form_for item, remote: true, authenticity_token: true do |f|
-  .row
-    .col-main
-      - if item.parent.present?
-        = image_tag item.image.url if item.image.present?
-        .pizza-info
-          .info-title = item.parent.name
-          .info-text
-            ' #{item.parent.dough.name} тесто,
-            = item.parent.ingredients.pluck(:name).join(', ')
-      - else
-        .pizza-plate
-          .pizza-frame ng-controller='PizzaIngredientsImagesController as vm'
-            = image_tag 'dough.png'
-            - ingredients.each do |ingredient|
-              - if ingredient.image?
-                = image_tag ingredient.image, class: 'ng-hide',
-                            ng_show: "vm.ingredientEnabled(#{ingredient.id})"
-            = image_tag 'dough_border.png', id: 'dough_border', style: 'display: none;'
-    .col-side
-      = f.hidden_field :parent_id
-      = form_field_group :dough_id, item do
-        = f.label :dough_id, class: 'control-label'
-        = f.collection_select :dough_id, doughs,
-          :id, :name, { prompt: 'Выберите тесто' },
-                      { class: 'form-control selectize-doughs' }
-        = form_field_error :dough_id, item
-      = render 'shared/ingredients_fields', item: item, hide_control: true
-      .form-group
-        .pizza-submit
-          = f.button 'Создать особую пиццу', class: 'btn btn-primary ladda-button'
-        = render 'pizza_attributes', item: item
+  .form-groups
+    .row
+      .col-main
+        - if item.parent.present?
+          = image_tag item.image.url if item.image.present?
+          .pizza-info
+            .info-title = item.parent.name
+            .info-text
+              ' #{item.parent.dough.name} тесто,
+              = item.parent.ingredients.pluck(:name).join(', ')
+        - else
+          .pizza-plate
+            .pizza-frame ng-controller='PizzaIngredientsImagesController as vm'
+              = image_tag 'dough.png'
+              - ingredients.each do |ingredient|
+                - if ingredient.image?
+                  = image_tag ingredient.image, class: 'ng-hide',
+                              ng_show: "vm.ingredientEnabled(#{ingredient.id})"
+              = image_tag 'dough_border.png', id: 'dough_border', style: 'display: none;'
+      .col-side
+        = f.hidden_field :parent_id
+        = form_field_group :dough_id, item do
+          = f.label :dough_id, class: 'control-label'
+          = f.collection_select :dough_id, doughs,
+            :id, :name, { prompt: 'Выберите тесто' },
+                        { class: 'form-control selectize-doughs' }
+          = form_field_error :dough_id, item
+        = render 'shared/ingredients_fields', item: item, hide_control: true
+        .form-group
+          .pizza-submit
+            = f.button 'Создать особую пиццу', class: 'btn btn-primary ladda-button'
+          = render 'pizza_attributes', item: item

@@ -27,7 +27,7 @@ section.tabs
                  params.merge(status: :canceled),
                  active: params[:status] == 'canceled',
                  disabled: Order.with_status(:canceled).count == 0
-section.padded id='orders'
+section.section-padded id='orders'
   .container-fluid
     - @orders.each do |order|
       .panel.panel-default.panel-order-info

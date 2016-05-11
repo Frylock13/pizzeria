@@ -3,9 +3,9 @@
   ol.breadcrumb
     li = link_to 'Страницы', admin_pages_path
     li.active = @page.meta_title
-section.submenu id='pages'
+section.section-submenu id='pages'
   = render 'pages'
-section.padded
+section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading

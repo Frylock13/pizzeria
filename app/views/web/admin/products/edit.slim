@@ -3,9 +3,9 @@
   ol.breadcrumb
     li = link_to 'Продукты', admin_products_path
     li.active = @product.name
-section.submenu id='products'
+section.section-submenu id='products'
   = render 'products'
-section.padded
+section.section-padded
   .container-fluid
     = render 'menu', active: :edit, product: @product
     .panel.panel-default

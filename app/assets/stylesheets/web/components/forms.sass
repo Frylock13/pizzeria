@@ -2,8 +2,8 @@
 @import 'breakpoint-sass'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
-@import 'bootstrap/mixins/_image'
-@import 'bootstrap/mixins/_rhythm'
+@import 'bootstrap/mixins/image'
+@import 'bootstrap/mixins/rhythm'
 
 input[type="checkbox"]
   +prefixer(appearance, none, spec moz ms o webkit)
@@ -18,24 +18,32 @@ input[type="checkbox"]
   margin: 0
   vertical-align: top
   width: rh()
-  & + label
+
+  + label
     font-weight: normal
     line-height: rh()
     padding: 0 0 0 8px
+
   &:checked
     +svg-cover('check.png', 'check.svg')
 
-.form-group
-  margin: 0
-  .btn + .btn
-    margin-left: 15px
+
 .help-block
   margin: 0
 
-form
+
+.form-group
+  margin: 0
+
+  .btn + .btn
+    margin-left: 15px
+
+
+.form-groups
   .form-group, .well, .row
     & +
       .form-group, .well, .row
         margin-top: 20px
+
       .help-block
         margin-top: 10px

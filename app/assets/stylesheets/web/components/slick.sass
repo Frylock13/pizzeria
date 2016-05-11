@@ -8,27 +8,35 @@
 .slick-slider
   margin: 0
   white-space: nowrap
+
   .item
     display: inline-block
     overflow: hidden
+
     .item-banner
       background-color: #250702
       background-size: cover
       display: block
       height: 500px
       position: relative
+
       &.banner-delivery
         background-image: image_url('banner-delivery.jpg')
         background-position: 0 0
+
       &.banner-bonus
         background-image: image_url('banner-bonus.jpg')
         background-position: 0 0
+
       &.banner-pdf
         background-image: image_url('banner-pdf.jpg')
         background-position: 100% 0
+
       +breakpoint(1500px)
         height: 650px
-  .slick-prev, .slick-next
+
+  .slick-prev,
+  .slick-next
     +transition(background-color 0.5s)
     background-color: transparent
     height: 100%
@@ -37,6 +45,7 @@
     top: 0
     width: 70px
     z-index: 1
+
     &:before
       +transition(all 0.25s)
       background-color: #FFF
@@ -49,21 +58,28 @@
       padding: 3px
       vertical-align: middle
       z-index: 1
+
     &:hover
       background-color: rgba(#000, 0.25)
       &:before
         +transform(translateX(0))
+
   .slick-prev
     left: 0
+
     &:before
       +transform(translateX(5px))
+
     &:active
       &:before
         +transform(translateX(-5px))
+
   .slick-next
     right: 0
+
     &:before
       +transform(translateX(-5px))
+
     &:active
       &:before
         +transform(translateX(5px))

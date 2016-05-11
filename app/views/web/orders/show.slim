@@ -3,7 +3,7 @@
   ol.breadcrumb
     li = link_to 'Ваши заказы', orders_path
     li.active = order.to_s
-section.order-info id='polling_order' data-status=order.status data-order=order.id
+section.section-order-info id='polling_order' data-status=order.status data-order=order.id
   .container-fluid
     .panel.panel-default.panel-order-stats
       .panel-heading

@@ -13,7 +13,7 @@ section id='top'
         - product_categories.each do |product_category|
           li = link_to product_category.name, "\#product_category_#{product_category.id}",
                        data: { scroll: '', options: '{ "offset": 70 }' }
-section.products id='user_pizza'
+section.section-products id='user_pizza'
   .container-masonry
     .section-title
       span Ваша пицца
@@ -79,7 +79,7 @@ section.products id='user_pizza'
               .panel-title Были на сайте<br/>раньше?
               .panel-subtitle Получите доступ к своей пицце и бонусным баллам
               .btn.btn-primary Перейти
-section.products id='menu_pizza'
+section.section-products id='menu_pizza'
   .container-masonry
     .section-title
       span Пицца в меню
@@ -135,7 +135,7 @@ section.products id='menu_pizza'
                       .list-group-item
                         span.text-muted = pizza_attribute.pizza_size.text
 - product_categories.each do |product_category|
-  section.products id="product_category_#{product_category.id}"
+  section.section-products id="product_category_#{product_category.id}"
     .container-masonry
       .section-title
         span = product_category.name

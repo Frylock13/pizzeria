@@ -1,12 +1,6 @@
 @import 'variables'
 @import 'settings/prefixer'
-@import 'bootstrap/mixins/_rhythm'
-
-.ng-hide
-  display: none
-
-a
-  cursor: pointer
+@import 'bootstrap/mixins/rhythm'
 
 html, body
   min-width: 700px
@@ -15,6 +9,12 @@ html, body
 body
   line-height: rh()
   position: relative
+
+.ng-hide
+  display: none
+
+a
+  cursor: pointer
 
 html.turbolinks-progress-bar::before
   background-color: $brand-primary !important

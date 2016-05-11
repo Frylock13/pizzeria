@@ -1,25 +1,35 @@
 @import 'variables'
 @import 'bootstrap/mixins/buttons'
 @import 'breakpoint-sass'
-@import 'bootstrap/mixins/_rhythm'
+@import 'bootstrap/mixins/rhythm'
+
+
+// .btn siblings
+
+.btn + .btn
+  margin-left: 5px
+
+
+// .btn complex modificators
 
 .btn-social
   height: 40px
   line-height: 40px
   padding: 0
   width: 40px
+
 .btn-vk
   @extend .btn-social
   +button-variant(#fff, #45668e, #45668e)
+
 .btn-facebook
   @extend .btn-social
   +button-variant(#fff, #3b5998, #3b5998)
+
 .btn-google
   @extend .btn-social
   +button-variant(#fff, #dc4e41, #dc4e41)
+
 .btn-twitter
   @extend .btn-social
   +button-variant(#fff, #55acee, #55acee)
-
-.btn + .btn
-  margin-left: 5px

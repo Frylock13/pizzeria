@@ -3,9 +3,9 @@
   ol.breadcrumb data-turbolinks-temporary='' id='breadcrumb'
     li = link_to 'Пицца', admin_pizzas_path
     li.active = @pizza.name
-section.submenu id='pizzas'
+section.section-submenu id='pizzas'
   = render 'pizzas'
-section.padded id='pizza'
+section.section-padded id='pizza'
   .container-fluid
     .panel.panel-default
       .panel-heading

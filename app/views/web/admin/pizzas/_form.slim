@@ -1,53 +1,54 @@
 = form_for [:admin, item], remote: true, authenticity_token: true do |f|
-  .row
-    .col-xs-6
-      = form_field_group :name, item do
-        = f.label :name, class: 'control-label'
-        = f.text_field :name, class: 'form-control', required: false
-        = form_field_error :name, item
-      = form_field_group :pizza_category_id, item do
-        = f.label :pizza_category_id, class: 'control-label'
-        = f.collection_select :pizza_category_id, pizza_categories,
-          :id, :name, { prompt: 'Выберите категорию' },
-                      { class: 'form-control selectize-pizza-categories' }
-        = form_field_error :pizza_category_id, item
-      .form-group
-        = f.label :visibility, class: 'control-label'
-        = f.select :visibility, Visibilities.visibility.options,
-                   { prompt: 'Укажите, где пицца будет видима' },
-                   { class: 'form-control selectize-visibility' }
-      .form-group
-        = f.check_box :hot, class: 'form-control'
-        = f.label :hot, class: 'control-label'
-      .form-group
-        = f.check_box :spicy, class: 'form-control'
-        = f.label :spicy, class: 'control-label'
-      = form_field_group :parent_id, item do
-        = f.label :parent_id, class: 'control-label'
-        = f.collection_select :parent_id, pizzas,
-          :id, :name, { include_blank: 'Укажите основу, если она есть' },
-                      { class: 'form-control selectize-pizzas' }
-        = form_field_error :parent_id, item
-      = form_field_group :dough_id, item do
-        = f.label :dough_id, class: 'control-label'
-        = f.collection_select :dough_id, doughs,
-          :id, :name, { prompt: 'Выберите тесто' },
-                      { class: 'form-control selectize-doughs' }
-        = form_field_error :dough_id, item
-      .well
-        - item.pizza_attributes.each do |pizza_attribute|
-          .form-group
-            = f.fields_for :pizza_attributes, pizza_attribute do |ff|
-              = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
-                         class: 'control-label'
-              = ff.hidden_field :pizza_size
-              .row
-                .col-xs-6
-                  = ff.text_field :price, class: 'form-control mask-currency'
-                .col-xs-6
-                  = ff.text_field :weight, class: 'form-control mask-weight'
-      = render 'web/admin/fileinput_field', f: f, item: item
-    .col-xs-6
-      = render 'shared/ingredients_fields', item: item, hide_control: false
-  .form-group
-    = f.button nil, class: 'btn btn-primary ladda-button'
+  .form-groups
+    .row
+      .col-xs-6
+        = form_field_group :name, item do
+          = f.label :name, class: 'control-label'
+          = f.text_field :name, class: 'form-control', required: false
+          = form_field_error :name, item
+        = form_field_group :pizza_category_id, item do
+          = f.label :pizza_category_id, class: 'control-label'
+          = f.collection_select :pizza_category_id, pizza_categories,
+            :id, :name, { prompt: 'Выберите категорию' },
+                        { class: 'form-control selectize-pizza-categories' }
+          = form_field_error :pizza_category_id, item
+        .form-group
+          = f.label :visibility, class: 'control-label'
+          = f.select :visibility, Visibilities.visibility.options,
+                     { prompt: 'Укажите, где пицца будет видима' },
+                     { class: 'form-control selectize-visibility' }
+        .form-group
+          = f.check_box :hot, class: 'form-control'
+          = f.label :hot, class: 'control-label'
+        .form-group
+          = f.check_box :spicy, class: 'form-control'
+          = f.label :spicy, class: 'control-label'
+        = form_field_group :parent_id, item do
+          = f.label :parent_id, class: 'control-label'
+          = f.collection_select :parent_id, pizzas,
+            :id, :name, { include_blank: 'Укажите основу, если она есть' },
+                        { class: 'form-control selectize-pizzas' }
+          = form_field_error :parent_id, item
+        = form_field_group :dough_id, item do
+          = f.label :dough_id, class: 'control-label'
+          = f.collection_select :dough_id, doughs,
+            :id, :name, { prompt: 'Выберите тесто' },
+                        { class: 'form-control selectize-doughs' }
+          = form_field_error :dough_id, item
+        .well
+          - item.pizza_attributes.each do |pizza_attribute|
+            .form-group
+              = f.fields_for :pizza_attributes, pizza_attribute do |ff|
+                = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
+                           class: 'control-label'
+                = ff.hidden_field :pizza_size
+                .row
+                  .col-xs-6
+                    = ff.text_field :price, class: 'form-control mask-currency'
+                  .col-xs-6
+                    = ff.text_field :weight, class: 'form-control mask-weight'
+        = render 'web/admin/fileinput_field', f: f, item: item
+      .col-xs-6
+        = render 'shared/ingredients_fields', item: item, hide_control: false
+    .form-group
+      = f.button nil, class: 'btn btn-primary ladda-button'
