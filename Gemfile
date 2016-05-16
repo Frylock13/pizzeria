@@ -52,6 +52,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'active_record_doctor'
   gem 'annotate'
   gem 'bullet'
   gem 'capistrano'

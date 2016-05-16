@@ -45,6 +45,8 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_model_serializers (0.9.4)
       activemodel (>= 3.2)
+    active_record_doctor (1.1.1)
+      rails (~> 4.2)
     activejob (4.2.5.1)
       activesupport (= 4.2.5.1)
       globalid (>= 0.3.0)
@@ -507,6 +509,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  active_record_doctor
   acts_as_list
   angular_rails_csrf
   annotate
@@ -593,4 +596,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.11.2
+   1.12.2
