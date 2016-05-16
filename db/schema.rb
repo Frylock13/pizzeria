@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504114902) do
+ActiveRecord::Schema.define(version: 20160516131139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -314,6 +314,7 @@ ActiveRecord::Schema.define(version: 20160504114902) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "viewable_resources", ["viewable_id"], name: "index_viewable_resources_on_viewable_id", using: :btree
   add_index "viewable_resources", ["viewable_type", "viewable_id"], name: "index_viewable_resources_on_viewable_type_and_viewable_id", using: :btree
 
   add_foreign_key "call_requests", "profiles", column: "ordering_profile_id"
