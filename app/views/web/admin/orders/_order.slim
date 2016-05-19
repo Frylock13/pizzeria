@@ -58,7 +58,11 @@
               tbody
                 - order.ordered_pizzas.each do |ordered_pizza|
                   tr
-                    td = ordered_pizza.name
+                    td
+                      p = ordered_pizza.name
+                      - if ordered_pizza.pizza.visibility.for_user?
+                        = link_to 'Редактировать', [:edit, :admin, ordered_pizza.pizza],
+                                  class: 'btn btn-default btn-sm'
                     td
                       = render "ingredients_#{ordered_pizza.pizza.parent.present? ? 'with' : 'without'}_parent", pizza: ordered_pizza.pizza, parent: ordered_pizza.pizza.parent
                     td = ordered_pizza.pizza_size.text
