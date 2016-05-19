@@ -1,0 +1,8 @@
+- title 'Заказ'
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Заказы', admin_orders_path
+    li.active Заказ
+section.section-padded id='order'
+  .container-fluid
+    = render @order

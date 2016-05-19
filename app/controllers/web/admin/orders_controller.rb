@@ -12,6 +12,11 @@ class Web::Admin::OrdersController < Web::Admin::ApplicationController
     # render :index if stale? @orders | layout_resources
   end
 
+  def show
+    @menu_key = :orders
+    @order = Order.find(params[:id])
+  end
+
   def update
     order = Order.find(params[:id])
     if order.update(order_params)

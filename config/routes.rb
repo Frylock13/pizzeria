@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   scope module: :web do
     namespace :admin do
-      resources :orders, only: [:index, :update] do
+      resources :orders, only: [:index, :show, :update] do
         get :check_updates, on: :collection
+        scope module: :orders do
+          resources :ordered_pizzas
+          resources :ordered_products
+        end
       end
       resources :call_requests, only: :index
       resources :doughs, except: [:show]
