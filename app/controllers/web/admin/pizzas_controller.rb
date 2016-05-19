@@ -33,6 +33,8 @@ class Web::Admin::PizzasController < Web::Admin::ApplicationController
   def update
     @pizza = Pizza.find(params[:id])
     if @pizza.update(pizza_params)
+      PizzaRecalculatingService.new(@pizza).recalculate
+      @pizza.save
       redirect_to [:edit, :admin, @pizza], success: 'Пицца успешно обновлена'
     else
       render :edit, change: "edit_pizza_#{@pizza.id}", layout: !request.xhr?

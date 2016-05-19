@@ -13,5 +13,3 @@ section.section-padded id='pizza'
         .panel-title = @pizza.name
       .panel-body
         = render 'form', item: @pizza
-      .panel-footer
-        = link_to 'Пересчитать стоимость', [:admin, @pizza, :recalculate], class: 'btn btn-default'
