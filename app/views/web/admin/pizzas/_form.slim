@@ -35,18 +35,7 @@
             :id, :name, { prompt: 'Выберите тесто' },
                         { class: 'form-control selectize-doughs' }
           = form_field_error :dough_id, item
-        .well
-          - item.pizza_attributes.each do |pizza_attribute|
-            .form-group
-              = f.fields_for :pizza_attributes, pizza_attribute do |ff|
-                = ff.label :price, "Цена и вес для #{pizza_attribute.pizza_size.text}",
-                           class: 'control-label'
-                = ff.hidden_field :pizza_size
-                .row
-                  .col-xs-6
-                    = ff.text_field :price, class: 'form-control mask-currency'
-                  .col-xs-6
-                    = ff.text_field :weight, class: 'form-control mask-weight'
+        = render 'web/admin/attributes_fields', f: f, fields: :pizza_attributes, items: item.pizza_attributes
         = render 'web/admin/fileinput_field', f: f, item: item
       .col-xs-6
         = render 'shared/ingredients_fields', item: item, hide_control: false
