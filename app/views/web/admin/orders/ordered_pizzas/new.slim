@@ -1,0 +1,69 @@
+- title 'Добавление пиццы'
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Заказы', admin_orders_path
+    li = link_to 'Заказ', [:admin, order]
+    li.active Добавление пиццы
+section.section-products id='menu_pizza'
+  - pizza_categories.each do |pizza_category, pizzas|
+    .container-masonry id="pizza_category_#{pizza_category.id}"
+      .section-subtitle
+        span = pizza_category.name
+      .masonry-grid.row
+        - pizzas.each do |pizza|
+          .masonry-item.col-xs-6.col-md-4.col-lg-3
+            .panel.panel-default.panel-product
+              .panel-body
+                .product-image = image_tag pizza.image.url(:thumb)
+                - if pizza.hot == true
+                  .product-badge.badge-hot
+                - if pizza.spicy == true
+                  div { class = 'product-badge badge-spicy'
+                        title = 'В этой пицце - острые перчики халапеньо'
+                        data-toggle = 'tooltip'
+                        data-placement = 'right'
+                      }
+                .product-title = pizza.name
+                .pizza-ingredients
+                  ' #{pizza.dough.name} тесто,
+                  = pizza.ingredients.pluck(:name).join(', ')
+              .panel-footer
+                .list-group
+                  - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
+                    - if pizza_attribute.price.present?
+                      = button_to [:admin, order, :ordered_pizzas],
+                                  params: { pizza_id: pizza.id,
+                                            pizza_size: pizza_attribute.pizza_size },
+                                  class: 'list-group-item ladda-button' do
+                        span = pizza_attribute.pizza_size.text
+                        span.b = number_to_currency pizza_attribute.price, precision: 0
+                    - else
+                      .list-group-item
+                        span.text-muted = pizza_attribute.pizza_size.text
+  .container-masonry id='user_pizza'
+    .section-subtitle
+      span Ваша пицца
+    .masonry-grid.row
+      - user_pizzas.each do |pizza|
+        .masonry-item.col-xs-6.col-md-4.col-lg-3
+          .panel.panel-default.panel-product
+            .panel-body
+              .product-image class=('image-unique' unless pizza.parent.present?)
+                = image_tag pizza.image.url(:thumb)
+              .product-title = pizza.name
+              .pizza-ingredients
+                ' #{pizza.dough.name} тесто,
+                = pizza.ingredients.pluck(:name).join(', ')
+            .panel-footer
+              .list-group
+                - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
+                  - if pizza_attribute.price.present?
+                    = button_to [:admin, order, :ordered_pizzas],
+                                params: { pizza_id: pizza.id,
+                                          pizza_size: pizza_attribute.pizza_size },
+                                class: 'list-group-item ladda-button' do
+                      span = pizza_attribute.pizza_size.text
+                      span.b = number_to_currency pizza_attribute.price, precision: 0
+                  - else
+                    .list-group-item
+                      span.text-muted = pizza_attribute.pizza_size.text

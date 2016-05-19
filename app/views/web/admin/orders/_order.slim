@@ -71,6 +71,12 @@
                                  data: { confirm: 'Вы уверены?' },
                                  remote: false do
                         span.fa.fa-trash
+        .text-center
+          br
+          = link_to 'Добавить пиццу', [:new, :admin, order, :ordered_pizza],
+                    class: 'btn btn-default'
+          br
+          br
         - if order.ordered_products.any?
           .table-responsive
             table.table
@@ -95,3 +101,9 @@
                                  data: { confirm: 'Вы уверены?' },
                                  remote: false do
                         span.fa.fa-trash
+        .text-center
+          br
+          = link_to 'Добавить товар', [:new, :admin, order, :ordered_product],
+                    class: 'btn btn-default'
+          br
+          br
