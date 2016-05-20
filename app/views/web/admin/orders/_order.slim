@@ -12,7 +12,11 @@
             li = link_to "Заказ #{status[0]}", [:admin, order], remote: true,
                          data: { method: :patch, params: { status: status[1] }.to_param }
     .panel-title
-      span = link_to order.to_s, [:admin, order]
+      span
+        = link_to order.to_s, [:admin, order]
+        - if order.discount_in_percents
+          '
+          | (#{number_to_currency order.discounted_sum, precision: 0} со скидкой)
       small
         ' от
         span = human_date order.booked_on
@@ -43,6 +47,33 @@
           dl
             dt Пожелания:
             dd = order.wishes
+        - if order.discount_card_number.present?
+          dl
+            dt Номер бонусной карты:
+            dd = order.discount_card_number.to_s
+        - if order.discount_in_percents.present?
+          dl
+            dt Скидка:
+            dd
+              = number_to_percentage order.discount_in_percents, precision: 0
+              '
+              = link_to '(убрать скидку)', [:admin, order],
+                        remote: true,
+                        data: { method: :patch,
+                                params: { discount_in_percents: nil }.to_param }
+        - else
+          .btn-group
+            = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
+                      data: { toggle: 'dropdown' } do
+              span Применить скидку
+              '
+              span.caret
+            ul.dropdown-menu.dropdown-menu-right
+              - discounts_options.each do |discount|
+                li = link_to discount[0], [:admin, order],
+                             remote: true,
+                             data: { method: :patch,
+                                     params: { discount_in_percents: discount[1] }.to_param }
       .col-main
         - if order.ordered_pizzas.any?
           .table-responsive

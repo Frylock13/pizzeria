@@ -98,14 +98,12 @@ class Web::OrdersController < Web::ApplicationController
   end
 
   def order_params
-    params.require(:order)
-          .permit(:status, :booked_on, :payment_method, :wishes,
-                  :address_id,
-                  { address_attributes: [:city, :street, :house, :entrance, :flat,
-                                         :floor, :intercom_code, :owner_id] },
-                  :receiving_profile_id,
-                  { receiving_profile_attributes: [:first_name, :phone] },
-                  :ordering_profile_id,
-                  ordering_profile_attributes: [:id, :email])
+    params.require(:order).permit(
+      :status, :booked_on, :payment_method, :wishes, :discount_card_number,
+      :address_id, { address_attributes: [:city, :street, :house, :entrance, :flat,
+                                          :floor, :intercom_code, :owner_id] },
+      :receiving_profile_id, { receiving_profile_attributes: [:first_name, :phone] },
+      :ordering_profile_id, ordering_profile_attributes: [:id, :email]
+    )
   end
 end

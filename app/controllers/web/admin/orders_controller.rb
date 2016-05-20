@@ -1,5 +1,5 @@
 class Web::Admin::OrdersController < Web::Admin::ApplicationController
-  helper_method :order_status_options
+  helper_method :order_status_options, :discounts_options
 
   def index
     @menu_key = :orders
@@ -42,7 +42,14 @@ class Web::Admin::OrdersController < Web::Admin::ApplicationController
      ["Отменен", "canceled"]]
   end
 
+  def discounts_options
+    [[ '5%',  5],
+     ['10%', 10],
+     ['15%', 15],
+     ['20%', 20]]
+  end
+
   def order_params
-    params.permit(:status)
+    params.permit(:status, :discount_in_percents)
   end
 end

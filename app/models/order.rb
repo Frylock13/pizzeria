@@ -12,6 +12,8 @@
 #  booked_on            :datetime
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  discount_card_number :string
+#  discount_in_percents :decimal(5, 2)
 #
 
 class Order < ActiveRecord::Base
@@ -39,6 +41,11 @@ class Order < ActiveRecord::Base
 
   def price
     ordered_pizzas.map(&:price).sum + ordered_products.map(&:price).sum
+  end
+
+  def discounted_sum
+    return price unless discount_in_percents
+    price * (100 - discount_in_percents) / 100
   end
 
   def to_s

@@ -101,6 +101,9 @@
       .col-side
         .row-title Последние штрихи
       .col-main
+        = form_field_group :discount_card_number, item do
+          = f.text_field :discount_card_number, class: 'form-control',
+                         placeholder: 'Номер вашей бонусной карты (если есть)'
         = form_field_group :wishes, item do
           = f.text_area :wishes, class: 'form-control', rows: 3, placeholder: 'Особые пожелания'
         - if current_user.present?
