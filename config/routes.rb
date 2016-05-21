@@ -4,7 +4,11 @@ Rails.application.routes.draw do
       resources :orders, only: [:index, :show, :update] do
         get :check_updates, on: :collection
         scope module: :orders do
-          resources :ordered_pizzas
+          resources :ordered_pizzas do
+            scope module: :ordered_pizzas do
+              resources :pizza_ingredients, only: :destroy
+            end
+          end
           resources :ordered_products
         end
       end
