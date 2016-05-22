@@ -22,7 +22,7 @@
             span.fa.fa-clock-o.fa-lg
             span Шаг 3. Примите заказ
           ul.dropdown-menu.navmenu-nav
-            - current_user.orders.with_status(:booked, :accepted, :assembled, :delivered).order(status: :desc, updated_at: :desc).each do |order|
+            - current_user.orders.with_status(:booked, :accepted, :cooking, :assembled, :delivered).order(status: :desc, updated_at: :desc).each do |order|
               li
                 = link_to order do
                   .nav-item-title = order.status.text
@@ -31,7 +31,7 @@
                     = 'Бронь на ' if order.status == :booked
                     span = human_date order.booked_on
       - else
-        - if current_user&.orders&.with_status(:booked, :accepted, :assembled, :delivered)&.any?
+        - if current_user&.orders&.with_status(:booked, :accepted, :cooking, :assembled, :delivered)&.any?
           li = link_to orders_path do
             span.fa.fa-lg.fa-clock-o
             span Шаг 3. Примите заказ

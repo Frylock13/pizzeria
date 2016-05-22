@@ -15,6 +15,10 @@ section.tabs
                  params.merge(status: :booked),
                  active: params[:status] == 'booked',
                  disabled: Order.with_status(:booked).count == 0
+      = tab_link "Готовится (#{Order.with_status(:cooking).count})",
+                 params.merge(status: :cooking),
+                 active: params[:status] == 'cooking',
+                 disabled: Order.with_status(:cooking).count == 0
       = tab_link "Отправлен (#{Order.with_status(:assembled).count})",
                  params.merge(status: :assembled),
                  active: params[:status] == 'assembled',

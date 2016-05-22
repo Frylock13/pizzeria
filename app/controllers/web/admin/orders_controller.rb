@@ -36,17 +36,18 @@ class Web::Admin::OrdersController < Web::Admin::ApplicationController
   private
 
   def order_status_options
-    [["Принят", "accepted"],
-     ["Отправлен", "assembled"],
-     ["Получен клиентом", "closed"],
-     ["Отменен", "canceled"]]
+    [['Принят', 'accepted'],
+     ['Готовится', 'cooking'],
+     ['Отправлен', 'assembled'],
+     ['Получен клиентом', 'closed'],
+     ['Отменен', 'canceled']]
   end
 
   def discounts_options
-    [[ '5%',  5],
-     ['10%', 10],
+    [['10%', 10],
      ['15%', 15],
-     ['20%', 20]]
+     ['20%', 20],
+     ['30%', 30]]
   end
 
   def order_params
