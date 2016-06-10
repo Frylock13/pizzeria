@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.9.0'
 gem 'acts_as_list'
 gem 'angular_rails_csrf'
 gem 'bootstrap-sass', github: 'gambala/bootstrap-sass'
@@ -83,7 +83,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-animate'
   gem 'rails-assets-breakpoint-sass'
   gem 'rails-assets-cferdinandi--smooth-scroll'
-  gem 'rails-assets-ink'
+  gem 'rails-assets-ink', '~> 1.0'
   gem 'rails-assets-interact'
   gem 'rails-assets-jasny-bootstrap'
   gem 'rails-assets-jquery.are-you-sure'
@@ -91,7 +91,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-ladda'
   gem 'rails-assets-masonry'
   gem 'rails-assets-moment'
-  gem 'rails-assets-normalize-css'
   gem 'rails-assets-selectize'
   gem 'rails-assets-Sortable'
 end
