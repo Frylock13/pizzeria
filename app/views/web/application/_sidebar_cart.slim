@@ -1,6 +1,6 @@
-li.dropdown.open.active id='cart'
+li.dropdown.open.active id='sidebar_cart'
   = link_to root_path, class: 'dropdown-toggle' do
-    = render 'shared/sidebar_step_1_title'
+    = render 'sidebar_step_1_title'
   - unless current_order.empty?
     ul.dropdown-menu.navmenu-nav
       - current_ordered_pizzas.each do |ordered_pizza|

@@ -5,12 +5,12 @@
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       - if menu_key == :products
-        = render 'shared/cart'
+        = render 'sidebar_cart'
       - else
         li = link_to root_path do
-          = render 'shared/sidebar_step_1_title'
+          = render 'sidebar_step_1_title'
       - if menu_key == :new_order
-        = render 'shared/order'
+        = render 'sidebar_order'
       - else
         li.disabled
           div
