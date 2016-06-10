@@ -1,4 +1,4 @@
-class UserMailer < BaseMailer
+class UserMailer < ApplicationMailer
   def become_admin(user)
     @user = user
     mail to: user.email, subject: 'Вам присвоены права администратора'
