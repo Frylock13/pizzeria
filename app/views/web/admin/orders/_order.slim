@@ -11,6 +11,9 @@
           - order_status_options.each do |status|
             li = link_to "Заказ #{status[0]}", [:admin, order], remote: true,
                          data: { method: :patch, params: { status: status[1] }.to_param }
+        = link_to [:admin, order], title: 'Удалить заказ', class: 'btn btn-link',
+                  method: :delete, data: { confirm: 'Хотите полностью удалить заказ?' } do
+          span.fa.fa-trash
     .panel-title
       span
         = link_to order.to_s, [:admin, order]
@@ -62,6 +65,7 @@
                         data: { method: :patch,
                                 params: { discount_in_percents: nil }.to_param }
         - else
+          br
           .btn-group
             = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
                       data: { toggle: 'dropdown' } do

@@ -21,8 +21,8 @@ class Order < ActiveRecord::Base
   belongs_to :address
   belongs_to :ordering_profile, class_name: 'Profile'
   belongs_to :receiving_profile, class_name: 'Profile'
-  has_many :ordered_pizzas
-  has_many :ordered_products
+  has_many :ordered_pizzas, dependent: :destroy
+  has_many :ordered_products, dependent: :destroy
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :ordering_profile
   accepts_nested_attributes_for :receiving_profile

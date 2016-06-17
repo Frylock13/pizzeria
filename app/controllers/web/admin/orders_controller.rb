@@ -24,6 +24,13 @@ class Web::Admin::OrdersController < Web::Admin::ApplicationController
     end
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    if order.destroy
+      redirect_to(:back)
+    end
+  end
+
   def check_updates
     date = Order.with_status(:accepted).maximum(:updated_at).to_i
     if date > params[:date].to_i
