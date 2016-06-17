@@ -46,8 +46,10 @@ class Web::Admin::PagesController < Web::Admin::ApplicationController
 
   def dashboard
     @menu_key = :dashboard
-    @today_orders = Order.where('updated_at BETWEEN ? AND ?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day)
-    @week_orders = Order.where('updated_at BETWEEN ? AND ?', Time.zone.now.beginning_of_day - 7.days, Time.zone.now.end_of_day)
+    @today_orders = Order.without_status(:created)
+                         .where('updated_at BETWEEN ? AND ?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day)
+    @week_orders = Order.without_status(:created)
+                        .where('updated_at BETWEEN ? AND ?', Time.zone.now.beginning_of_day - 7.days, Time.zone.now.end_of_day)
     # render :dashboard if stale? [:admin_dashboard] | layout_resources
   end
 
