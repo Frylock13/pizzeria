@@ -35,6 +35,8 @@ Rails.application.routes.draw do
           resources :product_features, except: :show
         end
       end
+
+      root to: 'welcome#index'
     end
 
     resources :call_requests, only: [:new, :create] do
@@ -72,7 +74,6 @@ Rails.application.routes.draw do
       get ':provider', action: :run, as: :run
     end
 
-    get :admin, to: 'admin/pages#dashboard'
     get :login, to: 'user_sessions#new'
     get :logout, to: 'user_sessions#destroy'
     get :register, to: 'users#new'

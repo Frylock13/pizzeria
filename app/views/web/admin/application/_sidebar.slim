@@ -4,7 +4,7 @@
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       li.navmenu-title Заявки
-      = menu_link_to :dashboard, admin_path do
+      = menu_link_to :dashboard, admin_root_path do
         span.fa.fa-area-chart
         | Сводка
       = menu_link_to :orders, admin_orders_path(status: :accepted) do

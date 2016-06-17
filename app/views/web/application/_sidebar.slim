@@ -85,7 +85,7 @@
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
             - if current_user.role.admin?
-              = menu_link_to :admin, admin_path do
+              = menu_link_to :admin, admin_root_path do
                 span.fa.fa-cogs
                 | В админку
             = menu_link_to :oauth, oauth_path do
