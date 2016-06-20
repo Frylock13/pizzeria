@@ -28,7 +28,7 @@ class Web::ProductsController < Web::ApplicationController
     @pizza_categories ||= Pizza.with_visibility(:for_all)
                                .includes(:pizza_attributes).order(:name)
                                .group_by(&:pizza_category)
-                               .sort { |item| item[0].position }
+                               .sort { |a, b| a[0].position <=> b[0].position }
   end
 
   def product_categories
