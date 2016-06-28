@@ -1,6 +1,7 @@
 - title 'Закажите пиццу в 3 шага'
 section id='top'
   .slick-slider.slick-main data-no-transition-cache=''
+    .item = link_to '', new_pizza_path, class: 'item-banner banner-constructor'
     .item = link_to '', page_path('dostavka'), class: 'item-banner banner-delivery'
     .item = link_to '', page_path('oplata-i-bonusnie-balli'), class: 'item-banner banner-bonus'
     .item = link_to '', page_path('pdf-menu'), class: 'item-banner banner-pdf'
