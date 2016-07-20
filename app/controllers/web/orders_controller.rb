@@ -75,9 +75,16 @@ class Web::OrdersController < Web::ApplicationController
   end
 
   def addresses
-    return [] unless current_user.present?
-    @addresses ||= current_user.owned_addresses.map { |item| [item.to_s, item.id] }
-    @addresses += Address.where(pickup: true).map { |item| [item.to_s, item.id] }
+    return pickup_addresses unless current_user.present?
+    user_addresses + pickup_addresses
+  end
+
+  def pickup_addresses
+    @pickup_addresses ||= Address.where(pickup: true).map { |item| [item.to_s, item.id] }
+  end
+
+  def user_addresses
+    @user_addresses ||= current_user.owned_addresses.map { |item| [item.to_s, item.id] }
   end
 
   def owned_profiles
