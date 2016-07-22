@@ -7,8 +7,6 @@
 .DS_Store
 .idea/
 .rake_tasks~
-.rubocop.yml
-.rubocop_todo.yml
 /config/application.yml
 /config/environments/*.local.yml
 /config/settings.local.yml
