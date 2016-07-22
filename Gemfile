@@ -42,10 +42,6 @@ gem 'underscore-rails'
 gem 'unicorn', group: :production
 gem 'virtus'
 
-group :development, :test do
-  gem 'spring'
-end
-
 group :development do
   gem 'active_record_doctor'
   gem 'annotate'
@@ -68,6 +64,7 @@ group :development do
   gem 'rb-inotify', github: 'kvokka/rb-inotify', require: false
   gem 'rubocop', require: false
   gem 'rubycritic', require: false
+  gem 'spring'
   gem 'traceroute'
   gem 'web-console'
 end
