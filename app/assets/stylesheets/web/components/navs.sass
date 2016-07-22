@@ -1,8 +1,5 @@
 @import 'variables'
-@import 'settings/prefixer'
-@import 'addons/prefixer'
 @import 'bootstrap/mixins/rhythm'
-@import 'css3/transition'
 
 .nav
   > li
@@ -26,8 +23,8 @@
 
   > li
     > a
-      +transition(background-color 0.25s, color 0.25s)
       padding: 0 10px
+      transition: background-color 0.25s, color 0.25s
 
     &.active
       > a

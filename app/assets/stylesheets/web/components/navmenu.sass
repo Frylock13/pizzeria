@@ -1,12 +1,8 @@
 @import 'variables'
-@import 'breakpoint-sass'
-@import 'settings/prefixer'
-@import 'addons/prefixer'
 @import 'bootstrap/mixins/image'
 @import 'bootstrap/mixins/rhythm'
 @import 'bootstrap/mixins/scrollbar'
-@import 'css3/calc'
-@import 'css3/transition'
+@import 'breakpoint-sass'
 
 .navmenu
   overflow: hidden
@@ -34,7 +30,7 @@
     background-color: rgba(#f0f0f0, 0.1)
 
 .navmenu-scroll-area
-  +calc(height, '100% - 120px')
+  height: calc(100% - 120px)
   overflow: auto
   overflow: overlay
   padding-bottom: 200px
@@ -197,7 +193,7 @@
 
   .navmenu-brand
     +retina-bg('bg.png', 'bg@2x.png', repeat, 500px, 500px)
-    +transition(background-color 0.25s)
+    transition: background-color 0.25s
 
     &:hover,
     &:focus
@@ -221,9 +217,9 @@
 
       > div
         a.ladda-button
-          +transition(background-color 0.2s, color 0.2s)
           background-color: transparent
           color: $navbar-inverse-link-color
+          transition: background-color 0.2s, color 0.2s
 
           &:hover,
           &:focus
@@ -362,7 +358,7 @@
         margin-left: $navmenu-width
 
       .affix
-        +calc(width, "100% - #{$navmenu-width}")
+        width: calc(100% - #{$navmenu-width})
         left: $navmenu-width
 
     .navmenu-fixed-right + &

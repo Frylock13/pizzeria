@@ -1,7 +1,4 @@
 @import '../variables'
-@import 'settings/prefixer'
-@import 'addons/prefixer'
-@import 'css3/transition'
 
 .block-ingredients-fields
   .list-group
@@ -24,11 +21,11 @@
         .ingredient-title
           padding: 0 10px
       .quantity-controls
-        +transition(right 0.25s)
         pointer-events: none
         position: absolute
         right: -74px
         top: 0
+        transition: right 0.25s
         span.fa
           color: #A6A2C7
         .quantity-increase, .quantity-amount, .quantity-decrease, .ingredient-base

@@ -1,13 +1,9 @@
 @import 'variables'
-@import 'breakpoint-sass'
-@import 'settings/prefixer'
-@import 'addons/border-radius'
-@import 'addons/prefixer'
+@import 'bootstrap/mixins/border-radius'
 @import 'bootstrap/mixins/image'
 @import 'bootstrap/mixins/rhythm'
 @import 'bootstrap/mixins/scrollbar'
-@import 'css3/calc'
-@import 'css3/transition'
+@import 'breakpoint-sass'
 
 .panel
   margin-bottom: 8px
@@ -34,7 +30,6 @@
 // .panel complex modificators
 
 .panel-dummy
-  +transition(box-shadow 0.25s)
   background-color: #fff
   background-size: cover
   border-radius: 6px
@@ -42,16 +37,17 @@
   height: 411px
   margin-bottom: 18px
   overflow: hidden
+  transition: box-shadow 0.25s
 
   .ladda-label
     height: 100%
     width: 100%
 
   .panel-body
-    +transition(all 0.25s)
     height: 100%
     padding: 10px
     text-align: center
+    transition: all 0.25s
 
     .panel-title
       font-size: 30px
@@ -140,15 +136,15 @@
           width: 300px
 
       .col-main
-        +calc(width, '100% - 200px')
         background-color: #fff
         border-left: 1px solid #ccc
+        width: calc(100% - 200px)
 
         .row + .row
           margin-top: 20px
 
         +breakpoint($screen-lg-min)
-          +calc(width, '100% - 300px')
+          width: calc(100% - 300px)
 
       + .row
         margin-top: 0
@@ -193,15 +189,15 @@
           width: 300px
 
       .col-main
-        +calc(width, '100% - 200px')
         background-color: #fff
         border-bottom: 1px solid #ccc
         border-left: 1px solid #ccc
         margin-bottom: -1px
         padding: 0
+        width: calc(100% - 200px)
 
         +breakpoint($screen-lg-min)
-          +calc(width, '100% - 300px')
+          width: calc(100% - 300px)
 
 .panel-order-stats
   max-width: 1000px
@@ -219,10 +215,10 @@
       position: relative
 
       .progress-bar
-        +transition(all 0.5s)
         font-size: 18px
         font-weight: bold
         line-height: rh(2)
+        transition: all 0.5s
 
   .panel-body
     padding: 0 10px
@@ -244,16 +240,16 @@
           width: 300px
 
       .col-main
-        +calc(width, '100% - 200px')
+        width: calc(100% - 200px)
 
         .slick-slider
           .item
-            +transition(color 0.35s ease-out 0.35s)
             color: $brand-danger
             font-size: 18px
             line-height: 25px
             padding: 50px
             text-align: center
+            transition: color 0.35s ease-out 0.35s
             white-space: initial
             width: 100%
 
@@ -271,7 +267,7 @@
               color: $text-color
 
         +breakpoint($screen-lg-min)
-          +calc(width, '100% - 300px')
+          width: calc(100% - 300px)
 
 .panel-pizza
   max-width: 1350px
@@ -302,11 +298,11 @@
           overflow: auto
 
         .pizza-attributes
-          +transition(color 1.5s)
           display: inline-block
           height: rh(3)
           margin-right: -30px
           position: relative
+          transition: color 1.5s
 
           .pizza-attribute
             display: block
@@ -339,11 +335,11 @@
           padding: 15px 0
 
       .col-main
-        +calc(width, '100% - 400px')
         line-height: 600px
         min-height: 600px
         overflow: hidden
         text-align: right
+        width: calc(100% - 400px)
 
         img
           max-width: 100%
@@ -374,13 +370,13 @@
           width: 922px
 
           .pizza-frame
-            +prefixer(transform, rotate(0deg), spec webkit)
             border-radius: 50%
             height: 500px
             left: 50%
             margin: -250px
             position: absolute
             top: 50%
+            transform: rotate(0deg)
             width: 500px
 
             img
@@ -392,8 +388,8 @@
 
               &.ng-hide-add,
               &.ng-hide-remove
-                +transition(all, 0.25s)
                 display: block !important
+                transition: all, 0.25s
 
               &.ng-hide-add.ng-hide-add-active,
               &.ng-hide-remove
@@ -487,11 +483,11 @@
           margin-left: 7px
 
         .pull-right
-          +transition(background-color 0.25s)
           background-color: transparent
           font-size: 12px
           margin: -10px -15px
           padding: 10px 15px
+          transition: background-color 0.25s
 
       a.list-group-item
         &:hover
