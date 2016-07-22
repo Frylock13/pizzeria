@@ -65,7 +65,6 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rails', require: false
-  gem 'guard-rspec', require: false
   gem 'letter_opener'
   gem 'meta_request'
   gem 'rack-livereload'
