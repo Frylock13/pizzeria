@@ -58,7 +58,8 @@ class Web::Admin::Products::ProductFeaturesController < Web::Admin::Products::Ap
   end
 
   def product_feature_params
-    params.require(:product_feature).permit(:feature_id, :feature_value_id, :price, :weight)
-                                    .merge(product_id: params[:product_id])
+    params.require(:product_feature)
+          .permit(:feature_id, :feature_value_id, :price, :weight)
+          .merge(product_id: params[:product_id])
   end
 end

@@ -11,7 +11,7 @@ class Web::UserSessionsController < Web::ApplicationController
     user_session = UserSession.new(user_session_params)
     unless user_session.valid?
       return render :new, locals: { user_session: user_session },
-                    change: :new_user_session, layout: !request.xhr?
+                          change: :new_user_session, layout: !request.xhr?
     end
     if login(user_session.email, user_session.password, remember_me = true)
       current_profile.update(email: current_user.email, owner_id: current_user.id)
