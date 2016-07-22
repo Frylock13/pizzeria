@@ -1,9 +1,10 @@
 = form_for item, remote: true, authenticity_token: true do |f|
-  = form_field_group :email, item do
-    = f.email_field :email, class: 'form-control', required: false, placeholder: true
-    = form_field_error :email, item
-  = form_field_group :password, item do
-    = f.password_field :password, class: 'form-control', required: false, placeholder: true
-    = form_field_error :password, item
-  .form-group.text-center
-    = f.button 'Войти', class: 'btn btn-primary ladda-button'
+  .form-groups
+    = form_field_group :email, item do
+      = f.email_field :email, class: 'form-control', required: false, placeholder: true
+      = form_field_error :email, item
+    = form_field_group :password, item do
+      = f.password_field :password, class: 'form-control', required: false, placeholder: true
+      = form_field_error :password, item
+    .form-group.text-center
+      = f.button 'Войти', class: 'btn btn-primary ladda-button'

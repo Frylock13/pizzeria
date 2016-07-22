@@ -1,0 +1,15 @@
+@import 'variables'
+@import 'bootstrap/mixins/image'
+
+.img
+  display: inline-block
+  vertical-align: middle
+
+
+// .img content modificators
+
+.img-dummy
+  +svg-image('dummy-image.png', 'dummy-image.svg', 64px, 48px)
+
+.img-logo
+  +retina-image('logo-old.png', 'logo-old@2x.png', 268px, 80px)

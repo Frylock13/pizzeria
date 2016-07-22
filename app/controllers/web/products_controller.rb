@@ -28,7 +28,7 @@ class Web::ProductsController < Web::ApplicationController
     @pizza_categories ||= Pizza.with_visibility(:for_all)
                                .includes(:pizza_attributes).order(:name)
                                .group_by(&:pizza_category)
-                               .sort { |item| item[0].position }
+                               .sort { |a, b| a[0].position <=> b[0].position }
   end
 
   def product_categories
@@ -40,9 +40,11 @@ class Web::ProductsController < Web::ApplicationController
   def user_pizzas
     @user_pizzas ||= if current_user.present?
                        current_user.owned_pizzas.with_visibility(:for_user)
+                                   .non_deleted
                                    .includes(:pizza_attributes).order(:name)
                      else
                        current_profile.owned_pizzas.with_visibility(:for_user)
+                                      .non_deleted
                                       .includes(:pizza_attributes).order(:name)
                      end
   end

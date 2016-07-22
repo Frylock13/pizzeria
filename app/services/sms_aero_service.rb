@@ -1,5 +1,5 @@
 require 'digest/md5'
-class SmsService
+class SmsAeroService
   attr_accessor :phone, :text
 
   def initialize(phone, text)

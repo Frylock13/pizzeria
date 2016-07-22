@@ -90,7 +90,7 @@ class Web::Admin::PizzasController < Web::Admin::ApplicationController
 
   def pizza_params
     params.require(:pizza).permit(
-      :name, :pizza_category_id, :image, :visibility, :dough_id, :parent_id, :hot,
+      :name, :pizza_category_id, :image, :visibility, :dough_id, :parent_id, :hot, :spicy,
       { pizza_attributes_attributes: [:id, :pizza_size, :price, :weight] },
       pizza_ingredients_attributes: [:id, :ingredient_id, :quantity, :base, :_destroy]
     )

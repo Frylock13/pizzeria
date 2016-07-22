@@ -5,97 +5,35 @@
 section.tabs
   .container-fluid
     ul.nav.nav-tabs
-      = tab_link "Все (#{Order.all.count})", params.merge(status: nil),
+      = tab_link "Все (#{Order.without_status(:created).count})", params.merge(status: nil),
                  active: params[:status] == nil
-      - OrderEnums.status.options.each do |status|
-        = tab_link "#{status[0]} (#{Order.with_status(status[1]).count})",
-                   params.merge(status: status[1]),
-                   active: params[:status] == status[1],
-                   disabled: Order.with_status(status[1]).count == 0
-section.padded id='orders'
+      = tab_link "Новые (#{Order.with_status(:accepted).count})",
+                 params.merge(status: :accepted),
+                 active: params[:status] == 'accepted',
+                 disabled: Order.with_status(:accepted).count == 0
+      = tab_link "Бронь (#{Order.with_status(:booked).count})",
+                 params.merge(status: :booked),
+                 active: params[:status] == 'booked',
+                 disabled: Order.with_status(:booked).count == 0
+      = tab_link "Готовится (#{Order.with_status(:cooking).count})",
+                 params.merge(status: :cooking),
+                 active: params[:status] == 'cooking',
+                 disabled: Order.with_status(:cooking).count == 0
+      = tab_link "Отправлен (#{Order.with_status(:assembled).count})",
+                 params.merge(status: :assembled),
+                 active: params[:status] == 'assembled',
+                 disabled: Order.with_status(:assembled).count == 0
+      = tab_link "Выполнен (#{Order.with_status(:closed).count})",
+                 params.merge(status: :closed),
+                 active: params[:status] == 'closed',
+                 disabled: Order.with_status(:closed).count == 0
+      = tab_link "Отменен (#{Order.with_status(:canceled).count})",
+                 params.merge(status: :canceled),
+                 active: params[:status] == 'canceled',
+                 disabled: Order.with_status(:canceled).count == 0
+section.section-padded id='orders'
   .container-fluid
-    - @orders.each do |order|
-      .panel.panel-default.panel-order-info
-        .panel-heading
-          .pull-right
-            span Заказ #{order.status.text}
-            .btn-group
-              = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
-                        data: { toggle: 'dropdown' } do
-                span Изменить статус
-                span.caret
-              ul.dropdown-menu.dropdown-menu-right
-                - OrderEnums.status.options.each do |status|
-                  li = link_to "Заказ #{status[0]}", [:admin, order], remote: true,
-                               data: { method: :patch, params: { status: status[1] }.to_param }
-          .panel-title
-            span = order.to_s
-            small
-              ' от
-              span.moment-date #{order.booked_on}
-        .panel-body
-          .row
-            .col-side
-              - if order.ordering_profile.present?
-                dl
-                  dt Заказ оформил(а):
-                  dd = order.ordering_profile.to_s
-              - if order.booked_on?
-                dl
-                  dt Забронирован на:
-                  dd.moment-date = order.booked_on
-              - if order.payment_method?
-                dl
-                  dt Метод оплаты:
-                  dd = order.payment_method.text
-              - if order.address.present?
-                dl
-                  dt Куда доставить:
-                  dd = order.address.to_s
-              - if order.receiving_profile.present?
-                dl
-                  dt Кому доставить:
-                  dd = order.receiving_profile.to_s
-              - if order.wishes?
-                dl
-                  dt Пожелания:
-                  dd = order.wishes
-            .col-main
-              - if order.ordered_pizzas.any?
-                .table-responsive
-                  table.table
-                    thead
-                      tr
-                        th Название
-                        th Ингредиенты
-                        th Размер
-                        th.text-right Количество
-                        th.text-right Стоимость
-                    tbody
-                      - order.ordered_pizzas.each do |ordered_pizza|
-                        tr
-                          td = ordered_pizza.name
-                          td
-                            = render "ingredients_#{ordered_pizza.pizza.parent.present? ? 'with' : 'without'}_parent", pizza: ordered_pizza.pizza, parent: ordered_pizza.pizza.parent
-                          td = ordered_pizza.pizza_size.text
-                          td.text-right = ordered_pizza.quantity
-                          td.text-right = number_to_currency ordered_pizza.price, precision: 0
-              - if order.ordered_products.any?
-                .table-responsive
-                  table.table
-                    thead
-                      tr
-                        th Название
-                        th Атрибуты
-                        th.text-right Количество
-                        th.text-right Стоимость
-                    tbody
-                      - order.ordered_products.each do |ordered_product|
-                        tr
-                          td = ordered_product.product_name
-                          td = ordered_product.feature_names
-                          td.text-right = ordered_product.quantity
-                          td.text-right = number_to_currency ordered_product.price, precision: 0
+    = render @orders
 a { class = 'block-polling-alert'
     data-date = Order.with_status(:accepted).maximum(:updated_at).to_i
     id = 'polling_orders'

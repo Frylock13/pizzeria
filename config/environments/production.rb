@@ -3,12 +3,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
   config.action_mailer.asset_host = 'http://www.vpzven.ru'
   config.action_mailer.default_url_options = { host: 'www.vpzven.ru' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'smtp.mandrillapp.com',
-                                         port: 587,
-                                         user_name: ENV['MANDRILL_USERNAME'],
-                                         password: ENV['MANDRILL_API_KEY'],
-                                         domain: 'vpzven.ru' }
+  config.action_mailer.delivery_method = :test
   config.active_record.dump_schema_after_migration = false
   config.active_support.deprecation = :notify
   config.assets.compile = false

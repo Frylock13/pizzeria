@@ -1,16 +1,16 @@
 .navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
   = link_to root_path, class: 'navmenu-brand' do
-    .logo
+    .img.img-logo
     .brand-title Закажите пиццу в 3 шага
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       - if menu_key == :products
-        = render 'shared/cart'
+        = render 'sidebar_cart'
       - else
         li = link_to root_path do
-          = render 'shared/sidebar_step_1_title'
+          = render 'sidebar_step_1_title'
       - if menu_key == :new_order
-        = render 'shared/order'
+        = render 'sidebar_order'
       - else
         li.disabled
           div
@@ -22,16 +22,16 @@
             span.fa.fa-clock-o.fa-lg
             span Шаг 3. Примите заказ
           ul.dropdown-menu.navmenu-nav
-            - current_user.orders.each do |order|
+            - current_user.orders.with_status(:booked, :accepted, :cooking, :assembled, :delivered).order(status: :desc, updated_at: :desc).each do |order|
               li
                 = link_to order do
                   .nav-item-title = order.status.text
                   .nav-item-subtitle
                     .pull-right = number_to_currency order.price, precision: 0
                     = 'Бронь на ' if order.status == :booked
-                    span.moment-date = order.booked_on
+                    span = human_date order.booked_on
       - else
-        - if current_user.present?
+        - if current_user&.orders&.with_status(:booked, :accepted, :cooking, :assembled, :delivered)&.any?
           li = link_to orders_path do
             span.fa.fa-lg.fa-clock-o
             span Шаг 3. Примите заказ
@@ -73,6 +73,8 @@
         = menu_link_to "page-#{page.slug}", page do
           span.fa.fa-fw
           = page.anchor
+          - if page.anchor == 'Бонусные баллы' && current_user.present?
+            |  (у вас: #{number_to_currency current_user.bonus_points, precision: 0})
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.dropdown.dropdown-collapse
@@ -83,7 +85,7 @@
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
             - if current_user.role.admin?
-              = menu_link_to :admin, admin_path do
+              = menu_link_to :admin, admin_root_path do
                 span.fa.fa-cogs
                 | В админку
             = menu_link_to :oauth, oauth_path do

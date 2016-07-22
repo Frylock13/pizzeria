@@ -6,26 +6,35 @@
   display: block
   padding: 25px 30px
   text-align: center
+
   label
     display: block
     font-weight: normal
     margin-bottom: 10px
     text-align: center
+
   .thumbnail
     background: none
     border-radius: 0
     border: none
     margin: -25px -30px 25px
     padding: 0
+
     img
       max-height: none
+
     p
       font-size: 12px
       line-height: 20px
-    .icon-dummy
+
+    .img-dummy
       margin: 40px auto 20px
-  + .help-block
-    font-size: 12px
-    margin-bottom: 0
-    padding: 0 30px
-    text-align: center
+
+
+// .fileinput siblings
+
+.fileinput + .help-block
+  font-size: 12px
+  margin-bottom: 0
+  padding: 0 30px
+  text-align: center

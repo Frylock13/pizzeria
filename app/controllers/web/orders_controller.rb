@@ -52,7 +52,7 @@ class Web::OrdersController < Web::ApplicationController
     current_order.ordered_products.destroy_all
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
+      format.js { render 'sidebar_cart', layout: false }
     end
   end
 
@@ -75,9 +75,16 @@ class Web::OrdersController < Web::ApplicationController
   end
 
   def addresses
-    return [] unless current_user.present?
-    @addresses ||= current_user.owned_addresses.map { |item| [item.to_s, item.id] }
-    @addresses += Address.where(pickup: true).map { |item| [item.to_s, item.id] }
+    return pickup_addresses unless current_user.present?
+    user_addresses + pickup_addresses
+  end
+
+  def pickup_addresses
+    @pickup_addresses ||= Address.where(pickup: true).map { |item| [item.to_s, item.id] }
+  end
+
+  def user_addresses
+    @user_addresses ||= current_user.owned_addresses.map { |item| [item.to_s, item.id] }
   end
 
   def owned_profiles
@@ -98,14 +105,12 @@ class Web::OrdersController < Web::ApplicationController
   end
 
   def order_params
-    params.require(:order)
-          .permit(:status, :booked_on, :payment_method, :wishes,
-                  :address_id,
-                  { address_attributes: [:city, :street, :house, :entrance, :flat,
-                                         :floor, :intercom_code, :owner_id] },
-                  :receiving_profile_id,
-                  { receiving_profile_attributes: [:first_name, :phone] },
-                  :ordering_profile_id,
-                  ordering_profile_attributes: [:id, :email])
+    params.require(:order).permit(
+      :status, :booked_on, :payment_method, :wishes, :discount_card_number,
+      :address_id, { address_attributes: [:city, :street, :house, :entrance, :flat,
+                                          :floor, :intercom_code, :owner_id] },
+      :receiving_profile_id, { receiving_profile_attributes: [:first_name, :phone] },
+      :ordering_profile_id, ordering_profile_attributes: [:id, :email]
+    )
   end
 end

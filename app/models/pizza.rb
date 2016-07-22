@@ -13,6 +13,8 @@
 #  updated_at        :datetime         not null
 #  hot               :boolean
 #  pizza_category_id :integer
+#  deleted_at        :datetime
+#  spicy             :boolean
 #
 
 class Pizza < ActiveRecord::Base
@@ -45,4 +47,11 @@ class Pizza < ActiveRecord::Base
     return nil unless dough.present?
     dough.weight(pizza_size) + pizza_ingredients.map { |item| item.weight(pizza_size) }.sum
   end
+
+  def soft_destroy
+    self.update(deleted_at: Time.zone.now)
+  end
+
+  scope :non_deleted, -> { where(deleted_at: nil) }
+  scope :deleted, -> { where('deleted_at IS NOT NULL') }
 end

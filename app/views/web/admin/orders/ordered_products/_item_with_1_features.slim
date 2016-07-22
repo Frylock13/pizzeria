@@ -1,0 +1,8 @@
+.list-group
+  - item.product_features.includes(:feature_value).order('feature_values.name').each do |product_feature|
+    = button_to [:admin, order, :ordered_pizzas],
+                params: { product_id: item.id,
+                          product_feature_id: product_feature.id },
+                class: 'list-group-item ladda-button' do
+      span = product_feature.feature_value_name
+      span.b = number_to_currency item.safe_price + (product_feature.price || 0), precision: 0

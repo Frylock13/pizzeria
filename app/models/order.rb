@@ -12,6 +12,8 @@
 #  booked_on            :datetime
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  discount_card_number :string
+#  discount_in_percents :decimal(5, 2)
 #
 
 class Order < ActiveRecord::Base
@@ -19,8 +21,8 @@ class Order < ActiveRecord::Base
   belongs_to :address
   belongs_to :ordering_profile, class_name: 'Profile'
   belongs_to :receiving_profile, class_name: 'Profile'
-  has_many :ordered_pizzas
-  has_many :ordered_products
+  has_many :ordered_pizzas, dependent: :destroy
+  has_many :ordered_products, dependent: :destroy
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :ordering_profile
   accepts_nested_attributes_for :receiving_profile
@@ -39,6 +41,11 @@ class Order < ActiveRecord::Base
 
   def price
     ordered_pizzas.map(&:price).sum + ordered_products.map(&:price).sum
+  end
+
+  def discounted_sum
+    return price unless discount_in_percents
+    price * (100 - discount_in_percents) / 100
   end
 
   def to_s

@@ -6,16 +6,17 @@ html
     title = content_for?(:title) ? yield(:title) : 'Страница без заголовка | VPZven'
     = description_tag
     = keywords_tag
-    = render 'shared/favicons'
+    = render 'favicons'
     = stylesheet_link_tag 'web/application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'modernizr-custom'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = render 'shared/chatra'
+    = render 'scripts_in_head'
   body
-    = render 'shared/sidebar', menu_key: @menu_key
+    = render 'sidebar', menu_key: @menu_key
     .body class=('body-padded' if content_for?(:header)) id='body'
-      = render 'shared/header'
-      = render 'shared/flash_messages'
+      = render 'header'
+      = render 'flash_messages'
       = yield
-      = render 'shared/modal'
-      = render 'shared/sounds'
+      = render 'modal'
+      = render 'sounds'
+      = render 'scripts_in_body'

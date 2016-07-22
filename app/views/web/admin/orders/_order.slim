@@ -1,0 +1,148 @@
+.panel.panel-default.panel-order-info
+  .panel-heading
+    .pull-right
+      span Заказ #{order.status.text}
+      .btn-group
+        = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
+                  data: { toggle: 'dropdown' } do
+          span Изменить статус
+          span.caret
+        ul.dropdown-menu.dropdown-menu-right
+          - order_status_options.each do |status|
+            li = link_to "Заказ #{status[0]}", [:admin, order], remote: true,
+                         data: { method: :patch, params: { status: status[1] }.to_param }
+        = link_to [:admin, order], title: 'Удалить заказ', class: 'btn btn-link',
+                  method: :delete, data: { confirm: 'Хотите полностью удалить заказ?' } do
+          span.fa.fa-trash
+    .panel-title
+      span
+        = link_to order.to_s, [:admin, order]
+        - if order.discount_in_percents
+          '
+          | (#{number_to_currency order.discounted_sum, precision: 0} со скидкой)
+      small
+        ' от
+        span = human_date order.booked_on
+  .panel-body
+    .row
+      .col-side
+        - if order.ordering_profile.present?
+          dl
+            dt Заказ оформил(а):
+            dd = order.ordering_profile.to_s
+        - if order.booked_on?
+          dl
+            dt Забронирован на:
+            dd = human_date order.booked_on
+        - if order.payment_method?
+          dl
+            dt Метод оплаты:
+            dd = order.payment_method.text
+        - if order.address.present?
+          dl
+            dt Куда доставить:
+            dd = order.address.to_s
+        - if order.receiving_profile.present?
+          dl
+            dt Кому доставить:
+            dd = order.receiving_profile.to_s
+        - if order.wishes?
+          dl
+            dt Пожелания:
+            dd = order.wishes
+        - if order.discount_card_number.present?
+          dl
+            dt Номер бонусной карты:
+            dd = order.discount_card_number.to_s
+        - if order.discount_in_percents.present?
+          dl
+            dt Скидка:
+            dd
+              = number_to_percentage order.discount_in_percents, precision: 0
+              '
+              = link_to '(убрать скидку)', [:admin, order],
+                        remote: true,
+                        data: { method: :patch,
+                                params: { discount_in_percents: nil }.to_param }
+        - else
+          br
+          .btn-group
+            = link_to 'javascript:;', class: 'btn btn-default dropdown-toggle',
+                      data: { toggle: 'dropdown' } do
+              span Применить скидку
+              '
+              span.caret
+            ul.dropdown-menu.dropdown-menu-right
+              - discounts_options.each do |discount|
+                li = link_to discount[0], [:admin, order],
+                             remote: true,
+                             data: { method: :patch,
+                                     params: { discount_in_percents: discount[1] }.to_param }
+      .col-main
+        - if order.ordered_pizzas.any?
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Название
+                  th Ингредиенты
+                  th Размер
+                  th.text-right Количество
+                  th.text-right Стоимость
+                  th
+              tbody
+                - order.ordered_pizzas.each do |ordered_pizza|
+                  tr
+                    td
+                      p = ordered_pizza.name
+                      - if ordered_pizza.pizza.visibility.for_user?
+                        = link_to 'Редактировать', [:edit, :admin, ordered_pizza.pizza],
+                                  class: 'btn btn-default btn-sm'
+                    td
+                      = render "ingredients_#{ordered_pizza.pizza.parent.present? ? 'with' : 'without'}_parent", order: order, ordered_pizza: ordered_pizza, pizza: ordered_pizza.pizza, parent: ordered_pizza.pizza.parent
+                    td = ordered_pizza.pizza_size.text
+                    td.text-right = ordered_pizza.quantity
+                    td.text-right = number_to_currency ordered_pizza.price, precision: 0
+                    td.text-center
+                      = link_to [:admin, order, ordered_pizza],
+                                 title: 'Удалить',
+                                 method: :delete,
+                                 data: { confirm: 'Вы уверены?' },
+                                 remote: false do
+                        span.fa.fa-trash
+        .text-center
+          br
+          = link_to 'Добавить пиццу', [:new, :admin, order, :ordered_pizza],
+                    class: 'btn btn-default'
+          br
+          br
+        - if order.ordered_products.any?
+          .table-responsive
+            table.table
+              thead
+                tr
+                  th Название
+                  th Атрибуты
+                  th.text-right Количество
+                  th.text-right Стоимость
+                  th
+              tbody
+                - order.ordered_products.each do |ordered_product|
+                  tr
+                    td = ordered_product.product_name
+                    td = ordered_product.feature_names
+                    td.text-right = ordered_product.quantity
+                    td.text-right = number_to_currency ordered_product.price, precision: 0
+                    td.text-center
+                      = link_to [:admin, order, ordered_product],
+                                 title: 'Удалить',
+                                 method: :delete,
+                                 data: { confirm: 'Вы уверены?' },
+                                 remote: false do
+                        span.fa.fa-trash
+        .text-center
+          br
+          = link_to 'Добавить товар', [:new, :admin, order, :ordered_product],
+                    class: 'btn btn-default'
+          br
+          br

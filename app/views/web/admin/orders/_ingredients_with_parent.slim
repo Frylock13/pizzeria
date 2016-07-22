@@ -6,11 +6,28 @@ div
   - if parent.pizza_ingredients.pluck(:ingredient_id).include?(pizza_ingredient.ingredient_id)
     div
       .pull-right class=('text-danger' if pizza_ingredient.quantity != parent.pizza_ingredients.find_by(ingredient_id: pizza_ingredient.ingredient_id).quantity)
-         = pizza_ingredient.quantity
+        = pizza_ingredient.quantity
+        '
+        = link_to [:admin, order, ordered_pizza, pizza_ingredient],
+                   title: "Удалить #{pizza_ingredient.name}",
+                   class: 'text-muted',
+                   method: :delete,
+                   data: { confirm: 'Вы уверены?' },
+                   remote: false do
+          span.fa.fa-trash
       span = pizza_ingredient.name
   - else
     div.text-success
-      .pull-right = pizza_ingredient.quantity
+      .pull-right
+        = pizza_ingredient.quantity
+        '
+        = link_to [:admin, order, ordered_pizza, pizza_ingredient],
+                   title: "Удалить #{pizza_ingredient.name}",
+                   class: 'text-muted',
+                   method: :delete,
+                   data: { confirm: 'Вы уверены?' },
+                   remote: false do
+          span.fa.fa-trash
       span = pizza_ingredient.name
 - parent.pizza_ingredients.where.not(ingredient_id: pizza.pizza_ingredients.map{ |item| item.ingredient_id }).each do |pizza_ingredient|
   div.text-danger

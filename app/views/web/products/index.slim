@@ -1,8 +1,9 @@
 - title 'Закажите пиццу в 3 шага'
 section id='top'
   .slick-slider.slick-main data-no-transition-cache=''
-    .item = link_to '', page_path('dostavka'), class: 'item-banner banner-delivery'
     .item = link_to '', page_path('oplata-i-bonusnie-balli'), class: 'item-banner banner-bonus'
+    .item = link_to '', new_pizza_path, class: 'item-banner banner-constructor'
+    .item = link_to '', page_path('dostavka'), class: 'item-banner banner-delivery'
     .item = link_to '', page_path('pdf-menu'), class: 'item-banner banner-pdf'
 .navbar.navbar-inverse.hidden-print.affix-products
   .container-fluid
@@ -13,7 +14,7 @@ section id='top'
         - product_categories.each do |product_category|
           li = link_to product_category.name, "\#product_category_#{product_category.id}",
                        data: { scroll: '', options: '{ "offset": 70 }' }
-section.products id='user_pizza'
+section.section-products id='user_pizza'
   .container-masonry
     .section-title
       span Ваша пицца
@@ -22,6 +23,12 @@ section.products id='user_pizza'
         .masonry-item.col-xs-6.col-md-4.col-lg-3
           .panel.panel-default.panel-product
             .panel-body
+              .pull-left
+                = link_to pizza, title: 'Убрать эту пиццу из моего меню',
+                          class: 'btn btn-default btn-sm',
+                          method: :delete,
+                          data: { confirm: 'Вы убираете пиццу из меню? Нажмите ОК, если да' } do
+                  span.fa.fa-trash
               .product-image class=('image-unique' unless pizza.parent.present?)
                 = image_tag pizza.image.url(:thumb)
               .product-title = pizza.name
@@ -30,7 +37,7 @@ section.products id='user_pizza'
                 = pizza.ingredients.pluck(:name).join(', ')
             .panel-footer
               .list-group
-                - pizza.pizza_attributes.each do |pizza_attribute|
+                - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
                   - if pizza_attribute.price.present?
                     = link_to ordered_pizzas_path(pizza_id: pizza.id,
                                                   pizza_size: pizza_attribute.pizza_size),
@@ -73,7 +80,7 @@ section.products id='user_pizza'
               .panel-title Были на сайте<br/>раньше?
               .panel-subtitle Получите доступ к своей пицце и бонусным баллам
               .btn.btn-primary Перейти
-section.products id='menu_pizza'
+section.section-products id='menu_pizza'
   .container-masonry
     .section-title
       span Пицца в меню
@@ -96,6 +103,12 @@ section.products id='menu_pizza'
                 .product-image = image_tag pizza.image.url(:thumb)
                 - if pizza.hot == true
                   .product-badge.badge-hot
+                - if pizza.spicy == true
+                  div { class = 'product-badge badge-spicy'
+                        title = 'В этой пицце - острые перчики халапеньо'
+                        data-toggle = 'tooltip'
+                        data-placement = 'right'
+                      }
                 .product-title = pizza.name
                 .pizza-ingredients
                   ' #{pizza.dough.name} тесто,
@@ -108,7 +121,7 @@ section.products id='menu_pizza'
                                     style: 'expand-right' }
               .panel-footer
                 .list-group
-                  - pizza.pizza_attributes.each do |pizza_attribute|
+                  - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
                     - if pizza_attribute.price.present?
                       = link_to ordered_pizzas_path(pizza_id: pizza.id,
                                                     pizza_size: pizza_attribute.pizza_size),
@@ -123,7 +136,7 @@ section.products id='menu_pizza'
                       .list-group-item
                         span.text-muted = pizza_attribute.pizza_size.text
 - product_categories.each do |product_category|
-  section.products id="product_category_#{product_category.id}"
+  section.section-products id="product_category_#{product_category.id}"
     .container-masonry
       .section-title
         span = product_category.name

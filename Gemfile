@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.9.0'
 gem 'acts_as_list'
 gem 'angular_rails_csrf'
 gem 'bootstrap-sass', github: 'gambala/bootstrap-sass'
 gem 'bourbon'
+gem 'bugsnag'
 gem 'carrierwave'
 gem 'coffee-rails'
 gem 'deep_cloneable'
@@ -19,7 +20,6 @@ gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 gem 'js-routes'
 gem 'kaminari'
-gem 'mandrill_mailer'
 gem 'mini_magick'
 gem 'ngannotate-rails'
 gem 'nokogiri' # premailer dependency
@@ -28,7 +28,6 @@ gem 'premailer-rails'
 gem 'pry'
 gem 'pry-rails'
 gem 'rails', '~> 4.2.4'
-gem 'rollbar'
 gem 'russian'
 gem 'sassc-rails', '~> 1.1.0'
 gem 'sidekiq'
@@ -52,6 +51,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'active_record_doctor'
   gem 'annotate'
   gem 'bullet'
   gem 'capistrano'
@@ -82,7 +82,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-animate'
   gem 'rails-assets-breakpoint-sass'
   gem 'rails-assets-cferdinandi--smooth-scroll'
-  gem 'rails-assets-ink'
+  gem 'rails-assets-ink', '~> 1.0'
   gem 'rails-assets-interact'
   gem 'rails-assets-jasny-bootstrap'
   gem 'rails-assets-jquery.are-you-sure'
@@ -90,7 +90,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-ladda'
   gem 'rails-assets-masonry'
   gem 'rails-assets-moment'
-  gem 'rails-assets-normalize-css'
   gem 'rails-assets-selectize'
   gem 'rails-assets-Sortable'
 end

@@ -31,6 +31,7 @@ ru:
         pizza_attribute_attributes: Атрибуты
         pizza_category_id: Категория
         pizza_ingredient_attributes: Ингредиенты
+        spicy: Выделить как Острую
         visibility: Видимость
       pizza_category:
         name: Название
@@ -108,12 +109,13 @@ ru:
         cash: Наличными курьеру
         bonus_points: Бонусными баллами
       status:
-        created: Оформляется
-        booked: Забронирован
-        accepted: Принят
-        assembled: Собран
+        created: Еще не сформирован
+        booked: С бронью на дату
+        accepted: Обрабатывается
+        cooking: Готовится
+        assembled: Отправлен
         delivered: Доставлен
-        closed: Выполнен
+        closed: Получен клиентом
         canceled: Отменен
   helpers:
     label:

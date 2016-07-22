@@ -3,11 +3,11 @@
   ol.breadcrumb
     li = link_to 'Атрибуты', admin_features_path
     li.active = feature_value.name
-section.submenu id='features'
+section.section-submenu id='features'
   = render 'web/admin/features/features'
   hr
   = render 'web/admin/feature_values/feature_values'
-section.padded
+section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading

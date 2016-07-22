@@ -6,8 +6,6 @@ module Pizzeria
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths += %W(
-      #{config.root}/app/presenters
-      #{config.root}/app/services
       #{config.root}/lib/validators
     )
     config.encoding = 'utf-8'

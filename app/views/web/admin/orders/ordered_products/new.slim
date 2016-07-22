@@ -1,0 +1,20 @@
+- title 'Добавление товара'
+- content_for :header do
+  ol.breadcrumb
+    li = link_to 'Заказы', admin_orders_path
+    li = link_to 'Заказ', [:admin, order]
+    li.active Добавление товара
+- product_categories.each do |product_category|
+  section.section-products id="product_category_#{product_category.id}"
+    .container-masonry
+      .section-title
+        span = product_category.name
+      .masonry-grid.row
+        - product_category.products.with_visibility(:for_all).each do |product|
+          .masonry-item.col-xs-6.col-md-4.col-lg-3
+            .panel.panel-default.panel-product
+              .panel-body
+                .product-image = image_tag product.image.url(:thumb)
+                .product-title = product.name
+              .panel-footer
+                = render "item_with_#{product.features.uniq.size}_features", item: product

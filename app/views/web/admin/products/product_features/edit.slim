@@ -5,9 +5,9 @@
     li = link_to product.name, [:edit, :admin, product]
     li = link_to 'Атрибуты продукта', admin_product_product_features_path
     li.active = @product_feature.name
-section.submenu id='product_features'
+section.section-submenu id='product_features'
   = render 'product_features'
-section.padded
+section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading

@@ -1,7 +1,7 @@
 @import 'variables'
 @import 'settings/prefixer'
 @import 'addons/prefixer'
-@import 'bootstrap/mixins/_rhythm'
+@import 'bootstrap/mixins/rhythm'
 @import 'css3/transition'
 
 .nav
@@ -9,22 +9,33 @@
     > a
       color: $link-color
       line-height: rh()
-      &:hover, &:focus
+
+      &:hover,
+      &:focus
         color: $link-hover-color
         cursor: pointer
-  &.nav-pills
-    font-size: 10px
-    font-weight: 500
-    margin: 10px 0
-    text-transform: uppercase
-    > li
+
+
+// .nav modificators
+
+.nav-pills
+  font-size: 10px
+  font-weight: 500
+  margin: 10px 0
+  text-transform: uppercase
+
+  > li
+    > a
+      +transition(background-color 0.25s, color 0.25s)
+      padding: 0 10px
+
+    &.active
       > a
-        +transition(background-color 0.25s, color 0.25s)
-        padding: 0 10px
-      &.active
-        > a
-          &, &:hover, &:focus
-            background-color: #c3c3c3
-            color: $link-hover-color
-      + li
-        margin-left: 7px
+        &,
+        &:hover,
+        &:focus
+          background-color: #c3c3c3
+          color: $link-hover-color
+
+    + li
+      margin-left: 7px

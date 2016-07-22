@@ -9,47 +9,53 @@
     @status = status
     switch status
       when 'created'
-        @progress.width('30%')
+        @progress.width('20%')
         @progress.addClass('progress-bar-striped active')
         @colorProgress()
         @progress.text('Заказ Оформляется')
         @slider.slick('slickGoTo', 1)
       when 'booked'
-        @progress.width('40%')
+        @progress.width('30%')
         @progress.addClass('progress-bar-striped active')
         @colorProgress('progress-bar-info')
         @progress.text('Заказ Забронирован')
         @slider.slick('slickGoTo', 2)
       when 'accepted'
-        @progress.width('50%')
+        @progress.width('40%')
         @progress.addClass('progress-bar-striped active')
         @colorProgress('progress-bar-success')
         @progress.text('Заказ Принят')
         @slider.slick('slickGoTo', 3)
+      when 'cooking'
+        @progress.width('50%')
+        @progress.addClass('progress-bar-striped active')
+        @colorProgress('progress-bar-success')
+        @progress.text('Заказ Готовится')
+        @slider.slick('slickGoTo', 4)
       when 'assembled'
         @progress.width('70%')
         @progress.addClass('progress-bar-striped active')
         @colorProgress('progress-bar-warning')
         @progress.text('Заказ Собран')
-        @slider.slick('slickGoTo', 4)
+        @slider.slick('slickGoTo', 5)
       when 'delivered'
         @progress.width('90%')
         @progress.addClass('progress-bar-striped active')
         @colorProgress('progress-bar-danger')
         @progress.text('Заказ Доставлен')
-        @slider.slick('slickGoTo', 5)
+        @slider.slick('slickGoTo', 6)
       when 'closed'
         @progress.width('100%')
         @progress.removeClass('progress-bar-striped active')
         @colorProgress('progress-bar-success')
         @progress.text('Заказ Выполнен')
-        @slider.slick('slickGoTo', 6)
+        @slider.slick('slickGoTo', 7)
       when 'canceled'
         @progress.width('100%')
         @progress.removeClass('progress-bar-striped active')
         @colorProgress()
         @progress.text('Заказ Отменен')
-        @slider.slick('slickGoTo', 7)
+        @slider.slick('slickGoTo', 8)
   request: ->
     $.ajax
       url: Routes.order_status_path(@order.data('order'))

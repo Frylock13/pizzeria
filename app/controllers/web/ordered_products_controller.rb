@@ -47,7 +47,7 @@ class Web::OrderedProductsController < Web::ApplicationController
   def render_cart
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js { render 'shared/cart', layout: false }
+      format.js { render 'sidebar_cart', layout: false }
     end
   end
 

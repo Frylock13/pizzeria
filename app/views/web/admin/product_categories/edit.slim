@@ -3,9 +3,9 @@
   ol.breadcrumb
     li = link_to 'Продукты', admin_products_path
     li.active #{product_category.name} (категория)
-section.submenu id='products'
+section.section-submenu id='products'
   = render 'web/admin/products/products'
-section.padded
+section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading

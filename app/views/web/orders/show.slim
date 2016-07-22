@@ -2,8 +2,12 @@
 - content_for :header do
   ol.breadcrumb
     li = link_to 'Ваши заказы', orders_path
-    li.active = order.to_s
-section.order-info id='polling_order' data-status=order.status data-order=order.id
+    li.active
+      = order.to_s
+      - if order.discount_in_percents
+        '
+        | (#{number_to_currency order.discounted_sum, precision: 0} со скидкой)
+section.section-order-info id='polling_order' data-status=order.status data-order=order.id
   .container-fluid
     .panel.panel-default.panel-order-stats
       .panel-heading
@@ -26,7 +30,7 @@ section.order-info id='polling_order' data-status=order.status data-order=order.
             - if order.booked_on?
               dl
                 dt Забронирован на:
-                dd.moment-date = order.booked_on
+                dd = human_date order.booked_on
             - if order.payment_method?
               dl
                 dt Метод оплаты:

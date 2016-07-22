@@ -1,5 +1,5 @@
 .well
-  - items.each do |item|
+  - items.sort_by(&:pizza_size).each do |item|
     .form-group
       = f.fields_for fields, item do |ff|
         = ff.label :price, "Цена и вес для #{item.pizza_size.text}",

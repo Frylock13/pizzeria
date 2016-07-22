@@ -2,7 +2,7 @@
 - content_for :header do
   ol.breadcrumb
     li.active Заявки на звонок
-section.padded id='call_requests'
+section.section-padded id='call_requests'
   .container-fluid
     .table-responsive
       table.table
@@ -15,7 +15,7 @@ section.padded id='call_requests'
         tbody
           - @call_requests.each do |call_request|
             tr
-              td.col-date.moment-date = call_request.created_at
+              td.col-date = human_date call_request.created_at
               td
                 p = call_request.ordering_first_name
                 p = call_request.ordering_phone

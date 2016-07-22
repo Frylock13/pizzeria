@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405095548) do
+ActiveRecord::Schema.define(version: 20160519235828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,8 +167,10 @@ ActiveRecord::Schema.define(version: 20160405095548) do
     t.integer  "ordering_profile_id"
     t.string   "payment_method"
     t.datetime "booked_on"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "discount_card_number"
+    t.decimal  "discount_in_percents", precision: 5, scale: 2
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
@@ -224,8 +226,11 @@ ActiveRecord::Schema.define(version: 20160405095548) do
     t.datetime "updated_at",                    null: false
     t.boolean  "hot"
     t.integer  "pizza_category_id"
+    t.datetime "deleted_at"
+    t.boolean  "spicy"
   end
 
+  add_index "pizzas", ["deleted_at"], name: "index_pizzas_on_deleted_at", using: :btree
   add_index "pizzas", ["dough_id"], name: "index_pizzas_on_dough_id", using: :btree
   add_index "pizzas", ["owner_id"], name: "index_pizzas_on_owner_id", using: :btree
   add_index "pizzas", ["parent_id"], name: "index_pizzas_on_parent_id", using: :btree
@@ -311,6 +316,7 @@ ActiveRecord::Schema.define(version: 20160405095548) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "viewable_resources", ["viewable_id"], name: "index_viewable_resources_on_viewable_id", using: :btree
   add_index "viewable_resources", ["viewable_type", "viewable_id"], name: "index_viewable_resources_on_viewable_type_and_viewable_id", using: :btree
 
   add_foreign_key "call_requests", "profiles", column: "ordering_profile_id"

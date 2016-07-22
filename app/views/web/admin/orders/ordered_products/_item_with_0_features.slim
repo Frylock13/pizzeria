@@ -1,0 +1,6 @@
+.list-group
+  = button_to [:admin, order, :ordered_products],
+              params: { product_id: item.id },
+              class: 'list-group-item ladda-button' do
+    span.b = number_to_currency item.price, precision: 0
+

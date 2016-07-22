@@ -4,13 +4,14 @@
     .h4.modal-title Заявка на обратный звонок
   .modal-body
     = form_for item, remote: true, authenticity_token: true do |f|
-      = form_field_group :first_name, item do
-        = f.text_field :first_name, class: 'form-control', placeholder: true
-        = form_field_error :first_name, item
-      = form_field_group :phone, item do
-        = f.text_field :phone, class: 'form-control', placeholder: true
-        = form_field_error :phone, item
-      .form-group
-        = f.text_area :wishes, class: 'form-control', placeholder: true, rows: 2
-      .form-group.text-center
-        = f.button 'Отправить заявку на звонок', class: 'btn btn-primary ladda-button'
+      .form-groups
+        = form_field_group :first_name, item do
+          = f.text_field :first_name, class: 'form-control', placeholder: true
+          = form_field_error :first_name, item
+        = form_field_group :phone, item do
+          = f.text_field :phone, class: 'form-control', placeholder: true
+          = form_field_error :phone, item
+        .form-group
+          = f.text_area :wishes, class: 'form-control', placeholder: true, rows: 2
+        .form-group.text-center
+          = f.button 'Отправить заявку на звонок', class: 'btn btn-primary ladda-button'

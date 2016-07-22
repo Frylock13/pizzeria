@@ -1,6 +1,6 @@
 @import 'variables'
-@import 'bootstrap/mixins/_alerts'
-@import 'bootstrap/mixins/_rhythm'
+@import 'bootstrap/mixins/alerts'
+@import 'bootstrap/mixins/rhythm'
 
 .alert
   border: none
@@ -9,14 +9,23 @@
   margin: rh(0.5) 0
   padding: rh(0.5) 15px
   position: relative
+
   .close i
     display: block
     font-size: $font-size-small
     font-weight: normal
-  & + .alert
-    margin-top: rh(0.5)
+
+
+// .alert siblings
+
+.alert + .alert
+  margin-top: rh(0.5)
+
+
+// .alert color modificators
 
 .alert-notice
   +alert-variant($alert-info-bg, $alert-info-border, $alert-info-text)
+
 .alert-error
   +alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text)
