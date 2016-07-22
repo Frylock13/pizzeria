@@ -49,7 +49,7 @@ class Pizza < ActiveRecord::Base
   end
 
   def soft_destroy
-    self.update(deleted_at: Time.zone.now)
+    update(deleted_at: Time.zone.now)
   end
 
   scope :non_deleted, -> { where(deleted_at: nil) }

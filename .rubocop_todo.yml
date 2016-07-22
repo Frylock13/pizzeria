@@ -95,12 +95,6 @@ Style/MultilineMethodCallIndentation:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'app/models/pizza.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/UnneededInterpolation:
   Exclude:
     - 'app/helpers/application_helper.rb'
