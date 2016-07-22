@@ -110,5 +110,5 @@ Style/UnneededInterpolation:
 # Configuration parameters: SupportedStyles, WordRegex.
 # SupportedStyles: percent, brackets
 Style/WordArray:
-  EnforcedStyle: percent
-  MinSize: 3
+  Exclude:
+    - 'app/controllers/web/admin/orders_controller.rb'
