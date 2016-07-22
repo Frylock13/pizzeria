@@ -43,11 +43,7 @@ gem 'unicorn', group: :production
 gem 'virtus'
 
 group :development, :test do
-  gem 'factory_girl'
-  gem 'parallel_tests'
-  gem 'rspec-rails'
   gem 'spring'
-  gem 'spring-commands-rspec'
 end
 
 group :development do
