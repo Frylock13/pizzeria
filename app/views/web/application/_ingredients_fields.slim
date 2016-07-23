@@ -4,7 +4,7 @@
   div { class = 'block-ingredients-fields ng-hide'
         ng-controller = 'PizzaIngredientsFormController as vm'
         ng-show = 'vm.ingredient_categories'
-        id = 'ingredients_fields'
+        id = 'ingredients_fields', f: f
       }
     ul.list-group ng-repeat='ingredient_category in vm.ingredient_categories track by ingredient_category.id'
       li.list-group-item

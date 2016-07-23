@@ -38,6 +38,6 @@
         = render 'attributes_fields', f: f, fields: :pizza_attributes, items: item.pizza_attributes
         = render 'fileinput_field', f: f, item: item
       .col-xs-6
-        = render 'ingredients_fields', item: item, hide_control: false
+        = render 'ingredients_fields', f: f, item: item, hide_control: false
     .form-group
       = f.button nil, class: 'btn btn-primary ladda-button'

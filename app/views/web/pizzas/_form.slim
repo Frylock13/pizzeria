@@ -26,7 +26,7 @@
             :id, :name, { prompt: 'Выберите тесто' },
                         { class: 'form-control selectize-doughs' }
           = f.error_message :dough_id
-        = render 'ingredients_fields', item: item, hide_control: true
+        = render 'ingredients_fields', f: f, item: item, hide_control: true
         .form-group
           .pizza-submit
             = f.button 'Создать особую пиццу', class: 'btn btn-primary ladda-button'
