@@ -2,7 +2,6 @@ class Web::Admin::Products::ProductFeaturesController < Web::Admin::Products::Ap
   helper_method :feature_values, :features, :product_features
 
   def index
-    # render :index if stale? @product_features | layout_resources
   end
 
   def new

@@ -3,7 +3,6 @@ class Web::Admin::PizzasController < Web::Admin::ApplicationController
   helper_method :doughs, :pizza_categories, :pizzas
 
   def index
-    # render :index if stale? @pizzas | layout_resources
   end
 
   def new
@@ -11,14 +10,12 @@ class Web::Admin::PizzasController < Web::Admin::ApplicationController
     PizzaSizes.pizza_size.values.each { |value| @pizza.pizza_attributes.build(pizza_size: value) }
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = []
-    # render :new if stale? [@pizza, ingredient_categories] | layout_resources
   end
 
   def edit
     @pizza = Pizza.find(params[:id])
     gon.ingredient_categories = ingredient_categories
     gon.pizza_ingredients = pizza_ingredients(@pizza)
-    # render :edit if stale? [@pizza, ingredient_categories] | layout_resources
   end
 
   def create

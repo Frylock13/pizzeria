@@ -4,7 +4,6 @@ class Web::PasswordResetsController < Web::ApplicationController
 
   def new
     @password_reset = PasswordReset.new
-    # render :new if stale? [@password_reset] | layout_resources
   end
 
   def create

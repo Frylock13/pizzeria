@@ -3,17 +3,14 @@ class Web::Admin::PagesController < Web::Admin::ApplicationController
   helper_method :pages
 
   def index
-    # render :index if stale? @pages | layout_resources
   end
 
   def new
     @page = Page.new(viewable_resource: ViewableResource.new)
-    # render :new if stale? [@page] | layout_resources
   end
 
   def edit
     @page = Page.find(params[:id])
-    # render :edit if stale? [@page] | layout_resources
   end
 
   def create

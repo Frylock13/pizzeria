@@ -13,28 +13,25 @@ class Web::ApplicationController < ApplicationController
     redirect_to login_path
   end
 
-  def not_found
-    redirect_to root_path, status: :not_found
-  end
-
-  def require_admin
-    forbidden unless current_user&.role&.admin?
-  end
-
   def current_order
-    @current_order ||= current_profile.ordering_orders
-                                      .with_status(:created)
-                                      .first_or_initialize(ordering_profile: current_profile)
+    @current_order ||=
+      current_profile.ordering_orders
+                     .with_status(:created)
+                     .first_or_initialize(ordering_profile: current_profile)
   end
 
   def current_ordered_pizzas
-    current_order.ordered_pizzas.includes(:pizza).order('pizzas.name', :pizza_size)
+    @current_ordered_pizzas ||=
+      current_order.ordered_pizzas
+                   .includes(:pizza)
+                   .order('pizzas.name', :pizza_size)
   end
 
   def current_ordered_products
-    current_order.ordered_products
-                 .includes(:product, ordered_product_features: [product_feature: [:feature_value]])
-                 .order('products.name', 'feature_values.name')
+    @current_ordered_products ||=
+      current_order.ordered_products
+                   .includes(:product, ordered_product_features: [product_feature: [:feature_value]])
+                   .order('products.name', 'feature_values.name')
   end
 
   def current_profile
@@ -59,16 +56,4 @@ class Web::ApplicationController < ApplicationController
   def profile_for_guest
     Profile.new
   end
-
-  # def layout_resources
-  #   [current_user_etag, pages, revision]
-  # end
-
-  # def current_user_etag
-  #   current_user || :guest
-  # end
-
-  # def revision
-  #   @revision ||= { last_modified: File.atime("#{Rails.root}/REVISION").utc, etag: :revision }
-  # end
 end

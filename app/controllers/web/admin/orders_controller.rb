@@ -9,7 +9,6 @@ class Web::Admin::OrdersController < Web::Admin::ApplicationController
       @orders = Order.without_status(:created).without_status(:canceled)
     end
     @orders = @orders.includes(:ordering_profile, :receiving_profile).order(created_at: :desc)
-    # render :index if stale? @orders | layout_resources
   end
 
   def show

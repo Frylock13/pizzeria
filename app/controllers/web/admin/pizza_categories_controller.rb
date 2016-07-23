@@ -3,7 +3,6 @@ class Web::Admin::PizzaCategoriesController < Web::Admin::ApplicationController
   helper_method :pizza_category, :pizza_categories
 
   def edit
-    # render :edit if stale? [pizza_category] | layout_resources
   end
 
   def create

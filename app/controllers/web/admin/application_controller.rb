@@ -1,9 +1,9 @@
 class Web::Admin::ApplicationController < Web::ApplicationController
   before_filter :require_admin
 
-  # private
+  private
 
-  # def layout_resources
-  #   [revision]
-  # end
+  def require_admin
+    forbidden unless current_user&.role&.admin?
+  end
 end

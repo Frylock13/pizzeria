@@ -3,11 +3,9 @@ class Web::Admin::FeaturesController < Web::Admin::ApplicationController
   helper_method :feature, :features, :feature_values
 
   def index
-    # render :index if stale? [@features, @feature_values] | layout_resources
   end
 
   def edit
-    # render :edit if stale? [feature] | layout_resources
   end
 
   def create

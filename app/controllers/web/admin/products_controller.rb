@@ -3,17 +3,14 @@ class Web::Admin::ProductsController < Web::Admin::ApplicationController
   helper_method :product_categories
 
   def index
-    # render :index if stale? @product_categories | layout_resources
   end
 
   def new
     @product = Product.new
-    # render :new if stale? [@product, product_categories] | layout_resources
   end
 
   def edit
     @product = Product.find(params[:id])
-    # render :edit if stale? [@product, product_categories] | layout_resources
   end
 
   def create

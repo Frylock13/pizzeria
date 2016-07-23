@@ -18,7 +18,6 @@ class Web::CallRequestsController < Web::ApplicationController
       format.html
       format.js { render :new, layout: false }
     end
-    # render :new if stale? [:new_call_request] | layout_resources
   end
 
   def create

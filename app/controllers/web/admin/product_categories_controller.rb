@@ -3,7 +3,6 @@ class Web::Admin::ProductCategoriesController < Web::Admin::ApplicationControlle
   helper_method :product_category, :product_categories
 
   def edit
-    # render :edit if stale? [product_category] | layout_resources
   end
 
   def create

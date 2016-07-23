@@ -3,18 +3,15 @@ class Web::Admin::IngredientsController < Web::Admin::ApplicationController
   helper_method :ingredient_categories
 
   def index
-    # render :index if stale? @ingredient_categories | layout_resources
   end
 
   def new
     @ingredient = Ingredient.new
     PizzaSizes.pizza_size.values.each { |value| @ingredient.ingredient_attributes.build(pizza_size: value) }
-    # render :new if stale? [@ingredient, ingredient_categories] | layout_resources
   end
 
   def edit
     @ingredient = Ingredient.find(params[:id])
-    # render :edit if stale? [@ingredient, ingredient_categories] | layout_resources
   end
 
   def create

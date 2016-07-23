@@ -3,7 +3,6 @@ class Web::Admin::FeatureValuesController < Web::Admin::ApplicationController
 
   def edit
     @menu_key = :features
-    # render :edit if stale? [feature_value] | layout_resources
   end
 
   def create

@@ -22,18 +22,15 @@ class Web::OrdersController < Web::ApplicationController
 
   def index
     @menu_key = :orders
-    # render :index if stale? [:orders] | layout_resources
   end
 
   def show
     @menu_key = :orders
-    # render :show if stale? order | layout_resources
   end
 
   def new
     @menu_key = :new_order
     current_order.booked_on = Time.zone.now unless current_order.booked_on.present?
-    # render :new if stale? [:new_order] | layout_resources
   end
 
   def update

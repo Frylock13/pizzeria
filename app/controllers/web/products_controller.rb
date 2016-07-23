@@ -19,7 +19,6 @@ class Web::ProductsController < Web::ApplicationController
 
   def index
     @menu_key = :products
-    # render :index if stale? pizzas | layout_resources
   end
 
   private

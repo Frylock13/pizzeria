@@ -3,7 +3,6 @@ class Web::Admin::IngredientCategoriesController < Web::Admin::ApplicationContro
   helper_method :ingredient_category, :ingredient_categories
 
   def edit
-    # render :edit if stale? [ingredient_category] | layout_resources
   end
 
   def create

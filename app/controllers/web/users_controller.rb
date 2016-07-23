@@ -21,7 +21,6 @@ class Web::UsersController < Web::ApplicationController
   def new
     @menu_key = :auth
     @user = User.new
-    # render :new if stale? [@user] | layout_resources
   end
 
   def create
