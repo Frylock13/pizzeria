@@ -44,25 +44,25 @@
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.navmenu-title Связь с нами
-      = menu_link_to :new_call_request, new_call_request_path, remote: true do
+      li = link_to new_call_request_path, remote: true do
         span.fa.fa-phone-square
         | Подать заявку на обратный звонок
-      = menu_link_to :phone, 'tel:74951208088' do
+      li = link_to 'tel:74951208088' do
         span.fa.fa-phone
         | +7 (495) 120-80-88
-      = menu_link_to :phone, 'tel:79264008088', class: 'small' do
+      li = link_to 'tel:79264008088', class: 'small' do
         span.fa.fa-phone-hidden
         | +7 (926) 400-80-88
-      = menu_link_to :phone, 'tel:79154055455', class: 'small' do
+      li = link_to 'tel:79154055455', class: 'small' do
         span.fa.fa-phone-hidden
         | +7 (915) 405-54-55
-      = menu_link_to :phone, 'tel:79060730603', class: 'small' do
+      li = link_to 'tel:79060730603', class: 'small' do
         span.fa.fa-phone-hidden
         | +7 (906) 073-06-03
-      = menu_link_to :email, 'mailto:help@vpzven.ru', target: '_blank' do
+      li = link_to 'mailto:help@vpzven.ru', target: '_blank' do
         span.fa.fa-envelope
         | help@vpzven.ru
-      = menu_link_to :vk, 'http://vk.com/vashapizza', target: '_blank' do
+      li = link_to 'http://vk.com/vashapizza', target: '_blank' do
         span.fa.fa-vk
         | Группа ВКонтакте
     ul.navmenu-divider
@@ -85,13 +85,10 @@
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
             - if current_user.role.admin?
-              = menu_link_to :admin, admin_root_path do
+              li = link_to admin_root_path do
                 span.fa.fa-cogs
                 | В админку
-            = menu_link_to :oauth, oauth_path do
-              span.fa.fa-link
-              | Привязать соцсети
-            = menu_link_to :logout, logout_path do
+            li = link_to logout_path do
               span.fa.fa-sign-out
               | Выйти
             li
