@@ -1,7 +1,7 @@
 - title feature_value.name
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Атрибуты', admin_features_path
+    li = link_to 'Атрибуты', [:admin, :features]
     li.active = feature_value.name
 section.section-submenu id='features'
   = render 'web/admin/features/features'
@@ -11,7 +11,7 @@ section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_features_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :features], class: 'close'
         .panel-title = feature_value.name
       .panel-body
         = render 'form', item: feature_value

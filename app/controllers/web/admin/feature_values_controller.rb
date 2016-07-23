@@ -9,7 +9,7 @@ class Web::Admin::FeatureValuesController < Web::Admin::ApplicationController
     @feature_value = FeatureValue.new(feature_value_params)
     if @feature_value.save
       respond_to do |format|
-        format.html { redirect_to admin_products_path, success: 'Значение атрибута успешно добавлено' }
+        format.html { redirect_to [:admin, :products], success: 'Значение атрибута успешно добавлено' }
         format.json { render json: @feature_value }
       end
     else
@@ -22,7 +22,7 @@ class Web::Admin::FeatureValuesController < Web::Admin::ApplicationController
   def update
     if feature_value.update(feature_value_params)
       FeatureValuesMergingService.new(feature_value).merge
-      redirect_to admin_features_path, success: 'Значение атрибута успешно обновлено'
+      redirect_to [:admin, :features], success: 'Значение атрибута успешно обновлено'
     else
       render :edit, change: "edit_feature_value_#{@feature_value.id}", layout: !request.xhr?
     end
@@ -34,7 +34,7 @@ class Web::Admin::FeatureValuesController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить значение атрибута'
     end
-    redirect_to admin_features_path
+    redirect_to [:admin, :features]
   end
 
   private

@@ -3,7 +3,7 @@
 - keywords @page.meta_keywords
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Ваша пицца', root_path
+    li = link_to 'Ваша пицца', :root
     li.active = @page.page_title
 section.section-post
   .container-fluid = @page.page_description.html_safe

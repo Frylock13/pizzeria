@@ -1,22 +1,22 @@
 .navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
-  = link_to root_path, class: 'navmenu-brand', title: 'Обратно на сайт' do
+  = link_to :root, class: 'navmenu-brand', title: 'Обратно на сайт' do
     .img.img-logo
   .navmenu-scroll-area
     ul.nav.navmenu-nav
       li.navmenu-title Заявки
-      = menu_link_to admin_root_path, exact_route_match: true do
+      = menu_link_to [:admin, :root], exact_route_match: true do
         span.fa.fa-area-chart
         | Сводка
       = menu_link_to admin_orders_path(status: :accepted), route_without_params: true do
         span.fa.fa-shopping-cart
         | Заказы
-      = menu_link_to admin_call_requests_path do
+      = menu_link_to [:admin, :call_requests] do
         span.fa.fa-phone
         = CallRequest.model_name.human(count: 0)
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.navmenu-title Данные на сайте
-      = menu_link_to admin_pages_path do
+      = menu_link_to [:admin, :pages] do
         span.fa.fa-file
         = Page.model_name.human(count: 0)
       li.dropdown.dropdown-collapse
@@ -25,18 +25,18 @@
           span Товары
           span.fa.fa-chevron-down
         ul.dropdown-menu.navmenu-nav
-          = menu_link_to admin_pizzas_path do
+          = menu_link_to [:admin, :pizzas] do
             span.fa.fa-fw
             = Pizza.model_name.human(count: 0)
-          = menu_link_to admin_products_path do
+          = menu_link_to [:admin, :products] do
             span.fa.fa-fw
             = Product.model_name.human(count: 0)
-          = menu_link_to admin_ingredients_path do
+          = menu_link_to [:admin, :ingredients] do
             span.fa.fa-fw
             = Ingredient.model_name.human(count: 0)
-          = menu_link_to admin_doughs_path do
+          = menu_link_to [:admin, :doughs] do
             span.fa.fa-fw
             = Dough.model_name.human(count: 0)
-          = menu_link_to admin_features_path do
+          = menu_link_to [:admin, :features] do
             span.fa.fa-fw
             = Feature.model_name.human(count: 0)

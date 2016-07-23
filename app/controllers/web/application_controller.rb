@@ -6,11 +6,11 @@ class Web::ApplicationController < ApplicationController
   private
 
   def forbidden
-    redirect_to root_path, status: :forbidden
+    redirect_to :root, status: :forbidden
   end
 
   def not_authenticated
-    redirect_to login_path
+    redirect_to :login
   end
 
   def current_order

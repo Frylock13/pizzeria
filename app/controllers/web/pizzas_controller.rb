@@ -33,7 +33,7 @@ class Web::PizzasController < Web::ApplicationController
     @pizza = PizzaForm.new(pizza_params).build
     if @pizza.save
       session[:profile_id] = @pizza.owner.id
-      redirect_to root_path, success: 'Пицца успешно добавлена'
+      redirect_to :root, success: 'Пицца успешно добавлена'
     else
       gon.ingredient_categories = ingredient_categories
       gon.pizza_ingredients = pizza_ingredients(@pizza)
@@ -47,9 +47,9 @@ class Web::PizzasController < Web::ApplicationController
   def destroy
     @pizza = Pizza.find(params[:id])
     if @pizza.soft_destroy
-      redirect_to root_path, success: 'Пицца успешно удалена'
+      redirect_to :root, success: 'Пицца успешно удалена'
     else
-      redirect_to root_path, error: 'Пицца не была удалена'
+      redirect_to :root, error: 'Пицца не была удалена'
     end
   end
 

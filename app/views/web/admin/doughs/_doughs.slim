@@ -1,4 +1,4 @@
-= link_to 'Добавить Тесто', new_admin_dough_path, class: 'btn btn-primary btn-block'
+= link_to 'Добавить Тесто', [:new, :admin, :dough], class: 'btn btn-primary btn-block'
 hr
 - doughs.each do |dough|
   .panel.panel-default.panel-item

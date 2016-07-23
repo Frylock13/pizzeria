@@ -1,7 +1,7 @@
 - title 'Добавление товара'
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Заказы', admin_orders_path
+    li = link_to 'Заказы', [:admin, :orders]
     li = link_to 'Заказ', [:admin, order]
     li.active Добавление товара
 - product_categories.each do |product_category|

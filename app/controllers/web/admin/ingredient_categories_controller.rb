@@ -9,7 +9,7 @@ class Web::Admin::IngredientCategoriesController < Web::Admin::ApplicationContro
     @ingredient_category = IngredientCategory.new(ingredient_category_params)
     if @ingredient_category.save
       respond_to do |format|
-        format.html { redirect_to admin_ingredients_path, success: 'Категория ингредиента успешно добавлена' }
+        format.html { redirect_to [:admin, :ingredients], success: 'Категория ингредиента успешно добавлена' }
         format.json { render json: @ingredient_category }
       end
     else
@@ -22,7 +22,7 @@ class Web::Admin::IngredientCategoriesController < Web::Admin::ApplicationContro
   def update
     if update_by_reason
       respond_to do |format|
-        format.html { redirect_to admin_ingredients_path, success: 'Категория ингредиента успешно обновлена' }
+        format.html { redirect_to [:admin, :ingredients], success: 'Категория ингредиента успешно обновлена' }
         format.json { render json: { message: 'Success' }, status: 200 }
       end
     else
@@ -42,7 +42,7 @@ class Web::Admin::IngredientCategoriesController < Web::Admin::ApplicationContro
     else
       flash[:success] = 'Невозможно удалить категорию'
     end
-    redirect_to admin_ingredients_path, change: :ingredients
+    redirect_to [:admin, :ingredients], change: :ingredients
   end
 
   private

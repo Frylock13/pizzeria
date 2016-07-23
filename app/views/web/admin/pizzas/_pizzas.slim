@@ -1,4 +1,4 @@
-= link_to 'Добавить Пиццу', new_admin_pizza_path, class: 'btn btn-primary btn-block'
+= link_to 'Добавить Пиццу', [:new, :admin, :pizza], class: 'btn btn-primary btn-block'
 - if pizza_categories.any?
   hr
   .sortable-list

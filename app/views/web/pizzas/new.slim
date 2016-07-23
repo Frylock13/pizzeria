@@ -1,13 +1,13 @@
 - title 'Создание пиццы'
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Ваша пицца', root_path
+    li = link_to 'Ваша пицца', :root
     li.active Создание особой пиццы
 section.section-padded
   .container-fluid
     .panel.panel-default.panel-pizza
       .panel-heading
-        = link_to '&times;'.html_safe, root_path, class: 'close'
+        = link_to '&times;'.html_safe, :root, class: 'close'
         .panel-title
           ' Создание особой пиццы
           small = "на основе пиццы «#{@pizza.parent.name}»" if @pizza.parent.present?

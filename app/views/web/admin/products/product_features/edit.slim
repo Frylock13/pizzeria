@@ -1,9 +1,9 @@
 - title @product_feature.name
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Продукты', admin_products_path
+    li = link_to 'Продукты', [:admin, :products]
     li = link_to product.name, [:edit, :admin, product]
-    li = link_to 'Атрибуты продукта', admin_product_product_features_path
+    li = link_to 'Атрибуты продукта', [:admin, product, :product_features]
     li.active = @product_feature.name
 section.section-submenu id='product_features'
   = render 'product_features'
@@ -11,7 +11,7 @@ section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_product_product_features_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, product, :product_features], class: 'close'
         .panel-title = @product_feature.name
       .panel-body
         = render 'form', item: @product_feature

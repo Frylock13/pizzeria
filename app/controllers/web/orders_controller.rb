@@ -48,7 +48,7 @@ class Web::OrdersController < Web::ApplicationController
     current_order.ordered_pizzas.destroy_all
     current_order.ordered_products.destroy_all
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to :root }
       format.js { render 'sidebar_cart', layout: false }
     end
   end
@@ -62,7 +62,7 @@ class Web::OrdersController < Web::ApplicationController
 
   def check_order_price
     if current_order.price < ENV['APP_MINIMAL_ORDER_COST'].to_i
-      redirect_to root_path,
+      redirect_to :root,
                   success: "Пополните корзину минимум на #{ENV['APP_MINIMAL_ORDER_COST']} руб"
     end
   end

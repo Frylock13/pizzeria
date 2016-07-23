@@ -9,7 +9,7 @@ class Web::Admin::PizzaCategoriesController < Web::Admin::ApplicationController
     @pizza_category = PizzaCategory.new(pizza_category_params)
     if @pizza_category.save
       respond_to do |format|
-        format.html { redirect_to admin_pizzas_path, success: 'Категория пиццы успешно добавлена' }
+        format.html { redirect_to [:admin, :pizzas], success: 'Категория пиццы успешно добавлена' }
         format.json { render json: @pizza_category }
       end
     else
@@ -22,7 +22,7 @@ class Web::Admin::PizzaCategoriesController < Web::Admin::ApplicationController
   def update
     if update_by_reason
       respond_to do |format|
-        format.html { redirect_to admin_pizzas_path, success: 'Категория пиццы успешно обновлена' }
+        format.html { redirect_to [:admin, :pizzas], success: 'Категория пиццы успешно обновлена' }
         format.json { render json: { message: 'Success' }, status: 200 }
       end
     else
@@ -42,7 +42,7 @@ class Web::Admin::PizzaCategoriesController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить категорию'
     end
-    redirect_to admin_pizzas_path, change: :pizzas
+    redirect_to [:admin, :pizzas], change: :pizzas
   end
 
   private

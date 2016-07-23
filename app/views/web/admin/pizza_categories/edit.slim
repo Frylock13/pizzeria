@@ -1,7 +1,7 @@
 - title pizza_category.name
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Ингредиенты', admin_pizzas_path
+    li = link_to 'Ингредиенты', [:admin, :pizzas]
     li.active #{pizza_category.name} (категория)
 section.section-submenu id='pizzas'
   = render 'web/admin/pizzas/pizzas'
@@ -9,7 +9,7 @@ section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_pizzas_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :pizzas], class: 'close'
         .panel-title #{pizza_category.name} (категория)
       .panel-body
         = render 'form', item: pizza_category

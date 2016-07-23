@@ -39,7 +39,7 @@ class Web::Admin::IngredientsController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить ингредиент'
     end
-    redirect_to admin_ingredients_path, change: :ingredients
+    redirect_to [:admin, :ingredients], change: :ingredients
   end
 
   private

@@ -9,7 +9,7 @@ class Web::Admin::ProductCategoriesController < Web::Admin::ApplicationControlle
     @product_category = ProductCategory.new(product_category_params)
     if @product_category.save
       respond_to do |format|
-        format.html { redirect_to admin_products_path, success: 'Категория продукта успешно добавлена' }
+        format.html { redirect_to [:admin, :products], success: 'Категория продукта успешно добавлена' }
         format.json { render json: @product_category }
       end
     else
@@ -22,7 +22,7 @@ class Web::Admin::ProductCategoriesController < Web::Admin::ApplicationControlle
   def update
     if update_by_reason
       respond_to do |format|
-        format.html { redirect_to admin_products_path, success: 'Категория продукта успешно обновлена' }
+        format.html { redirect_to [:admin, :products], success: 'Категория продукта успешно обновлена' }
         format.json { render json: { message: 'Success' }, status: 200 }
       end
     else
@@ -42,7 +42,7 @@ class Web::Admin::ProductCategoriesController < Web::Admin::ApplicationControlle
     else
       flash[:success] = 'Невозможно удалить категорию'
     end
-    redirect_to admin_products_path, change: :products
+    redirect_to [:admin, :products], change: :products
   end
 
   private

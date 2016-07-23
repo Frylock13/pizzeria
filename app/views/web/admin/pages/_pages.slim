@@ -1,4 +1,4 @@
-= link_to 'Добавить страницу', new_admin_page_path, class: 'btn btn-primary btn-block'
+= link_to 'Добавить страницу', [:new, :admin, :page], class: 'btn btn-primary btn-block'
 hr
 - pages.each do |page|
   .panel.panel-default.panel-item

@@ -43,7 +43,7 @@ class Web::OrderedPizzasController < Web::ApplicationController
 
   def render_cart
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to :root }
       format.js { render 'sidebar_cart', layout: false }
     end
   end

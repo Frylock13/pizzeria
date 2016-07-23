@@ -1,5 +1,5 @@
 .navmenu.navmenu-inverse.navmenu-fixed-left.offcanvas-sm.hidden-print
-  = link_to root_path, class: 'navmenu-brand' do
+  = link_to :root, class: 'navmenu-brand' do
     .img.img-logo
     .brand-title Закажите пиццу в 3 шага
   .navmenu-scroll-area
@@ -7,7 +7,7 @@
       - if menu_key == :products
         = render 'sidebar_cart'
       - else
-        li = link_to root_path do
+        li = link_to :root do
           = render 'sidebar_step_1_title'
       - if menu_key == :new_order
         = render 'sidebar_order'
@@ -32,7 +32,7 @@
                     span = human_date order.booked_on
       - else
         - if current_user&.orders&.with_status(:booked, :accepted, :cooking, :assembled, :delivered)&.any?
-          li = link_to orders_path do
+          li = link_to :orders do
             span.fa.fa-lg.fa-clock-o
             span Шаг 3. Примите заказ
         - else
@@ -44,7 +44,7 @@
     ul.navmenu-divider
     ul.nav.navmenu-nav
       li.navmenu-title Связь с нами
-      li = link_to new_call_request_path, remote: true do
+      li = link_to [:new, :call_request], remote: true do
         span.fa.fa-phone-square
         | Подать заявку на обратный звонок
       li = link_to 'tel:74951208088' do
@@ -85,10 +85,10 @@
         ul.dropdown-menu.navmenu-nav
           - if current_user.present?
             - if current_user.role.admin?
-              li = link_to admin_root_path do
+              li = link_to [:admin, :root] do
                 span.fa.fa-cogs
                 | В админку
-            li = link_to logout_path do
+            li = link_to :logout do
               span.fa.fa-sign-out
               | Выйти
             li
@@ -103,7 +103,7 @@
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
           - else
-            li = menu_link_to login_path do
+            li = menu_link_to :login do
               .nav-item-title Войти / Зарегистрироваться
               .nav-item-subtitle
                 span Получите доступ к бонусным баллам и особой пицце в меню

@@ -2,7 +2,7 @@
 section id='top'
   .slick-slider.slick-main data-no-transition-cache=''
     .item = link_to '', page_path('oplata-i-bonusnie-balli'), class: 'item-banner banner-bonus'
-    .item = link_to '', new_pizza_path, class: 'item-banner banner-constructor'
+    .item = link_to '', [:new, :pizza], class: 'item-banner banner-constructor'
     .item = link_to '', page_path('dostavka'), class: 'item-banner banner-delivery'
     .item = link_to '', page_path('pdf-menu'), class: 'item-banner banner-pdf'
 .navbar.navbar-inverse.hidden-print.affix-products
@@ -52,7 +52,7 @@ section.section-products id='user_pizza'
                     .list-group-item
                       span.text-muted = pizza_attribute.pizza_size.text
       .masonry-item.col-xs-6.col-md-4.col-lg-3
-        = link_to new_pizza_path,
+        = link_to [:new, :pizza],
                   class: 'panel panel-default panel-dummy dummy-constructor ladda-button',
                   data: { spinner_color: '#959286',
                           spinner_size: '50',
@@ -71,7 +71,7 @@ section.section-products id='user_pizza'
             .btn.btn-primary Перейти
       - unless current_user.present?
         .masonry-item.col-xs-6.col-md-4.col-lg-3
-          = link_to login_path,
+          = link_to :login,
                     class: 'panel panel-default panel-dummy dummy-auth ladda-button',
                     data: { spinner_color: '#959286',
                             spinner_size: '50',

@@ -1,7 +1,7 @@
 - title 'Добавление продукта'
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Продукты', admin_products_path
+    li = link_to 'Продукты', [:admin, :products]
     li.active Добавление продукта
 section.section-submenu id='products'
   = render 'products'
@@ -9,7 +9,7 @@ section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_products_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :products], class: 'close'
         .panel-title Добавление продукта
       .panel-body
         = render 'form', item: @product

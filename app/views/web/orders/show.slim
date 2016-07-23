@@ -1,7 +1,7 @@
 - title order.to_s
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Ваши заказы', orders_path
+    li = link_to 'Ваши заказы', :orders
     li.active
       = order.to_s
       - if order.discount_in_percents

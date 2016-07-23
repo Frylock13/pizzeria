@@ -12,7 +12,7 @@ class Web::Admin::FeaturesController < Web::Admin::ApplicationController
     @feature = Feature.new(feature_params)
     if @feature.save
       respond_to do |format|
-        format.html { redirect_to admin_products_path, success: 'Атрибут успешно добавлен' }
+        format.html { redirect_to [:admin, :products], success: 'Атрибут успешно добавлен' }
         format.json { render json: @feature }
       end
     else
@@ -25,7 +25,7 @@ class Web::Admin::FeaturesController < Web::Admin::ApplicationController
   def update
     if feature.update(feature_params)
       FeaturesMergingService.new(feature).merge
-      redirect_to admin_features_path, success: 'Атрибут успешно обновлен'
+      redirect_to [:admin, :features], success: 'Атрибут успешно обновлен'
     else
       render :edit, change: "edit_feature_#{@feature.id}", layout: !request.xhr?
     end
@@ -37,7 +37,7 @@ class Web::Admin::FeaturesController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить атрибут'
     end
-    redirect_to admin_features_path
+    redirect_to [:admin, :features]
   end
 
   private

@@ -38,7 +38,7 @@ class Web::Admin::ProductsController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить продукт'
     end
-    redirect_to admin_products_path, change: :products
+    redirect_to [:admin, :products], change: :products
   end
 
   private

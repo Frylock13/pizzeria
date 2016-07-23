@@ -1,5 +1,5 @@
 li.dropdown.open.active id='sidebar_cart'
-  = link_to root_path, class: 'dropdown-toggle' do
+  = link_to :root, class: 'dropdown-toggle' do
     = render 'sidebar_step_1_title'
   - unless current_order.empty?
     ul.dropdown-menu.navmenu-nav
@@ -57,7 +57,7 @@ li.dropdown.open.active id='sidebar_cart'
                 small Итого:
                 span = number_to_currency current_order.price, precision: 0
             - if current_order.price >= ENV['APP_MINIMAL_ORDER_COST'].to_i
-              = link_to 'Оформить доставку', new_order_path, class: 'btn btn-primary btn-sm'
+              = link_to 'Оформить доставку', [:new, :order], class: 'btn btn-primary btn-sm'
             - else
               small.text-muted мин. заказ от #{ENV['APP_MINIMAL_ORDER_COST']} руб.
       li

@@ -29,7 +29,7 @@ class Web::UsersController < Web::ApplicationController
     if user.save
       auto_login(user, _should_remember = true)
       current_profile.update(email: current_user.email, owner_id: current_user.id)
-      redirect_to root_path, success: 'Вы успешно зарегистрированы'
+      redirect_to :root, success: 'Вы успешно зарегистрированы'
     else
       render :new, locals: { user: User.new }, change: :new_user, layout: !request.xhr?
     end

@@ -1,4 +1,4 @@
-= link_to 'Добавить Атрибут', new_admin_product_product_feature_path, class: 'btn btn-primary btn-block'
+= link_to 'Добавить Атрибут', [:new, :admin, product, :product_feature], class: 'btn btn-primary btn-block'
 hr
 - product_features.each do |product_feature|
   .panel.panel-default.panel-item

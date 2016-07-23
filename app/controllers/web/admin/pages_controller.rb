@@ -38,7 +38,7 @@ class Web::Admin::PagesController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить страницу'
     end
-    redirect_to admin_pages_path, change: :pages
+    redirect_to [:admin, :pages], change: :pages
   end
 
   private

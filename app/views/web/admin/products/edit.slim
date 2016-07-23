@@ -1,7 +1,7 @@
 - title @product.name
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Продукты', admin_products_path
+    li = link_to 'Продукты', [:admin, :products]
     li.active = @product.name
 section.section-submenu id='products'
   = render 'products'
@@ -10,7 +10,7 @@ section.section-padded
     = render 'menu', active: :edit, product: @product
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_products_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :products], class: 'close'
         .panel-title = @product.name
       .panel-body
         = render 'form', item: @product

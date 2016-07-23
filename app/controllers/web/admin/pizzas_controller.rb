@@ -43,7 +43,7 @@ class Web::Admin::PizzasController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить пиццу'
     end
-    redirect_to admin_pizzas_path, change: :pizzas
+    redirect_to [:admin, :pizzas], change: :pizzas
   end
 
   def recalculate

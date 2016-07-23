@@ -1,7 +1,7 @@
 - title 'Добавление ингредиента'
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Ингредиенты', admin_ingredients_path
+    li = link_to 'Ингредиенты', [:admin, :ingredients]
     li.active Добавление ингредиента
 section.section-submenu id='ingredients'
   = render 'ingredients'
@@ -9,7 +9,7 @@ section.section-padded
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_ingredients_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :ingredients], class: 'close'
         .panel-title Добавление ингредиента
       .panel-body
         = render 'form', item: @ingredient

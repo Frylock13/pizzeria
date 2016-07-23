@@ -25,7 +25,7 @@ class Web::CallRequestsController < Web::ApplicationController
       session[:profile_id] = @call_request.ordering_profile.id
       SmsWorker.perform_async(ENV['APP_PHONE'], "Заявка на обратный звонок: #{@call_request.call_request.receiving_phone}, #{@call_request.call_request.receiving_first_name}")
       respond_to do |format|
-        format.html { redirect_to thanks_call_requests_path, success: 'Ваша заявка успешно отправлена' }
+        format.html { redirect_to [:thanks, :call_requests], success: 'Ваша заявка успешно отправлена' }
         format.js { render :thanks, layout: false }
       end
     else

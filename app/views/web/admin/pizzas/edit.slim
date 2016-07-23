@@ -1,7 +1,7 @@
 - title @pizza.name
 - content_for :header do
   ol.breadcrumb data-turbolinks-temporary='' id='breadcrumb'
-    li = link_to 'Пицца', admin_pizzas_path
+    li = link_to 'Пицца', [:admin, :pizzas]
     li.active = @pizza.name
 section.section-submenu id='pizzas'
   = render 'pizzas'
@@ -9,7 +9,7 @@ section.section-padded id='pizza'
   .container-fluid
     .panel.panel-default
       .panel-heading
-        = link_to '&times;'.html_safe, admin_pizzas_path, class: 'close'
+        = link_to '&times;'.html_safe, [:admin, :pizzas], class: 'close'
         .panel-title = @pizza.name
       .panel-body
         = render 'form', item: @pizza

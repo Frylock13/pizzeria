@@ -1,7 +1,7 @@
 - title 'Атрибуты продукта'
 - content_for :header do
   ol.breadcrumb
-    li = link_to 'Продукты', admin_products_path
+    li = link_to 'Продукты', [:admin, :products]
     li = link_to product.name, [:edit, :admin, product]
     li.active Атрибуты продукта
 section.section-submenu.submenu-visible id='product_features'

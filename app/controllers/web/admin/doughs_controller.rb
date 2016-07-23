@@ -39,7 +39,7 @@ class Web::Admin::DoughsController < Web::Admin::ApplicationController
     else
       flash[:success] = 'Невозможно удалить тесто'
     end
-    redirect_to admin_doughs_path, change: :doughs
+    redirect_to [:admin, :doughs], change: :doughs
   end
 
   private
