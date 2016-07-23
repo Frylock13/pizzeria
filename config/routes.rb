@@ -39,9 +39,7 @@ Rails.application.routes.draw do
       root to: 'welcome#index'
     end
 
-    resources :call_requests, only: [:new, :create] do
-      get :thanks, on: :collection
-    end
+    resources :call_requests, only: [:new, :create, :show]
 
     resources :orders, only: [:index, :new, :show, :update] do
       get :clear
