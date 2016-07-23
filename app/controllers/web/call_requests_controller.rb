@@ -12,7 +12,6 @@
 
 class Web::CallRequestsController < Web::ApplicationController
   def new
-    @menu_key = :new_call_request
     @call_request = CallRequestForm.new(ordering_profile: current_profile).build
     respond_to do |format|
       format.html

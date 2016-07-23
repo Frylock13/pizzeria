@@ -70,7 +70,7 @@
     ul.nav.navmenu-nav
       li.navmenu-title Информация
       - pages.each do |page|
-        = menu_link_to "page-#{page.slug}", page do
+        = menu_link_to page do
           span.fa.fa-fw
           = page.anchor
           - if page.anchor == 'Бонусные баллы' && current_user.present?
@@ -103,7 +103,7 @@
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
           - else
-            = menu_link_to :auth, login_path do
+            = old_menu_link_to :auth, login_path do
               .nav-item-title Войти / Зарегистрироваться
               .nav-item-subtitle
                 span Получите доступ к бонусным баллам и особой пицце в меню
