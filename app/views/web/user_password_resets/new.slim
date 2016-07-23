@@ -8,9 +8,9 @@ section.section-centered
             .b Не помните пароль?
             span Напишите почту, под которой регистрировались
           .panel-body
-            = render 'form_new', item: @password_reset
+            = render 'form', user_password_reset: user_password_reset
             .row
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Попробовать войти', login_path, class: 'btn btn-link'
+                .text-center = link_to 'Попробовать войти', :login, class: 'btn btn-link'
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Или зарегистрироваться', register_path, class: 'btn btn-link'
+                .text-center = link_to 'Или зарегистрироваться', :register, class: 'btn btn-link'

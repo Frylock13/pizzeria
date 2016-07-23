@@ -1,10 +1,10 @@
-= form_for item, remote: true, authenticity_token: true do |f|
+= form_for user_session, remote: true, authenticity_token: true do |f|
   .form-groups
-    = form_field_group :email, item do
+    = form_field_group :email, user_session do
       = f.email_field :email, class: 'form-control', required: false, placeholder: true
-      = form_field_error :email, item
-    = form_field_group :password, item do
+      = form_field_error :email, user_session
+    = form_field_group :password, user_session do
       = f.password_field :password, class: 'form-control', required: false, placeholder: true
-      = form_field_error :password, item
+      = form_field_error :password, user_session
     .form-group.text-center
       = f.button 'Войти', class: 'btn btn-primary ladda-button'

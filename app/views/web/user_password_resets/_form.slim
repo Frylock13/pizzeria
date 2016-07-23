@@ -1,7 +1,7 @@
-= form_for item, remote: true, authenticity_token: true do |f|
+= form_for user_password_reset, remote: false, authenticity_token: true do |f|
   .form-groups
-    = form_field_group :email, item do
+    = form_field_group :email, user_password_reset do
       = f.email_field :email, class: 'form-control', required: false, placeholder: true
-      = form_field_error :email, item
+      = form_field_error :email, user_password_reset
     .form-group.text-center
       = f.button 'Отправить письмо', class: 'btn btn-primary ladda-button'

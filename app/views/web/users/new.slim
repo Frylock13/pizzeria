@@ -8,9 +8,11 @@ section.section-centered
             .b Впервые у нас? Расскажите о себе
             span Введите свою почту и придумайте пароль
           .panel-body
-            = render 'form', item: @user
+            = render 'form', user: user
             .row
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Попробовать войти', login_path, class: 'btn btn-link'
+                .text-center
+                  = link_to 'Попробовать войти', :login, class: 'btn btn-link'
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Я не помню пароль', new_password_reset_path, class: 'btn btn-link'
+                .text-center
+                  = link_to 'Я не помню пароль', [:new, :user_password_reset], class: 'btn btn-link'

@@ -20,18 +20,18 @@
 class Web::UsersController < Web::ApplicationController
   def new
     @menu_key = :auth
-    @user = User.new
+    render locals: { user: User.new }
   end
 
   def create
     @menu_key = :auth
-    @user = User.new(user_params)
-    if @user.save
-      auto_login(@user, should_remember = true)
+    user = User.new(user_params)
+    if user.save
+      auto_login(user, _should_remember = true)
       current_profile.update(email: current_user.email, owner_id: current_user.id)
       redirect_to root_path, success: 'Вы успешно зарегистрированы'
     else
-      render :new, change: :new_user, layout: !request.xhr?
+      render :new, locals: { user: User.new }, change: :new_user, layout: !request.xhr?
     end
   end
 

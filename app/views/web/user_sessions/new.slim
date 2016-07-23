@@ -10,9 +10,11 @@ section.section-centered
             .b Уже были у нас?
             span Представьтесь, пожалуйста:
           .panel-body
-            = render 'form', item: user_session
+            = render 'form', user_session: user_session
             .row
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Я хочу зарегистрироваться', register_path, class: 'btn btn-link'
+                .text-center
+                  = link_to 'Я хочу зарегистрироваться', :register, class: 'btn btn-link'
               .elems.col-xs-12.col-sm-6
-                .text-center = link_to 'Я не помню пароль', new_password_reset_path, class: 'btn btn-link'
+                .text-center
+                  = link_to 'Я не помню пароль', [:new, :user_password_reset], class: 'btn btn-link'

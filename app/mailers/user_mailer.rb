@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   end
 
   def reset_password(user)
-    @url = edit_password_reset_url(user.reset_password_token)
+    @url = edit_user_password_url(user.reset_password_token)
     mail to: user.email, subject: 'Восстановление пароля'
   end
 end
