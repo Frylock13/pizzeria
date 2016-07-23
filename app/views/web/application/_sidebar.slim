@@ -103,7 +103,7 @@
                     span = current_user.owned_pizzas.size
                   span Особых пицц в меню
           - else
-            = old_menu_link_to :auth, login_path do
+            li = menu_link_to login_path do
               .nav-item-title Войти / Зарегистрироваться
               .nav-item-subtitle
                 span Получите доступ к бонусным баллам и особой пицце в меню
