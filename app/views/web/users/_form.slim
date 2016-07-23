@@ -1,10 +1,10 @@
 = form_for user, remote: true, authenticity_token: true do |f|
   .form-groups
-    = form_field_group :email, user do
+    = f.form_group :email do
       = f.email_field :email, class: 'form-control', required: false, placeholder: true
-      = form_field_error :email, user
-    = form_field_group :password, user do
+      = f.error_message :email
+    = f.form_group :password do
       = f.password_field :password, class: 'form-control', required: false, placeholder: true
-      = form_field_error :password, user
+      = f.error_message :password
     .form-group.text-center
       = f.button 'Зарегистрироваться', class: 'btn btn-primary ladda-button'

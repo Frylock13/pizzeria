@@ -2,19 +2,19 @@
   .form-groups
     .row
       .col-xs-6
-        = form_field_group :feature_id, item do
+        = f.form_group :feature_id do
           = f.label :feature_id, class: 'control-label'
           = f.collection_select :feature_id, features,
             :id, :name, { prompt: 'Выберите атрибут' },
                         { class: 'form-control selectize-features' }
-          = form_field_error :feature_id, item
+          = f.error_message :feature_id
       .col-xs-6
-        = form_field_group :feature_value_id, item do
+        = f.form_group :feature_value_id do
           = f.label :feature_value_id, class: 'control-label'
           = f.collection_select :feature_value_id, feature_values,
             :id, :name, { prompt: 'Выберите значение атрибута' },
                         { class: 'form-control selectize-feature-values' }
-          = form_field_error :feature_value_id, item
+          = f.error_message :feature_value_id
     .well
       .row
         .col-xs-6

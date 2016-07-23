@@ -4,24 +4,24 @@
       .col-side
         .row-title Когда выполнить заказ?
       .col-main
-        = form_field_group :status, item do
+        = f.form_group :status do
           = f.select :status, options_for_order_status,
                      { prompt: 'Выберите один из вариантов' },
                      class: 'form-control selectize-order-booking', required: true
-          = form_field_error :status, item
-        = form_field_group :booked_on, item, div_class: 'hide', div_id: 'booked_attributes' do
+          = f.error_message :status
+        = f.form_group :booked_on, class: 'hide', id: 'booked_attributes' do
           = f.datetime_local_field :booked_on, class: 'form-control', required: true, disabled: true
-          = form_field_error :booked_on, item
+          = f.error_message :booked_on
     .row
       .col-side
         .row-title Куда привезти?
       .col-main
-        = form_field_group :address_id, item do
+        = f.form_group :address_id do
           = f.select :address_id,
                      options_for_select(addresses.push(['Введу адрес вручную', :attributes])),
                      { prompt: 'Выберите один из вариантов' },
                      class: 'form-control selectize-order-address', required: true
-          = form_field_error :address_id, item
+          = f.error_message :address_id
         .form-group.hide id='address_attributes'
           = f.fields_for :address, address do |ff|
             .row
@@ -29,15 +29,15 @@
                 = ff.text_field :city, class: 'form-control', placeholder: 'Населенный пункт',
                                 required: false, disabled: true
               .col-xs-5
-                = form_field_group :street, item do
+                = f.form_group :street do
                   = ff.text_field :street, class: 'form-control', placeholder: 'Улица',
                                   required: true, disabled: true
-                  = form_field_error :street, item
+                  = f.error_message :street
               .col-xs-3
-                = form_field_group :house, item do
+                = f.form_group :house do
                   = ff.text_field :house, class: 'form-control', placeholder: 'Дом',
                                   required: true, disabled: true
-                  = form_field_error :house, item
+                  = f.error_message :house
             .row
               .col-xs-3
                 = ff.text_field :entrance, class: 'form-control', placeholder: 'Подъезд',
@@ -61,14 +61,14 @@
       .col-main
         .form-group id='receiving_profile_attributes'
           = f.fields_for :receiving_profile, receiving_profile do |ff|
-            = form_field_group :first_name, item do
+            = f.form_group :first_name do
               = ff.text_field :first_name, class: 'form-control', placeholder: 'Имя',
                               required: true, disabled: false
-              = form_field_error :first_name, item
-            = form_field_group :phone, item do
+              = f.error_message :first_name
+            = f.form_group :phone do
               = ff.text_field :phone, class: 'form-control', placeholder: 'Телефон',
                               required: true, disabled: false
-              = form_field_error :phone, item
+              = f.error_message :phone
     .row
       .col-side
         .row-title Как лучше оплатить заказ?
@@ -101,10 +101,10 @@
       .col-side
         .row-title Последние штрихи
       .col-main
-        = form_field_group :discount_card_number, item do
+        = f.form_group :discount_card_number do
           = f.text_field :discount_card_number, class: 'form-control',
                          placeholder: 'Номер вашей бонусной карты (если есть)'
-        = form_field_group :wishes, item do
+        = f.form_group :wishes do
           = f.text_area :wishes, class: 'form-control', rows: 3, placeholder: 'Особые пожелания'
         - if current_user.present?
           .form-group
@@ -113,9 +113,9 @@
           = f.fields_for :ordering_profile, item.ordering_profile do |ff|
             .form-group
               = ff.hidden_field :id
-            = form_field_group :email, item do
+            = f.form_group :email do
               = ff.email_field :email, class: 'form-control', placeholder: 'Ваш e-mail адрес',
                               required: true
-              = form_field_error :email, item
+              = f.error_message :email
         .form-group
           = f.submit 'Оформить заказ', class: 'btn btn-primary btn-lg ladda-button'

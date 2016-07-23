@@ -1,7 +1,7 @@
 = form_for user_password, remote: false, authenticity_token: true do |f|
   .form-groups
-    = form_field_group :password, user_password do
+    = f.form_group :password do
       = f.password_field :password, class: 'form-control', required: false, placeholder: true
-      = form_field_error :password, user_password
+      = f.error_message :password
     .form-group.text-center
       = f.button 'Установить пароль', class: 'btn btn-primary ladda-button'

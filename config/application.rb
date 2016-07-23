@@ -4,8 +4,10 @@ Bundler.require(*Rails.groups)
 
 module Pizzeria
   class Application < Rails::Application
+    config.action_view.default_form_builder = 'BootstrapFormBuilder'
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths += %W(
+      #{config.root}/lib/form_builders
       #{config.root}/lib/validators
     )
     config.encoding = 'utf-8'

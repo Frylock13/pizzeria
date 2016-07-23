@@ -3,37 +3,37 @@
     = f.fields_for :viewable_resource_attributes, item.viewable_resource do |ff|
       .row
         .col-xs-6
-          = form_field_group :meta_title, item do
+          = f.form_group :meta_title do
             = ff.label :meta_title, class: 'control-label'
             = ff.text_field :meta_title, class: 'form-control', required: false
-            = form_field_error :meta_title, item
+            = f.error_message :meta_title
         .col-xs-6
-          = form_field_group :page_title, item do
+          = f.form_group :page_title do
             = ff.label :page_title, class: 'control-label'
             = ff.text_field :page_title, class: 'form-control', required: false
-            = form_field_error :page_title, item
+            = f.error_message :page_title
       .row
         .col-xs-6
-          = form_field_group :anchor, item do
+          = f.form_group :anchor do
             = ff.label :anchor, class: 'control-label'
             = ff.text_field :anchor, class: 'form-control', required: false
-            = form_field_error :anchor, item
+            = f.error_message :anchor
         .col-xs-6
-          = form_field_group :slug, item do
+          = f.form_group :slug do
             = f.label :slug, class: 'control-label'
             = f.text_field :slug, class: 'form-control', required: false
-            = form_field_error :slug, item
-      = form_field_group :meta_keywords, item do
+            = f.error_message :slug
+      = f.form_group :meta_keywords do
         = ff.label :meta_keywords, class: 'control-label'
         = ff.text_area :meta_keywords, class: 'form-control', required: false, rows: 2
-        = form_field_error :meta_keywords, item
-      = form_field_group :page_annotation, item do
+        = f.error_message :meta_keywords
+      = f.form_group :page_annotation do
         = ff.label :page_annotation, class: 'control-label'
         = ff.text_area :page_annotation, class: 'form-control', required: false, rows: 3
-        = form_field_error :page_annotation, item
-      = form_field_group :page_description, item do
+        = f.error_message :page_annotation
+      = f.form_group :page_description do
         = ff.label :page_description, class: 'control-label'
         = ff.text_area :page_description, class: 'form-control summernote', required: true, rows: 5
-        = form_field_error :page_description, item
+        = f.error_message :page_description
     .form-group
       = f.button nil, class: 'btn btn-primary ladda-button'

@@ -5,12 +5,12 @@
   .modal-body
     = form_for item, remote: true, authenticity_token: true do |f|
       .form-groups
-        = form_field_group :first_name, item do
+        = f.form_group :first_name do
           = f.text_field :first_name, class: 'form-control', placeholder: true
-          = form_field_error :first_name, item
-        = form_field_group :phone, item do
+          = f.error_message :first_name
+        = f.form_group :phone do
           = f.text_field :phone, class: 'form-control', placeholder: true
-          = form_field_error :phone, item
+          = f.error_message :phone
         .form-group
           = f.text_area :wishes, class: 'form-control', placeholder: true, rows: 2
         .form-group.text-center

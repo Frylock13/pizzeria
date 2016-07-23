@@ -2,16 +2,16 @@
   .form-groups
     .row
       .col-xs-6
-        = form_field_group :name, item do
+        = f.form_group :name do
           = f.label :name, class: 'control-label'
           = f.text_field :name, class: 'form-control', required: false
-          = form_field_error :name, item
-        = form_field_group :pizza_category_id, item do
+          = f.error_message :name
+        = f.form_group :pizza_category_id do
           = f.label :pizza_category_id, class: 'control-label'
           = f.collection_select :pizza_category_id, pizza_categories,
             :id, :name, { prompt: 'Выберите категорию' },
                         { class: 'form-control selectize-pizza-categories' }
-          = form_field_error :pizza_category_id, item
+          = f.error_message :pizza_category_id
         .form-group
           = f.label :visibility, class: 'control-label'
           = f.select :visibility, Visibilities.visibility.options,
@@ -23,18 +23,18 @@
         .form-group
           = f.check_box :spicy, class: 'form-control'
           = f.label :spicy, class: 'control-label'
-        = form_field_group :parent_id, item do
+        = f.form_group :parent_id do
           = f.label :parent_id, class: 'control-label'
           = f.collection_select :parent_id, pizzas,
             :id, :name, { include_blank: 'Укажите основу, если она есть' },
                         { class: 'form-control selectize-pizzas' }
-          = form_field_error :parent_id, item
-        = form_field_group :dough_id, item do
+          = f.error_message :parent_id
+        = f.form_group :dough_id do
           = f.label :dough_id, class: 'control-label'
           = f.collection_select :dough_id, doughs,
             :id, :name, { prompt: 'Выберите тесто' },
                         { class: 'form-control selectize-doughs' }
-          = form_field_error :dough_id, item
+          = f.error_message :dough_id
         = render 'attributes_fields', f: f, fields: :pizza_attributes, items: item.pizza_attributes
         = render 'fileinput_field', f: f, item: item
       .col-xs-6
