@@ -1,12 +1,4 @@
 module ApplicationHelper
-  def tab_link(text, path, active:, disabled: nil)
-    content_tag :li, class: "#{'active' if active} #{'disabled' if disabled == true}" do
-      link_to path do
-        concat content_tag :span, text
-      end
-    end
-  end
-
   def number_to_weight(weight)
     return unless weight.present?
     "#{weight} гр."

@@ -5,32 +5,27 @@
 section.tabs
   .container-fluid
     ul.nav.nav-tabs
-      = tab_link "Все (#{Order.without_status(:created).count})", params.merge(status: nil),
-                 active: params[:status] == nil
-      = tab_link "Новые (#{Order.with_status(:accepted).count})",
-                 params.merge(status: :accepted),
-                 active: params[:status] == 'accepted',
-                 disabled: Order.with_status(:accepted).count == 0
-      = tab_link "Бронь (#{Order.with_status(:booked).count})",
-                 params.merge(status: :booked),
-                 active: params[:status] == 'booked',
-                 disabled: Order.with_status(:booked).count == 0
-      = tab_link "Готовится (#{Order.with_status(:cooking).count})",
-                 params.merge(status: :cooking),
-                 active: params[:status] == 'cooking',
-                 disabled: Order.with_status(:cooking).count == 0
-      = tab_link "Отправлен (#{Order.with_status(:assembled).count})",
-                 params.merge(status: :assembled),
-                 active: params[:status] == 'assembled',
-                 disabled: Order.with_status(:assembled).count == 0
-      = tab_link "Выполнен (#{Order.with_status(:closed).count})",
-                 params.merge(status: :closed),
-                 active: params[:status] == 'closed',
-                 disabled: Order.with_status(:closed).count == 0
-      = tab_link "Отменен (#{Order.with_status(:canceled).count})",
-                 params.merge(status: :canceled),
-                 active: params[:status] == 'canceled',
-                 disabled: Order.with_status(:canceled).count == 0
+      = menu_link_to "Все (#{Order.without_status(:created).count})",
+                     params.merge(status: nil),
+                     exact_route_match: true
+      = menu_link_to "Новые (#{Order.with_status(:accepted).count})",
+                     params.merge(status: :accepted),
+                     disabled: Order.with_status(:accepted).count == 0
+      = menu_link_to "Бронь (#{Order.with_status(:booked).count})",
+                     params.merge(status: :booked),
+                     disabled: Order.with_status(:booked).count == 0
+      = menu_link_to "Готовится (#{Order.with_status(:cooking).count})",
+                     params.merge(status: :cooking),
+                     disabled: Order.with_status(:cooking).count == 0
+      = menu_link_to "Отправлен (#{Order.with_status(:assembled).count})",
+                     params.merge(status: :assembled),
+                     disabled: Order.with_status(:assembled).count == 0
+      = menu_link_to "Выполнен (#{Order.with_status(:closed).count})",
+                     params.merge(status: :closed),
+                     disabled: Order.with_status(:closed).count == 0
+      = menu_link_to "Отменен (#{Order.with_status(:canceled).count})",
+                     params.merge(status: :canceled),
+                     disabled: Order.with_status(:canceled).count == 0
 section.section-padded id='orders'
   .container-fluid
     = render @orders

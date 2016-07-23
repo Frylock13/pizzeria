@@ -1,5 +1,3 @@
 ul.nav.nav-pills
-  = tab_link 'Основные данные', [:edit, :admin, product],
-             active: :edit == active
-  = tab_link 'Атрибуты продукта', [:admin, product, :product_features],
-             active: :product_features == active
+  li.active = link_to 'Основные данные', [:edit, :admin, product]
+  li = link_to 'Атрибуты продукта', [:admin, product, :product_features]
