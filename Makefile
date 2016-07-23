@@ -1,0 +1,2 @@
+deploy:
+	cap production deploy
