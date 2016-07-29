@@ -8,7 +8,8 @@ class OrderCreatingService
 
   def submit
     order.update(booked_on: Time.zone.now) unless order.booked_on?
-    SmsWorker.perform_async ENV['APP_PHONE'], "Оформлен #{order.to_s}"
+    SmsCService.new(ENV['APP_PHONE'], "Оформлен #{order.to_s}").send
+    # SmsWorker.perform_async ENV['APP_PHONE'], "Оформлен #{order.to_s}"
     @user = User.where(email: order.ordering_profile.email)
                 .first_or_initialize(password: SecureRandom.hex(16))
     user.bonus_points += (order.price * 0.1).floor if order.payment_method == :cash
