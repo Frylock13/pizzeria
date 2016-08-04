@@ -113,12 +113,6 @@ section.section-products id='menu_pizza'
                 .pizza-ingredients
                   ' #{pizza.dough.name} тесто,
                   = pizza.ingredients.pluck(:name).join(', ')
-                .pizza-edit-ingredients
-                  = link_to 'Подобрать ингредиенты и тесто', new_pizza_path(parent_id: pizza.id),
-                            remote: true, class: 'ladda-button',
-                            data: { spinner_color: '#383783',
-                                    spinner_size: '20',
-                                    style: 'expand-right' }
               .panel-footer
                 .list-group
                   - pizza.pizza_attributes.order(:pizza_size).each do |pizza_attribute|
